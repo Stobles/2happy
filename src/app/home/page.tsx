@@ -1,9 +1,19 @@
 import Image from "next/image";
 import styles from "../page.module.css";
+import CustomButton from "@/components/ui/Button/CustomButton";
+import { ExitToApp } from "@mui/icons-material";
 
 export default function Home() {
   return (
     <div className={styles.page}>
+      <CustomButton
+        variant="tertiary"
+        size="large"
+        leftIcon={<ExitToApp />}
+        onlyIcon
+      >
+        Текст
+      </CustomButton>
       <main className={styles.main}>
         <Image
           className={styles.logo}
