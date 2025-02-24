@@ -1,13 +1,9 @@
-import type { Metadata } from "next";
 import "./globals.css";
 import "../styles/fonts.css";
 import MUIThemeProvider from "@/providers/MUIThemeProvider";
-import ToastProvider from "@/ui/ToastProvider/ToastProvider";
-import { getProducts } from "@/api/authApi";
-import DocumentsClient from "@/app/_components/DocumentsClient";
+import ToastProvider from "@/components/ui/ToastProvider/ToastProvider";
 import { Suspense } from "react";
 import { CircularProgress } from "@mui/material";
-import Head from "next/head";
 
 // export const metadata: Metadata = {
 //   title: "Zandocs",
