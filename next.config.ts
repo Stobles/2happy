@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/",
-        destination: "/main", // Перенаправление на /main
+        destination: "/home", // Перенаправление на /main
         permanent: true,
       },
     ];
