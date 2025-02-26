@@ -4,8 +4,19 @@ import tailwindcssAnimate from "tailwindcss-animate";
 module.exports = {
   darkMode: ["class"],
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
+
   theme: {
     extend: {
+      screens: {
+        sm: "320px",
+        md: "640px",
+        lg: "960px",
+        xl: "1280px",
+        "2xl": "1536px",
+      },
+      boxShadow: {
+        header: "0px 2px 10px 0px rgba(15, 25, 40, 0.2)",
+      },
       fontFamily: {
         sans: ["Lato", "sans-serif"],
         akira: ["AkiraExpanded", "sans-serif"],
@@ -137,12 +148,16 @@ module.exports = {
   },
   plugins: [
     tailwindcssAnimate,
-    function ({ addComponents }) {
+    function ({ addComponents, theme }) {
       addComponents({
         ".text-h1": {
           fontSize: "64px",
           lineHeight: "76.8px",
           fontWeight: "700",
+          [`@media (max-width: ${theme("screens.lg")})`]: {
+            fontSize: "48px", // Уменьшаем размер для маленьких экранов
+            lineHeight: "56px",
+          },
         },
         ".text-h1Akira": {
           fontFamily: "'AkiraExpanded', sans-serif",
@@ -184,6 +199,33 @@ module.exports = {
         ".text-body2": {
           fontSize: "16px",
           lineHeight: "24px",
+        },
+        ".text-button-large": {
+          fontSize: "20px",
+          lineHeight: "24px",
+          fontWeight: 500,
+          textTransform: "uppercase",
+        },
+        ".text-button-normal": {
+          fontSize: "16px",
+          lineHeight: "24px",
+          fontWeight: 500,
+          textTransform: "uppercase",
+        },
+        ".text-button-medium": {
+          fontSize: "16px",
+          lineHeight: "20px",
+          fontWeight: 500,
+          textTransform: "uppercase",
+        },
+        ".text-button-small": {
+          fontSize: "14px",
+          lineHeight: "16px",
+          textTransform: "uppercase",
+        },
+        ".text-button-xs": {
+          fontSize: "14px",
+          lineHeight: "16px",
         },
       });
     },
