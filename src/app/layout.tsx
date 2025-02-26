@@ -1,9 +1,10 @@
 import "./globals.css";
 import "../styles/fonts.css";
-import MUIThemeProvider from "@/providers/MUIThemeProvider";
 import ToastProvider from "@/components/UI/ToastProvider/ToastProvider";
 import { Suspense } from "react";
 import { CircularProgress } from "@mui/material";
+import Header from "@/components/Layout/Header/Header";
+import Footer from "@/components/Layout/Footer/Footer";
 
 // export const metadata: Metadata = {
 //   title: "Zandocs",
@@ -18,7 +19,7 @@ export default async function RootLayout({
 }>) {
   // const documents = await getProducts(); // тут лучше запрашивать товары
   return (
-    <html lang="ru">
+    <html className="h-full" lang="ru">
       {/* <Head>
         <title>Zandocs</title>
         <meta
@@ -31,17 +32,14 @@ export default async function RootLayout({
           content="Конструктор документов, зандокс, zandocs"
         />
       </Head> */}
-      <body className="font-sans">
-        <MUIThemeProvider>
-          <Suspense fallback={<CircularProgress color={"info"} />}>
-            <ToastProvider>
-              {/* <Header /> */}
-              {/* <DocumentsClient initialDocs={documents} /> */}
-              {children}
-              {/* <Footer /> */}
-            </ToastProvider>
-          </Suspense>
-        </MUIThemeProvider>
+      <body className="font-sans flex flex-col h-full">
+        <Suspense fallback={<CircularProgress color={"info"} />}>
+          <ToastProvider>
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </ToastProvider>
+        </Suspense>
       </body>
     </html>
   );
