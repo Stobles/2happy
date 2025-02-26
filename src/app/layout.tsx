@@ -1,7 +1,7 @@
 import "./globals.css";
 import "../styles/fonts.css";
 import MUIThemeProvider from "@/providers/MUIThemeProvider";
-import ToastProvider from "@/components/ui/ToastProvider/ToastProvider";
+import ToastProvider from "@/components/UI/ToastProvider/ToastProvider";
 import { Suspense } from "react";
 import { CircularProgress } from "@mui/material";
 
@@ -31,7 +31,7 @@ export default async function RootLayout({
           content="Конструктор документов, зандокс, zandocs"
         />
       </Head> */}
-      <body>
+      <body className="font-sans">
         <MUIThemeProvider>
           <Suspense fallback={<CircularProgress color={"info"} />}>
             <ToastProvider>
