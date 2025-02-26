@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import tailwindcssAnimate from "tailwindcss-animate";
+
 module.exports = {
   darkMode: ["class"],
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
@@ -9,9 +11,7 @@ module.exports = {
         akira: ["AkiraExpanded", "sans-serif"],
       },
       colors: {
-        main: {
-          black: "#111112",
-        },
+        main: "#111112",
         bg: {
           white: "#FCFCFF",
           disabled: "#F0F0F3",
@@ -136,7 +136,7 @@ module.exports = {
     },
   },
   plugins: [
-    require("tailwindcss-animate"),
+    tailwindcssAnimate,
     function ({ addComponents }) {
       addComponents({
         ".text-h1": {

@@ -35,6 +35,14 @@ input[type="password"]::-ms-clear {
   display: none;
 }
 
+button {
+  background-image: radial-gradient(
+    farthest-corner at 50% 30%,
+    #ffffff3d,
+    #ffffff0d
+  );
+}
+
 span {
   font-size: inherit;
   font-weight: inherit;
@@ -72,16 +80,6 @@ h4 {
   font-family: "AcuminPro" sans-serif;
 }
 
-.MuiAccordion-root::before {
-  height: 0;
-}
-.MuiAccordionSummary-content.Mui-expanded {
-  margin: 0;
-}
-.MuiAccordionSummary-root {
-  padding: 0;
-}
-
 .toast-container {
   display: flex;
   align-items: center;
@@ -109,9 +107,6 @@ h4 {
 .toast-body .Toastify__toast-icon {
   width: 24px;
   margin: 0;
-}
-.MuiTableCell-root {
-  border-bottom: 1px solid #8dbaff80;
 }
 
 @layer base {
@@ -175,6 +170,6 @@ h4 {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-main;
   }
 }
