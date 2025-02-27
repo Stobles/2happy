@@ -7,6 +7,7 @@ import StyledTooltip from "@/components/UI/StyledTooltip/StyledTooltip";
 
 import { iconLinks, mainLinks, subLinks } from "./consts";
 import StyledLink from "@/components/UI/StyledLink/StyledLink";
+import CategorySheet from "./components/CategorySheet";
 
 const Header = () => {
   return (
@@ -35,8 +36,7 @@ const Header = () => {
             />
           </Link>
           <div className="flex justify-center gap-6 flex-1 px-2">
-            {/* это будет, как отдельный компонент, скорее всего */}
-            <div className="text-button-normal">Каталог</div>
+            <CategorySheet />
             {/*  */}
             {mainLinks.map((link) => (
               <StyledLink
