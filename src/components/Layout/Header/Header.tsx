@@ -6,16 +6,22 @@ import Container from "@/components/UI/Container/Container";
 import StyledTooltip from "@/components/UI/StyledTooltip/StyledTooltip";
 
 import { iconLinks, mainLinks, subLinks } from "./consts";
+import StyledLink from "@/components/UI/StyledLink/StyledLink";
+import CategorySheet from "./components/CategorySheet";
 
 const Header = () => {
   return (
-    <header className="shadow-header">
+    <header className="shadow-header relative z-[100] bg-white">
       <div className="min-h-[56px]">
         <Container className="flex h-full items-center justify-end gap-5 py-5">
           {subLinks.map((link) => (
-            <Link key={link.title} href={link.href} className="text-button-xs">
+            <StyledLink
+              key={link.title}
+              href={link.href}
+              className="text-button-xs"
+            >
               {link.title}
-            </Link>
+            </StyledLink>
           ))}
         </Container>
       </div>
@@ -30,17 +36,16 @@ const Header = () => {
             />
           </Link>
           <div className="flex justify-center gap-6 flex-1 px-2">
-            {/* это будет, как отдельный компонент, скорее всего */}
-            <div className="text-button-normal">Каталог</div>
+            <CategorySheet />
             {/*  */}
             {mainLinks.map((link) => (
-              <Link
+              <StyledLink
                 key={link.title}
                 href={link.href}
                 className="text-button-normal"
               >
                 {link.title}
-              </Link>
+              </StyledLink>
             ))}
           </div>
           <div className="flex gap-10">

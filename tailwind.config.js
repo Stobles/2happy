@@ -267,10 +267,14 @@ module.exports = {
         },
         ".icon-glass-hover": {
           background: theme("colors.bg.glass"),
-          // border: "1px solid",
-          // borderImageSource:
-          //   "linear-gradient(225deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%)",
           borderRadius: "3px",
+        },
+
+        ".link-hover": {
+          color: theme("colors.lightGrey"),
+          "& span": {
+            width: "100%",
+          },
         },
       });
     },
