@@ -1,8 +1,10 @@
+import Image from "next/image";
+import Link from "next/link";
+
 import SearchIcon from "@/components/icons/SearchIcon";
 import Container from "@/components/UI/Container/Container";
 import StyledTooltip from "@/components/UI/StyledTooltip/StyledTooltip";
-import Image from "next/image";
-import Link from "next/link";
+
 import { iconLinks, mainLinks, subLinks } from "./consts";
 
 const Header = () => {
@@ -20,7 +22,12 @@ const Header = () => {
       <div className="min-h-[80px] border-y-[1px] border-main">
         <Container className="flex items-center">
           <Link href="/home">
-            <Image width={80} height={80} src="/logo.jpg" alt="logo" />
+            <Image
+              width={80}
+              height={80}
+              src="/header-logo.jpg"
+              alt="header-logo"
+            />
           </Link>
           <div className="flex justify-center gap-6 flex-1 px-2">
             {/* это будет, как отдельный компонент, скорее всего */}

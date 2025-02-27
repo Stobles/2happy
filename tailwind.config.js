@@ -23,16 +23,16 @@ module.exports = {
       },
       colors: {
         main: "#111112",
+        white: "#FCFCFF",
+        whiteSecondary: "#DEDEE9",
+        grey: "#3F4753",
+        lightGrey: "#9EA4AE",
+        middleGrey: "#6F757E",
+        disabled: "#CFD1D4",
         bg: {
-          white: "#FCFCFF",
           disabled: "#F0F0F3",
           lightGrey: "#E4E7EB",
-        },
-        text: {
-          white: "#FCFCFF",
-          grey: "#3F4753",
-          middleGrey: "#6F757E",
-          disabled: "#CFD1D4",
+          glass: "rgba(255, 255, 255, 0.3)",
         },
         button: {
           primary: {
@@ -159,6 +159,9 @@ module.exports = {
             lineHeight: "56px",
           },
         },
+
+        // Text/Headlines
+
         ".text-h1Akira": {
           fontFamily: "'AkiraExpanded', sans-serif",
           fontWeight: "800",
@@ -169,6 +172,7 @@ module.exports = {
           fontSize: "48px",
           lineHeight: "56px",
           fontWeight: "700",
+          textTransform: "uppercase",
         },
         ".text-h2Akira": {
           fontFamily: "'AkiraExpanded', sans-serif",
@@ -180,17 +184,23 @@ module.exports = {
           fontSize: "32px",
           lineHeight: "40px",
           fontWeight: "600",
+          textTransform: "uppercase",
         },
         ".text-h4": {
           fontSize: "24px",
           lineHeight: "32px",
-          fontWeight: "600",
+          fontWeight: "500",
+          textTransform: "uppercase",
         },
         ".text-h5": {
           fontSize: "16px",
           lineHeight: "24px",
-          fontWeight: "600",
+          fontWeight: "500",
+          textTransform: "uppercase",
         },
+
+        // Text/Body
+
         ".text-body1": {
           fontSize: "16px",
           lineHeight: "24px",
@@ -200,6 +210,27 @@ module.exports = {
           fontSize: "16px",
           lineHeight: "24px",
         },
+
+        // Text/Fields
+
+        ".text-title": {
+          fontWeight: 400,
+          fontSize: "12px",
+          lineHeight: "16px",
+        },
+        ".text-description": {
+          fontWeight: 400,
+          fontSize: "12px",
+          lineHeight: "16px",
+        },
+        ".text-placeholder": {
+          fontWeight: 400,
+          fontSize: "16px",
+          lineHeight: "24px",
+        },
+
+        // Text/Button
+
         ".text-button-large": {
           fontSize: "20px",
           lineHeight: "24px",
@@ -226,6 +257,20 @@ module.exports = {
         ".text-button-xs": {
           fontSize: "14px",
           lineHeight: "16px",
+        },
+
+        // Other
+
+        ".bg-radial-gradient": {
+          background:
+            "radial-gradient(100% 100% at 50% 0%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 100%)",
+        },
+        ".icon-glass-hover": {
+          background: theme("colors.bg.glass"),
+          // border: "1px solid",
+          // borderImageSource:
+          //   "linear-gradient(225deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%)",
+          borderRadius: "3px",
         },
       });
     },
