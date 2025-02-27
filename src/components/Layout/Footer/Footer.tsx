@@ -44,11 +44,13 @@ const Footer = () => {
           {mainBlocks.map((item) => (
             <li key={item.title} className="basis-full">
               <h4 className="text-h4 text-white pb-4">Аккаунт</h4>
-              <ul className="space-y-2 text-button-xs text-whiteSecondary">
+              <ul className="space-y-2 text-whiteSecondary">
                 {item.links.map((link, index) => (
-                  <StyledLink key={index} href={link.href} element="li">
-                    {link.text}
-                  </StyledLink>
+                  <li key={index}>
+                    <StyledLink className="text-button-xs" href={link.href}>
+                      {link.text}
+                    </StyledLink>
+                  </li>
                 ))}
               </ul>
             </li>
@@ -60,12 +62,18 @@ const Footer = () => {
             <h4 className="text-h4 text-white pb-4">Контакты</h4>
             <ul className="space-y-2 text-button-xs text-whiteSecondary">
               <li>
-                <StyledExternalLink href="tel:+77777777777">
+                <StyledExternalLink
+                  className="text-button-xs"
+                  href="tel:+77777777777"
+                >
                   +7–777–777–77–77
                 </StyledExternalLink>
               </li>
               <li>
-                <StyledExternalLink href="mailto:2happykz@mail.ru">
+                <StyledExternalLink
+                  className="text-button-xs"
+                  href="mailto:2happykz@mail.ru"
+                >
                   2happykz@mail.ru
                 </StyledExternalLink>
               </li>
@@ -76,7 +84,10 @@ const Footer = () => {
                 <span>Пн-Вс 10.00 - 20.00</span>
               </li>
               <li>
-                <StyledExternalLink href="mailto:2happykz@mail.ru">
+                <StyledExternalLink
+                  className="text-button-xs"
+                  href="mailto:2happykz@mail.ru"
+                >
                   Посмотреть на карте
                 </StyledExternalLink>
               </li>
