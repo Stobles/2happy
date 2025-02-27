@@ -8,6 +8,7 @@ const CartIcon = ({ className }: { className?: string }) => {
       height="24"
       fill="none"
       viewBox="0 0 24 24"
+      className={cn("", className)}
     >
       <path
         stroke="#1C274C"
