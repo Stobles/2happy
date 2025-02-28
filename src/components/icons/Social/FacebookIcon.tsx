@@ -6,7 +6,10 @@ const FacebookIcon = ({ className }: { className?: string }) => {
       xmlns="http://www.w3.org/2000/svg"
       width="25"
       height="24"
-      className={cn("fill-transparent", className)}
+      className={cn(
+        "fill-transparent transition-[fill,stroke,transform]",
+        className
+      )}
     >
       <path
         stroke="#FCFCFF"

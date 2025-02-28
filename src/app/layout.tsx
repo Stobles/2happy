@@ -1,6 +1,6 @@
 import "./globals.css";
 import "../styles/fonts.css";
-import ToastProvider from "@/components/UI/ToastProvider/ToastProvider";
+import ToastProvider from "@/providers/ToastProvider";
 import { Suspense } from "react";
 import { CircularProgress } from "@mui/material";
 import Header from "@/components/Layout/Header/Header";

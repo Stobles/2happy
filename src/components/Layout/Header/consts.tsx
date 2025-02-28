@@ -1,3 +1,4 @@
+import CartIcon from "@/components/icons/CartIcon";
 import HeartIcon from "@/components/icons/HeartIcon";
 import UserIcon from "@/components/icons/UserIcon";
 
@@ -46,7 +47,7 @@ export const iconLinks = [
   },
   {
     href: "/",
-    element: <HeartIcon className="hover:fill-main" />,
+    element: <CartIcon className="hover:fill-main" />,
     tooltip: {
       id: "cart-tooltip",
       content: `Корзина`,

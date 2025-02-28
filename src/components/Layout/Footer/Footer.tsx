@@ -43,7 +43,7 @@ const Footer = () => {
           {/* Footer Links */}
           {mainBlocks.map((item) => (
             <li key={item.title} className="basis-full">
-              <h4 className="text-h4 text-white pb-4">Аккаунт</h4>
+              <h4 className="text-h4 text-white pb-4">{item.title}</h4>
               <ul className="space-y-2 text-whiteSecondary">
                 {item.links.map((link, index) => (
                   <li key={index}>
