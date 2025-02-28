@@ -6,7 +6,7 @@ const InstagramIcon = ({ className }: { className?: string }) => {
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
-      className={cn("", className)}
+      className={cn("transition-[fill,stroke,transform]", className)}
     >
       <path
         fill="#FCFCFF"

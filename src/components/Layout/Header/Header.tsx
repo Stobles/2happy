@@ -35,19 +35,20 @@ const Header = () => {
               alt="header-logo"
             />
           </Link>
-          <div className="flex justify-center gap-6 flex-1 px-2">
-            <CategorySheet />
-            {/*  */}
-            {mainLinks.map((link) => (
-              <StyledLink
-                key={link.title}
-                href={link.href}
-                className="text-button-normal"
-              >
-                {link.title}
-              </StyledLink>
-            ))}
-          </div>
+          <nav className="flex-1 px-2">
+            <ul className="flex justify-center gap-6 ">
+              <li>
+                <CategorySheet />
+              </li>
+              {mainLinks.map((link) => (
+                <li key={link.title}>
+                  <StyledLink href={link.href} className="text-button-normal">
+                    {link.title}
+                  </StyledLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
           <div className="flex gap-10">
             <div className="text-button-normal flex gap-2">
               <SearchIcon /> <span>Поиск</span>

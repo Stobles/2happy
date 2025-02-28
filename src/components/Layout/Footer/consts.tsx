@@ -53,7 +53,7 @@ export const clientsLinks: IFooterLink[] = [
   },
   {
     href: "/",
-    text: "Условия возвррата / обмена",
+    text: "Условия возврата / обмена",
   },
   {
     href: "/",
