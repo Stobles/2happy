@@ -6,8 +6,6 @@ import PaypalIcon from "@/components/icons/Payment/PayPalIcon";
 import Container from "@/components/UI/Container/Container";
 import VisaIcon from "@/components/icons/Payment/VisaIcon";
 import { mainBlocks, socialIcons } from "./consts";
-import StyledLink from "@/components/UI/StyledLink/StyledLink";
-import StyledExternalLink from "@/components/UI/StyledExternalLink/StyledExternalLink";
 
 const Footer = () => {
   return (
@@ -47,9 +45,12 @@ const Footer = () => {
               <ul className="space-y-2 text-whiteSecondary">
                 {item.links.map((link, index) => (
                   <li key={index}>
-                    <StyledLink className="text-button-xs" href={link.href}>
+                    <Link
+                      className="text-button-xs link-hover"
+                      href={link.href}
+                    >
                       {link.text}
-                    </StyledLink>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -62,20 +63,20 @@ const Footer = () => {
             <h4 className="text-h4 text-white pb-4">Контакты</h4>
             <ul className="space-y-2 text-button-xs text-whiteSecondary">
               <li>
-                <StyledExternalLink
-                  className="text-button-xs"
+                <a
+                  className="text-button-xs link-hover"
                   href="tel:+77777777777"
                 >
                   +7–777–777–77–77
-                </StyledExternalLink>
+                </a>
               </li>
               <li>
-                <StyledExternalLink
-                  className="text-button-xs"
+                <a
+                  className="text-button-xs link-hover"
                   href="mailto:2happykz@mail.ru"
                 >
                   2happykz@mail.ru
-                </StyledExternalLink>
+                </a>
               </li>
               <li>
                 <span>Самал 1, дом 31, Алматы</span>
@@ -84,12 +85,12 @@ const Footer = () => {
                 <span>Пн-Вс 10.00 - 20.00</span>
               </li>
               <li>
-                <StyledExternalLink
-                  className="text-button-xs"
+                <a
+                  className="text-button-xs link-hover"
                   href="mailto:2happykz@mail.ru"
                 >
                   Посмотреть на карте
-                </StyledExternalLink>
+                </a>
               </li>
             </ul>
           </li>

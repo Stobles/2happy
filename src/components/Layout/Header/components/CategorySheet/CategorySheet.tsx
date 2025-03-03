@@ -2,9 +2,9 @@
 
 import ChevronIcon from "@/components/icons/Chevron";
 import { Sheet } from "@/components/UI/Sheet";
-import StyledLink from "@/components/UI/StyledLink/StyledLink";
 import { useDelayedState } from "@/hooks/useDelayedState";
 import CategorySheetContent from "./CategorySheetContent";
+import Link from "next/link";
 
 const CategorySheet = () => {
   const { state, setFastState, setDelayedState, clearTimer } =
@@ -20,10 +20,12 @@ const CategorySheet = () => {
 
   return (
     <Sheet open={state}>
-      <StyledLink
+      <Link
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
-        className={`text-button-normal ${state ? "link-hover" : ""}`}
+        className={`text-button-normal link-hover ${
+          state ? "link-hovered" : ""
+        }`}
         href="/"
       >
         Каталог
@@ -32,7 +34,7 @@ const CategorySheet = () => {
             state && "stroke-whiteSecondary rotate-180"
           } transition-[fill,transform]`}
         />
-      </StyledLink>
+      </Link>
       <CategorySheetContent
         style={{
           marginTop: `calc(var(--header-height) - 2px)`,

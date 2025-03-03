@@ -13,9 +13,9 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/UI/Sheet";
-import StyledLink from "@/components/UI/StyledLink/StyledLink";
 import Image from "next/image";
 import { accessoriesCategories, clothCategories } from "../../consts";
+import Link from "next/link";
 
 const CategorySheetContent = (props: SheetContentProps) => {
   const firstClothList = clothCategories.slice(0, 6);
@@ -33,12 +33,12 @@ const CategorySheetContent = (props: SheetContentProps) => {
             <ul className="space-y-2">
               {firstClothList.map((item) => (
                 <li key={item.title}>
-                  <StyledLink
+                  <Link
                     href={`/${item.id}`}
-                    className="text-button-normal"
+                    className="text-button-normal link-hover"
                   >
                     {item.title}
-                  </StyledLink>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -47,18 +47,21 @@ const CategorySheetContent = (props: SheetContentProps) => {
                 <ul className="space-y-2 mt-2">
                   {secondClothList.map((item) => (
                     <li key={item.title}>
-                      <StyledLink
+                      <Link
                         href={`/${item.id}`}
-                        className="text-button-normal"
+                        className="text-button-normal link-hover"
                       >
                         {item.title}
-                      </StyledLink>
+                      </Link>
                     </li>
                   ))}
                 </ul>
               </CollapsibleContent>
-              <CollapsibleTrigger className="flex items-center mt-2 text-button-xs">
-                Еще <ChevronIcon />
+              <CollapsibleTrigger className="flex items-center mt-2 text-button-xs link-hover">
+                Еще{" "}
+                <ChevronIcon
+                  className={`group-hover:stroke-whiteSecondary group-hover:rotate-180 transition-[fill,transform]`}
+                />
               </CollapsibleTrigger>
             </Collapsible>
             <div className="relative w-full h-[120px]">
@@ -76,12 +79,12 @@ const CategorySheetContent = (props: SheetContentProps) => {
             <ul className="space-y-2 pb-6">
               {accessoriesCategories.map((item) => (
                 <li key={item.title}>
-                  <StyledLink
+                  <Link
                     href={`/${item.id}`}
-                    className="text-button-normal"
+                    className="text-button-normal link-hover"
                   >
                     {item.title}
-                  </StyledLink>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -100,12 +103,12 @@ const CategorySheetContent = (props: SheetContentProps) => {
               <ul className="space-y-2 pb-6">
                 {accessoriesCategories.map((item) => (
                   <li key={item.title}>
-                    <StyledLink
+                    <Link
                       href={`/${item.id}`}
-                      className="text-button-normal"
+                      className="text-button-normal link-hover"
                     >
                       {item.title}
-                    </StyledLink>
+                    </Link>
                   </li>
                 ))}
               </ul>

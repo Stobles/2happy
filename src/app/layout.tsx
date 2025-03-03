@@ -1,4 +1,5 @@
-import "./globals.css";
+import "../styles/components.css";
+import "../styles/globals.css";
 import "../styles/fonts.css";
 import ToastProvider from "@/providers/ToastProvider";
 import { Suspense } from "react";
