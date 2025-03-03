@@ -280,6 +280,38 @@ module.exports = {
 
         // Button/Hover
 
+        ".primary-svg-hover": {
+          "& svg": {
+            fill: theme("colors.button.primary.text.hover"),
+          },
+        },
+        ".primary-svg-focused": {
+          "& svg": {
+            fill: theme("colors.button.primary.text.focused"),
+          },
+        },
+        ".primary-svg-active": {
+          "& svg": {
+            fill: theme("colors.button.primary.text.active"),
+          },
+        },
+
+        ".secondary-svg-hover": {
+          "& svg": {
+            fill: theme("colors.button.secondary.text.hover"),
+          },
+        },
+        ".secondary-svg-focused": {
+          "& svg": {
+            fill: theme("colors.button.secondary.text.focused"),
+          },
+        },
+        ".secondary-svg-active": {
+          "& svg": {
+            fill: theme("colors.button.secondary.text.active"),
+          },
+        },
+
         ".tertiary-svg-hover": {
           "& svg": {
             fill: theme("colors.button.tertiary.text.hover"),

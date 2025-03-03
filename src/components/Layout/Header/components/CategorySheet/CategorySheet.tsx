@@ -1,10 +1,10 @@
 "use client";
 
-import ChevronIcon from "@/components/icons/Chevron";
 import { Sheet } from "@/components/UI/Sheet";
 import { useDelayedState } from "@/hooks/useDelayedState";
 import CategorySheetContent from "./CategorySheetContent";
 import Link from "next/link";
+import ChevronDownIcon from "@/components/icons/Chevron/ChevronDownIcon";
 
 const CategorySheet = () => {
   const { state, setFastState, setDelayedState, clearTimer } =
@@ -29,7 +29,7 @@ const CategorySheet = () => {
         href="/"
       >
         Каталог
-        <ChevronIcon
+        <ChevronDownIcon
           className={`group-hover/link:stroke-whiteSecondary group-hover/link:rotate-180 ${
             state && "stroke-whiteSecondary rotate-180"
           } transition-[stroke,transform]`}
