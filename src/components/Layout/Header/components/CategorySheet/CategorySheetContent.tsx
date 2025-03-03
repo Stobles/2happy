@@ -1,11 +1,5 @@
 import ArrowUpRightIcon from "@/components/icons/Arrows/ArrowUpRight";
-import ChevronIcon from "@/components/icons/Chevron";
 import { Button } from "@/components/UI/Button";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/UI/Collapsible";
 import Container from "@/components/UI/Container/Container";
 import {
   SheetContent,
@@ -16,6 +10,7 @@ import {
 import Image from "next/image";
 import { accessoriesCategories, clothCategories } from "../../consts";
 import Link from "next/link";
+import CategorySheetCollapsible from "./CategorySheetCollapsible";
 
 const CategorySheetContent = (props: SheetContentProps) => {
   const firstClothList = clothCategories.slice(0, 6);
@@ -25,45 +20,14 @@ const CategorySheetContent = (props: SheetContentProps) => {
       <SheetHeader className="hidden">
         <SheetTitle>Каталог</SheetTitle>
       </SheetHeader>
-      <Container className="flex flex-col py-8 ">
-        <div className="flex pb-12">
+      <Container className="flex flex-col py-8">
+        <div className="flex pb-12 overflow-auto">
           <div className="flex flex-col basis-full pr-[72px] border-r-[1px] border-stroke-black">
             <h3 className="text-h3 pb-4">Одежда</h3>
-
-            <ul className="space-y-2">
-              {firstClothList.map((item) => (
-                <li key={item.title}>
-                  <Link
-                    href={`/${item.id}`}
-                    className="text-button-normal link-hover"
-                  >
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <Collapsible className="pb-6">
-              <CollapsibleContent>
-                <ul className="space-y-2 mt-2">
-                  {secondClothList.map((item) => (
-                    <li key={item.title}>
-                      <Link
-                        href={`/${item.id}`}
-                        className="text-button-normal link-hover"
-                      >
-                        {item.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </CollapsibleContent>
-              <CollapsibleTrigger className="flex items-center mt-2 text-button-xs link-hover">
-                Еще{" "}
-                <ChevronIcon
-                  className={`group-hover:stroke-whiteSecondary group-hover:rotate-180 transition-[fill,transform]`}
-                />
-              </CollapsibleTrigger>
-            </Collapsible>
+            <CategorySheetCollapsible
+              mainlist={firstClothList}
+              collapsibleList={secondClothList}
+            />
             <div className="relative w-full h-[120px]">
               <Image
                 fill
