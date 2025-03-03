@@ -208,13 +208,13 @@ module.exports = {
         ".text-h4": {
           fontSize: "24px",
           lineHeight: "32px",
-          fontWeight: "500",
+          fontWeight: "600",
           textTransform: "uppercase",
         },
         ".text-h5": {
           fontSize: "16px",
           lineHeight: "24px",
-          fontWeight: "500",
+          fontWeight: "600",
           textTransform: "uppercase",
         },
 

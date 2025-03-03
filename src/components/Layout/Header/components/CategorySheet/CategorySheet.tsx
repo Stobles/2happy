@@ -32,7 +32,7 @@ const CategorySheet = () => {
         <ChevronIcon
           className={`group-hover/link:stroke-whiteSecondary group-hover/link:rotate-180 ${
             state && "stroke-whiteSecondary rotate-180"
-          } transition-[fill,transform]`}
+          } transition-[stroke,transform]`}
         />
       </Link>
       <CategorySheetContent
