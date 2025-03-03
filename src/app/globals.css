@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --header-shadow: 0px 2px 10px 0px rgba(15, 25, 40, 0.2);
+  --header-height: 138px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -38,11 +38,16 @@ input[type="password"]::-ms-clear {
 }
 
 button {
+  cursor: url("/icons/system/cursor-pointer.svg") 2 2, default;
   background-image: radial-gradient(
     farthest-corner at 50% 30%,
     #ffffff3d,
     #ffffff0d
   );
+}
+
+button * {
+  cursor: url("/icons/system/cursor-pointer.svg") 2 2, default;
 }
 
 span {

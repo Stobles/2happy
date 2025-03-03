@@ -1,17 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
-import SearchIcon from "@/components/icons/SearchIcon";
 import Container from "@/components/UI/Container/Container";
 import StyledTooltip from "@/components/UI/StyledTooltip/StyledTooltip";
 
 import { iconLinks, mainLinks, subLinks } from "./consts";
 import StyledLink from "@/components/UI/StyledLink/StyledLink";
-import CategorySheet from "./components/CategorySheet";
+import CategorySheet from "./components/CategorySheet/CategorySheet";
+import SearchSheet from "./components/SearchSheet";
 
 const Header = () => {
   return (
-    <header className="shadow-header relative z-[100] bg-white">
+    <header
+      className={`fixed w-full relative z-header h-[calc(var(--header-height)-1px)] bg-white`}
+    >
       <div className="min-h-[56px]">
         <Container className="flex h-full items-center justify-end gap-5 py-5">
           {subLinks.map((link) => (
@@ -25,13 +29,13 @@ const Header = () => {
           ))}
         </Container>
       </div>
-      <div className="min-h-[80px] border-y-[1px] border-main">
+      <div className="min-h-[80px] border-t-[1px] border-main">
         <Container className="flex items-center">
           <Link href="/home">
             <Image
               width={80}
               height={80}
-              src="/header-logo.jpg"
+              src="/images/header/header-logo.jpg"
               alt="header-logo"
             />
           </Link>
@@ -50,9 +54,7 @@ const Header = () => {
             </ul>
           </nav>
           <div className="flex gap-10">
-            <div className="text-button-normal flex gap-2">
-              <SearchIcon /> <span>Поиск</span>
-            </div>
+            <SearchSheet />
             <div className="flex gap-6">
               {iconLinks.map((icon) => (
                 <Link
