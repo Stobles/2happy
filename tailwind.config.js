@@ -14,6 +14,11 @@ module.exports = {
         xl: "1280px",
         "2xl": "1536px",
       },
+      zIndex: {
+        "behind-header": "51",
+        header: "100",
+        "over-header": "150",
+      },
       boxShadow: {
         header: "0px 2px 10px 0px rgba(15, 25, 40, 0.2)",
       },
@@ -144,6 +149,20 @@ module.exports = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      keyframes: {
+        "collapsible-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-collapsible-content-height)" },
+        },
+        "collapsible-up": {
+          from: { height: "var(--radix-collapsible-content-height)" },
+          to: { height: 0 },
+        },
+      },
+      animation: {
+        "collapsible-down": "collapsible-down 0.2s ease-out",
+        "collapsible-up": "collapsible-up 0.2s ease-out",
+      },
     },
   },
   plugins: [
@@ -164,9 +183,9 @@ module.exports = {
 
         ".text-h1Akira": {
           fontFamily: "'AkiraExpanded', sans-serif",
-          fontWeight: "800",
-          fontSize: "160px",
-          lineHeight: "184.06px",
+          fontWeight: "700",
+          fontSize: "96px",
+          lineHeight: "104px",
         },
         ".text-h2": {
           fontSize: "48px",
@@ -177,8 +196,8 @@ module.exports = {
         ".text-h2Akira": {
           fontFamily: "'AkiraExpanded', sans-serif",
           fontWeight: "700",
-          fontSize: "96px",
-          lineHeight: "104px",
+          fontSize: "48px",
+          lineHeight: "56px",
         },
         ".text-h3": {
           fontSize: "32px",
@@ -259,12 +278,41 @@ module.exports = {
           lineHeight: "16px",
         },
 
+        // Button/Hover
+
+        ".tertiary-svg-hover": {
+          "& svg": {
+            fill: theme("colors.button.tertiary.text.hover"),
+          },
+        },
+        ".tertiary-svg-focused": {
+          "& svg": {
+            fill: theme("colors.button.tertiary.text.focused"),
+          },
+        },
+        ".tertiary-svg-active": {
+          "& svg": {
+            fill: theme("colors.button.tertiary.text.active"),
+          },
+        },
+        ".svg-disabled": {
+          "& svg": {
+            fill: theme("colors.button.text.disabled"),
+          },
+        },
+
         // Other
 
         ".bg-radial-gradient": {
           background:
             "radial-gradient(100% 100% at 50% 0%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 100%)",
         },
+
+        ".header-hover": {
+          borderBottom: 0,
+          boxShadow: "none",
+        },
+
         ".icon-glass-hover": {
           background: theme("colors.bg.glass"),
           borderRadius: "3px",

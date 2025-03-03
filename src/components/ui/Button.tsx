@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap uppercase rounded-[2px]  text-sm font-medium transition-colors duration-300 focus-visible:outline-none focus-visible:border-solid focus-visible:border-2 focus-visible:border-stroke-black disabled:pointer-events-none disabled:bg-button-bg-disabled disabled:text-button-text-disabled [&_svg]:pointer-events-none [&_svg]:size-[16px] [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap uppercase rounded-[2px]  text-sm font-medium transition-colors duration-300 focus-visible:outline-none focus-visible:border-solid focus-visible:border-2 focus-visible:border-stroke-black disabled:pointer-events-none disabled:bg-button-bg-disabled disabled:text-button-text-disabled disabled:svg-disabled [&_svg]:pointer-events-none [&_svg]:size-[16px] [&_svg]:shrink-0 [&_svg]:transition-colors",
   {
     variants: {
       variant: {
@@ -14,12 +14,13 @@ const buttonVariants = cva(
         secondary:
           "text-button-secondary-text border-[1px] border-stroke-black hover:bg-button-secondary-bg-hover hover:text-button-secondary-text-hover hover:border-stroke-grey focus-visible:bg-button-secondary-bg-focused active:border-[1px] active:bg-button-secondary-bg-active",
         tertiary:
-          "text-button-tertiary-text bg-button-tertiary-bg hover:bg-button-tertiary-bg-hover hover:text-button-tertiary-text-hover focus-visible:border-2 focus-visible:border-stroke-black focus-visible:text-button-tertiary-text-focused focus-visible:bg-button-tertiary-bg-focused active:border-0 active:bg-button-tertiary-bg-active",
+          "text-button-tertiary-text bg-button-tertiary-bg hover:bg-button-tertiary-bg-hover hover:text-button-tertiary-text-hover focus-visible:border-2 focus-visible:border-stroke-black focus-visible:text-button-tertiary-text-focused focus-visible:bg-button-tertiary-bg-focused focus-visible:tertiary-svg-focused active:border-0 active:bg-button-tertiary-bg-active active:text-button-tertiary-text-active active:tertiary-svg-active hover:tertiary-svg-hover",
       },
       size: {
         large:
           "h-[64px] px-[32px] py-[20px] text-[20px]/[24px] [&_svg]:size-[24px]",
-        default: "h-[56px] px-[32px] py-[16px] text-[16px]/[24px]",
+        default:
+          "h-[56px] px-[32px] py-[16px] text-[16px]/[24px] [&_svg]:size-[24px]",
         medium: "h-[48px] px-[32px] py-[14px] text-[16px]/[20px]",
         small: "h-[40px] px-[24px] py-[12px] text-[14px]/[16px]",
         extraSmall:
