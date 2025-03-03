@@ -317,13 +317,6 @@ module.exports = {
           background: theme("colors.bg.glass"),
           borderRadius: "3px",
         },
-
-        ".link-hover": {
-          color: theme("colors.lightGrey"),
-          "& span": {
-            width: "100%",
-          },
-        },
       });
     },
   ],
