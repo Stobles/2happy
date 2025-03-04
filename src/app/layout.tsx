@@ -33,7 +33,7 @@ export default async function RootLayout({
           content="Конструктор документов, зандокс, zandocs"
         />
       </Head> */}
-      <body className="font-sans flex flex-col h-full">
+      <body className="font-sans flex flex-col h-full bg-white">
         <Suspense fallback={<CircularProgress color={"info"} />}>
           <ToastProvider>
             <Header />

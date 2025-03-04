@@ -1,4 +1,4 @@
-import ChevronIcon from "@/components/icons/Chevron";
+import ChevronDownIcon from "@/components/icons/Chevron/ChevronDownIcon";
 import { Collapsible, CollapsibleContent } from "@/components/UI/Collapsible";
 import Link from "next/link";
 import { useState } from "react";
@@ -48,7 +48,7 @@ const CategorySheetCollapsible = ({
         className="group flex items-center text-button-xs link-hover mb-6"
       >
         {isOpen ? "Свернуть" : "Ещё"}
-        <ChevronIcon
+        <ChevronDownIcon
           className={`group-hover:fill-lightGrey transition-[fill,transform] ${
             isOpen && "rotate-180"
           }`}
