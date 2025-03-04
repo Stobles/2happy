@@ -21,6 +21,13 @@ module.exports = {
       },
       boxShadow: {
         header: "0px 2px 10px 0px rgba(15, 25, 40, 0.2)",
+        "elevation-1": "0px 4px 4px 0px rgba(17, 17, 18, 0.2)",
+        "elevation-2": "0px 4px 8px 0px rgba(37, 40, 43, 0.2)",
+        "elevation-3": "0px 8px 16px 0px rgba(17, 17, 18, 0.2)",
+        "elevation-4":
+          "0px 8px 20px 8px rgba(17, 17, 18, 0.16), 0px -8px 20px -8px rgba(17, 17, 18, 0.16)",
+        "elevation-5": "0px 20px 30px 0px rgba(0, 0, 0, 0.1)",
+        "elevation-6": "0px 6px 12px 0px rgba(0, 0, 0, 0.1)",
       },
       fontFamily: {
         sans: ["Lato", "sans-serif"],

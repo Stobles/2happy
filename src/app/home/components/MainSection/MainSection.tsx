@@ -1,4 +1,4 @@
-import ArrowUpRightIcon from "@/components/icons/Arrows/ArrowUpRight";
+import ArrowUpRightIcon from "@/components/icons/Arrows/ArrowUpRightIcon";
 import { Button } from "@/components/UI/Button";
 import Container from "@/components/UI/Container/Container";
 import Section from "@/components/UI/Section/Section";

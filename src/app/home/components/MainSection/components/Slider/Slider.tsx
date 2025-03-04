@@ -47,10 +47,9 @@ const Slider = () => {
         <SwiperSlide key={item}>
           <Image
             fill
+            className="object-cover object-top"
             src={item}
             alt="slider-image"
-            objectFit="cover"
-            objectPosition="top"
           />
         </SwiperSlide>
       ))}
