@@ -14,6 +14,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary: `text-button-primary-text bg-button-primary-bg 
+          [&_svg]:fill-white
           hover:bg-button-primary-bg-hover hover:primary-svg-hover
           focus-visible:bg-button-primary-bg-focused active:primary-svg-active`,
         secondary: `text-button-secondary-text border-[1px] border-stroke-black 

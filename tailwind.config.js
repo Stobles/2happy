@@ -221,7 +221,7 @@ module.exports = {
         ".text-h5": {
           fontSize: "16px",
           lineHeight: "24px",
-          fontWeight: "600",
+          fontWeight: "500",
           textTransform: "uppercase",
         },
 
