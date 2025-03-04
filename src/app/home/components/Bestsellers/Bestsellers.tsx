@@ -20,7 +20,7 @@ const Bestsellers = () => {
           src="/images/Bestsellers/card-1.jpg"
           href="/"
         />
-        <div className="text-h2">Наши бестселлеры / 25</div>
+        <h2 className="text-h2">Наши бестселлеры / 25</h2>
         <div className="flex flex-col gap-4">
           <Button variant="tertiary" size="medium">
             Смотреть все <ArrowRightIcon />
