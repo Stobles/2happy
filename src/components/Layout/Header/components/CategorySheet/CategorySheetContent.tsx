@@ -1,4 +1,4 @@
-import ArrowUpRightIcon from "@/components/icons/Arrows/ArrowUpRight";
+import ArrowUpRightIcon from "@/components/icons/Arrows/ArrowUpRightIcon";
 import { Button } from "@/components/UI/Button";
 import Container from "@/components/UI/Container/Container";
 import {
@@ -31,9 +31,8 @@ const CategorySheetContent = (props: SheetContentProps) => {
             <div className="relative w-full h-[120px]">
               <Image
                 fill
+                className="object-cover object-top"
                 src="/images/header/category-sheet-1.png"
-                objectFit="cover"
-                objectPosition="50% 30%"
                 alt="category-clothes"
               />
             </div>
@@ -57,7 +56,9 @@ const CategorySheetContent = (props: SheetContentProps) => {
                 fill
                 src="/images/header/category-sheet-2.png"
                 alt="category-accessories"
-                objectFit="cover"
+                style={{
+                  objectFit: "cover",
+                }}
               />
             </div>
           </div>
@@ -80,9 +81,8 @@ const CategorySheetContent = (props: SheetContentProps) => {
             <div className="relative w-full h-[168px]">
               <Image
                 fill
+                className="object-cover object-top"
                 src="/images/header/category-sheet-1.png"
-                objectFit="cover"
-                objectPosition="50% 30%"
                 alt="category-clothes"
               />
             </div>
