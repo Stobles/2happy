@@ -29,6 +29,11 @@ module.exports = {
         "elevation-5": "0px 20px 30px 0px rgba(0, 0, 0, 0.1)",
         "elevation-6": "0px 6px 12px 0px rgba(0, 0, 0, 0.1)",
       },
+      backgroundImage: {
+        "gradient-4":
+          "linear-gradient(180deg, #FCFCFF8D -22.24%, rgba(0, 0, 0, 0) 100%)",
+        "footer-texture": "url('/img/footer-texture.png')",
+      },
       fontFamily: {
         sans: ["Lato", "sans-serif"],
         akira: ["AkiraExpanded", "sans-serif"],
