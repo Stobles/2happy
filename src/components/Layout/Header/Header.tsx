@@ -3,8 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import Container from "@/components/UI/Container/Container";
-import StyledTooltip from "@/components/UI/StyledTooltip/StyledTooltip";
+import Container from "@/components/UI/Container";
+import StyledTooltip from "@/components/UI/StyledTooltip";
 
 import { iconLinks, mainLinks, subLinks } from "./consts";
 import CategorySheet from "./components/CategorySheet/CategorySheet";

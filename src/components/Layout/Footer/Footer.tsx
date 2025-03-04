@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import MasterCardIcon from "@/components/icons/Payment/MasterCardIcon";
 import PaypalIcon from "@/components/icons/Payment/PayPalIcon";
-import Container from "@/components/UI/Container/Container";
+import Container from "@/components/UI/Container";
 import VisaIcon from "@/components/icons/Payment/VisaIcon";
 import { mainBlocks, socialIcons } from "./consts";
 

@@ -1,8 +1,8 @@
 import ArrowUpRightIcon from "@/components/icons/Arrows/ArrowUpRightIcon";
 import { Button } from "@/components/UI/Button";
-import Container from "@/components/UI/Container/Container";
-import Section from "@/components/UI/Section/Section";
-import SectionLogo from "@/components/UI/SectionLogo/SectionLogo";
+import Container from "@/components/UI/Container";
+import Section from "@/components/UI/Section";
+import SectionLogo from "@/components/UI/SectionLogo";
 import FashionCard from "@/features/Fashion/components/FashionCard";
 
 const Fashion = () => {
