@@ -2,7 +2,7 @@
 
 import CloseIcon from "@/components/icons/CloseIcon";
 import SearchIcon from "@/components/icons/SearchIcon";
-import Container from "@/components/UI/Container/Container";
+import Container from "@/components/UI/Container";
 import {
   Sheet,
   SheetClose,

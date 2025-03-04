@@ -1,8 +1,8 @@
 import ArrowRightIcon from "@/components/icons/Arrows/ArrowRightIcon";
-import ItemCard from "@/components/ItemCard/ItemCard";
+import ItemCard from "@/features/Fashion/components/ItemCard";
 import { Button } from "@/components/UI/Button";
-import Container from "@/components/UI/Container/Container";
-import Section from "@/components/UI/Section/Section";
+import Container from "@/components/UI/Container";
+import Section from "@/components/UI/Section";
 import Image from "next/image";
 
 const Bestsellers = () => {

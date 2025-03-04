@@ -1,6 +1,6 @@
 import ArrowUpRightIcon from "@/components/icons/Arrows/ArrowUpRightIcon";
 import { Button } from "@/components/UI/Button";
-import Container from "@/components/UI/Container/Container";
+import Container from "@/components/UI/Container";
 import {
   SheetContent,
   SheetContentProps,

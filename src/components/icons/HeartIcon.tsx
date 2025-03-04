@@ -6,6 +6,7 @@ const HeartIcon = ({ className, ...props }: SVGProps<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     width="24"
     height="24"
+    viewBox="0 0 24 24"
     className={cn(
       "stroke-main fill-transparent transition-[fill,stroke,transform]",
       className

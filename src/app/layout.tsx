@@ -1,17 +1,13 @@
 import "../styles/components.css";
 import "../styles/globals.css";
 import "../styles/fonts.css";
-import ToastProvider from "@/providers/ToastProvider";
+
 import { Suspense } from "react";
 import { CircularProgress } from "@mui/material";
+
 import Header from "@/components/Layout/Header/Header";
 import Footer from "@/components/Layout/Footer/Footer";
-
-// export const metadata: Metadata = {
-//   title: "Zandocs",
-//   description:
-//     "Zandocs — Конструктор документов. Зандокс. Конструктор документов. Создать документ онлайн. зандокс. zandocs",
-// };
+import ToastProvider from "@/providers/ToastProvider";
 
 export default async function RootLayout({
   children,
