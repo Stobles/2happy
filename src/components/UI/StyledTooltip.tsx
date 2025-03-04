@@ -1,8 +1,8 @@
 "use client";
 
-import { Tooltip, ITooltipController } from "react-tooltip";
+import { Tooltip, ITooltip } from "react-tooltip";
 
-const StyledTooltip = ({ ...props }: ITooltipController) => {
+const StyledTooltip = ({ ...props }: ITooltip) => {
   return (
     <Tooltip
       className="!rounded-none !text-button-xs whitespace-pre-line"
