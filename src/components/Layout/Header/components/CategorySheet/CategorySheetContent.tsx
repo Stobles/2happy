@@ -20,7 +20,7 @@ const CategorySheetContent = (props: SheetContentProps) => {
       <SheetHeader className="hidden">
         <SheetTitle>Каталог</SheetTitle>
       </SheetHeader>
-      <Container className="flex flex-col py-8">
+      <Container className="flex-col py-8">
         <div className="flex pb-12 overflow-auto">
           <div className="flex flex-col basis-full pr-[72px] border-r-[1px] border-stroke-black">
             <h3 className="text-h3 pb-4">Одежда</h3>

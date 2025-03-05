@@ -17,9 +17,9 @@ const Container = ({
   return (
     <div
       className={cn(
-        `w-full flex ${column ? "flex-col" : "flex-row"} ${
+        `relative w-full flex ${column ? "flex-col" : "flex-row"} ${
           isTablet ? "max-w-[100%]" : "max-w-[1224px]"
-        } mx-auto px-2`,
+        } mx-auto `,
         className
       )}
     >

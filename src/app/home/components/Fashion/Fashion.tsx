@@ -8,7 +8,7 @@ import FashionCard from "@/features/Fashion/components/FashionCard";
 const Fashion = () => {
   return (
     <Section className="my-[136px]">
-      <Container className="relative flex flex-col gap-16">
+      <Container className="flex-col gap-16">
         <SectionLogo className="right-[-20px] top-[-64px]" />
         <h2 className="text-h2">
           Готовые образы <br /> /

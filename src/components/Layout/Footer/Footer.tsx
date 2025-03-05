@@ -10,7 +10,7 @@ import { mainBlocks, socialIcons } from "./consts";
 const Footer = () => {
   return (
     <footer className="bg-radial-gradient bg-main">
-      <Container className="flex flex-col">
+      <Container className="flex-col">
         {/* Footer Header */}
 
         <div className="w-full flex justify-between items-center py-12 border-b-[1px] border-white">

@@ -7,7 +7,7 @@ import Slider from "./components/Slider/Slider";
 const Main = () => {
   return (
     <Section className="pt-12 pb-20">
-      <Container className="flex gap-6 items-center h-full">
+      <Container className="gap-6 items-center h-full">
         <div className="basis-full">
           <h1 className="text-h1Akira mb-10">2HAPPY</h1>
           <div className="flex gap-4">
