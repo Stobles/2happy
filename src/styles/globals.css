@@ -52,6 +52,10 @@ button * {
   cursor: url("/icons/system/cursor-pointer.svg") 2 2, default;
 }
 
+*[role="button"] {
+  cursor: url("/icons/system/cursor-pointer.svg") 2 2, default;
+}
+
 span {
   font-size: inherit;
   font-weight: inherit;

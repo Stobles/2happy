@@ -13,7 +13,7 @@ const Instagram = () => {
         alt="section-bg"
         quality={90}
       />
-      <Container className="relative flex flex-col gap-10 my-[136px]">
+      <Container className="flex-col gap-10 my-[136px]">
         <Image
           className="absolute h-[128px] top-[-88px] left-0"
           width={1208}

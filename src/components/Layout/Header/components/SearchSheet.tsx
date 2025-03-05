@@ -21,7 +21,7 @@ const SearchSheet = () => {
         Поиск
       </SheetTrigger>
       <SheetContent side="top" className="h-[800px] z-over-header p-10">
-        <Container className="flex flex-col gap-12">
+        <Container className="flex-col gap-12">
           <SheetHeader className="relative flex flex-col gap-12 w-full">
             <SheetTitle className="hidden">Поиск</SheetTitle>
             <div>

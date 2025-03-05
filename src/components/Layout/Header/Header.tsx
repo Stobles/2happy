@@ -16,7 +16,7 @@ const Header = () => {
       className={`fixed w-full relative z-header h-[calc(var(--header-height)-1px)] bg-white`}
     >
       <div className="min-h-[56px]">
-        <Container className="flex h-full items-center justify-end gap-5 py-5">
+        <Container className="h-full items-center justify-end gap-5 py-5">
           {subLinks.map((link) => (
             <Link
               key={link.title}
@@ -29,7 +29,7 @@ const Header = () => {
         </Container>
       </div>
       <div className="min-h-[80px] border-t-[1px] border-main">
-        <Container className="flex items-center">
+        <Container className="items-center">
           <Link href="/home">
             <Image
               width={80}

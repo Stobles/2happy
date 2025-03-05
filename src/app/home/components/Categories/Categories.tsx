@@ -19,7 +19,7 @@ const CATEGORIES = [
 const Categories = () => {
   return (
     <Section className="border-b-[1px] border-b-main">
-      <Container className="flex justify-between gap-6 my-[136px]">
+      <Container className="justify-between gap-6 my-[136px]">
         <div className="flex flex-col justify-between basis-[392px]">
           <h2 className="text-h2">
             Категории <br /> /
