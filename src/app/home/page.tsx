@@ -5,6 +5,7 @@ import FinalSale from "./components/FinalSale/FinalSale";
 import Instagram from "./components/Instagram/Instagram";
 import MainSection from "./components/MainSection/MainSection";
 import NewCollection from "./components/NewCollection/NewCollection";
+import Notifications from "./components/Notifications/Notifications";
 
 export default function Home() {
   return (
@@ -13,9 +14,10 @@ export default function Home() {
       <NewCollection />
       <Bestsellers />
       <Fashion />
-      <Instagram />
       <Categories />
       <FinalSale />
+      <Instagram />
+      <Notifications />
     </>
   );
 }

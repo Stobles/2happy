@@ -30,8 +30,8 @@ const CategorySheet = () => {
       >
         Каталог
         <ChevronDownIcon
-          className={`group-hover/link:stroke-whiteSecondary group-hover/link:rotate-180 ${
-            state && "stroke-whiteSecondary rotate-180"
+          className={`group-hover/link:rotate-180 ${
+            state && "fill-lightGrey rotate-180"
           } transition-[stroke,transform]`}
         />
       </Link>
