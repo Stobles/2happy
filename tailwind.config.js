@@ -30,6 +30,8 @@ module.exports = {
         "elevation-6": "0px 6px 12px 0px rgba(0, 0, 0, 0.1)",
       },
       backgroundImage: {
+        "radial-gradient":
+          "radial-gradient(100% 100% at 50% 0%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 100%)",
         "gradient-4":
           "linear-gradient(180deg, #FCFCFF8D -22.24%, rgba(0, 0, 0, 0) 100%)",
         "footer-texture": "url('/img/footer-texture.png')",
@@ -346,11 +348,6 @@ module.exports = {
         },
 
         // Other
-
-        ".bg-radial-gradient": {
-          background:
-            "radial-gradient(100% 100% at 50% 0%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 100%)",
-        },
 
         ".header-hover": {
           borderBottom: 0,
