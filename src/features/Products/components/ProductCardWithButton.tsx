@@ -4,7 +4,7 @@ import ProductCard from "./ProductCard";
 
 const ProductCardWithButton = ({ product }: { product: Product }) => {
   return (
-    <div className="group/product flex flex-col gap-4 bg-white p-4 hover:shadow-elevation-4 transition-shadow">
+    <div className="group/product flex w-full h-full flex-col gap-4 bg-white p-4 hover:shadow-elevation-4 transition-shadow">
       <ProductCard product={product} />
       <Button className="w-full" size="small">
         Подробнее

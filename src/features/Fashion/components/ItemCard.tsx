@@ -19,7 +19,7 @@ const ItemCard = ({
       )}
       {...props}
     >
-      <ArrowUpRightIcon className="absolute top-4 right-4" />
+      <ArrowUpRightIcon className="absolute top-4 right-4 z-[1] opacity-0 group-hover:opacity-100 transition-opacity" />
       <Image
         fill
         className="object-cover object-top p-2 group-hover:opacity-60 transition-opacity"
