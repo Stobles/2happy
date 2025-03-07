@@ -3,20 +3,38 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { useRef, useState } from "react";
+
 import Container from "@/components/UI/Container";
 import StyledTooltip from "@/components/UI/StyledTooltip";
 
-import { iconLinks, mainLinks, subLinks } from "./consts";
+import { iconLinks, mainLinks, subLinks } from "./consts/consts";
+import UserIcon from "@/components/icons/UserIcon";
+import AuthModal from "@/features/Auth/components/AuthModal";
 import CategorySheet from "./components/CategorySheet/CategorySheet";
 import SearchSheet from "./components/SearchSheet";
+import useObserver from "@/hooks/useObserver";
+
+import "./style.css";
 
 const Header = () => {
+  const [isSticky, setIsSticky] = useState(false);
+  const upperHeaderRef = useRef(null);
+
+  useObserver(upperHeaderRef, (entry) => setIsSticky(!entry.isIntersecting));
+
   return (
-    <header
-      className={`fixed w-full relative z-header h-[calc(var(--header-height)-1px)] bg-white`}
-    >
-      <div className="min-h-[56px]">
-        <Container className="flex h-full items-center justify-end gap-5 py-5">
+    <>
+      {/* Это подложка под sticky header, чтобы при скролле была тень и border, но скрывались под CategorySheet */}
+      <div className="fixed h-[calc(var(--sticky-header-height)+1px)] left-0 top-0 w-full z-[49] shadow-header border-b-[1px] border-main"></div>
+      {/* Это подложка под большой header, чтобы была тень и border, но скрывались под CategorySheet */}
+      <div className="absolute h-[var(--full-header-height)] left-0 top-0 w-full z-[49] shadow-header border-b-[1px] border-main"></div>
+
+      <div
+        ref={upperHeaderRef}
+        className="min-h-[56px] border-b-[1px] border-main z-header bg-white "
+      >
+        <Container className="h-full items-center justify-end gap-5 py-5">
           {subLinks.map((link) => (
             <Link
               key={link.title}
@@ -28,8 +46,8 @@ const Header = () => {
           ))}
         </Container>
       </div>
-      <div className="min-h-[80px] border-t-[1px] border-main">
-        <Container className="flex items-center">
+      <header className="sticky top-0 min-h-[80px] bg-white z-header">
+        <Container className="items-center">
           <Link href="/home">
             <Image
               width={80}
@@ -41,7 +59,7 @@ const Header = () => {
           <nav className="flex-1 px-2">
             <ul className="flex justify-center gap-6 ">
               <li>
-                <CategorySheet />
+                <CategorySheet isSticky={isSticky} />
               </li>
               {mainLinks.map((link) => (
                 <li key={link.title}>
@@ -69,11 +87,23 @@ const Header = () => {
                   <StyledTooltip id={icon.tooltip.id} />
                 </Link>
               ))}
+              <AuthModal
+                trigger={
+                  <div>
+                    <UserIcon
+                      data-tooltip-id="auth"
+                      data-tooltip-content="Войти"
+                      className="hover:fill-main transition-colors"
+                    />
+                    <StyledTooltip id="auth" />
+                  </div>
+                }
+              />
             </div>
           </div>
         </Container>
-      </div>
-    </header>
+      </header>
+    </>
   );
 };
 

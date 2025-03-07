@@ -5,12 +5,12 @@ import MasterCardIcon from "@/components/icons/Payment/MasterCardIcon";
 import PaypalIcon from "@/components/icons/Payment/PayPalIcon";
 import Container from "@/components/UI/Container";
 import VisaIcon from "@/components/icons/Payment/VisaIcon";
-import { mainBlocks, socialIcons } from "./consts";
+import { mainBlocks, socialIcons } from "./consts/consts";
 
 const Footer = () => {
   return (
     <footer className="bg-radial-gradient bg-main">
-      <Container className="flex flex-col">
+      <Container className="flex-col">
         {/* Footer Header */}
 
         <div className="w-full flex justify-between items-center py-12 border-b-[1px] border-white">

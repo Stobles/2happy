@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  `inline-flex w-max items-center justify-center gap-2 whitespace-nowrap uppercase rounded-[2px] text-sm font-medium transition-colors duration-300 
+  `inline-flex w-max items-center justify-center gap-2 whitespace-nowrap uppercase rounded-[2px] !bg-radial-gradient text-sm font-medium transition-colors duration-300 
   focus-visible:outline-none focus-visible:border-solid focus-visible:border-2 focus-visible:border-stroke-black 
   disabled:pointer-events-none disabled:bg-button-bg-disabled disabled:text-button-text-disabled disabled:svg-disabled 
   [&_svg]:pointer-events-none [&_svg]:size-[24px] [&_svg]:shrink-0 [&_svg]:transition-colors`,
@@ -13,13 +13,13 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: `text-button-primary-text bg-button-primary-bg 
+        primary: `text-button-primary-text bg-button-primary-bg
           [&_svg]:fill-white
           hover:bg-button-primary-bg-hover hover:primary-svg-hover
           focus-visible:bg-button-primary-bg-focused active:primary-svg-active`,
         secondary: `text-button-secondary-text border-[1px] border-stroke-black 
           hover:bg-button-secondary-bg-hover hover:text-button-secondary-text-hover hover:border-stroke-grey hover:secondary-svg-hover
-          focus-visible:bg-button-secondary-bg-focused 
+          focus-visible:bg-button-secondary-bg-focused
           active:border-[1px] active:bg-button-secondary-bg-active active:secondary-svg-active`,
 
         tertiary: `text-button-tertiary-text bg-button-tertiary-bg 

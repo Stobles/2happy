@@ -1,12 +1,11 @@
 "use client";
 
-import { Sheet } from "@/components/UI/Sheet";
+import { Sheet, SheetTrigger } from "@/components/UI/Sheet";
 import { useDelayedState } from "@/hooks/useDelayedState";
-import CategorySheetContent from "./CategorySheetContent";
-import Link from "next/link";
+import CategorySheetContent from "./Content";
 import ChevronDownIcon from "@/components/icons/Chevron/ChevronDownIcon";
 
-const CategorySheet = () => {
+const CategorySheet = ({ isSticky }: { isSticky: boolean }) => {
   const { state, setFastState, setDelayedState, clearTimer } =
     useDelayedState(false);
 
@@ -18,27 +17,34 @@ const CategorySheet = () => {
     setDelayedState(false, 300);
   };
 
+  const marginTop = isSticky
+    ? `calc(var(--sticky-header-height) - 2px)`
+    : `calc(var(--full-header-height) - 2px)`;
+
+  const maxHeight = isSticky
+    ? `calc(100vh - var(--sticky-header-height) + 2px)`
+    : `calc(100vh - var(--full-header-height) + 2px)`;
+
   return (
     <Sheet open={state}>
-      <Link
+      <SheetTrigger
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
-        className={`text-button-normal link-hover ${
+        className={`text-button-normal link-hover outline-none ${
           state ? "link-hovered" : ""
         }`}
-        href="/"
       >
         Каталог
         <ChevronDownIcon
-          className={`group-hover/link:stroke-whiteSecondary group-hover/link:rotate-180 ${
-            state && "stroke-whiteSecondary rotate-180"
+          className={`group-hover/link:rotate-180 ${
+            state && "fill-lightGrey rotate-180"
           } transition-[stroke,transform]`}
         />
-      </Link>
+      </SheetTrigger>
       <CategorySheetContent
         style={{
-          marginTop: `calc(var(--header-height) - 2px)`,
-          maxHeight: `calc(100vh - var(--header-height))`,
+          marginTop,
+          maxHeight,
         }}
         onMouseEnter={() => clearTimer()}
         onMouseLeave={onMouseLeave}

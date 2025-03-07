@@ -30,6 +30,8 @@ module.exports = {
         "elevation-6": "0px 6px 12px 0px rgba(0, 0, 0, 0.1)",
       },
       backgroundImage: {
+        "radial-gradient":
+          "radial-gradient(100% 100% at 50% 0%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 100%)",
         "gradient-4":
           "linear-gradient(180deg, #FCFCFF8D -22.24%, rgba(0, 0, 0, 0) 100%)",
         "footer-texture": "url('/img/footer-texture.png')",
@@ -42,12 +44,15 @@ module.exports = {
         main: "#111112",
         white: "#FCFCFF",
         whiteSecondary: "#DEDEE9",
+        red: "#F93232",
         grey: "#3F4753",
         lightGrey: "#9EA4AE",
         middleGrey: "#6F757E",
         disabled: "#CFD1D4",
         bg: {
           disabled: "#F0F0F3",
+          error: "#FDEBEB",
+          warning: "#FFFBF4",
           lightGrey: "#E4E7EB",
           glass: "rgba(255, 255, 255, 0.3)",
         },
@@ -105,9 +110,16 @@ module.exports = {
             disabled: "#CFD1D4",
           },
         },
+        status: {
+          success: "#439F6E",
+          warning: "#605DEC",
+          error: "#F93232",
+        },
         stroke: {
           black: "#111112",
           grey: "#9FA3A9",
+          warning: "#FFEAC1",
+          error: "#FF7E7E",
         },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -226,7 +238,7 @@ module.exports = {
         ".text-h5": {
           fontSize: "16px",
           lineHeight: "24px",
-          fontWeight: "500",
+          fontWeight: "600",
           textTransform: "uppercase",
         },
 
@@ -346,11 +358,6 @@ module.exports = {
         },
 
         // Other
-
-        ".bg-radial-gradient": {
-          background:
-            "radial-gradient(100% 100% at 50% 0%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 100%)",
-        },
 
         ".header-hover": {
           borderBottom: 0,
