@@ -11,7 +11,7 @@ const ComplementFashion = () => {
       <Image
         fill
         className="rotate-180"
-        src="/images/section-black-bg.png"
+        src="/images/section-bg.png"
         alt="section-bg"
       />
       <Container className="flex flex-col gap-16 my-20 text-white">

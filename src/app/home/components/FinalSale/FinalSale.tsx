@@ -24,7 +24,7 @@ const PRODUCTS: Product[] = [
       price: 25000,
       amount: 25,
     },
-    image: "",
+    image: "/images/Fashion/fashion-1.jpg",
   },
   {
     id: "id2",
@@ -35,7 +35,7 @@ const PRODUCTS: Product[] = [
     ],
     sizes: [{ id: 1, size: "XS" }],
     price: 50000,
-    image: "",
+    image: "/images/Fashion/fashion-1.jpg",
   },
   {
     id: "id3",
@@ -46,7 +46,7 @@ const PRODUCTS: Product[] = [
     ],
     sizes: [{ id: 1, size: "XS" }],
     price: 50000,
-    image: "",
+    image: "/images/Fashion/fashion-1.jpg",
   },
 ];
 
@@ -69,7 +69,7 @@ const FinalSale = () => {
               <Image
                 fill
                 className="object-cover object-top"
-                src="/images/Fashion/fashion-1.jpg"
+                src="/images/FinalSale/view-all.jpg"
                 alt="final-sale-section-image"
               />
             </div>

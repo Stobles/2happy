@@ -29,14 +29,14 @@ const Instagram = () => {
             Откройте для себя больше вдохновения и стильных идей в нашем
             Instagram @2happy_kz! Будьте в курсе новинок, акций и трендов
           </div>
-          <InstagramCard href="/" src="/images/Fashion/fashion-3.jpg" />
+          <InstagramCard href="/" src="/images/Instagram/1.jpg" />
           <InstagramCard
             href="/"
             className="row-span-2 col-span-2"
-            src="/images/Fashion/fashion-3.jpg"
+            src="/images/Instagram/2.jpg"
           />
-          <InstagramCard href="/" src="/images/Fashion/fashion-3.jpg" />
-          <InstagramCard href="/" src="/images/Fashion/fashion-3.jpg" />
+          <InstagramCard href="/" src="/images/Instagram/3.jpg" />
+          <InstagramCard href="/" src="/images/Instagram/4.jpg" />
         </div>
       </Container>
     </Section>

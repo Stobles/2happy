@@ -1,6 +1,5 @@
 import CartIcon from "@/components/icons/CartIcon";
 import HeartIcon from "@/components/icons/HeartIcon";
-import UserIcon from "@/components/icons/UserIcon";
 
 export const HEADER_HEIGHT = "138px";
 
