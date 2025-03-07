@@ -9,6 +9,8 @@ import Container from "@/components/UI/Container";
 import StyledTooltip from "@/components/UI/StyledTooltip";
 
 import { iconLinks, mainLinks, subLinks } from "./consts/consts";
+import UserIcon from "@/components/icons/UserIcon";
+import AuthModal from "@/features/Auth/components/AuthModal";
 import CategorySheet from "./components/CategorySheet/CategorySheet";
 import SearchSheet from "./components/SearchSheet";
 import useObserver from "@/hooks/useObserver";
@@ -85,6 +87,18 @@ const Header = () => {
                   <StyledTooltip id={icon.tooltip.id} />
                 </Link>
               ))}
+              <AuthModal
+                trigger={
+                  <div>
+                    <UserIcon
+                      data-tooltip-id="auth"
+                      data-tooltip-content="Войти"
+                      className="hover:fill-main transition-colors"
+                    />
+                    <StyledTooltip id="auth" />
+                  </div>
+                }
+              />
             </div>
           </div>
         </Container>
