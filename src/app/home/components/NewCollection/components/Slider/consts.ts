@@ -14,6 +14,7 @@ export const SLIDES_SIZES: Array<keyof typeof SIZES> = [
   "medium",
   "big",
   "small",
+  "small",
   "medium",
   "small",
 ] as const;
@@ -36,7 +37,7 @@ export const SLIDES: (Product | "custom")[] = [
       price: 25000,
       amount: 25,
     },
-    image: "",
+    image: "/images/Fashion/fashion-1.jpg",
   },
   {
     id: "id2",
@@ -47,7 +48,7 @@ export const SLIDES: (Product | "custom")[] = [
     ],
     sizes: [{ id: 1, size: "XS" }],
     price: 50000,
-    image: "",
+    image: "/images/Fashion/fashion-1.jpg",
   },
   "custom",
   {
@@ -59,7 +60,7 @@ export const SLIDES: (Product | "custom")[] = [
     ],
     sizes: [{ id: 1, size: "XS" }],
     price: 50000,
-    image: "",
+    image: "/images/Fashion/fashion-1.jpg",
   },
   {
     id: "id4",
@@ -70,7 +71,7 @@ export const SLIDES: (Product | "custom")[] = [
     ],
     sizes: [{ id: 1, size: "XS" }],
     price: 50000,
-    image: "",
+    image: "/images/Fashion/fashion-1.jpg",
   },
   {
     id: "id5",
@@ -81,7 +82,7 @@ export const SLIDES: (Product | "custom")[] = [
     ],
     sizes: [{ id: 1, size: "XS" }],
     price: 50000,
-    image: "",
+    image: "/images/Fashion/fashion-1.jpg",
   },
   {
     id: "id6",
@@ -92,7 +93,7 @@ export const SLIDES: (Product | "custom")[] = [
     ],
     sizes: [{ id: 1, size: "XS" }],
     price: 50000,
-    image: "",
+    image: "/images/Fashion/fashion-1.jpg",
   },
   {
     id: "id7",
@@ -103,7 +104,7 @@ export const SLIDES: (Product | "custom")[] = [
     ],
     sizes: [{ id: 1, size: "XS" }],
     price: 50000,
-    image: "",
+    image: "/images/Fashion/fashion-1.jpg",
   },
   {
     id: "id8",
@@ -114,6 +115,17 @@ export const SLIDES: (Product | "custom")[] = [
     ],
     sizes: [{ id: 1, size: "XS" }],
     price: 50000,
-    image: "",
+    image: "/images/Fashion/fashion-1.jpg",
+  },
+  {
+    id: "id9",
+    title: "Платье",
+    colors: [
+      { id: 1, hex: "#111112" },
+      { id: 2, hex: "#3F4753" },
+    ],
+    sizes: [{ id: 1, size: "XS" }],
+    price: 50000,
+    image: "/images/Fashion/fashion-1.jpg",
   },
 ];
