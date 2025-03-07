@@ -1,3 +1,4 @@
+import ComplementFashion from "./components/Addition/ComplementFashion";
 import Bestsellers from "./components/Bestsellers/Bestsellers";
 import Categories from "./components/Categories/Categories";
 import Fashion from "./components/Fashion/Fashion";
@@ -14,6 +15,7 @@ export default function Home() {
       <NewCollection />
       <Bestsellers />
       <Fashion />
+      <ComplementFashion />
       <Categories />
       <FinalSale />
       <Instagram />

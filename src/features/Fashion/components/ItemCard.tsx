@@ -14,7 +14,7 @@ const ItemCard = ({
     <Link
       href={href}
       className={cn(
-        "group relative bg-white w-full h-full rounded-[2px] shadow-elevation-1 hover:shadow-elevation-3 transition-shadow",
+        "group relative block bg-white w-full h-full rounded-[2px] shadow-elevation-1 hover:shadow-elevation-3 transition-shadow",
         className
       )}
       {...props}
