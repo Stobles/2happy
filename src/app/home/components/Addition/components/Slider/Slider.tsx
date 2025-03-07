@@ -17,12 +17,13 @@ import ArrowRightIcon from "@/components/icons/Arrows/ArrowRightIcon";
 import { getSliderMarginLeft } from "./utils/getSliderMarginLeft";
 
 const SLIDES = [
-  "/images/Main/slider-1.jpg",
-  "/images/Main/slider-2.jpg",
-  "/images/Main/slider-3.jpg",
-  "/images/Main/slider-4.jpg",
-  "/images/Main/slider-5.jpg",
-  "/images/Main/slider-6.jpg",
+  "/images/ComplementFashion/1.png",
+  "/images/ComplementFashion/2.png",
+  "/images/ComplementFashion/3.png",
+  "/images/ComplementFashion/4.png",
+  "/images/ComplementFashion/5.png",
+  "/images/ComplementFashion/6.png",
+  "/images/ComplementFashion/7.png",
 ];
 
 const SPACE_BETWEEN = 24;

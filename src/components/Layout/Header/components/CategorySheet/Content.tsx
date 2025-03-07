@@ -32,7 +32,7 @@ const Content = (props: SheetContentProps) => {
               <Image
                 fill
                 className="object-cover object-top"
-                src="/images/header/category-sheet-1.png"
+                src="/images/Header/category-sheet-1.png"
                 alt="category-clothes"
               />
             </div>
@@ -54,7 +54,7 @@ const Content = (props: SheetContentProps) => {
             <div className="relative w-full h-full">
               <Image
                 fill
-                src="/images/header/category-sheet-2.png"
+                src="/images/Header/category-sheet-2.png"
                 alt="category-accessories"
                 style={{
                   objectFit: "cover",
@@ -82,7 +82,7 @@ const Content = (props: SheetContentProps) => {
               <Image
                 fill
                 className="object-cover object-top"
-                src="/images/header/category-sheet-1.png"
+                src="/images/Header/category-sheet-1.png"
                 alt="category-clothes"
               />
             </div>

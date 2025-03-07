@@ -9,7 +9,7 @@ import "swiper/css/navigation";
 import "./styles.css";
 
 // import required modules
-import { Pagination, Navigation } from "swiper/modules";
+import { Pagination, Navigation, Autoplay } from "swiper/modules";
 
 import Image from "next/image";
 import { useState } from "react";
@@ -35,13 +35,14 @@ const Slider = () => {
 
   return (
     <Swiper
+      autoplay={{ delay: 3000 }}
       onSwiper={(swiper) => {
         setTotalSlides(swiper.slides.length);
       }}
       onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex + 1)}
       className="basis-full overflow-hidden h-[720px]"
       slidesPerView={1}
-      modules={[Pagination, Navigation]}
+      modules={[Pagination, Navigation, Autoplay]}
     >
       {slides.map((item) => (
         <SwiperSlide key={item}>

@@ -9,7 +9,7 @@ import { Chip } from "@/components/UI/Chip";
 import { MouseEvent } from "react";
 
 const ProductCard = ({ product }: { product: Product }) => {
-  const { id, title, colors, sizes, price, sale } = product;
+  const { id, title, colors, sizes, price, image, sale } = product;
 
   const chip = getProductChip(product);
 
@@ -35,14 +35,14 @@ const ProductCard = ({ product }: { product: Product }) => {
           <Image
             fill
             className="object-cover group-hover/product:opacity-60 transition-opacity"
-            src="/images/Fashion/fashion-1.jpg"
+            src={image}
             alt="product-image"
           />
         </div>
         <div>
           <h5 className="text-h5 mb-5">{title}</h5>
           <div className="w-full relative h-6">
-            <div className="absolute w-full flex items-center  justify-between gap-2 opacity-0 group-hover/product:opacity-100 transition-opacity">
+            <div className="absolute w-full flex items-center justify-between gap-2 opacity-0 group-hover/product:opacity-100 transition-opacity">
               <div className="flex gap-2">
                 {colors.map((color) => (
                   <div

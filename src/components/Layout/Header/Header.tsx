@@ -52,7 +52,7 @@ const Header = () => {
             <Image
               width={80}
               height={80}
-              src="/images/header/header-logo.jpg"
+              src="/images/Header/header-logo.jpg"
               alt="header-logo"
             />
           </Link>
