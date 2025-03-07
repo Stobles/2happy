@@ -57,14 +57,6 @@ export const iconLinks = [
       content: `Корзина`,
     },
   },
-  {
-    href: "/",
-    element: <UserIcon className="hover:fill-main transition-colors" />,
-    tooltip: {
-      id: "user-tooltip",
-      content: `Войти`,
-    },
-  },
 ];
 
 export const clothCategories = [
