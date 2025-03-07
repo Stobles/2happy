@@ -3,7 +3,7 @@ import { Collapsible, CollapsibleContent } from "@/components/UI/Collapsible";
 import Link from "next/link";
 import { useState } from "react";
 
-const CategorySheetCollapsible = ({
+const CollapsibleList = ({
   mainlist,
   collapsibleList,
 }: {
@@ -13,7 +13,7 @@ const CategorySheetCollapsible = ({
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <div className="pb-4 overflow-y-auto">
+      <div className="overflow-y-auto pb-[1px]">
         <ul className="space-y-2">
           {mainlist.map((item) => (
             <li key={item.title}>
@@ -45,17 +45,15 @@ const CategorySheetCollapsible = ({
       </div>
       <button
         onClick={() => setIsOpen((prev) => !prev)}
-        className="group flex items-center text-button-xs link-hover mb-6"
+        className="group flex items-center text-button-xs link-hover my-6 pb-1"
       >
         {isOpen ? "Свернуть" : "Ещё"}
         <ChevronDownIcon
-          className={`group-hover:fill-lightGrey transition-[fill,transform] ${
-            isOpen && "rotate-180"
-          }`}
+          className={`group-hover:fill-lightGrey ${isOpen && "rotate-180"}`}
         />
       </button>
     </>
   );
 };
 
-export default CategorySheetCollapsible;
+export default CollapsibleList;

@@ -8,11 +8,11 @@ import {
   SheetTitle,
 } from "@/components/UI/Sheet";
 import Image from "next/image";
-import { accessoriesCategories, clothCategories } from "../../consts";
+import { accessoriesCategories, clothCategories } from "../../consts/consts";
 import Link from "next/link";
-import CategorySheetCollapsible from "./CategorySheetCollapsible";
+import CollapsibleList from "./CollapsibleList";
 
-const CategorySheetContent = (props: SheetContentProps) => {
+const Content = (props: SheetContentProps) => {
   const firstClothList = clothCategories.slice(0, 6);
   const secondClothList = clothCategories.slice(6, -1);
   return (
@@ -24,11 +24,11 @@ const CategorySheetContent = (props: SheetContentProps) => {
         <div className="flex pb-12 overflow-auto">
           <div className="flex flex-col basis-full pr-[72px] border-r-[1px] border-stroke-black">
             <h3 className="text-h3 pb-4">Одежда</h3>
-            <CategorySheetCollapsible
+            <CollapsibleList
               mainlist={firstClothList}
               collapsibleList={secondClothList}
             />
-            <div className="relative w-full h-[120px]">
+            <div className="relative w-full h-[120px] shrink-0">
               <Image
                 fill
                 className="object-cover object-top"
@@ -97,4 +97,4 @@ const CategorySheetContent = (props: SheetContentProps) => {
   );
 };
 
-export default CategorySheetContent;
+export default Content;

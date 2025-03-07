@@ -2,14 +2,20 @@ import ArrowUpRightIcon from "@/components/icons/Arrows/ArrowUpRightIcon";
 import { Button } from "@/components/UI/Button";
 import Container from "@/components/UI/Container";
 import Section from "@/components/UI/Section";
-import SectionLogo from "@/components/UI/SectionLogo";
 import FashionCard from "@/features/Fashion/components/FashionCard";
+import Image from "next/image";
 
 const Fashion = () => {
   return (
     <Section className="my-[136px]">
       <Container className="flex-col gap-16">
-        <SectionLogo className="right-[-20px] top-[-64px]" />
+        <Image
+          className="absolute w-[992px] h-[112px] top-[-64px] right-0"
+          width={1208}
+          height={128}
+          src="/images/section-logo.png"
+          alt="section-logo"
+        />
         <h2 className="text-h2">
           Готовые образы <br /> /
         </h2>

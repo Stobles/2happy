@@ -10,7 +10,7 @@ const ChevronDownIcon = ({ className, ...props }: SVGProps<SVGSVGElement>) => (
     className={cn("fill-main transition-[fill,stroke,transform]", className)}
     {...props}
   >
-    <path d="m12.50524 17.7972-11-10.2916 1.46722-1.37274 9.53278 8.91894 9.53278-8.91894 1.46722 1.37274-11 10.2916z" />
+    <path d="M12.67 17.74 2.26 8.55l1.38-1.23 9.03 7.96 9.02-7.96 1.39 1.23-10.41 9.19z" />
   </svg>
 );
 

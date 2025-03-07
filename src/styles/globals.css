@@ -2,16 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --header-height: 138px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --border: #2916b9;
-  }
-}
-
 html,
 body {
   max-width: 100vw;
@@ -21,15 +11,23 @@ body {
   pointer-events: all !important;
 }
 
-/* Для Firefox */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #d3d3d3 transparent;
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 5px;
+  background: #9ea4ae;
+  border-radius: 10px;
 }
 
 body {
   z-index: -10;
-  scrollbar-width: none;
   scroll-behavior: smooth;
   will-change: scroll-position;
   box-sizing: border-box;

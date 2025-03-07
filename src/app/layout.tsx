@@ -30,9 +30,7 @@ export default async function RootLayout({
         <Suspense fallback={<CircularProgress color={"info"} />}>
           <ToastProvider>
             <Header />
-            {/* Это подложка под header, чтобы была тень и border, но скрывались под CategorySheet */}
-            <div className="absolute h-[var(--header-height)] left-0 top-0 w-full z-[49] shadow-header border-b-[1px] border-main"></div>
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 mt-[var(--header-height)]">{children}</main>
             <Footer />
           </ToastProvider>
         </Suspense>
