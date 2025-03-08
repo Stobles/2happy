@@ -8,7 +8,7 @@ import "swiper/css/navigation";
 
 import "./style.css";
 
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import ItemCard from "@/features/Fashion/components/ItemCard";
 import { useRef } from "react";
 import { Swiper as SwiperType } from "swiper/types";
@@ -38,20 +38,22 @@ const Slider = () => {
   const onSlideChange = (swiper: SwiperType) => {
     const index = swiper.activeIndex;
     // Пока вывожу для дебага
-    console.log(index);
+    console.log(index, swiper.translate);
     const slideMarginLeft = getSliderMarginLeft(index, swiper.translate);
     swiperRef.current?.style.setProperty("margin-left", slideMarginLeft);
   };
 
   return (
     <Swiper
+      autoplay={{ delay: 3000 }}
       className="complement-fashion flex justify-start !h-[640px]"
       centeredSlides={false}
       spaceBetween={SPACE_BETWEEN}
       slidesPerView="auto"
-      modules={[Navigation]}
+      modules={[Navigation, Autoplay]}
       onSwiper={onSwiper}
-      onActiveIndexChange={onSlideChange}
+      onSlideChange={onSlideChange}
+      onSetTranslate={onSlideChange}
     >
       {SLIDES.map((item) => {
         return (
