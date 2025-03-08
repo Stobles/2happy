@@ -37,6 +37,8 @@ const Slider = () => {
 
   const onSlideChange = (swiper: SwiperType) => {
     const index = swiper.activeIndex;
+    // Пока вывожу для дебага
+    console.log(index);
     const slideMarginLeft = getSliderMarginLeft(index, swiper.translate);
     swiperRef.current?.style.setProperty("margin-left", slideMarginLeft);
   };
@@ -49,7 +51,7 @@ const Slider = () => {
       slidesPerView="auto"
       modules={[Navigation]}
       onSwiper={onSwiper}
-      onSlideChange={onSlideChange}
+      onActiveIndexChange={onSlideChange}
     >
       {SLIDES.map((item) => {
         return (
