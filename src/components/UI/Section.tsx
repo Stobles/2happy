@@ -10,12 +10,7 @@ const Section = ({
   className?: string;
 }) => {
   return (
-    <section
-      className={cn(
-        "relative flex w-screen min-h-[700px] justify-center",
-        className
-      )}
-    >
+    <section className={cn("relative flex w-screen justify-center", className)}>
       {children}
     </section>
   );

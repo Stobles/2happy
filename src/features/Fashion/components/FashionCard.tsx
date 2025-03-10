@@ -15,7 +15,7 @@ const FashionCard = ({
   className?: string;
 }) => {
   return (
-    <article className={cn("group w-full max-w-[288px]", className)}>
+    <article className={cn("group w-full h-full max-w-[288px]", className)}>
       <Link className="w-full h-full flex flex-col gap-4" href={href}>
         <div className="relative h-full">
           <Image

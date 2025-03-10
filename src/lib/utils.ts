@@ -1,7 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { extendTailwindMerge } from "tailwind-merge";
 
-export const twMergeConf = extendTailwindMerge<"text">({
+export const twMergeConf = extendTailwindMerge<"text", "bg">({
   extend: {
     classGroups: {
       text: [
@@ -23,6 +23,7 @@ export const twMergeConf = extendTailwindMerge<"text">({
         "text-button-small",
         "text-button-xs",
       ],
+      "bg-image": ["bg-radial-gradient", "bg-gradient-4", "bg-footer-texture"],
     },
   },
 });
