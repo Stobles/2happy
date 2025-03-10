@@ -8,7 +8,7 @@ import Main from "./components/Main/Main";
 import NewCollection from "./components/NewCollection/NewCollection";
 import Notifications from "./components/Notifications/Notifications";
 
-const Home = () => {
+const HomePage = () => {
   return (
     <>
       <Main />
@@ -24,4 +24,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
