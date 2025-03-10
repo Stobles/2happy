@@ -8,7 +8,7 @@ import Main from "./components/Main/Main";
 import NewCollection from "./components/NewCollection/NewCollection";
 import Notifications from "./components/Notifications/Notifications";
 
-export default function Home() {
+const Home = () => {
   return (
     <>
       <Main />
@@ -22,4 +22,6 @@ export default function Home() {
       <Notifications />
     </>
   );
-}
+};
+
+export default Home;

@@ -7,13 +7,7 @@ const nextConfig: NextConfig = {
   },
 
   async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/home", // Перенаправление на /main
-        permanent: true,
-      },
-    ];
+    return [];
   },
 };
 
