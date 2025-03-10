@@ -37,7 +37,7 @@ export const SLIDES: (Product | "custom")[] = [
       price: 25000,
       amount: 25,
     },
-    image: "/images/Fashion/fashion-1.jpg",
+    image: "/images/Home/Fashion/fashion-1.jpg",
   },
   {
     id: "id2",
@@ -48,7 +48,7 @@ export const SLIDES: (Product | "custom")[] = [
     ],
     sizes: [{ id: 1, size: "XS" }],
     price: 50000,
-    image: "/images/Fashion/fashion-1.jpg",
+    image: "/images/Home/Fashion/fashion-1.jpg",
   },
   "custom",
   {
@@ -60,7 +60,7 @@ export const SLIDES: (Product | "custom")[] = [
     ],
     sizes: [{ id: 1, size: "XS" }],
     price: 50000,
-    image: "/images/Fashion/fashion-1.jpg",
+    image: "/images/Home/Fashion/fashion-1.jpg",
   },
   {
     id: "id4",
@@ -71,7 +71,7 @@ export const SLIDES: (Product | "custom")[] = [
     ],
     sizes: [{ id: 1, size: "XS" }],
     price: 50000,
-    image: "/images/Fashion/fashion-1.jpg",
+    image: "/images/Home/Fashion/fashion-1.jpg",
   },
   {
     id: "id5",
@@ -82,7 +82,7 @@ export const SLIDES: (Product | "custom")[] = [
     ],
     sizes: [{ id: 1, size: "XS" }],
     price: 50000,
-    image: "/images/Fashion/fashion-1.jpg",
+    image: "/images/Home/Fashion/fashion-1.jpg",
   },
   {
     id: "id6",
@@ -93,7 +93,7 @@ export const SLIDES: (Product | "custom")[] = [
     ],
     sizes: [{ id: 1, size: "XS" }],
     price: 50000,
-    image: "/images/Fashion/fashion-1.jpg",
+    image: "/images/Home/Fashion/fashion-1.jpg",
   },
   {
     id: "id7",
@@ -104,7 +104,7 @@ export const SLIDES: (Product | "custom")[] = [
     ],
     sizes: [{ id: 1, size: "XS" }],
     price: 50000,
-    image: "/images/Fashion/fashion-1.jpg",
+    image: "/images/Home/Fashion/fashion-1.jpg",
   },
   {
     id: "id8",
@@ -115,7 +115,7 @@ export const SLIDES: (Product | "custom")[] = [
     ],
     sizes: [{ id: 1, size: "XS" }],
     price: 50000,
-    image: "/images/Fashion/fashion-1.jpg",
+    image: "/images/Home/Fashion/fashion-1.jpg",
   },
   {
     id: "id9",
@@ -126,6 +126,6 @@ export const SLIDES: (Product | "custom")[] = [
     ],
     sizes: [{ id: 1, size: "XS" }],
     price: 50000,
-    image: "/images/Fashion/fashion-1.jpg",
+    image: "/images/Home/Fashion/fashion-1.jpg",
   },
 ];

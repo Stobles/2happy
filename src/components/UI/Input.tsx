@@ -17,7 +17,7 @@ const Input = React.forwardRef<
     return (
       <div
         className={cn(
-          "flex items-center gap-[10px] px-5 w-full rounded-[2px] border border-stroke-black transition-colors hover:ring-[1px] focus-within:ring-[1px] ring-black [&_svg]:shrink-0 [&_svg]:size-6",
+          "flex items-center gap-[10px] px-5 w-full rounded-xs border border-stroke-black transition-colors hover:ring-[1px] focus-within:ring-[1px] ring-black [&_svg]:shrink-0 [&_svg]:size-6",
           wrapperClassName
         )}
       >

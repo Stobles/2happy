@@ -9,7 +9,7 @@
     content: "";
     width: 0;
     height: 1px;
-    background-color: theme("colors.lightGrey");
+    background-color: theme("colors.grey");
     position: absolute;
     bottom: -1px;
     left: 0;
@@ -17,7 +17,7 @@
   }
 
   .link-hover:hover {
-    @apply text-lightGrey;
+    @apply text-grey;
   }
 
   .link-hover svg {

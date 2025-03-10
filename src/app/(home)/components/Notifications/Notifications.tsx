@@ -13,7 +13,7 @@ const Notifications = () => {
         <Image
           fill
           className="object-cover object-top"
-          src="/images/Notifications/bg.jpg"
+          src="/images/Home/Notifications/bg.jpg"
           alt="notifications-bg"
         />
       </div>

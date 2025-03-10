@@ -22,28 +22,28 @@ const Result = () => {
               <FashionCard
                 title="Спорт шик"
                 href="/"
-                src="/images/Fashion/fashion-1.jpg"
+                src="/images/Home/Fashion/fashion-1.jpg"
               />
             </li>
             <li>
               <FashionCard
                 title="Спорт шик"
                 href="/"
-                src="/images/Fashion/fashion-1.jpg"
+                src="/images/Home/Fashion/fashion-1.jpg"
               />
             </li>
             <li>
               <FashionCard
                 title="Спорт шик"
                 href="/"
-                src="/images/Fashion/fashion-1.jpg"
+                src="/images/Home/Fashion/fashion-1.jpg"
               />
             </li>
             <li>
               <FashionCard
                 title="Спорт шик"
                 href="/"
-                src="/images/Fashion/fashion-1.jpg"
+                src="/images/Home/Fashion/fashion-1.jpg"
               />
             </li>
           </ul>

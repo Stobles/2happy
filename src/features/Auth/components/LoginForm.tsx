@@ -77,7 +77,7 @@ const LoginForm = () => {
           />
           <Link
             href="/forgot-password"
-            className="link-hover text-grey text-button-xs"
+            className="link-hover text-darkGrey text-button-xs"
           >
             Забыли пароль?
           </Link>

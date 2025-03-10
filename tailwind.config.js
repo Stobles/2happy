@@ -6,6 +6,9 @@ module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
 
   theme: {
+    borderRadius: {
+      xs: "2px",
+    },
     extend: {
       screens: {
         sm: "320px",
@@ -14,6 +17,9 @@ module.exports = {
         xl: "1280px",
         "2xl": "1536px",
       },
+      margin: {
+        section: "136px",
+      },
       zIndex: {
         "behind-header": "51",
         header: "100",
@@ -21,6 +27,8 @@ module.exports = {
       },
       boxShadow: {
         header: "0px 2px 10px 0px rgba(15, 25, 40, 0.2)",
+        feature:
+          " 0px -2px 10px 0px rgba(255, 255, 255, 0.3) inset, 0px 20px 30px 0px rgba(48, 48, 48, 0.25)",
         "elevation-1": "0px 4px 4px 0px rgba(17, 17, 18, 0.2)",
         "elevation-2": "0px 4px 8px 0px rgba(37, 40, 43, 0.2)",
         "elevation-3": "0px 8px 16px 0px rgba(17, 17, 18, 0.2)",
@@ -45,9 +53,10 @@ module.exports = {
         white: "#FCFCFF",
         whiteSecondary: "#DEDEE9",
         red: "#F93232",
-        grey: "#3F4753",
-        lightGrey: "#9EA4AE",
+        lightGrey: "#E4E7EB",
         middleGrey: "#6F757E",
+        grey: "#9EA4AE",
+        darkGrey: "#3F4753",
         disabled: "#CFD1D4",
         bg: {
           disabled: "#F0F0F3",

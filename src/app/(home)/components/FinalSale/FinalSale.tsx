@@ -24,7 +24,7 @@ const PRODUCTS: Product[] = [
       price: 25000,
       amount: 25,
     },
-    image: "/images/Fashion/fashion-1.jpg",
+    image: "/images/Home/Fashion/fashion-1.jpg",
   },
   {
     id: "id2",
@@ -35,7 +35,7 @@ const PRODUCTS: Product[] = [
     ],
     sizes: [{ id: 1, size: "XS" }],
     price: 50000,
-    image: "/images/Fashion/fashion-1.jpg",
+    image: "/images/Home/Fashion/fashion-1.jpg",
   },
   {
     id: "id3",
@@ -46,14 +46,14 @@ const PRODUCTS: Product[] = [
     ],
     sizes: [{ id: 1, size: "XS" }],
     price: 50000,
-    image: "/images/Fashion/fashion-1.jpg",
+    image: "/images/Home/Fashion/fashion-1.jpg",
   },
 ];
 
 const FinalSale = () => {
   return (
     <Section>
-      <Container className="grid grid-cols-4 grid-rows-[544px] gap-x-6 my-[136px]">
+      <Container className="grid grid-cols-4 grid-rows-[544px] gap-x-6 my-section">
         {PRODUCTS.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
@@ -69,7 +69,7 @@ const FinalSale = () => {
               <Image
                 fill
                 className="object-cover object-top"
-                src="/images/FinalSale/view-all.jpg"
+                src="/images/Home/FinalSale/view-all.jpg"
                 alt="final-sale-section-image"
               />
             </div>

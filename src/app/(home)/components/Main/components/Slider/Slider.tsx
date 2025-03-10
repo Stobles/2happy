@@ -19,12 +19,12 @@ import ChevronLeftIcon from "@/components/icons/Chevron/ChevronLeftIcon";
 import SliderButton from "@/components/UI/SliderButton";
 
 const slides = [
-  "/images/Main/slider-1.jpg",
-  "/images/Main/slider-2.jpg",
-  "/images/Main/slider-3.jpg",
-  "/images/Main/slider-4.jpg",
-  "/images/Main/slider-5.jpg",
-  "/images/Main/slider-6.jpg",
+  "/images/Home/Main/slider-1.jpg",
+  "/images/Home/Main/slider-2.jpg",
+  "/images/Home/Main/slider-3.jpg",
+  "/images/Home/Main/slider-4.jpg",
+  "/images/Home/Main/slider-5.jpg",
+  "/images/Home/Main/slider-6.jpg",
 ];
 
 const Slider = () => {

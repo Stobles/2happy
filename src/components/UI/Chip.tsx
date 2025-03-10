@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
 import { forwardRef } from "react";
 
-const chipVariants = cva(`flex rounded-[2px] !text-white`, {
+const chipVariants = cva(`flex rounded-xs !text-white`, {
   variants: {
     variant: {
       red: "bg-red",
