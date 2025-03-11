@@ -1,5 +1,6 @@
 import ChevronDownIcon from "@/components/icons/Chevron/ChevronDownIcon";
 import { Collapsible, CollapsibleContent } from "@/components/UI/Collapsible";
+import { ScrollArea } from "@/components/UI/ScrollArea";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -13,7 +14,7 @@ const CollapsibleList = ({
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <div className="overflow-y-auto pb-[1px]">
+      <ScrollArea className="pb-[2px]">
         <ul className="space-y-2">
           {mainlist.map((item) => (
             <li key={item.title}>
@@ -42,7 +43,7 @@ const CollapsibleList = ({
             </ul>
           </CollapsibleContent>
         </Collapsible>
-      </div>
+      </ScrollArea>
       <button
         onClick={() => setIsOpen((prev) => !prev)}
         className="group flex items-center text-button-xs link-hover my-6 pb-1"
