@@ -6,7 +6,7 @@ import Slider from "./components/Slider/Slider";
 const NewCollection = () => {
   return (
     <Section>
-      <Container className="flex-col gap-16 my-[136px]">
+      <Container className="flex-col gap-16 my-section">
         <Image
           className="absolute w-[992px] h-[112px] top-[-64px] right-0"
           width={1208}

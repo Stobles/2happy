@@ -19,7 +19,7 @@ const CATEGORIES = [
 const Categories = () => {
   return (
     <Section className="border-b-[1px] border-b-main">
-      <Container className="justify-between gap-6 my-[136px]">
+      <Container className="justify-between gap-6 my-section">
         <div className="flex flex-col justify-between basis-[392px]">
           <h2 className="text-h2">
             Категории <br /> /
@@ -31,7 +31,7 @@ const Categories = () => {
             <div className="relative">
               <Image
                 fill
-                src="/images/Categories/category-1.jpg"
+                src="/images/Home/Categories/category-1.jpg"
                 className="object-cover object-top"
                 alt="category-image"
               />

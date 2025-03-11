@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const Fashion = () => {
   return (
-    <Section className="my-[136px]">
+    <Section className="my-section">
       <Container className="flex-col gap-16">
         <Image
           className="absolute w-[992px] h-[112px] top-[-64px] right-0"
@@ -24,7 +24,7 @@ const Fashion = () => {
             className="row-span-5"
             title="Спорт шик"
             href="/"
-            src="/images/Fashion/fashion-1.jpg"
+            src="/images/Home/Fashion/fashion-1.jpg"
           />
           <div className="w-full flex flex-col justify-between bg-main pt-10 pb-6 px-4 text-white text-center row-span-3">
             <span className="text-h5">
@@ -39,13 +39,13 @@ const Fashion = () => {
             className="row-span-7"
             title="Спорт шик"
             href="/"
-            src="/images/Fashion/fashion-3.jpg"
+            src="/images/Home/Fashion/fashion-3.jpg"
           />
           <FashionCard
             className="row-span-6"
             title="Спорт шик"
             href="/"
-            src="/images/Fashion/fashion-4.jpg"
+            src="/images/Home/Fashion/fashion-4.jpg"
           />
         </div>
       </Container>

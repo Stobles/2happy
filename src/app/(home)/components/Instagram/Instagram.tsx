@@ -13,7 +13,7 @@ const Instagram = () => {
         alt="section-bg"
         quality={90}
       />
-      <Container className="flex-col gap-10 my-[136px]">
+      <Container className="flex-col gap-10 my-section">
         <Image
           className="absolute h-[128px] top-[-88px] left-0"
           width={1208}
@@ -29,14 +29,14 @@ const Instagram = () => {
             Откройте для себя больше вдохновения и стильных идей в нашем
             Instagram @2happy_kz! Будьте в курсе новинок, акций и трендов
           </div>
-          <InstagramCard href="/" src="/images/Instagram/1.jpg" />
+          <InstagramCard href="/" src="/images/Home/Instagram/1.jpg" />
           <InstagramCard
             href="/"
             className="row-span-2 col-span-2"
-            src="/images/Instagram/2.jpg"
+            src="/images/Home/Instagram/2.jpg"
           />
-          <InstagramCard href="/" src="/images/Instagram/3.jpg" />
-          <InstagramCard href="/" src="/images/Instagram/4.jpg" />
+          <InstagramCard href="/" src="/images/Home/Instagram/3.jpg" />
+          <InstagramCard href="/" src="/images/Home/Instagram/4.jpg" />
         </div>
       </Container>
     </Section>

@@ -35,7 +35,7 @@ const PRODUCTS: Product[] = [
       price: 25000,
       amount: 25,
     },
-    image: "/images/Fashion/fashion-1.jpg",
+    image: "/images/Home/Fashion/fashion-1.jpg",
   },
   {
     id: "id2",
@@ -46,7 +46,7 @@ const PRODUCTS: Product[] = [
     ],
     sizes: [{ id: 1, size: "XS" }],
     price: 50000,
-    image: "/images/Fashion/fashion-1.jpg",
+    image: "/images/Home/Fashion/fashion-1.jpg",
   },
   {
     id: "id3",
@@ -57,7 +57,7 @@ const PRODUCTS: Product[] = [
     ],
     sizes: [{ id: 1, size: "XS" }],
     price: 50000,
-    image: "/images/Fashion/fashion-1.jpg",
+    image: "/images/Home/Fashion/fashion-1.jpg",
   },
   {
     id: "id4",
@@ -68,7 +68,7 @@ const PRODUCTS: Product[] = [
     ],
     sizes: [{ id: 1, size: "XS" }],
     price: 50000,
-    image: "/images/Fashion/fashion-1.jpg",
+    image: "/images/Home/Fashion/fashion-1.jpg",
   },
 ];
 

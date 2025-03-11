@@ -48,7 +48,7 @@ const Header = () => {
       </div>
       <header className="sticky top-0 min-h-[80px] bg-white z-header">
         <Container className="items-center">
-          <Link href="/home">
+          <Link href="/">
             <Image
               width={80}
               height={80}

@@ -12,12 +12,12 @@ const Bestsellers = () => {
         fill
         className="object-cover object-[100%_35%] z-[-1] scale-x-[-1]"
         alt="bestseller-background"
-        src={"/images/Bestsellers/bg.jpg"}
+        src={"/images/Home/Bestsellers/bg.jpg"}
       />
       <Container className="grid grid-cols-[392px_495px] grid-rows-[320px_345px] gap-x-6 my-20">
         <ItemCard
           className="row-span-2"
-          src="/images/Bestsellers/card-1.jpg"
+          src="/images/Home/Bestsellers/card-1.jpg"
           href="/"
         />
         <h2 className="text-h2">Наши бестселлеры / 25</h2>
@@ -25,7 +25,7 @@ const Bestsellers = () => {
           <Button variant="tertiary" size="medium">
             Смотреть все <ArrowRightIcon />
           </Button>
-          <ItemCard src="/images/Bestsellers/card-2.jpg" href="/" />
+          <ItemCard src="/images/Home/Bestsellers/card-2.jpg" href="/" />
         </div>
       </Container>
     </Section>

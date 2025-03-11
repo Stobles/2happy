@@ -6,7 +6,7 @@ import Section from "@/components/UI/Section";
 const Notifications = () => {
   return (
     <Section>
-      <Container className="my-[136px] gap-6">
+      <Container className="my-section gap-6">
         <div className="shrink-0 basis-[500px]">
           <h2 className="text-h3 mb-6">
             Подпишитесь <br /> на наши обновления
