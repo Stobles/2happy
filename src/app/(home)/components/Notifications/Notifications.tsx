@@ -20,7 +20,7 @@ const Notifications = () => {
       <Container className="items-center">
         <div className="flex flex-col gap-8 basis-1/2 pr-4">
           <div className="flex flex-col gap-6">
-            <span className="w-max flex gap-2 items-center text-body2 py-2 px-4 border-[1px] border-lightGrey">
+            <span className="w-max flex gap-2 items-center text-body2 py-2 px-4 border-[1px] border-gray">
               <GiftIcon /> Получи -10% на любой заказ
             </span>
             <h3 className="text-h3">Подпишитесь на наши обновления</h3>

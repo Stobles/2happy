@@ -37,7 +37,7 @@ const CategorySheet = ({ isSticky }: { isSticky: boolean }) => {
         Каталог
         <ChevronDownIcon
           className={`group-hover/link:rotate-180 ${
-            state && "fill-lightGrey rotate-180"
+            state && "fill-gray rotate-180"
           } transition-[stroke,transform]`}
         />
       </SheetTrigger>

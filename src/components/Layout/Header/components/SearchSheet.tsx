@@ -75,8 +75,8 @@ const PRODUCTS: Product[] = [
 const SearchSheet = () => {
   return (
     <Sheet>
-      <SheetTrigger className="flex gap-2 group hover:text-middleGrey transition-colors">
-        <SearchIcon className="group-hover:fill-middleGrey" />
+      <SheetTrigger className="flex gap-2 group hover:text-gray-middle transition-colors">
+        <SearchIcon className="group-hover:fill-gray-middle" />
         Поиск
       </SheetTrigger>
       <SheetContent

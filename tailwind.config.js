@@ -42,18 +42,22 @@ module.exports = {
       },
       colors: {
         main: "#111112",
-        white: "#FCFCFF",
-        whiteSecondary: "#DEDEE9",
+        white: {
+          DEFAULT: "#FCFCFF",
+          secondary: "#DEDEE9",
+        },
         red: "#F93232",
-        grey: "#3F4753",
-        lightGrey: "#9EA4AE",
-        middleGrey: "#6F757E",
         disabled: "#CFD1D4",
+        gray: {
+          DEFAULT: "#9EA4AE",
+          dark: "#3F4753",
+          middle: "#6F757E",
+          light: "#E4E7EB",
+        },
         bg: {
           disabled: "#F0F0F3",
           error: "#FDEBEB",
           warning: "#FFFBF4",
-          lightGrey: "#E4E7EB",
           glass: "rgba(255, 255, 255, 0.3)",
         },
         button: {
