@@ -17,6 +17,10 @@ module.exports = {
         xl: "1280px",
         "2xl": "1536px",
       },
+      cursor: {
+        default: "url('/icons/system/cursor-arrow.svg') 2 2, default",
+        pointer: "url('/icons/system/cursor-pointer.svg') 2 2, default",
+      },
       margin: {
         section: "136px",
       },
