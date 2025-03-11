@@ -57,7 +57,7 @@ const Slider = () => {
 
       <div className="w-full flex flex-col mt-4">
         <div className="flex justify-between mb-[6px]">
-          <span className="text-button-medium text-middleGrey">{`${activeIndex}/${totalSlides}`}</span>
+          <span className="text-button-medium text-gray-middle">{`${activeIndex}/${totalSlides}`}</span>
           <div className="flex gap-2">
             <SliderButton type="prev">
               <ChevronLeftIcon />

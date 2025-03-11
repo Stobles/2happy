@@ -160,7 +160,7 @@ const FormMessage = React.forwardRef<
       id={formMessageId}
       className={cn(
         `text-button-xs ${
-          error ? "text-status-error" : "text-lightGrey text-button-xs"
+          error ? "text-status-error" : "text-gray text-button-xs"
         }`,
         className
       )}

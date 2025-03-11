@@ -38,7 +38,7 @@ const AuthModal = ({ trigger }: { trigger: ReactNode }) => {
               <RegisterForm />
             </TabsContent>
           </Tabs>
-          <span className="flex gap-2 items-center uppercase text-lightGrey after:w-full after:h-[1px] after:bg-lightGrey before:w-full before:h-[1px] before:bg-lightGrey">
+          <span className="flex gap-2 items-center uppercase text-gray after:w-full after:h-[1px] after:bg-gray before:w-full before:h-[1px] before:bg-gray">
             Или
           </span>
           <div className="flex flex-col gap-4">

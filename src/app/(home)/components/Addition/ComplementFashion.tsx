@@ -22,7 +22,7 @@ const ComplementFashion = () => {
             className="flex items-center text-button-normal link-hover"
           >
             Смотреть все
-            <ArrowRightIcon className="fill-white group-hover:fill-middleGrey" />
+            <ArrowRightIcon className="fill-white group-hover:fill-gray-middle" />
           </Link>
         </div>
         <div className="flex gap-6">

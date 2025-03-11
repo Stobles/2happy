@@ -7,7 +7,7 @@ const chipVariants = cva(`flex rounded-xs !text-white`, {
     variant: {
       red: "bg-red",
       yellow: "bg-yellow",
-      grey: "bg-lightGrey",
+      grey: "bg-gray",
       green: "bg-green",
       black: "bg-main",
     },

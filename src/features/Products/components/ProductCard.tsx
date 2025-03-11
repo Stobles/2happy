@@ -54,7 +54,7 @@ const ProductCard = ({ product }: { product: Product }) => {
                   />
                 ))}
               </div>
-              <div className="flex gap-2 text-middleGrey">
+              <div className="flex gap-2 text-gray-middle">
                 {sizes.map((size) => (
                   <span key={size.id} className="text-body2">
                     {size.size}
@@ -63,7 +63,7 @@ const ProductCard = ({ product }: { product: Product }) => {
               </div>
             </div>
             <div className="absolute flex w-full gap-2 opacity-100 group-hover/product:opacity-0 transition-opacity">
-              <span className={`${sale && "text-middleGrey line-through"}`}>
+              <span className={`${sale && "text-gray-middle line-through"}`}>
                 {price} &#8376;
               </span>
               {sale && <span className="text-red">{sale.price} &#8376;</span>}

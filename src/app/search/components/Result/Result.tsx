@@ -4,7 +4,7 @@ import FashionCard from "@/features/Fashion/components/FashionCard";
 
 const Result = () => {
   return (
-    <Section className="border border-b-[1px] border-main">
+    <Section className="border-b-[1px] border-main">
       <Container className="flex-col mt-14 mb-[136px]">
         <h2 className="text-h3 mb-4">Результаты поиска</h2>
         <div className="flex flex-col gap-6">
