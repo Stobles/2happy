@@ -49,7 +49,7 @@ const CollapsibleList = ({
       >
         {isOpen ? "Свернуть" : "Ещё"}
         <ChevronDownIcon
-          className={`group-hover:fill-lightGrey ${isOpen && "rotate-180"}`}
+          className={`group-hover:fill-gray ${isOpen && "rotate-180"}`}
         />
       </button>
     </>

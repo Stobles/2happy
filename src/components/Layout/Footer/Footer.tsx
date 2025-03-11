@@ -42,7 +42,7 @@ const Footer = () => {
           {mainBlocks.map((item) => (
             <li key={item.title} className="basis-full">
               <h4 className="text-h4 text-white pb-4">{item.title}</h4>
-              <ul className="space-y-2 text-whiteSecondary">
+              <ul className="space-y-2 text-white-secondary">
                 {item.links.map((link, index) => (
                   <li key={index}>
                     <Link
@@ -61,7 +61,7 @@ const Footer = () => {
 
           <li className="basis-full">
             <h4 className="text-h4 text-white pb-4">Контакты</h4>
-            <ul className="space-y-2 text-button-xs text-whiteSecondary">
+            <ul className="space-y-2 text-button-xs text-white-secondary">
               <li>
                 <a
                   className="text-button-xs link-hover"
