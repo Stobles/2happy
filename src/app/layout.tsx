@@ -1,13 +1,13 @@
 import "../styles/components.css";
 import "../styles/globals.css";
-import "../styles/fonts.css";
+import "../lib/fonts";
 
 import { Suspense } from "react";
-import { CircularProgress } from "@mui/material";
+import { akira, lato } from "../lib/fonts";
 
 import Header from "@/components/Layout/Header/Header";
 import Footer from "@/components/Layout/Footer/Footer";
-import ToastProvider from "@/providers/ToastProvider";
+import Providers from "./providers";
 
 export const metadata = {
   title: "2HAPPY",
@@ -25,13 +25,15 @@ export default function RootLayout({
 }>) {
   return (
     <html className="h-full" lang="ru">
-      <body className="font-sans flex flex-col h-full bg-white">
-        <Suspense fallback={<CircularProgress color={"info"} />}>
-          <ToastProvider>
+      <body
+        className={`${lato.variable} ${akira.variable} font-sans flex flex-col h-full bg-white`}
+      >
+        <Suspense fallback={"...loading"}>
+          <Providers>
             <Header />
             <main className="flex-1 mt-[var(--header-height)]">{children}</main>
             <Footer />
-          </ToastProvider>
+          </Providers>
         </Suspense>
       </body>
     </html>
