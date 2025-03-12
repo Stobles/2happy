@@ -7,6 +7,7 @@ module.exports = {
 
   theme: {
     borderRadius: {
+      none: "0px",
       xs: "2px",
     },
     extend: {
@@ -49,8 +50,8 @@ module.exports = {
         "footer-texture": "url('/img/footer-texture.png')",
       },
       fontFamily: {
-        sans: ["Lato", "sans-serif"],
-        akira: ["AkiraExpanded", "sans-serif"],
+        sans: ["var(--font-lato)"],
+        akira: ["var(--font-akira)"],
       },
       colors: {
         main: "#111112",
@@ -214,7 +215,7 @@ module.exports = {
           lineHeight: "76.8px",
           fontWeight: "700",
           [`@media (max-width: ${theme("screens.lg")})`]: {
-            fontSize: "48px", // Уменьшаем размер для маленьких экранов
+            fontSize: "48px",
             lineHeight: "56px",
           },
         },
@@ -222,7 +223,7 @@ module.exports = {
         // Text/Headlines
 
         ".text-h1Akira": {
-          fontFamily: "'AkiraExpanded', sans-serif",
+          fontFamily: "var(--font-akira)",
           fontWeight: "700",
           fontSize: "96px",
           lineHeight: "104px",
@@ -234,7 +235,7 @@ module.exports = {
           textTransform: "uppercase",
         },
         ".text-h2Akira": {
-          fontFamily: "'AkiraExpanded', sans-serif",
+          fontFamily: "var(--font-akira)",
           fontWeight: "700",
           fontSize: "48px",
           lineHeight: "56px",

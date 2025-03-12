@@ -2,6 +2,7 @@ import { Button } from "@/components/UI/Button";
 import Container from "@/components/UI/Container";
 import { Input } from "@/components/UI/Input";
 import Section from "@/components/UI/Section";
+import Link from "next/link";
 
 const Notifications = () => {
   return (
@@ -20,9 +21,12 @@ const Notifications = () => {
           <Input placeholder="Email" />
           <p className="text-button-xs mt-4 mb-6">
             Подписываясь, вы даёте своё согласие на получение маркетинговые
-            сообщения по электронной почте и подтверждаете, что ознакомелись
-            с «Политикой конфиденциальности». Чтобы отказаться от рассылки,
-            нажмите на кнопку «Отписаться» в конце письма.
+            сообщения по электронной почте и подтверждаете, что ознакомились с 
+            <Link href="/" className="text-black underline">
+              «Политикой конфиденциальности»
+            </Link>
+            . Чтобы отказаться от рассылки, нажмите на кнопку «Отписаться»
+            в конце письма.
           </p>
           <Button className="w-full" size="normal">
             Подписаться

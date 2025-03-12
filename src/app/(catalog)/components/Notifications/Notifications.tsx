@@ -30,7 +30,7 @@ const Notifications = () => {
             <Input placeholder="Email" />
             <p className="text-button-xs text-darkGrey mt-4 mb-6">
               Подписываясь, вы даёте своё согласие на получение маркетинговые
-              сообщения по электронной почте и подтверждаете, что ознакомелись
+              сообщения по электронной почте и подтверждаете, что ознакомились
               с 
               <Link href="/" className="text-black underline">
                 «Политикой конфиденциальности»
