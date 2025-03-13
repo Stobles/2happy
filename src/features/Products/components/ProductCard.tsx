@@ -1,12 +1,12 @@
 "use client";
 
 import HeartIcon from "@/components/icons/HeartIcon";
-import Image from "next/image";
 import Link from "next/link";
 import { Product } from "../types";
 import { getProductChip } from "../utils/getProductChip";
 import { Chip } from "@/components/UI/Chip";
 import { MouseEvent } from "react";
+import ImageWithFallback from "@/components/UI/ImageWithFallback";
 
 const ProductCard = ({ product }: { product: Product }) => {
   const { id, title, colors, sizes, price, image, sale } = product;
@@ -32,10 +32,10 @@ const ProductCard = ({ product }: { product: Product }) => {
             onClick={handleFavoriteClick}
             className="absolute top-4 right-4 z-10 opacity-0 group-hover/product:opacity-100 hover:fill-main"
           />
-          <Image
-            fill
-            className="object-cover group-hover/product:opacity-60 transition-opacity"
+          <ImageWithFallback
             src={image}
+            className="group-hover/product:opacity-60 transition-opacity"
+            fallbackSrc={image}
             alt="product-image"
           />
         </div>
