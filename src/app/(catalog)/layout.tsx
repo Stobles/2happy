@@ -1,5 +1,4 @@
-import Features from "./components/Features/Features";
-import Notifications from "./components/Notifications/Notifications";
+import CatalogLayout from "@/components/Layout/CatalogLayout/CatalogLayout";
 
 export const metadata = {
   title: "2HAPPY",
@@ -10,16 +9,12 @@ export const metadata = {
   },
 };
 
-export default function CatalogLayout({
+const Layout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
-  return (
-    <>
-      {children}
-      <Features />
-      <Notifications />
-    </>
-  );
-}
+}>) => {
+  return <CatalogLayout>{children}</CatalogLayout>;
+};
+
+export default Layout;
