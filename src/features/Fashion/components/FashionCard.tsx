@@ -1,6 +1,6 @@
 import ArrowUpRightIcon from "@/components/icons/Arrows/ArrowUpRightIcon";
+import ImageWithFallback from "@/components/UI/ImageWithFallback";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 import Link from "next/link";
 
 const FashionCard = ({
@@ -18,10 +18,10 @@ const FashionCard = ({
     <article className={cn("group w-full h-full max-w-[288px]", className)}>
       <Link className="w-full h-full flex flex-col gap-4" href={href}>
         <div className="relative h-full">
-          <Image
-            fill
-            className="object-cover object-top group-hover:opacity-60 transition-opacity"
+          <ImageWithFallback
+            className="group-hover:opacity-60 transition-opacity"
             src={src}
+            fallbackSrc={src}
             alt="fashion-image"
           />
         </div>

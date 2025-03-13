@@ -1,4 +1,4 @@
-import InstagramCard from "@/components/InstagramCard/InstagramCard";
+import InstagramCard from "@/features/Fashion/components/InstagramCard";
 import Container from "@/components/UI/Container";
 import Section from "@/components/UI/Section";
 import Image from "next/image";

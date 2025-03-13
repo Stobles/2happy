@@ -11,12 +11,12 @@ import "./styles.css";
 // import required modules
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 
-import Image from "next/image";
 import { useState } from "react";
 import { Progress } from "@/components/UI/Progress";
 import ChevronRightIcon from "@/components/icons/Chevron/ChevronRightIcon";
 import ChevronLeftIcon from "@/components/icons/Chevron/ChevronLeftIcon";
 import SliderButton from "@/components/UI/SliderButton";
+import ImageWithFallback from "@/components/UI/ImageWithFallback";
 
 const slides = [
   "/images/Home/Main/slider-1.jpg",
@@ -46,12 +46,7 @@ const Slider = () => {
     >
       {slides.map((item) => (
         <SwiperSlide key={item}>
-          <Image
-            fill
-            className="object-cover object-top"
-            src={item}
-            alt="slider-image"
-          />
+          <ImageWithFallback src={item} fallbackSrc={item} alt="slider-image" />
         </SwiperSlide>
       ))}
 
