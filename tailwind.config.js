@@ -92,6 +92,7 @@ module.exports = {
           },
           secondary: {
             bg: {
+              DEFAULT: "#FCFCFF",
               hover: "#111112",
               focused: "#E5E8EE",
               active: "#E5E8EE",
@@ -107,6 +108,7 @@ module.exports = {
           },
           tertiary: {
             bg: {
+              DEFAULT: "#FCFCFF",
               hover: "#111112",
               focused: "#E5E8EE",
               active: "#E5E8EE",
