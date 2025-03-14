@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  `inline-flex w-max items-center justify-center gap-2 whitespace-nowrap uppercase rounded-xs bg-radial-gradient text-sm font-medium transition-all duration-300 
+  `inline-flex w-max items-center justify-center gap-2 whitespace-nowrap uppercase rounded-xs bg-radial-gradient font-medium transition-all duration-300 
   focus-visible:outline-none focus-visible:border-solid focus-visible:border-2 focus-visible:border-stroke-black 
   disabled:pointer-events-none disabled:bg-button-bg-disabled disabled:text-button-text-disabled disabled:svg-disabled 
   [&_svg]:pointer-events-none [&_svg]:size-[24px] [&_svg]:shrink-0 [&_svg]:transition-colors`,
@@ -28,14 +28,14 @@ const buttonVariants = cva(
           active:border-0 active:bg-button-tertiary-bg-active active:text-button-tertiary-text-active active:tertiary-svg-active`,
       },
       size: {
-        large: "h-[64px] px-[32px] py-[20px] text-[20px]/[24px",
-        normal: "h-[56px] px-[32px] py-[16px] text-[16px]/[24px]",
+        large: "h-[64px] px-[32px] py-[20px] text-button-large",
+        normal: "h-[56px] px-[32px] py-[16px] text-button-normal",
         medium:
-          "h-[48px] px-[32px] py-[14px] text-[16px]/[20px] [&_svg]:size-[16px]",
+          "h-[48px] px-[32px] py-[14px] text-button-medium [&_svg]:size-[16px]",
         small:
-          "h-[40px] px-[24px] py-[12px] text-[14px]/[16px] [&_svg]:size-[16px]",
+          "h-[40px] px-[24px] py-[12px] text-button-small [&_svg]:size-[16px]",
         extraSmall:
-          "h-[32px] px-[24px] py-[8px] text-[20px]/[24px] normal-case [&_svg]:size-[16px]",
+          "h-[32px] px-[24px] py-[8px] text-button-xs normal-case [&_svg]:size-[16px]",
         iconLarge: "h-[64px] p-[20px]",
         iconNormal: "h-[56px] p-[16px]",
         iconMedium: "h-[48px] p-[12px]",
