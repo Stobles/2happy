@@ -55,11 +55,11 @@ const Slider = () => {
           }
         })}
         <div className="absolute flex gap-4 right-0 bottom-0">
-          <SliderButton slideType="prev">
-            <ArrowRightIcon className="w-[48px] h-[48px] rotate-180" />
+          <SliderButton slideType="prev" className="group">
+            <ArrowRightIcon className="w-[48px] h-[48px] rotate-180 fill-main group-disabled:fill-disabled" />
           </SliderButton>
-          <SliderButton slideType="next">
-            <ArrowRightIcon className="w-[48px] h-[48px]" />
+          <SliderButton slideType="next" className="group">
+            <ArrowRightIcon className="w-[48px] h-[48px] fill-main group-disabled:fill-disabled" />
           </SliderButton>
         </div>
       </Swiper>
