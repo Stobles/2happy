@@ -54,10 +54,10 @@ const Slider = () => {
         <div className="flex justify-between mb-[6px]">
           <span className="text-button-medium text-gray-middle">{`${activeIndex}/${totalSlides}`}</span>
           <div className="flex gap-2">
-            <SliderButton type="prev">
+            <SliderButton className="disabled:opacity-40" slideType="prev">
               <ChevronLeftIcon />
             </SliderButton>
-            <SliderButton type="next">
+            <SliderButton className="disabled:opacity-40" slideType="next">
               <ChevronRightIcon />
             </SliderButton>
           </div>

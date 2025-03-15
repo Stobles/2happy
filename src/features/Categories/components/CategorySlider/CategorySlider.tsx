@@ -21,7 +21,7 @@ export const CategorySlider = ({ categories }: { categories: Category[] }) => {
         wrapperClass="gap-4"
       >
         <SliderButton
-          className="absolute bg-white left-[-1px] top-0 z-10"
+          className="absolute bg-white left-[-1px] top-0 z-10 disabled:hidden"
           slideType="prev"
           asChild
         >
@@ -42,7 +42,7 @@ export const CategorySlider = ({ categories }: { categories: Category[] }) => {
           </SwiperSlide>
         ))}
         <SliderButton
-          className="absolute bg-white top-0 right-[-1px] z-10"
+          className="absolute bg-white top-0 right-[-1px] z-10 disabled:hidden"
           slideType="next"
           asChild
         >

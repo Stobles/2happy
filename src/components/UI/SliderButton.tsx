@@ -37,15 +37,7 @@ const SliderButton = ({ slideType, asChild, ...props }: ISliderButtonProps) => {
     };
   }, [swiper, slideType]);
 
-  return (
-    <Comp
-      style={{
-        display: isDisabled ? "none" : "block",
-      }}
-      onClick={handleClick}
-      {...props}
-    />
-  );
+  return <Comp disabled={isDisabled} onClick={handleClick} {...props} />;
 };
 
 export default SliderButton;
