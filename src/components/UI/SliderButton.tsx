@@ -11,7 +11,7 @@ const SliderButton = ({ slideType, asChild, ...props }: ISliderButtonProps) => {
   const Comp = asChild ? Slot : "button";
 
   const swiper = useSwiper();
-  const [isDisabled, setIsDisabled] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(true);
 
   const handleClick = () => {
     if (slideType === "next") swiper.slideNext();
@@ -37,15 +37,7 @@ const SliderButton = ({ slideType, asChild, ...props }: ISliderButtonProps) => {
     };
   }, [swiper, slideType]);
 
-  return (
-    <Comp
-      style={{
-        display: isDisabled ? "none" : "block",
-      }}
-      onClick={handleClick}
-      {...props}
-    />
-  );
+  return <Comp disabled={isDisabled} onClick={handleClick} {...props} />;
 };
 
 export default SliderButton;

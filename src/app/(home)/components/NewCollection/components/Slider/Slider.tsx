@@ -55,10 +55,10 @@ const Slider = () => {
           }
         })}
         <div className="absolute flex gap-4 right-0 bottom-0">
-          <SliderButton type="prev">
+          <SliderButton slideType="prev">
             <ArrowRightIcon className="w-[48px] h-[48px] rotate-180" />
           </SliderButton>
-          <SliderButton type="next">
+          <SliderButton slideType="next">
             <ArrowRightIcon className="w-[48px] h-[48px]" />
           </SliderButton>
         </div>

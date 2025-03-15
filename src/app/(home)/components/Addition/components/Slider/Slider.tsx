@@ -66,11 +66,14 @@ const Slider = () => {
         Стильными акцентами
       </span>
       <div className="absolute right-0 flex gap-4">
-        <SliderButton type="prev">
-          <ArrowRightIcon className="fill-white rotate-180 size-12" />
+        <SliderButton slideType="prev" className="[&_svg]:fill-white">
+          <ArrowRightIcon className="rotate-180 size-12" />
         </SliderButton>
-        <SliderButton type="next">
-          <ArrowRightIcon className="fill-white size-12" />
+        <SliderButton
+          slideType="next"
+          className="disabled:[&_svg]:fill-main [&_svg]:fill-white"
+        >
+          <ArrowRightIcon className="size-12" />
         </SliderButton>
       </div>
     </Swiper>

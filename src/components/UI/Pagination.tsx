@@ -33,51 +33,51 @@ const PaginationItem = React.forwardRef<
 ));
 PaginationItem.displayName = "PaginationItem";
 
-type PaginationLinkProps = {
+type PaginationButtonProps = {
   isActive?: boolean;
 } & React.ComponentProps<"button">;
 
-const PaginationLink = ({
+const PaginationButton = ({
   className,
   isActive,
   ...props
-}: PaginationLinkProps) => (
+}: PaginationButtonProps) => (
   <button
     className={cn(
-      "w-6 h-6 rounded-xs hover:bg-lightGrey hover:text-main transition-colors",
+      "w-6 h-6 rounded-xs hover:bg-gray-light hover:text-main transition-colors",
       isActive ? "bg-main text-white" : "",
       className
     )}
     {...props}
   />
 );
-PaginationLink.displayName = "PaginationLink";
+PaginationButton.displayName = "PaginationLink";
 
 const PaginationPrevious = ({
   className,
   ...props
-}: React.ComponentProps<typeof PaginationLink>) => (
-  <PaginationLink
+}: React.ComponentProps<typeof PaginationButton>) => (
+  <PaginationButton
     aria-label="Go to previous page"
     className={cn("mr-6", className)}
     {...props}
   >
     <ArrowRightIcon className="rotate-180" />
-  </PaginationLink>
+  </PaginationButton>
 );
 PaginationPrevious.displayName = "PaginationPrevious";
 
 const PaginationNext = ({
   className,
   ...props
-}: React.ComponentProps<typeof PaginationLink>) => (
-  <PaginationLink
+}: React.ComponentProps<typeof PaginationButton>) => (
+  <PaginationButton
     aria-label="Go to next page"
     className={cn("gap-1 ml-6", className)}
     {...props}
   >
     <ArrowRightIcon />
-  </PaginationLink>
+  </PaginationButton>
 );
 PaginationNext.displayName = "PaginationNext";
 
@@ -95,7 +95,7 @@ PaginationEllipsis.displayName = "PaginationEllipsis";
 export {
   Pagination,
   PaginationContent,
-  PaginationLink,
+  PaginationButton,
   PaginationItem,
   PaginationPrevious,
   PaginationNext,

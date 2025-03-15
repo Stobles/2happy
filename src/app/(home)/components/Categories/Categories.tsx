@@ -52,7 +52,7 @@ const Categories = () => {
               key={item.id}
               variant="tertiary"
               size="large"
-              className="w-full justify-between p-4 border-b-[1px] border-main"
+              className="w-full justify-between p-4 text-h5 border-b-[1px] border-main"
               asChild
             >
               <Link href={`${item.id}`}>

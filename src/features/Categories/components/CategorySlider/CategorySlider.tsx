@@ -1,22 +1,29 @@
 import { Button } from "@/components/UI/Button";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Category } from "../../types";
+
 import Link from "next/link";
+import SliderButton from "@/components/UI/SliderButton";
+import ArrowRightIcon from "@/components/icons/Arrows/ArrowRightIcon";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "./styles.css";
-import SliderButton from "@/components/UI/SliderButton";
-import ArrowRightIcon from "@/components/icons/Arrows/ArrowRightIcon";
 
 export const CategorySlider = ({ categories }: { categories: Category[] }) => {
   return (
-    <div className="category-slider ">
-      <Swiper slidesPerView="auto" spaceBetween={16}>
+    <div className="category-slider">
+      <Swiper
+        slidesPerView="auto"
+        onSwiper={(swiper) => (swiper.wrapperEl.classList = "swiper-wrapper")}
+        spaceBetween={16}
+        slidesPerGroup={2}
+        wrapperClass="gap-4"
+      >
         <SliderButton
-          asChild
+          className="absolute bg-white left-[-1px] top-0 z-10 disabled:hidden"
           slideType="prev"
-          className="absolute left-[-1px] top-0 z-10"
+          asChild
         >
           <Button variant="tertiary" size="iconSmall">
             <ArrowRightIcon className="rotate-180" />
@@ -35,9 +42,9 @@ export const CategorySlider = ({ categories }: { categories: Category[] }) => {
           </SwiperSlide>
         ))}
         <SliderButton
-          className="absolute top-0 right-[-1px] z-10"
-          asChild
+          className="absolute bg-white top-0 right-[-1px] z-10 disabled:hidden"
           slideType="next"
+          asChild
         >
           <Button variant="tertiary" size="iconSmall">
             <ArrowRightIcon />

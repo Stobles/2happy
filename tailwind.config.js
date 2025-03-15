@@ -8,6 +8,7 @@ module.exports = {
   theme: {
     borderRadius: {
       none: "0px",
+      full: "50%",
       xs: "2px",
     },
     extend: {
@@ -92,7 +93,6 @@ module.exports = {
           },
           secondary: {
             bg: {
-              DEFAULT: "#FCFCFF",
               hover: "#111112",
               focused: "#E5E8EE",
               active: "#E5E8EE",
@@ -108,7 +108,6 @@ module.exports = {
           },
           tertiary: {
             bg: {
-              DEFAULT: "#FCFCFF",
               hover: "#111112",
               focused: "#E5E8EE",
               active: "#E5E8EE",
@@ -182,11 +181,11 @@ module.exports = {
         },
       },
       backgroundColor:
-        '({ theme }) => ({\n        ...theme("colors.bg"),\n        ...theme("colors.button.primary.bg"),\n      })',
+        '({ theme }) => ({\\n        ...theme("colors.bg"),\\n        ...theme("colors.button.primary.bg"),\\n      })',
       textColor:
-        '({ theme }) => ({\n        ...theme("colors.text"),\n        ...theme("colors.button.primary.text"),\n      })',
+        '({ theme }) => ({\\n        ...theme("colors.text"),\\n        ...theme("colors.button.primary.text"),\\n      })',
       borderColor:
-        '({ theme }) => ({\n        ...theme("colors.stroke"),\n        ...theme("colors.button.primary.stroke"),\n      })',
+        '({ theme }) => ({\\n        ...theme("colors.stroke"),\\n        ...theme("colors.button.primary.stroke"),\\n      })',
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -194,17 +193,45 @@ module.exports = {
       },
       keyframes: {
         "collapsible-down": {
-          from: { height: 0 },
-          to: { height: "var(--radix-collapsible-content-height)" },
+          from: {
+            height: 0,
+          },
+          to: {
+            height: "var(--radix-collapsible-content-height)",
+          },
         },
         "collapsible-up": {
-          from: { height: "var(--radix-collapsible-content-height)" },
-          to: { height: 0 },
+          from: {
+            height: "var(--radix-collapsible-content-height)",
+          },
+          to: {
+            height: 0,
+          },
+        },
+        "accordion-down": {
+          "0%": {
+            height: "0",
+          },
+          "100%": {
+            flexShrink: "1",
+            height: "var(--radix-accordion-content-height)",
+          },
+        },
+        "accordion-up": {
+          from: {
+            height: "var(--radix-accordion-content-height)",
+          },
+          to: {
+            height: "0",
+          },
         },
       },
       animation: {
         "collapsible-down": "collapsible-down 0.2s ease-out",
         "collapsible-up": "collapsible-up 0.2s ease-out",
+        "accordion-down":
+          "accordion-down 0.2s ease-out, shrink-from-0-to-1 0.2s ease-out 0.2s forwards",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },

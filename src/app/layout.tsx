@@ -2,12 +2,10 @@ import "../styles/components.css";
 import "../styles/globals.css";
 import "../lib/fonts";
 
-import { Suspense } from "react";
 import { akira, lato } from "../lib/fonts";
 
-import Header from "@/components/Layout/Header/Header";
-import Footer from "@/components/Layout/Footer/Footer";
 import Providers from "./providers";
+import { MainLayout } from "@/components/Layout/MainLayout/MainLayout";
 
 export const metadata = {
   title: "2HAPPY",
@@ -18,24 +16,22 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) => {
   return (
     <html className="h-full" lang="ru">
       <body
         className={`${lato.variable} ${akira.variable} font-sans flex flex-col h-full bg-white`}
       >
-        <Suspense fallback={"...loading"}>
-          <Providers>
-            <Header />
-            <main className="flex-1 mt-[var(--header-height)]">{children}</main>
-            <Footer />
-          </Providers>
-        </Suspense>
+        <Providers>
+          <MainLayout>{children}</MainLayout>
+        </Providers>
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;
