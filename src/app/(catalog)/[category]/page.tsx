@@ -16,6 +16,7 @@ const CatalogPage = () => {
         src="/images/section-logo.png"
         alt="section-logo"
       />
+
       <div className="w-full flex flex-col gap-16">
         <div className="flex items-end gap-2">
           <h2 className="text-h2">Каталог /</h2>

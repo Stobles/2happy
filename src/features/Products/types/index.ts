@@ -18,3 +18,5 @@ export interface Product {
   isNew?: boolean;
   isBestseller?: boolean;
 }
+
+export type TProductGrid = "big" | "small";
