@@ -18,3 +18,8 @@ export interface Product {
   isNew?: boolean;
   isBestseller?: boolean;
 }
+
+export interface Color {
+  id: number;
+  hex: string;
+}

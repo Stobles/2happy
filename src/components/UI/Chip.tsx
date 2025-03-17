@@ -2,10 +2,11 @@ import { cn } from "@/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
 import { forwardRef } from "react";
 
-const chipVariants = cva(`flex rounded-xs !text-white`, {
+const chipVariants = cva(`flex rounded-xs text-white`, {
   variants: {
     variant: {
       red: "bg-red",
+      pink: "text-red bg-status-muted-error",
       yellow: "bg-yellow",
       grey: "bg-gray",
       green: "bg-green",
@@ -29,19 +30,17 @@ export type ChipSize = NonNullable<VariantProps<typeof chipVariants>["size"]>;
 
 export interface ChipProps
   extends React.HTMLAttributes<HTMLSpanElement>,
-    VariantProps<typeof chipVariants> {
-  text: string;
-}
+    VariantProps<typeof chipVariants> {}
 
 const Chip = forwardRef<HTMLButtonElement, ChipProps>(
-  ({ className, variant, size, text, ...props }, ref) => {
+  ({ className, variant, size, children, ...props }, ref) => {
     return (
       <span
         className={cn(chipVariants({ variant, size, className }))}
         ref={ref}
         {...props}
       >
-        {text}
+        {children}
       </span>
     );
   }

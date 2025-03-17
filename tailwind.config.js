@@ -69,9 +69,6 @@ module.exports = {
           light: "#E4E7EB",
         },
         bg: {
-          disabled: "#F0F0F3",
-          error: "#FDEBEB",
-          warning: "#FFFBF4",
           glass: "rgba(255, 255, 255, 0.3)",
         },
         button: {
@@ -132,6 +129,9 @@ module.exports = {
           success: "#439F6E",
           warning: "#605DEC",
           error: "#F93232",
+          disabled: "#F0F0F3",
+          "muted-error": "#FDE6E6",
+          "muted-warning": "#FFFBF4",
         },
         stroke: {
           black: "#111112",
