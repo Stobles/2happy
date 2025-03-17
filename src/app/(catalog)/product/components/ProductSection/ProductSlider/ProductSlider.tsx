@@ -3,16 +3,17 @@
 import { MouseEvent, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import Image from "next/image";
 import ImageWithFallback from "@/components/UI/ImageWithFallback";
+
+import { Thumbs } from "swiper/modules";
+import { Swiper as SwiperType } from "swiper/types";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import "./styles.scss";
-import { Thumbs } from "swiper/modules";
-import { Swiper as SwiperType } from "swiper/types";
-import Image from "next/image";
 
 const SLIDES = [
   "/images/Home/Main/slider-1.jpg",
@@ -57,8 +58,8 @@ const ProductSlider = () => {
           >
             <Image
               fill
-              className="object-cover"
               src={slide}
+              className="object-cover"
               alt="product-slide-thumb"
             />
           </SwiperSlide>
