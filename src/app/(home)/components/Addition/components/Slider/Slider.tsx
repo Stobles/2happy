@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import "./style.css";
+import "./style.scss";
 
 import { Autoplay, Navigation } from "swiper/modules";
 import ItemCard from "@/features/Fashion/components/ItemCard";

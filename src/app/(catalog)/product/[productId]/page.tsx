@@ -17,7 +17,7 @@ const ProductPage = () => {
         src="/images/section-logo.png"
         alt="section-logo"
       />
-      <div className="w-full flex gap-12">
+      <div className="w-full h-[552px] flex gap-12">
         <ProductSlider />
         <ProductInfo />
       </div>

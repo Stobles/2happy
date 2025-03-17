@@ -14,9 +14,9 @@ import { Separator } from "@/components/UI/Separator";
 
 const ProductInfo = () => {
   return (
-    <div className="flex-1 basis-[49%]">
-      <div className="flex flex-col gap-8 mb-14">
-        <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2 justify-between flex-1 basis-[49%]">
+      <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-6">
           <div className="flex justify-between gap-4">
             <h2 className="text-h4">
               Платье трикотажное <br /> с отделкой из сетки и принтом /

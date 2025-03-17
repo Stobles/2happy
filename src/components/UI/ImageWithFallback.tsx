@@ -36,7 +36,7 @@ const ImageWithFallback = ({
     <div className={cn("relative w-full h-full", wrapperClassName)}>
       <div
         className={cn(
-          `absolute  flex justify-center items-center w-full h-full z-10 bg-white opacity-0 transition-opacity`,
+          `absolute flex justify-center items-center w-full h-full z-10 bg-white opacity-0 transition-opacity`,
           isLoading && "opacity-100"
         )}
       >

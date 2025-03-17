@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import "./styles.css";
+import "./styles.scss";
 
 // import required modules
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
@@ -18,7 +18,7 @@ import ChevronLeftIcon from "@/components/icons/Chevron/ChevronLeftIcon";
 import SliderButton from "@/components/UI/SliderButton";
 import ImageWithFallback from "@/components/UI/ImageWithFallback";
 
-const slides = [
+const SLIDES = [
   "/images/Home/Main/slider-1.jpg",
   "/images/Home/Main/slider-2.jpg",
   "/images/Home/Main/slider-3.jpg",
@@ -44,7 +44,7 @@ const Slider = () => {
       slidesPerView={1}
       modules={[Pagination, Navigation, Autoplay]}
     >
-      {slides.map((item) => (
+      {SLIDES.map((item) => (
         <SwiperSlide key={item}>
           <ImageWithFallback src={item} fallbackSrc={item} alt="slider-image" />
         </SwiperSlide>
