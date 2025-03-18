@@ -61,7 +61,8 @@ module.exports = {
           secondary: "#DEDEE9",
         },
         red: "#F93232",
-        disabled: "#CFD1D4",
+        "light-disabled": "#F0F0F3",
+        "dark-disabled": "#CACED4",
         gray: {
           DEFAULT: "#9EA4AE",
           dark: "#3F4753",

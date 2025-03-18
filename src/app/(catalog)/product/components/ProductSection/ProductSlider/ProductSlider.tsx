@@ -38,7 +38,7 @@ const ProductSlider = () => {
     setZoom({ x: `${x}%`, y: `${y}%`, scale: 1.5 });
   };
 
-  const resetZoom = () => setZoom({ x: "50%", y: "50%", scale: 1 });
+  const resetZoom = () => setZoom((prev) => ({ ...prev, scale: 1 }));
 
   return (
     <div className="product-slider flex gap-6 flex-1 basis-[51%] overflow-hidden">
@@ -81,7 +81,7 @@ const ProductSlider = () => {
             >
               <ImageWithFallback
                 src={slide}
-                className="transition-transform w-full h-auto"
+                className=" transition-transform w-full h-auto"
                 fallbackSrc={slide}
                 style={{
                   transformOrigin: `${zoom.x} ${zoom.y}`,

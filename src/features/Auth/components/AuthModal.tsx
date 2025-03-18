@@ -23,7 +23,7 @@ const AuthModal = ({ trigger }: { trigger: ReactNode }) => {
         </DialogHeader>
         <div className="flex flex-col gap-8">
           <Tabs className="" defaultValue="login">
-            <TabsList>
+            <TabsList borderClass="bg-light-disabled">
               <TabsTrigger className="uppercase" value="login">
                 Войти
               </TabsTrigger>
