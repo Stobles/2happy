@@ -22,6 +22,8 @@ export const twMergeConf = extendTailwindMerge<"text", "bg">({
         "text-button-medium",
         "text-button-small",
         "text-button-xs",
+        "text-table-header",
+        "text-table-cell",
       ],
       "bg-image": ["bg-radial-gradient", "bg-gradient-4", "bg-footer-texture"],
     },

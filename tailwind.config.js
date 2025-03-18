@@ -349,6 +349,19 @@ module.exports = {
           lineHeight: "16px",
         },
 
+        // Table
+        ".text-table-header": {
+          fontSize: "12px",
+          lineHeight: "16px",
+          fontWeight: 600,
+          textTransform: "uppercase",
+        },
+
+        ".text-table-cell": {
+          fontSize: "14px",
+          lineHeight: "16px",
+        },
+
         // Button/Hover
 
         ".primary-svg-hover": {

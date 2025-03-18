@@ -11,6 +11,8 @@ import {
   RadioGroupColor,
 } from "@/features/Products/components/RadioColors";
 import { Separator } from "@/components/UI/Separator";
+import SizesTableDialog from "@/features/Products/components/SizesTableDialog";
+import OutOfStockDialog from "@/features/Products/components/OutOfStockDialog";
 
 const ProductInfo = () => {
   return (
@@ -58,7 +60,13 @@ const ProductInfo = () => {
         <div className="flex flex-col gap-4">
           <div className="w-full flex justify-between">
             <span className="text-body1">Размер</span>
-            <button className="text-button-xs">Таблица размеров</button>
+            <SizesTableDialog
+              trigger={
+                <button className="text-button-xs after:bottom-[1px] link-hover">
+                  Таблица размеров
+                </button>
+              }
+            />
           </div>
           <RadioButtonsGroup className="flex gap-2" defaultValue="default">
             <RadioGroupButton value="small" id="r1">
@@ -78,9 +86,13 @@ const ProductInfo = () => {
       </div>
       <div className="flex gap-2">
         <Button className="w-full"> Добавить в корзину</Button>
-        <Button className="w-full" variant="secondary">
-          Купить
-        </Button>
+        <OutOfStockDialog
+          trigger={
+            <Button className="w-full" variant="secondary">
+              Купить
+            </Button>
+          }
+        />
         <Button className="[&_svg]:fill-transparent" size="iconNormal">
           <HeartIcon className="stroke-white" />
         </Button>

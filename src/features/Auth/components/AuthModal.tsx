@@ -17,7 +17,7 @@ const AuthModal = ({ trigger }: { trigger: ReactNode }) => {
   return (
     <Dialog>
       <DialogTrigger>{trigger}</DialogTrigger>
-      <DialogContent className="gap-10" closeClassName="top-10 right-8">
+      <DialogContent className="px-8 gap-10" closeClassName="top-10 right-8">
         <DialogHeader>
           <DialogTitle>Войдите или создайте аккаунт</DialogTitle>
         </DialogHeader>
