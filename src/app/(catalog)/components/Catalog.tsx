@@ -3,13 +3,16 @@ import { PRODUCTS } from "../[category]/consts";
 import { Button } from "@/components/UI/Button";
 import CatalogPagination from "./CatalogPagination";
 import CatalogHeader from "./CatalogHeader";
+import { useState } from "react";
+import { TProductGrid } from "@/features/Products/types";
 
 const Catalog = () => {
+  const [grid, setGrid] = useState<TProductGrid>("small");
   return (
     <div className="flex flex-col gap-10">
       <div className="flex flex-col gap-6">
-        <CatalogHeader />
-        <ProductsList products={PRODUCTS} />
+        <CatalogHeader onGridChange={(value) => setGrid(value)} />
+        <ProductsList products={PRODUCTS} grid={grid} />
       </div>
       <Button className="w-full" variant="secondary" size="normal">
         Показать еще

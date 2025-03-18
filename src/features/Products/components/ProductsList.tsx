@@ -1,4 +1,4 @@
-import { Product } from "../types";
+import { Product, TProductGrid } from "../types";
 import ProductCard from "./ProductCard";
 
 const ProductsList = ({
@@ -6,7 +6,7 @@ const ProductsList = ({
   grid = "small",
 }: {
   products: Product[];
-  grid?: "small" | "big";
+  grid?: TProductGrid;
 }) => {
   return (
     <div

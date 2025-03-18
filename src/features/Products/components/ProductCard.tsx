@@ -29,7 +29,7 @@ const ProductCard = ({ product }: { product: Product }) => {
           <HeartIcon
             role="button"
             onClick={handleFavoriteClick}
-            className="absolute top-4 right-4 z-10 opacity-0 group-hover/product:opacity-100 hover:fill-main"
+            className="absolute top-4 right-4 z-50 opacity-0 group-hover/product:opacity-100 hover:fill-main"
           />
           <ImageWithFallback
             src={image}

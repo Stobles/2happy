@@ -19,7 +19,10 @@ export interface Product {
   isBestseller?: boolean;
 }
 
+export type TProductGrid = "big" | "small";
+
 export interface Color {
   id: number;
   hex: string;
 }
+

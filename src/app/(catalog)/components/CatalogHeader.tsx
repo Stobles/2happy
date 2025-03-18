@@ -1,4 +1,6 @@
 import FiltersIcon from "@/components/icons/FiltersIcon";
+import GridBigIcon from "@/components/icons/GridBigIcon";
+import GridSmallIcon from "@/components/icons/GridSmallIcon";
 import {
   Select,
   SelectContent,
@@ -6,6 +8,7 @@ import {
   SelectTriggerPlain,
 } from "@/components/UI/Select";
 import ProductsFiltersSheet from "@/features/Products/components/ProductsFiltersSheet";
+import { TProductGrid } from "@/features/Products/types";
 
 const CatalogSelect = () => {
   return (
@@ -25,18 +28,34 @@ const CatalogSelect = () => {
   );
 };
 
-const CatalogHeader = () => {
+const CatalogHeader = ({
+  onGridChange,
+}: {
+  onGridChange: (value: TProductGrid) => void;
+}) => {
   return (
-    <div className="flex gap-4">
-      <ProductsFiltersSheet
-        trigger={
-          <div className="text-button-xs link-hover">
-            <FiltersIcon className="h-6 w-6" />
-            <span>Показать фильтры</span>
-          </div>
-        }
-      />
-      <CatalogSelect />
+    <div className="flex items-center justify-between gap-2">
+      <div className="flex gap-4">
+        <ProductsFiltersSheet
+          trigger={
+            <div className="text-button-xs link-hover">
+              <FiltersIcon className="h-6 w-6" />
+              <span>Показать фильтры</span>
+            </div>
+          }
+        />
+        <CatalogSelect />
+      </div>
+      <div className="flex items-center gap-2">
+        <GridSmallIcon
+          className="cursor-pointer [&_*]:cursor-pointer hover:fill-main hover:stroke-transparent"
+          onClick={() => onGridChange("small")}
+        />
+        <GridBigIcon
+          className="cursor-pointer [&_*]:cursor-pointer h-[19px]  w-[19px] hover:fill-main hover:stroke-transparent"
+          onClick={() => onGridChange("big")}
+        />
+      </div>
     </div>
   );
 };
