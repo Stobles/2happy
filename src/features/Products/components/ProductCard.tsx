@@ -7,6 +7,7 @@ import { getProductChip } from "../utils/getProductChip";
 import { Chip } from "@/components/UI/Chip";
 import { MouseEvent } from "react";
 import ImageWithFallback from "@/components/UI/ImageWithFallback";
+import ColorSquare from "./ColorSquare";
 
 const ProductCard = ({ product }: { product: Product }) => {
   const { id, title, colors, sizes, price, image, sale } = product;
@@ -21,11 +22,9 @@ const ProductCard = ({ product }: { product: Product }) => {
       <Link href={`/${id}`} className="flex flex-col h-full gap-4">
         <div className="relative h-full">
           {chip && (
-            <Chip
-              className="absolute top-4 left-4 z-10"
-              variant={chip.type}
-              text={chip.text}
-            />
+            <Chip className="absolute top-4 left-4 z-10" variant={chip.type}>
+              {chip.text}
+            </Chip>
           )}
           <HeartIcon
             role="button"
@@ -45,13 +44,7 @@ const ProductCard = ({ product }: { product: Product }) => {
             <div className="absolute w-full flex items-center justify-between gap-2 opacity-0 group-hover/product:opacity-100 transition-opacity">
               <div className="flex gap-2">
                 {colors.map((color) => (
-                  <div
-                    key={color.id}
-                    style={{
-                      backgroundColor: `${color.hex}`,
-                    }}
-                    className={`w-[16px] h-[16px]`}
-                  />
+                  <ColorSquare key={color.id} color={color.hex} />
                 ))}
               </div>
               <div className="flex gap-2 text-gray-middle">

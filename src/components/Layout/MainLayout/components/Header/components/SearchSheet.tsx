@@ -134,7 +134,10 @@ const SearchSheet = () => {
               <ul className="flex h-full gap-10">
                 {PRODUCTS.map((product) => (
                   <li key={product.id} className="w-full">
-                    <ProductCardWithButton product={product} />
+                    <ProductCardWithButton
+                      product={product}
+                      buttonText="Подробнее"
+                    />
                   </li>
                 ))}
               </ul>

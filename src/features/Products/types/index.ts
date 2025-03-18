@@ -20,3 +20,9 @@ export interface Product {
 }
 
 export type TProductGrid = "big" | "small";
+
+export interface Color {
+  id: number;
+  hex: string;
+}
+

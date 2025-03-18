@@ -1,0 +1,22 @@
+.complement-fashion {
+  --slide-width: 288px;
+  --active-slide-width: 392px;
+  --slide-height: 400px;
+  --active-slide-height: 640px;
+
+  & .swiper-wrapper {
+    transition: all 0.4s ease !important;
+  }
+
+  & .swiper-slide {
+    width: var(--slide-width);
+    height: var(--slide-height);
+    transition: width 0.4s ease, height 0.2s ease-in-out;
+  }
+
+  & .swiper-slide-active {
+    width: var(--active-slide-width);
+    height: var(--active-slide-height);
+    transition: width 0.4s ease, height 0.4s ease-in-out 0.4s;
+  }
+}

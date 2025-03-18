@@ -61,7 +61,8 @@ module.exports = {
           secondary: "#DEDEE9",
         },
         red: "#F93232",
-        disabled: "#CFD1D4",
+        "light-disabled": "#F0F0F3",
+        "dark-disabled": "#CACED4",
         gray: {
           DEFAULT: "#9EA4AE",
           dark: "#3F4753",
@@ -69,9 +70,6 @@ module.exports = {
           light: "#E4E7EB",
         },
         bg: {
-          disabled: "#F0F0F3",
-          error: "#FDEBEB",
-          warning: "#FFFBF4",
           glass: "rgba(255, 255, 255, 0.3)",
         },
         button: {
@@ -132,6 +130,9 @@ module.exports = {
           success: "#439F6E",
           warning: "#605DEC",
           error: "#F93232",
+          disabled: "#F0F0F3",
+          "muted-error": "#FDE6E6",
+          "muted-warning": "#FFFBF4",
         },
         stroke: {
           black: "#111112",
@@ -344,6 +345,19 @@ module.exports = {
           textTransform: "uppercase",
         },
         ".text-button-xs": {
+          fontSize: "14px",
+          lineHeight: "16px",
+        },
+
+        // Table
+        ".text-table-header": {
+          fontSize: "12px",
+          lineHeight: "16px",
+          fontWeight: 600,
+          textTransform: "uppercase",
+        },
+
+        ".text-table-cell": {
           fontSize: "14px",
           lineHeight: "16px",
         },
