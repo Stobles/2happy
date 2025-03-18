@@ -1,6 +1,7 @@
 import Container from "@/components/UI/Container";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/UI/Tabs";
 import DescriptionTab from "./DescriptionTab";
+import ReviewsTab from "./ReviewsTab";
 
 const AboutSection = () => {
   return (
@@ -13,6 +14,9 @@ const AboutSection = () => {
           </TabsList>
           <TabsContent className="h-full" value="description">
             <DescriptionTab />
+          </TabsContent>
+          <TabsContent className="h-full" value="reviews">
+            <ReviewsTab />
           </TabsContent>
         </Tabs>
       </Container>
