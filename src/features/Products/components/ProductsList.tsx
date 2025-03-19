@@ -1,5 +1,5 @@
 import { Product, TProductGrid } from "../types";
-import ProductCard from "./ProductCard";
+import ProductCard from "./ProductCards/ProductCard";
 
 const ProductsList = ({
   products,

@@ -2,7 +2,7 @@
 
 import ArrowUpRightIcon from "@/components/icons/Arrows/ArrowUpRightIcon";
 import { Button } from "@/components/UI/Button";
-import ProductCard from "@/features/Products/components/ProductCard";
+import ProductCard from "@/features/Products/components/ProductCards/ProductCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { SIZES, SLIDES, SLIDES_SIZES } from "./consts";
 import SliderButton from "@/components/UI/SliderButton";
@@ -56,10 +56,10 @@ const Slider = () => {
         })}
         <div className="absolute flex gap-4 right-0 bottom-0">
           <SliderButton slideType="prev" className="group">
-            <ArrowRightIcon className="w-[48px] h-[48px] rotate-180 fill-main group-disabled:fill-disabled" />
+            <ArrowRightIcon className="w-[48px] h-[48px] rotate-180 fill-main group-disabled:fill-dark-disabled" />
           </SliderButton>
           <SliderButton slideType="next" className="group">
-            <ArrowRightIcon className="w-[48px] h-[48px] fill-main group-disabled:fill-disabled" />
+            <ArrowRightIcon className="w-[48px] h-[48px] fill-main group-disabled:fill-dark-disabled" />
           </SliderButton>
         </div>
       </Swiper>

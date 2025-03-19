@@ -13,7 +13,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/UI/Sheet";
-import ProductCardWithButton from "@/features/Products/components/ProductCardWithButton";
+import ProductCardWithButton from "@/features/Products/components/ProductCards/ProductCardWithButton";
 import { Product } from "@/features/Products/types";
 import Link from "next/link";
 

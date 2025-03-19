@@ -1,7 +1,7 @@
 import ArrowRightIcon from "@/components/icons/Arrows/ArrowRightIcon";
 import Container from "@/components/UI/Container";
 import Section from "@/components/UI/Section";
-import ProductCard from "@/features/Products/components/ProductCard";
+import ProductCard from "@/features/Products/components/ProductCards/ProductCard";
 import { Product } from "@/features/Products/types";
 import Image from "next/image";
 import Link from "next/link";

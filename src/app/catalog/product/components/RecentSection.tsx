@@ -2,7 +2,7 @@ import Container from "@/components/UI/Container";
 import { ScrollArea, ScrollBar } from "@/components/UI/ScrollArea";
 import Section from "@/components/UI/Section";
 import SectionImage from "@/components/UI/SectionImage";
-import ProductCard from "@/features/Products/components/ProductCard";
+import ProductCard from "@/features/Products/components/ProductCards/ProductCard";
 import { Product } from "@/features/Products/types";
 
 const PRODUCTS: Product[] = [

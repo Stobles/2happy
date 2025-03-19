@@ -7,7 +7,7 @@ import {
   SelectItem,
   SelectTriggerPlain,
 } from "@/components/UI/Select";
-import ProductsFiltersSheet from "@/features/Products/components/ProductsFiltersSheet";
+import ProductsFiltersSheet from "@/features/Products/components/Dialogs/ProductsFiltersSheet";
 import { TProductGrid } from "@/features/Products/types";
 
 const CatalogSelect = () => {

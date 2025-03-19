@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
-import InstagramIcon from "../../../components/icons/Social/InstagramIcon";
-import ImageWithFallback from "../../../components/UI/ImageWithFallback";
+import InstagramIcon from "@/components/icons/Social/InstagramIcon";
+import ImageWithFallback from "@/components/UI/ImageWithFallback";
 
 const InstagramCard = ({
   src,

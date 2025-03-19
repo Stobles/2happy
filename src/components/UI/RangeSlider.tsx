@@ -55,7 +55,7 @@ const RangeSlider = React.forwardRef(
         )}
         {...props}
       >
-        <SliderPrimitive.Track className="relative h-0.5 w-full grow overflow-hidden rounded-full bg-disabled">
+        <SliderPrimitive.Track className="relative h-0.5 w-full grow overflow-hidden rounded-full bg-dark-disabled">
           <SliderPrimitive.Range className="absolute h-full bg-main" />
         </SliderPrimitive.Track>
         <span className="absolute left-0 top-3 text-description">{min}</span>
