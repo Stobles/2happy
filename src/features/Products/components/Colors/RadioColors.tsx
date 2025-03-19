@@ -4,7 +4,7 @@ import * as React from "react";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 
 import { cn } from "@/lib/utils";
-import ColorSquare from "@/features/Products/components/ColorSquare";
+import ColorSquare from "@/features/Products/components/Colors/ColorSquare";
 
 const RadioColorsGroup = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,

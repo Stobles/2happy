@@ -2,12 +2,12 @@
 
 import HeartIcon from "@/components/icons/HeartIcon";
 import Link from "next/link";
-import { Product } from "../types";
-import { getProductChip } from "../utils/getProductChip";
+import { Product } from "../../types";
+import { getProductChip } from "../../utils/getProductChip";
 import { Chip } from "@/components/UI/Chip";
 import { MouseEvent } from "react";
 import ImageWithFallback from "@/components/UI/ImageWithFallback";
-import ColorSquare from "./ColorSquare";
+import ColorSquare from "../Colors/ColorSquare";
 
 const ProductCard = ({ product }: { product: Product }) => {
   const { id, title, colors, sizes, price, image, sale } = product;

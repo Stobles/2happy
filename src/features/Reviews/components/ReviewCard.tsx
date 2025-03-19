@@ -1,5 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/UI/Avatar";
-import Rating from "./Rating";
+import Rating from "@/components/UI/Rating";
 
 const ReviewCard = () => {
   return (

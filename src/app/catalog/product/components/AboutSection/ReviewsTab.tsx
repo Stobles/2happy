@@ -6,7 +6,7 @@ import {
   SelectTriggerPlain,
   SelectValue,
 } from "@/components/UI/Select";
-import Rating from "@/features/Reviews/components/Rating";
+import Rating from "@/components/UI/Rating";
 import ReviewCard from "@/features/Reviews/components/ReviewCard";
 
 const ReviewsTab = () => {

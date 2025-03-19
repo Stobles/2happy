@@ -2,7 +2,14 @@
 
 import StarIcon from "@/components/icons/StarIcon";
 import { useState } from "react";
-import { generateStars } from "../utils";
+
+const generateStars = (rating: number, maxRating: number = 5) => {
+  const stars = [];
+  for (let i = 0; i < maxRating; i++) {
+    stars.push({ checked: i < Math.round(rating) });
+  }
+  return stars;
+};
 
 const Rating = ({
   rating,

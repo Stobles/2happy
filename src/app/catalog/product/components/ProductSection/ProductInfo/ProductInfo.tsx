@@ -9,22 +9,24 @@ import {
 import {
   RadioColorsGroup,
   RadioGroupColor,
-} from "@/features/Products/components/RadioColors";
+} from "@/features/Products/components/Colors/RadioColors";
 import { Separator } from "@/components/UI/Separator";
-import SizesTableDialog from "@/features/Products/components/SizesTableDialog";
-import OutOfStockDialog from "@/features/Products/components/OutOfStockDialog";
+import SizesTableDialog from "@/features/Products/components/Dialogs/SizesTableDialog";
+import OutOfStockDialog from "@/features/Products/components/Dialogs/OutOfStockDialog";
+import StyledTooltip from "@/components/UI/StyledTooltip";
 
 const ProductInfo = () => {
   return (
     <div className="flex flex-col gap-2 justify-between flex-1 basis-[49%]">
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-6">
-          <div className="flex justify-between gap-4">
+          <div className="flex items-center justify-between gap-4">
             <h2 className="text-h4">
               Платье трикотажное <br /> с отделкой из сетки и принтом /
             </h2>
-            <button>
+            <button data-tooltip-id="share" data-tooltip-content="Поделиться">
               <ShareIcon />
+              <StyledTooltip id="share" />
             </button>
           </div>
           <div className="flex flex-col gap-2">

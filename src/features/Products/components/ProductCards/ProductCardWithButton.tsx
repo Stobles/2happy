@@ -1,5 +1,5 @@
 import { Button } from "@/components/UI/Button";
-import { Product } from "../types";
+import { Product } from "../../types";
 import ProductCard from "./ProductCard";
 
 const ProductCardWithButton = ({
