@@ -4,7 +4,7 @@ import "../lib/fonts";
 
 import { akira, lato } from "../lib/fonts";
 
-import Providers from "./providers";
+import Providers from "../providers/providers";
 import { MainLayout } from "@/components/Layout/MainLayout/MainLayout";
 
 export const metadata = {

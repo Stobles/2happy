@@ -23,17 +23,6 @@ export const socialIcons: { href: string; element: ReactNode }[] = [
   },
 ];
 
-export const accountLinks: IFooterLink[] = [
-  {
-    href: "/",
-    text: "Войти",
-  },
-  {
-    href: "/",
-    text: "Создать учетную запись",
-  },
-];
-
 export const clientsLinks: IFooterLink[] = [
   {
     href: "/",
@@ -93,10 +82,6 @@ export const storeLinks: IFooterLink[] = [
 ];
 
 export const mainBlocks: { title: string; links: IFooterLink[] }[] = [
-  {
-    title: "Аккаунт",
-    links: accountLinks,
-  },
   {
     title: "Для клиентов",
     links: clientsLinks,

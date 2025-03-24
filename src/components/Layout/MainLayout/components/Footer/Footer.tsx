@@ -6,6 +6,7 @@ import PaypalIcon from "@/components/icons/Payment/PayPalIcon";
 import Container from "@/components/UI/Container";
 import VisaIcon from "@/components/icons/Payment/VisaIcon";
 import { mainBlocks, socialIcons } from "./consts/consts";
+import AccountList from "./components/AccountList";
 
 const Footer = () => {
   return (
@@ -38,6 +39,7 @@ const Footer = () => {
         {/* Footer Main */}
 
         <ul className="flex gap-12 py-12 border-b-[1px] border-white">
+          <AccountList />
           {/* Footer Links */}
           {mainBlocks.map((item) => (
             <li key={item.title} className="basis-full">
