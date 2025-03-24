@@ -16,11 +16,7 @@ const Content = (props: SheetContentProps) => {
   const firstClothList = clothCategories.slice(0, 6);
   const secondClothList = clothCategories.slice(6, -1);
   return (
-    <SheetContent
-      className="flex p-0 z-behind-header bg-white"
-      overlayClassName="z-behind-header"
-      {...props}
-    >
+    <SheetContent className="flex p-0 z-behind-header-2 bg-white" {...props}>
       <SheetHeader className="hidden">
         <SheetTitle>Каталог</SheetTitle>
       </SheetHeader>

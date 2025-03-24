@@ -5,6 +5,8 @@ import { Button } from "@/components/UI/Button";
 import Container from "@/components/UI/Container";
 import Section from "@/components/UI/Section";
 import Slider from "./components/Slider/Slider";
+import Link from "next/link";
+import { paths } from "@/config/paths";
 
 const Main = () => {
   return (
@@ -18,8 +20,15 @@ const Main = () => {
               <span className="text-h4 mb-20">
                 Стильная и комфортная <br /> одежда на все случаи жизни!
               </span>
-              <Button className="w-full" variant="secondary" size="large">
-                Перейти в каталог <ArrowUpRightIcon />
+              <Button
+                className="w-full"
+                variant="secondary"
+                size="large"
+                asChild
+              >
+                <Link href={paths.catalog.root.getHref()}>
+                  Перейти в каталог <ArrowUpRightIcon />
+                </Link>
               </Button>
             </div>
           </div>

@@ -8,8 +8,8 @@ module.exports = {
   theme: {
     borderRadius: {
       none: "0px",
-      full: "50%",
       xs: "2px",
+      full: "50%",
     },
     extend: {
       screens: {
@@ -27,7 +27,8 @@ module.exports = {
         section: "136px",
       },
       zIndex: {
-        "behind-header": "51",
+        "behind-header": "50",
+        "behind-header-2": "60",
         header: "100",
         "over-header": "150",
       },

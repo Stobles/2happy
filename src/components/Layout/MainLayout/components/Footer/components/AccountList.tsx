@@ -1,6 +1,7 @@
 "use client";
 
 import { useUser } from "@/api/authApi";
+import { paths } from "@/config/paths";
 import AuthModal from "@/features/Auth/components/AuthModal";
 import Link from "next/link";
 
@@ -12,7 +13,10 @@ const AccountList = () => {
       <ul className="space-y-2 text-white-secondary">
         {user.data ? (
           <li>
-            <Link href="/" className="link-hover text-button-xs">
+            <Link
+              href={paths.account.root.getHref()}
+              className="link-hover text-button-xs"
+            >
               Личный кабинет
             </Link>
           </li>
