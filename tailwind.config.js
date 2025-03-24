@@ -33,6 +33,7 @@ module.exports = {
       },
       boxShadow: {
         header: "0px 2px 10px 0px rgba(15, 25, 40, 0.2)",
+        around: "0px 0px 70px -30px rgba(0, 0, 0, 1)",
         feature:
           " 0px -2px 10px 0px rgba(255, 255, 255, 0.3) inset, 0px 20px 30px 0px rgba(48, 48, 48, 0.25)",
         "elevation-1": "0px 4px 4px 0px rgba(17, 17, 18, 0.2)",
@@ -128,15 +129,16 @@ module.exports = {
         },
         status: {
           success: "#439F6E",
-          warning: "#605DEC",
+          warning: "#FFB82E",
           error: "#F93232",
-          disabled: "#F0F0F3",
           "muted-error": "#FDE6E6",
           "muted-warning": "#FFFBF4",
+          "muted-success": "#F1FFF4",
         },
         stroke: {
           black: "#111112",
           grey: "#9FA3A9",
+          success: "#C0ECD4",
           warning: "#FFEAC1",
           error: "#FF7E7E",
         },

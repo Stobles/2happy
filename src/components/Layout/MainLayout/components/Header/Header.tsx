@@ -9,19 +9,23 @@ import Container from "@/components/UI/Container";
 import StyledTooltip from "@/components/UI/StyledTooltip";
 
 import { iconLinks, mainLinks, subLinks } from "./consts/consts";
-import UserIcon from "@/components/icons/UserIcon";
-import AuthModal from "@/features/Auth/components/AuthModal";
 import CategorySheet from "./components/CategorySheet/CategorySheet";
 import SearchSheet from "./components/SearchSheet";
 import useObserver from "@/hooks/useObserver";
 
 import "./style.css";
+import { useUser } from "@/api/authApi";
+import Account from "./components/Account";
 
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
   const upperHeaderRef = useRef(null);
 
+  const user = useUser();
+
   useObserver(upperHeaderRef, (entry) => setIsSticky(!entry.isIntersecting));
+
+  console.log(user);
 
   return (
     <>
@@ -87,18 +91,7 @@ const Header = () => {
                   <StyledTooltip id={icon.tooltip.id} />
                 </Link>
               ))}
-              <AuthModal
-                trigger={
-                  <div>
-                    <UserIcon
-                      data-tooltip-id="auth"
-                      data-tooltip-content="Войти"
-                      className="hover:fill-main transition-colors"
-                    />
-                    <StyledTooltip id="auth" />
-                  </div>
-                }
-              />
+              <Account />
             </div>
           </div>
         </Container>

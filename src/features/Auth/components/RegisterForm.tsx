@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/UI/Button";
 import {
   Form,
@@ -8,119 +10,119 @@ import {
   FormMessage,
 } from "@/components/UI/Form";
 import { Input } from "@/components/UI/Input";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { Checkbox } from "@/components/UI/Checkbox";
+import Link from "next/link";
+import { useRegisterForm } from "../hooks/useRegisterForm";
+import PasswordInput from "./PasswordInput";
+import LoaderIcon from "@/components/icons/LoaderIcon";
+import { useRegister } from "@/api/authApi";
 
-const formSchema = z.object({
-  name: z.string(),
-  email: z.string().email(),
-  password: z
-    .string()
-    .min(8, "Пароль должен содержать не менее 8 символов")
-    .regex(/[A-Za-z]/, "Пароль должен содержать хотя бы одну букву")
-    .regex(
-      /[0-9!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/,
-      "Пароль должен содержать хотя бы одну цифру или специальный символ"
-    ),
-  politic: z.boolean(),
-  notifications: z.boolean().optional(),
-});
+const RegisterForm = ({ onSuccess }: { onSuccess: () => void }) => {
+  const { mutate, isPending } = useRegister({ onSuccess });
 
-const RegisterForm = () => {
-  const form = useForm({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      password: "",
-      politic: false,
-      notifications: false,
-    },
+  const { registerForm, getStatusIcon, onSubmit } = useRegisterForm({
+    mutateFn: mutate,
   });
-
-  const onSubmit = () => {};
   return (
-    <Form {...form}>
+    <Form {...registerForm}>
       <form
-        onSubmit={form.handleSubmit(onSubmit)}
+        onSubmit={registerForm.handleSubmit(onSubmit)}
         className="flex flex-col gap-4"
       >
         <FormField
-          control={form.control}
+          control={registerForm.control}
           name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input placeholder="Имя" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          render={({ field, fieldState }) => {
+            return (
+              <FormItem>
+                <FormControl>
+                  <Input
+                    placeholder="Имя"
+                    endIcon={getStatusIcon(field.value, fieldState.error)}
+                    hasError={!!fieldState.error}
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            );
+          }}
         />
         <FormField
-          control={form.control}
+          control={registerForm.control}
           name="email"
-          render={({ field }) => (
+          render={({ field, fieldState }) => (
             <FormItem>
               <FormControl>
-                <Input placeholder="Email" type="email" {...field} />
+                <Input
+                  type="email"
+                  placeholder="Email"
+                  endIcon={getStatusIcon(field.value, fieldState.error)}
+                  hasError={!!fieldState.error}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input placeholder="Пароль" type="password" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+
+        <PasswordInput name="password" control={registerForm.control} />
+        <PasswordInput
+          name="repeatPassword"
+          control={registerForm.control}
+          placeholder="Повторите пароль"
         />
+
         <FormField
-          control={form.control}
+          control={registerForm.control}
           name="politic"
-          render={({ field }) => (
-            <FormItem className="flex items-start">
+          render={({ field, fieldState }) => (
+            <FormItem className="flex-row items-start">
               <FormControl>
                 <Checkbox
+                  className={`${
+                    fieldState.error ? "shadow-sm shadow-red border-red" : ""
+                  }`}
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
               </FormControl>
-              <FormLabel className="mt-0">
+              <FormLabel className="text-gray-dark mt-0">
                 Подтверждаю свое согласие на обработку персональных данных и
-                ознакомление с «Политикой конфиденциальности».
+                ознакомление с 
+                <Link className="text-main underline" href="/">
+                  «Политикой конфиденциальности»
+                </Link>
+                .
               </FormLabel>
-              <FormMessage />
             </FormItem>
           )}
         />
         <FormField
-          control={form.control}
+          control={registerForm.control}
           name="notifications"
           render={({ field }) => (
-            <FormItem className="flex items-center">
+            <FormItem className="flex-row items-center">
               <FormControl>
                 <Checkbox
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
               </FormControl>
-              <FormLabel className="mt-0">
+              <FormLabel className="text-gray-dark mt-0">
                 Подписаться на рассылку о новых коллекциях, распродажах.
               </FormLabel>
-              <FormMessage />
             </FormItem>
           )}
         />
-        <Button className="w-full mt-4" size="normal" type="submit">
+        <Button
+          disabled={isPending}
+          className="w-full mt-4"
+          size="normal"
+          type="submit"
+        >
+          {isPending && <LoaderIcon className="animate-spin" />}
           Зарегистрироваться
         </Button>
       </form>
