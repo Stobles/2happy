@@ -18,8 +18,10 @@ export const metadata = {
 
 const RootLayout = ({
   children,
+  breadcrumbs,
 }: Readonly<{
   children: React.ReactNode;
+  breadcrumbs: React.ReactNode;
 }>) => {
   return (
     <html className="h-full" lang="ru">
@@ -27,7 +29,10 @@ const RootLayout = ({
         className={`${lato.variable} ${akira.variable} font-sans flex flex-col h-full bg-white`}
       >
         <Providers>
-          <MainLayout>{children}</MainLayout>
+          <MainLayout>
+            {breadcrumbs}
+            {children}
+          </MainLayout>
         </Providers>
       </body>
     </html>
