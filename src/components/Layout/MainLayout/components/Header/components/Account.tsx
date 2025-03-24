@@ -5,13 +5,14 @@ import StyledTooltip from "@/components/UI/StyledTooltip";
 import AuthModal from "@/features/Auth/components/AuthModal";
 
 import { useUser } from "@/api/authApi";
+import { paths } from "@/config/paths";
 
 const Account = () => {
   const user = useUser();
 
   if (user.data) {
     return (
-      <Link href="/">
+      <Link href={paths.account.root.getHref()}>
         <UserIcon
           data-tooltip-id="account"
           data-tooltip-content="Аккаунт"
