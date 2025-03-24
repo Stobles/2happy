@@ -4,7 +4,7 @@ import Header from "./components/Header/Header";
 
 export const MainLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <Suspense fallback={"...loading"}>
+    <Suspense fallback={"...Loading"}>
       <Header />
       <main className="flex-1 mt-[var(--header-height)]">{children}</main>
       <Footer />

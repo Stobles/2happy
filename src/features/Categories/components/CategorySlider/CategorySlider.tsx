@@ -15,7 +15,6 @@ export const CategorySlider = ({ categories }: { categories: Category[] }) => {
     <div className="category-slider">
       <Swiper
         slidesPerView="auto"
-        onSwiper={(swiper) => (swiper.wrapperEl.classList = "swiper-wrapper")}
         spaceBetween={16}
         slidesPerGroup={2}
         wrapperClass="gap-4"

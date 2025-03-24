@@ -11,21 +11,16 @@ import StyledTooltip from "@/components/UI/StyledTooltip";
 import { iconLinks, mainLinks, subLinks } from "./consts/consts";
 import CategorySheet from "./components/CategorySheet/CategorySheet";
 import SearchSheet from "./components/SearchSheet";
+import Account from "./components/Account";
 import useObserver from "@/hooks/useObserver";
 
 import "./style.css";
-import { useUser } from "@/api/authApi";
-import Account from "./components/Account";
 
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
   const upperHeaderRef = useRef(null);
 
-  const user = useUser();
-
   useObserver(upperHeaderRef, (entry) => setIsSticky(!entry.isIntersecting));
-
-  console.log(user);
 
   return (
     <>
