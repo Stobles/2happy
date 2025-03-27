@@ -230,6 +230,9 @@ module.exports = {
           },
         },
       },
+      transitionDuration: {
+        5000: "5000ms",
+      },
       animation: {
         "collapsible-down": "collapsible-down 0.2s ease-out",
         "collapsible-up": "collapsible-up 0.2s ease-out",

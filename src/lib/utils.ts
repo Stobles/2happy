@@ -33,3 +33,16 @@ export const twMergeConf = extendTailwindMerge<"text", "bg">({
 export function cn(...inputs: ClassValue[]) {
   return twMergeConf(clsx(inputs));
 }
+
+export function getURLWithParams(
+  initialUrl: string,
+  params: { [key: string]: unknown }
+) {
+  let url = initialUrl;
+  Object.entries(params).forEach(([key, value]) => {
+    if (url.includes(`{${key}}`)) {
+      url = url.replace(`{${key}}`, String(value));
+    }
+  });
+  return url;
+}

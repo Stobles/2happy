@@ -7,6 +7,7 @@ import {
 import { apiInstance } from "./apiInstance";
 import { AuthResponse, UserData } from "@/types/api";
 import { z } from "zod";
+import { useAuthStore } from "@/store/authStore";
 import Cookies from "js-cookie";
 
 export const getUserURL = "/wp/v2/users/me";
@@ -26,11 +27,14 @@ export const getUserQueryOptions = () => {
   });
 };
 
-export const useUser = () =>
-  useQuery({
+export const useUser = () => {
+  const userToken = useAuthStore((state) => state.userToken);
+  return useQuery({
     ...getUserQueryOptions(),
+    enabled: !!userToken,
     retry: false,
   });
+};
 
 export const useLogin = ({
   onSuccess,
@@ -40,10 +44,12 @@ export const useLogin = ({
   onError?: (error: Error) => void;
 }) => {
   const queryClient = useQueryClient();
+  const setAccessToken = useAuthStore((state) => state.setUserToken);
   return useMutation({
     mutationFn: loginUser,
     onSuccess: ({ token }) => {
       Cookies.set("access_token", token);
+      setAccessToken(token);
       queryClient.invalidateQueries(getUserQueryOptions());
       onSuccess?.();
     },
@@ -70,10 +76,12 @@ const loginUser = (data: LoginInput): Promise<AuthResponse> => {
 
 export const useRegister = ({ onSuccess }: { onSuccess?: () => void }) => {
   const queryClient = useQueryClient();
+  const setAccessToken = useAuthStore((state) => state.setUserToken);
   return useMutation({
     mutationFn: registerUser,
     onSuccess: ({ token }) => {
       Cookies.set("access_token", token);
+      setAccessToken(token);
       queryClient.invalidateQueries(getUserQueryOptions());
       onSuccess?.();
     },

@@ -8,7 +8,8 @@ export const paths = {
       getHref: () => "/catalog",
     },
     category: {
-      getHref: (category: string) => `${paths.catalog.root}/${category}`,
+      getHref: (category: string) =>
+        `${paths.catalog.root.getHref()}/${category}`,
     },
   },
 
