@@ -4,6 +4,10 @@
   --slide-height: 400px;
   --active-slide-height: 640px;
 
+  &.swiper {
+    padding-bottom: 55px;
+  }
+
   & .swiper-wrapper {
     transition: all 0.4s ease !important;
   }
