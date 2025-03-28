@@ -1,3 +1,5 @@
+"use client";
+
 import Breadcrumbs from "@/components/Layout/MainLayout/components/Breadcrumbs/Breadcrumbs";
 import {
   BreadcrumbItem,
@@ -7,13 +9,12 @@ import {
   BreadcrumbSeparator,
 } from "@/components/UI/Breadcrumb";
 import { paths } from "@/config/paths";
+import { useSearchParams } from "next/navigation";
 
-const CatalogBreadcrumbs = ({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) => {
-  const name = searchParams["name"];
+const CatalogBreadcrumbs = () => {
+  const searchParams = useSearchParams();
+
+  const name = searchParams.get("name");
   return (
     <Breadcrumbs>
       <BreadcrumbList>
