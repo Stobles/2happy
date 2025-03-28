@@ -1,31 +1,25 @@
 import { useQuery } from "@tanstack/react-query";
-import {
-  getProductsListParameters,
-  getProductsQueryOptions,
-} from "../api/productsApi";
-import { TProductGrid } from "../types";
+import { getProductsQueryOptions } from "../api/productsApi";
 import { useEffect } from "react";
-import { useProductsStore } from "../store/productsStore";
+import { useCatalogStore } from "../store/productsStore";
 import ProductServerCard from "./ProductCards/ProductServerCard";
 import { cn } from "@/lib/utils";
+import { usePaginationStore } from "../store/paginationStore";
 
-const ProductsList = ({
-  grid = "small",
-  params,
-}: {
-  grid?: TProductGrid;
-  params: getProductsListParameters;
-}) => {
+const ProductsList = () => {
+  const { gridType } = useCatalogStore();
+  const { page, per_page } = usePaginationStore();
+
   const { data, isPlaceholderData } = useQuery({
-    ...getProductsQueryOptions(params),
+    ...getProductsQueryOptions({ page, per_page }),
     placeholderData: (previousData) => previousData,
   });
-  const { setTotalItems, setTotalPages } = useProductsStore();
+  const { setTotalItems, setTotalPages } = useCatalogStore();
 
   useEffect(() => {
     if (data) {
-      setTotalItems(data.totalItems);
-      setTotalPages(data.totalPages);
+      setTotalItems(+data.totalItems);
+      setTotalPages(+data.totalPages);
     }
   }, [data]);
 
@@ -33,7 +27,7 @@ const ProductsList = ({
     <div
       className={cn(
         "grid gap-x-6 gap-y-10 grid-flow-row",
-        grid === "small"
+        gridType === "small"
           ? "grid-cols-4 auto-rows-[552px]"
           : "grid-cols-2 auto-rows-[928px]",
         isPlaceholderData && "opacity-60 pointer-events-none"

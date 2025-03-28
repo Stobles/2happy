@@ -13,16 +13,16 @@ import CatalogHeader from "./components/CatalogHeader";
 const CatalogPage = async () => {
   const queryClient = getQueryClient();
 
-  queryClient.prefetchQuery(getCategoriesQueryOptions());
+  queryClient.prefetchQuery(getCategoriesQueryOptions({ parent: 0 }));
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <Container className="my-section flex flex-col gap-12">
         <SectionImage />
         <div className="w-full flex flex-col gap-16">
-          <CatalogHeader name="Каталог" />
+          <CatalogHeader name="Женская одежда и аксессуары" />
           <Suspense fallback={<CategorySliderLoader itemsCount={5} />}>
-            <CatalogCategories />
+            <CatalogCategories parent={0} />
           </Suspense>
         </div>
         <Catalog />

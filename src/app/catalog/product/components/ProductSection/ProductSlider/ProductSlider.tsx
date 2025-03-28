@@ -54,7 +54,6 @@ const ProductSlider = () => {
       </Swiper>
 
       <Swiper
-        className="main-slider"
         allowTouchMove={false}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[Thumbs]}

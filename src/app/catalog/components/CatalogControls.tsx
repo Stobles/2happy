@@ -8,7 +8,7 @@ import {
   SelectTriggerPlain,
 } from "@/components/UI/Select";
 import ProductsFiltersSheet from "@/features/Products/components/Dialogs/ProductsFiltersSheet";
-import { TProductGrid } from "@/features/Products/types";
+import { useCatalogStore } from "@/features/Products/store/productsStore";
 
 const CatalogSelect = () => {
   return (
@@ -28,11 +28,8 @@ const CatalogSelect = () => {
   );
 };
 
-const CatalogHeader = ({
-  onGridChange,
-}: {
-  onGridChange: (value: TProductGrid) => void;
-}) => {
+const CatalogControls = () => {
+  const { setGridType } = useCatalogStore();
   return (
     <div className="flex items-center justify-between gap-2">
       <div className="flex gap-4">
@@ -49,15 +46,15 @@ const CatalogHeader = ({
       <div className="flex items-center gap-2">
         <GridSmallIcon
           className="cursor-pointer [&_*]:cursor-pointer hover:fill-main hover:stroke-transparent"
-          onClick={() => onGridChange("small")}
+          onClick={() => setGridType("small")}
         />
         <GridBigIcon
           className="cursor-pointer [&_*]:cursor-pointer h-[19px]  w-[19px] hover:fill-main hover:stroke-transparent"
-          onClick={() => onGridChange("big")}
+          onClick={() => setGridType("big")}
         />
       </div>
     </div>
   );
 };
 
-export default CatalogHeader;
+export default CatalogControls;

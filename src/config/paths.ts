@@ -4,12 +4,18 @@ export const paths = {
   },
 
   catalog: {
-    root: {
-      getHref: () => "/catalog",
-    },
+    root: "/catalog",
     category: {
-      getHref: (category: string) =>
-        `${paths.catalog.root.getHref()}/${category}`,
+      getHref: (slug: string, name: string) =>
+        `${paths.catalog.root}/${slug}?name=${name}`,
+    },
+    subCategory: {
+      getHref: (parentSlug: string, slug: string, name: string) =>
+        `${paths.catalog.root}/${parentSlug}/${slug}/?name=${name}`,
+    },
+
+    product: {
+      getHref: (id: number) => `${paths.catalog.root}/product/${id}`,
     },
   },
 

@@ -4,10 +4,17 @@ import { getCategoriesQueryOptions } from "@/features/Categories/api/categoriesA
 import { CategorySlider } from "@/features/Categories/components/CategorySlider/CategorySlider";
 import { useSuspenseQuery } from "@tanstack/react-query";
 
-const CatalogCategories = () => {
-  const { data } = useSuspenseQuery(getCategoriesQueryOptions());
+const CatalogCategories = ({
+  parent,
+  activeSlug,
+}: {
+  parent: number;
+  activeSlug?: string;
+}) => {
+  const { data } = useSuspenseQuery(getCategoriesQueryOptions({ parent }));
 
-  if (data.totalItems) return <CategorySlider categories={data?.items} />;
+  if (data.items.length)
+    return <CategorySlider categories={data?.items} activeSlug={activeSlug} />;
 
   return null;
 };

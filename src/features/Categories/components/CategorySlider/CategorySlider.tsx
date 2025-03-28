@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/UI/Button";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Category } from "../../types";
@@ -15,8 +16,10 @@ import "./styles.css";
 
 export const CategorySlider = ({
   categories,
+  activeSlug,
 }: {
   categories: Category[] | undefined;
+  activeSlug?: string;
 }) => {
   return (
     <div className="category-slider">
@@ -41,16 +44,24 @@ export const CategorySlider = ({
         </SliderButton>
         {categories
           ?.sort((a, b) => a.menu_order - b.menu_order)
-          ?.map((item) => (
-            <SwiperSlide key={item.name} className="pb-1">
+          ?.map((category) => (
+            <SwiperSlide key={category.name} className="pb-1">
               <Button
-                className="py-2 px-4 hover:shadow-elevation-1"
+                className={cn(
+                  "py-2 px-4 hover:shadow-elevation-1",
+                  activeSlug === category.slug && "bg-main text-white"
+                )}
                 variant="secondary"
                 size="small"
                 asChild
               >
-                <Link href={paths.catalog.category.getHref(item.slug)}>
-                  {item.name}
+                <Link
+                  href={paths.catalog.category.getHref(
+                    `${category.slug}_${category.id}`,
+                    category.name
+                  )}
+                >
+                  {category.name}
                 </Link>
               </Button>
             </SwiperSlide>
