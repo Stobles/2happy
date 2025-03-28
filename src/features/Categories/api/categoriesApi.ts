@@ -3,28 +3,46 @@ import { Category } from "../types";
 import { queryOptions, useQuery } from "@tanstack/react-query";
 import { env } from "@/config/env";
 import { WooResponse } from "@/types/api";
+import { createURLWithParams } from "@/lib/utils";
 
-export const getCategoriesListURL = `${env.WOOCOMMERCE_API}/products/categories`;
+export type getCategoriesListParameters = {
+  parent?: number;
+};
 
-export const getCategoriesList = async (): Promise<WooResponse<Category[]>> => {
+export const getCategoriesListURL = `${env.WOOCOMMERCE_API}/products/categories?parent={parent}`;
+
+export const getCategoriesList = async (
+  params?: getCategoriesListParameters
+): Promise<WooResponse<Category[]>> => {
+  const getCategoriesListURLWithParams = createURLWithParams(
+    getCategoriesListURL,
+    params
+  );
+
+  console.log(getCategoriesListURLWithParams);
   const response = await apiInstance.get<unknown, WooResponse<Category[]>>(
-    getCategoriesListURL
+    getCategoriesListURLWithParams
   );
 
   return response;
 };
 
-const categoriesQueryKey = ["categories"];
+const categoriesQueryKey = (params?: getCategoriesListParameters) => [
+  "categories",
+  params?.parent,
+];
 
-export const getCategoriesQueryOptions = () => {
+export const getCategoriesQueryOptions = (
+  params?: getCategoriesListParameters
+) => {
   return queryOptions({
-    queryKey: categoriesQueryKey,
-    queryFn: getCategoriesList,
+    queryKey: categoriesQueryKey(params),
+    queryFn: () => getCategoriesList(params),
   });
 };
 
-export const useCategories = () =>
+export const useCategories = (params?: getCategoriesListParameters) =>
   useQuery({
-    ...getCategoriesQueryOptions(),
+    ...getCategoriesQueryOptions(params),
     retry: false,
   });

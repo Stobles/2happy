@@ -1,3 +1,4 @@
+import { env } from "@/config/env";
 import { clsx, type ClassValue } from "clsx";
 import { extendTailwindMerge } from "tailwind-merge";
 
@@ -34,15 +35,17 @@ export function cn(...inputs: ClassValue[]) {
   return twMergeConf(clsx(inputs));
 }
 
-export function getURLWithParams(
+export function createURLWithParams(
   initialUrl: string,
-  params: { [key: string]: unknown }
+  params?: { [key: string]: unknown }
 ) {
-  let url = initialUrl;
-  Object.entries(params).forEach(([key, value]) => {
-    if (url.includes(`{${key}}`)) {
-      url = url.replace(`{${key}}`, String(value));
-    }
-  });
-  return url;
+  const url = new URL(initialUrl, env.APP_URL);
+
+  if (params) {
+    Object.entries(params).forEach(([key, value]) => {
+      url.searchParams.set(key, `${value}`);
+    });
+  }
+
+  return url.pathname + url.search;
 }

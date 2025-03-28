@@ -8,36 +8,46 @@ import {
   PaginationNext,
   PaginationEllipsis,
 } from "@/components/UI/Pagination";
-import { getProductsListParameters } from "@/features/Products/api/productsApi";
-import { useProductsStore } from "@/features/Products/store/productsStore";
-import { Dispatch, SetStateAction } from "react";
+import { useCatalogStore } from "@/features/Products/store/productsStore";
 
 const CatalogPagination = ({
   page,
   per_page,
-  setParams,
+  setPage,
 }: {
   page: number;
   per_page: number;
-  setParams: Dispatch<SetStateAction<getProductsListParameters>>;
+  setPage: (page: number) => void;
 }) => {
-  const { totalItems, totalPages } = useProductsStore();
+  const { totalItems, totalPages } = useCatalogStore();
 
   const getPageNumbers = () => {
-    if (totalPages <= 4)
+    if (totalPages <= 5) {
       return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
 
-    if (page <= 2) return [1, 2, 3, 4];
-    if (page >= totalPages - 1)
-      return [totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+    if (page <= 3) return [1, 2, 3, 4, "...", totalPages];
 
-    return [page - 1, page, page + 1, page + 2];
+    if (page >= totalPages - 2)
+      return [
+        1,
+        "...",
+        totalPages - 3,
+        totalPages - 2,
+        totalPages - 1,
+        totalPages,
+      ];
+
+    return [1, "...", page - 1, page, page + 1, page + 2, "...", totalPages];
   };
 
   const pages = getPageNumbers();
 
-  const handlePageChange = (page: number) =>
-    setParams((prev) => ({ ...prev, page }));
+  const handlePageChange = (newPage: number) => {
+    if (typeof newPage === "number") {
+      setPage(newPage);
+    }
+  };
 
   return (
     <>
@@ -47,79 +57,32 @@ const CatalogPagination = ({
       <div className="flex justify-between">
         <Pagination>
           <PaginationContent>
-            {/* Кнопка Назад */}
             <PaginationItem>
               <PaginationPrevious
-                onClick={() => {
-                  handlePageChange(page - 1);
-                }}
+                onClick={() => handlePageChange(page - 1)}
                 disabled={page === 1}
               />
             </PaginationItem>
 
-            {/* Первая страница всегда показывается */}
-            <PaginationItem>
-              <PaginationButton
-                onClick={() => {
-                  handlePageChange(1);
-                }}
-                isActive={page === 1}
-              >
-                1
-              </PaginationButton>
-            </PaginationItem>
-
-            {/* Добавляем ... если первая страница не в списке */}
-            {pages[0] > 2 && (
-              <PaginationItem>
-                <PaginationEllipsis />
+            {pages.map((p, index) => (
+              <PaginationItem key={index}>
+                {p === "..." ? (
+                  <PaginationEllipsis />
+                ) : (
+                  <PaginationButton
+                    onClick={() => handlePageChange(+p)}
+                    isActive={p === page}
+                  >
+                    {p}
+                  </PaginationButton>
+                )}
               </PaginationItem>
-            )}
+            ))}
 
-            {/* Динамические страницы */}
-            {pages.map(
-              (p) =>
-                p !== 1 &&
-                p !== totalPages && (
-                  <PaginationItem key={p}>
-                    <PaginationButton
-                      onClick={() => handlePageChange(p)}
-                      isActive={p === page}
-                    >
-                      {p}
-                    </PaginationButton>
-                  </PaginationItem>
-                )
-            )}
-
-            {/* Добавляем ... если последняя страница не в списке */}
-            {pages[pages.length - 1] < totalPages - 1 && (
-              <PaginationItem>
-                <PaginationEllipsis />
-              </PaginationItem>
-            )}
-
-            {/* Последняя страница */}
-            {totalPages > 4 && (
-              <PaginationItem>
-                <PaginationButton
-                  onClick={() => {
-                    handlePageChange(totalPages);
-                  }}
-                  isActive={page === +totalPages}
-                >
-                  {totalPages}
-                </PaginationButton>
-              </PaginationItem>
-            )}
-
-            {/* Кнопка Вперед */}
             <PaginationItem>
               <PaginationNext
-                onClick={() => {
-                  handlePageChange(page + 1);
-                }}
-                disabled={page === +totalPages}
+                onClick={() => handlePageChange(page + 1)}
+                disabled={page === totalPages}
               />
             </PaginationItem>
           </PaginationContent>

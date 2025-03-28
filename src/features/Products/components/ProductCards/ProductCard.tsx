@@ -8,6 +8,7 @@ import { Chip } from "@/components/UI/Chip";
 import { MouseEvent } from "react";
 import ImageWithFallback from "@/components/UI/ImageWithFallback";
 import ColorSquare from "../Colors/ColorSquare";
+import { paths } from "@/config/paths";
 
 const ProductCard = ({ product }: { product: Product }) => {
   const { id, title, colors, sizes, price, image, sale } = product;
@@ -19,7 +20,10 @@ const ProductCard = ({ product }: { product: Product }) => {
   };
   return (
     <article className="group/product w-full h-full">
-      <Link href={`/${id}`} className="flex flex-col h-full gap-4">
+      <Link
+        href={paths.catalog.product.getHref(12)}
+        className="flex flex-col h-full gap-4"
+      >
         <div className="relative h-full">
           {chip && (
             <Chip className="absolute top-4 left-4 z-10" variant={chip.type}>

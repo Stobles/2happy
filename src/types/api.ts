@@ -2,8 +2,8 @@
 
 export type WooResponse<T> = {
   items: T;
-  totalItems: number;
-  totalPages: number;
+  totalItems: string;
+  totalPages: string;
 };
 
 // ---------- // Auth // ---------- //
