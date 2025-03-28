@@ -31,13 +31,3 @@ export const PRODUCTS = Array.from({ length: 24 }, (_, i) => ({
   },
   image: "/images/Home/Fashion/fashion-1.jpg",
 }));
-
-export const CATEGORIES: Category[] = [
-  { text: "Новинки", href: "/" },
-  { text: "Одежда", href: "/" },
-  { text: "Аксессуары", href: "/" },
-  { text: "Верхняя одежда", href: "/" },
-  { text: "Бестселлеры", href: "/" },
-  { text: "Коллекции", href: "/" },
-  { text: "Final Sale", href: "/" },
-];
