@@ -6,6 +6,11 @@ module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
 
   theme: {
+    borderRadius: {
+      none: "0px",
+      xs: "2px",
+      full: "50%",
+    },
     extend: {
       screens: {
         sm: "320px",
@@ -14,13 +19,24 @@ module.exports = {
         xl: "1280px",
         "2xl": "1536px",
       },
+      cursor: {
+        default: "url('/icons/system/cursor-arrow.svg') 2 2, default",
+        pointer: "url('/icons/system/cursor-pointer.svg') 2 2, default",
+      },
+      margin: {
+        section: "136px",
+      },
       zIndex: {
-        "behind-header": "51",
+        "behind-header": "50",
+        "behind-header-2": "60",
         header: "100",
         "over-header": "150",
       },
       boxShadow: {
         header: "0px 2px 10px 0px rgba(15, 25, 40, 0.2)",
+        around: "0px 0px 70px -30px rgba(0, 0, 0, 1)",
+        feature:
+          " 0px -2px 10px 0px rgba(255, 255, 255, 0.3) inset, 0px 20px 30px 0px rgba(48, 48, 48, 0.25)",
         "elevation-1": "0px 4px 4px 0px rgba(17, 17, 18, 0.2)",
         "elevation-2": "0px 4px 8px 0px rgba(37, 40, 43, 0.2)",
         "elevation-3": "0px 8px 16px 0px rgba(17, 17, 18, 0.2)",
@@ -37,23 +53,25 @@ module.exports = {
         "footer-texture": "url('/img/footer-texture.png')",
       },
       fontFamily: {
-        sans: ["Lato", "sans-serif"],
-        akira: ["AkiraExpanded", "sans-serif"],
+        sans: ["var(--font-lato)"],
+        akira: ["var(--font-akira)"],
       },
       colors: {
         main: "#111112",
-        white: "#FCFCFF",
-        whiteSecondary: "#DEDEE9",
+        white: {
+          DEFAULT: "#FCFCFF",
+          secondary: "#DEDEE9",
+        },
         red: "#F93232",
-        grey: "#3F4753",
-        lightGrey: "#9EA4AE",
-        middleGrey: "#6F757E",
-        disabled: "#CFD1D4",
+        "light-disabled": "#F0F0F3",
+        "dark-disabled": "#CACED4",
+        gray: {
+          DEFAULT: "#9EA4AE",
+          dark: "#3F4753",
+          middle: "#6F757E",
+          light: "#E4E7EB",
+        },
         bg: {
-          disabled: "#F0F0F3",
-          error: "#FDEBEB",
-          warning: "#FFFBF4",
-          lightGrey: "#E4E7EB",
           glass: "rgba(255, 255, 255, 0.3)",
         },
         button: {
@@ -112,12 +130,16 @@ module.exports = {
         },
         status: {
           success: "#439F6E",
-          warning: "#605DEC",
+          warning: "#FFB82E",
           error: "#F93232",
+          "muted-error": "#FDE6E6",
+          "muted-warning": "#FFFBF4",
+          "muted-success": "#F1FFF4",
         },
         stroke: {
           black: "#111112",
           grey: "#9FA3A9",
+          success: "#C0ECD4",
           warning: "#FFEAC1",
           error: "#FF7E7E",
         },
@@ -163,11 +185,11 @@ module.exports = {
         },
       },
       backgroundColor:
-        '({ theme }) => ({\n        ...theme("colors.bg"),\n        ...theme("colors.button.primary.bg"),\n      })',
+        '({ theme }) => ({\\n        ...theme("colors.bg"),\\n        ...theme("colors.button.primary.bg"),\\n      })',
       textColor:
-        '({ theme }) => ({\n        ...theme("colors.text"),\n        ...theme("colors.button.primary.text"),\n      })',
+        '({ theme }) => ({\\n        ...theme("colors.text"),\\n        ...theme("colors.button.primary.text"),\\n      })',
       borderColor:
-        '({ theme }) => ({\n        ...theme("colors.stroke"),\n        ...theme("colors.button.primary.stroke"),\n      })',
+        '({ theme }) => ({\\n        ...theme("colors.stroke"),\\n        ...theme("colors.button.primary.stroke"),\\n      })',
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -175,17 +197,48 @@ module.exports = {
       },
       keyframes: {
         "collapsible-down": {
-          from: { height: 0 },
-          to: { height: "var(--radix-collapsible-content-height)" },
+          from: {
+            height: 0,
+          },
+          to: {
+            height: "var(--radix-collapsible-content-height)",
+          },
         },
         "collapsible-up": {
-          from: { height: "var(--radix-collapsible-content-height)" },
-          to: { height: 0 },
+          from: {
+            height: "var(--radix-collapsible-content-height)",
+          },
+          to: {
+            height: 0,
+          },
         },
+        "accordion-down": {
+          "0%": {
+            height: "0",
+          },
+          "100%": {
+            flexShrink: "1",
+            height: "var(--radix-accordion-content-height)",
+          },
+        },
+        "accordion-up": {
+          from: {
+            height: "var(--radix-accordion-content-height)",
+          },
+          to: {
+            height: "0",
+          },
+        },
+      },
+      transitionDuration: {
+        5000: "5000ms",
       },
       animation: {
         "collapsible-down": "collapsible-down 0.2s ease-out",
         "collapsible-up": "collapsible-up 0.2s ease-out",
+        "accordion-down":
+          "accordion-down 0.2s ease-out, shrink-from-0-to-1 0.2s ease-out 0.2s forwards",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
@@ -198,7 +251,7 @@ module.exports = {
           lineHeight: "76.8px",
           fontWeight: "700",
           [`@media (max-width: ${theme("screens.lg")})`]: {
-            fontSize: "48px", // Уменьшаем размер для маленьких экранов
+            fontSize: "48px",
             lineHeight: "56px",
           },
         },
@@ -206,7 +259,7 @@ module.exports = {
         // Text/Headlines
 
         ".text-h1Akira": {
-          fontFamily: "'AkiraExpanded', sans-serif",
+          fontFamily: "var(--font-akira)",
           fontWeight: "700",
           fontSize: "96px",
           lineHeight: "104px",
@@ -218,7 +271,7 @@ module.exports = {
           textTransform: "uppercase",
         },
         ".text-h2Akira": {
-          fontFamily: "'AkiraExpanded', sans-serif",
+          fontFamily: "var(--font-akira)",
           fontWeight: "700",
           fontSize: "48px",
           lineHeight: "56px",
@@ -298,6 +351,19 @@ module.exports = {
           textTransform: "uppercase",
         },
         ".text-button-xs": {
+          fontSize: "14px",
+          lineHeight: "16px",
+        },
+
+        // Table
+        ".text-table-header": {
+          fontSize: "12px",
+          lineHeight: "16px",
+          fontWeight: 600,
+          textTransform: "uppercase",
+        },
+
+        ".text-table-cell": {
           fontSize: "14px",
           lineHeight: "16px",
         },

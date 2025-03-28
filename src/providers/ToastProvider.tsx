@@ -11,8 +11,8 @@ import {
 } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useIsMobile from "@/hooks/useIsMobile";
-// import { SuccessIcon } from "@/image/SuccessIcon";
-// import { ErrorIcon } from "@/image/errorIcon";
+import SuccessIcon from "@/components/icons/SuccessIcon";
+import ErrorIcon from "@/components/icons/ErrorIcon";
 
 export type ToastTypes = "success" | "error" | "info" | "warning" | "default";
 export type ToastPositions =
@@ -71,34 +71,22 @@ export default function ToastProvider({
   children: React.ReactNode;
 }) {
   const isMobile = useIsMobile();
-  const defaultPosition: ToastPositions = isMobile
-    ? "top-center"
-    : "bottom-right";
+  const defaultPosition: ToastPositions = isMobile ? "top-center" : "top-right";
 
   return (
     <>
       {children}
       <ToastContainer
+        className="gap-2"
         hideProgressBar
-        closeButton={false}
+        closeButton={true}
         position={defaultPosition}
-        toastClassName={() => "toast-container"}
-        toastStyle={
-          isMobile
-            ? {
-                backgroundColor: "rgba(0, 0, 0, 0.9)",
-                color: "#FFFFFF",
-                margin: "15px auto ",
-                width: "100vw",
-              }
-            : { width: "max-content" }
-        }
-        // вставить свои иконки
-        // icon={({ type }) => {
-        //   if (type === "success") return <SuccessIcon />;
-        //   if (type === "error") return <ErrorIcon />;
-        //   else return undefined;
-        // }}
+        toastClassName={() => "min-w-[300px] p-0"}
+        icon={({ type }) => {
+          if (type === "success") return <SuccessIcon />;
+          if (type === "error") return <ErrorIcon />;
+          else return undefined;
+        }}
       />
     </>
   );

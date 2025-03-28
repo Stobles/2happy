@@ -80,7 +80,11 @@ const FormItem = React.forwardRef<
 
   return (
     <FormItemContext.Provider value={{ id }}>
-      <div ref={ref} className={cn("gap-2", className)} {...props} />
+      <div
+        ref={ref}
+        className={cn("flex flex-col gap-2", className)}
+        {...props}
+      />
     </FormItemContext.Provider>
   );
 });
@@ -160,7 +164,7 @@ const FormMessage = React.forwardRef<
       id={formMessageId}
       className={cn(
         `text-button-xs ${
-          error ? "text-status-error" : "text-lightGrey text-button-xs"
+          error ? "text-status-error" : "text-gray text-button-xs"
         }`,
         className
       )}
