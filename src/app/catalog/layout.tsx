@@ -9,7 +9,7 @@ export const metadata = {
   },
 };
 
-const Layout = ({
+const CatalogPageLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -17,4 +17,4 @@ const Layout = ({
   return <CatalogLayout>{children}</CatalogLayout>;
 };
 
-export default Layout;
+export default CatalogPageLayout;

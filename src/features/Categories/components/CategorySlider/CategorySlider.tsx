@@ -1,6 +1,9 @@
+"use client";
+
 import { Button } from "@/components/UI/Button";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Category } from "../../types";
+import { paths } from "@/config/paths";
 
 import Link from "next/link";
 import SliderButton from "@/components/UI/SliderButton";
@@ -10,13 +13,21 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "./styles.css";
 
-export const CategorySlider = ({ categories }: { categories: Category[] }) => {
+export const CategorySlider = ({
+  categories,
+}: {
+  categories: Category[] | undefined;
+}) => {
   return (
     <div className="category-slider">
       <Swiper
         slidesPerView="auto"
         spaceBetween={16}
         slidesPerGroup={2}
+        onSwiper={(swiper) => {
+          swiper.wrapperEl.classList.add("swiper-wrapper");
+          swiper.wrapperEl.classList.remove("gap-4");
+        }}
         wrapperClass="gap-4"
       >
         <SliderButton
@@ -28,18 +39,22 @@ export const CategorySlider = ({ categories }: { categories: Category[] }) => {
             <ArrowRightIcon className="rotate-180" />
           </Button>
         </SliderButton>
-        {categories.map((item) => (
-          <SwiperSlide key={item.text} className="pb-1">
-            <Button
-              className="py-2 px-4 hover:shadow-elevation-1"
-              variant="secondary"
-              size="small"
-              asChild
-            >
-              <Link href={item.href}>{item.text}</Link>
-            </Button>
-          </SwiperSlide>
-        ))}
+        {categories
+          ?.sort((a, b) => a.menu_order - b.menu_order)
+          ?.map((item) => (
+            <SwiperSlide key={item.name} className="pb-1">
+              <Button
+                className="py-2 px-4 hover:shadow-elevation-1"
+                variant="secondary"
+                size="small"
+                asChild
+              >
+                <Link href={paths.catalog.category.getHref(item.slug)}>
+                  {item.name}
+                </Link>
+              </Button>
+            </SwiperSlide>
+          ))}
         <SliderButton
           className="absolute bg-white top-0 right-[-1px] z-10 disabled:hidden"
           slideType="next"

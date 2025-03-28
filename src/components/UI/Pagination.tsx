@@ -44,7 +44,7 @@ const PaginationButton = ({
 }: PaginationButtonProps) => (
   <button
     className={cn(
-      "w-6 h-6 rounded-xs hover:bg-gray-light hover:text-main transition-colors",
+      "w-6 h-6 rounded-xs transition-colors hover:bg-gray-light hover:text-main",
       isActive ? "bg-main text-white" : "",
       className
     )}
@@ -55,28 +55,34 @@ PaginationButton.displayName = "PaginationLink";
 
 const PaginationPrevious = ({
   className,
+  disabled,
   ...props
 }: React.ComponentProps<typeof PaginationButton>) => (
   <PaginationButton
     aria-label="Go to previous page"
     className={cn("mr-6", className)}
+    disabled={disabled}
     {...props}
   >
-    <ArrowRightIcon className="rotate-180" />
+    <ArrowRightIcon
+      className={`rotate-180 ${disabled && "fill-dark-disabled"}`}
+    />
   </PaginationButton>
 );
 PaginationPrevious.displayName = "PaginationPrevious";
 
 const PaginationNext = ({
   className,
+  disabled,
   ...props
 }: React.ComponentProps<typeof PaginationButton>) => (
   <PaginationButton
     aria-label="Go to next page"
     className={cn("gap-1 ml-6", className)}
+    disabled={disabled}
     {...props}
   >
-    <ArrowRightIcon />
+    <ArrowRightIcon className={`${disabled && "fill-dark-disabled"}`} />
   </PaginationButton>
 );
 PaginationNext.displayName = "PaginationNext";

@@ -1,22 +1,20 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation, Autoplay } from "swiper/modules";
+import { useState } from "react";
+import { Progress } from "@/components/UI/Progress";
+
+import ChevronRightIcon from "@/components/icons/Chevron/ChevronRightIcon";
+import ChevronLeftIcon from "@/components/icons/Chevron/ChevronLeftIcon";
+import SliderButton from "@/components/UI/SliderButton";
+import ImageWithFallback from "@/components/UI/ImageWithFallback";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import "./styles.scss";
-
-// import required modules
-import { Pagination, Navigation, Autoplay } from "swiper/modules";
-
-import { useState } from "react";
-import { Progress } from "@/components/UI/Progress";
-import ChevronRightIcon from "@/components/icons/Chevron/ChevronRightIcon";
-import ChevronLeftIcon from "@/components/icons/Chevron/ChevronLeftIcon";
-import SliderButton from "@/components/UI/SliderButton";
-import ImageWithFallback from "@/components/UI/ImageWithFallback";
 
 const SLIDES = [
   "/images/Home/Main/slider-1.jpg",
@@ -40,7 +38,7 @@ const Slider = () => {
         setTotalSlides(swiper.slides.length);
       }}
       onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex + 1)}
-      className="basis-full overflow-hidden h-[720px]"
+      className="main-slider basis-full overflow-hidden h-[720px]"
       slidesPerView={1}
       modules={[Pagination, Navigation, Autoplay]}
     >

@@ -1,9 +1,18 @@
+// ---------- // API // ---------- //
+
+export type WooResponse<T> = {
+  items: T;
+  totalItems: number;
+  totalPages: number;
+};
+
+// ---------- // Auth // ---------- //
+
 export type AuthResponse = {
   message: string;
   token: string;
 };
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
 export type UserData = {
   id: number;
   name: string;
@@ -13,22 +22,33 @@ export type UserData = {
   user_email: string;
   slug: string;
   avatar_urls: Record<string, string>;
-  meta: any;
-  yoast_head: any;
-  yoast_head_json: any;
+  meta: unknown;
   is_super_admin: boolean;
-  woocommerce_meta: any;
+  woocommerce_meta: unknown;
   _links: Links;
 };
 
-type Link = {
+// ---------- // Other // ---------- //
+
+export type Image = {
+  id: number;
+  date_created: string;
+  date_created_gmt: string;
+  date_modified: string;
+  date_modified_gmt: string;
+  src: string;
+  name: string;
+  alt: string;
+};
+
+export type Link = {
   href: string;
   targetHints?: {
     allow: string[];
   };
 };
 
-type Links = {
+export type Links = {
   self: Link[];
   collection: Link[];
 };

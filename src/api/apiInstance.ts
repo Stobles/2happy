@@ -1,4 +1,5 @@
 import { env } from "@/config/env";
+import { WooResponse } from "@/types/api";
 import axios, {
   AxiosError,
   AxiosHeaders,
@@ -30,6 +31,13 @@ const requestInterceptor: TRequestInterceptor = async (config) => {
     headers.set("Authorization", `Bearer ${access_token}`);
   }
 
+  if (config.url?.includes(env.WOOCOMMERCE_API)) {
+    const base = btoa(
+      `${env.WOOCOMMERCE_USERNAME}:${env.WOOCOMMERCE_PASSWORD}`
+    );
+    headers.set("Authorization", `Basic ${base}`);
+  }
+
   return { ...config, headers };
 };
 
@@ -50,10 +58,17 @@ export const responseErrorInterceptor = (error: AxiosError) => {
 
 apiInstance.interceptors.request.use(requestInterceptor, (error) => error);
 
-apiInstance.interceptors.response.use(
-  (config) => config.data,
-  responseErrorInterceptor
-);
+apiInstance.interceptors.response.use((config) => {
+  if (config.headers["x-wp-total"] && config.headers["x-wp-totalpages"]) {
+    const response: WooResponse<typeof config.data> = {
+      items: config.data,
+      totalItems: config.headers["x-wp-total"],
+      totalPages: config.headers["x-wp-totalpages"],
+    };
+    return response;
+  }
+  return config.data;
+}, responseErrorInterceptor);
 
 export type BodyType<Data> = Data;
 export type ErrorType<Error> = AxiosError<Error>;

@@ -4,9 +4,15 @@ import ArrowUpRightIcon from "@/components/icons/Arrows/ArrowUpRightIcon";
 import { Button } from "@/components/UI/Button";
 import ProductCard from "@/features/Products/components/ProductCards/ProductCard";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
 import { SIZES, SLIDES, SLIDES_SIZES } from "./consts";
 import SliderButton from "@/components/UI/SliderButton";
 import ArrowRightIcon from "@/components/icons/Arrows/ArrowRightIcon";
+
+import "swiper/css";
+import "swiper/css/navigation";
+
+import "./styles.scss";
 
 const CustomSlide = () => {
   return (
@@ -24,7 +30,12 @@ const CustomSlide = () => {
 const Slider = () => {
   return (
     <div className="overflow-hidden pb-4">
-      <Swiper className="relative" spaceBetween={24} slidesPerView="auto">
+      <Swiper
+        modules={[Navigation]}
+        className="new-collection-slider relative"
+        spaceBetween={24}
+        slidesPerView="auto"
+      >
         {SLIDES.map((slide, index) => {
           if (slide === "custom") {
             return (

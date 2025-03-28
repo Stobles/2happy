@@ -1,5 +1,3 @@
-"use client";
-
 import Container from "@/components/UI/Container";
 import { CategorySlider } from "@/features/Categories/components/CategorySlider/CategorySlider";
 import { CATEGORIES } from "./consts";
