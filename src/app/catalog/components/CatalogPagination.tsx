@@ -50,48 +50,43 @@ const CatalogPagination = ({
   };
 
   return (
-    <>
-      <Button className="w-full" variant="secondary" size="normal">
-        Показать еще
-      </Button>
-      <div className="flex justify-between">
-        <Pagination>
-          <PaginationContent>
-            <PaginationItem>
-              <PaginationPrevious
-                onClick={() => handlePageChange(page - 1)}
-                disabled={page === 1}
-              />
-            </PaginationItem>
+    <div className="flex justify-between">
+      <Pagination>
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious
+              onClick={() => handlePageChange(page - 1)}
+              disabled={page === 1}
+            />
+          </PaginationItem>
 
-            {pages.map((p, index) => (
-              <PaginationItem key={index}>
-                {p === "..." ? (
-                  <PaginationEllipsis />
-                ) : (
-                  <PaginationButton
-                    onClick={() => handlePageChange(+p)}
-                    isActive={p === page}
-                  >
-                    {p}
-                  </PaginationButton>
-                )}
-              </PaginationItem>
-            ))}
-
-            <PaginationItem>
-              <PaginationNext
-                onClick={() => handlePageChange(page + 1)}
-                disabled={page === totalPages}
-              />
+          {pages.map((p, index) => (
+            <PaginationItem key={index}>
+              {p === "..." ? (
+                <PaginationEllipsis />
+              ) : (
+                <PaginationButton
+                  onClick={() => handlePageChange(+p)}
+                  isActive={p === page}
+                >
+                  {p}
+                </PaginationButton>
+              )}
             </PaginationItem>
-          </PaginationContent>
-        </Pagination>
-        <span className="text-gray-middle text-button-xs">
-          {Math.min(page * per_page, totalItems)} из {totalItems}
-        </span>
-      </div>
-    </>
+          ))}
+
+          <PaginationItem>
+            <PaginationNext
+              onClick={() => handlePageChange(page + 1)}
+              disabled={page === totalPages}
+            />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
+      <span className="text-gray-middle text-button-xs">
+        {Math.min(page * per_page, totalItems)} из {totalItems}
+      </span>
+    </div>
   );
 };
 

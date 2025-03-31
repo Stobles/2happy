@@ -9,6 +9,7 @@ export type getProductsListParameters = {
   page?: number;
   per_page?: number;
   order?: "asc" | "desc";
+  category?: number;
   orderby?: string;
 };
 
@@ -33,10 +34,15 @@ export const getProductsList = async (
   return response;
 };
 
-const productsQueryKey = (params: getProductsListParameters) => [
-  "products",
-  JSON.stringify(params),
-];
+const productsQueryKey = (params: getProductsListParameters) => {
+  const key = ["products"];
+
+  if (params.category) key.push(`${params.category}`);
+  if (params.page) key.push(`page ${params.page}`);
+  if (params.per_page) key.push(`per_page ${params.per_page}`);
+
+  return key;
+};
 
 export const getProductsQueryOptions = (params: getProductsListParameters) => {
   return queryOptions({

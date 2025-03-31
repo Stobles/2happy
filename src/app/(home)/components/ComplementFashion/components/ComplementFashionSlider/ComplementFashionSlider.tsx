@@ -15,6 +15,9 @@ import { Swiper as SwiperType } from "swiper/types";
 import SliderButton from "@/components/UI/SliderButton";
 import ArrowRightIcon from "@/components/icons/Arrows/ArrowRightIcon";
 import { getSliderMarginLeft } from "./utils/getSliderMarginLeft";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { getProductsQueryOptions } from "@/features/Products/api/productsApi";
+import { categorySlugs } from "@/features/Categories/consts/consts";
 
 const SLIDES = [
   "/images/Home/ComplementFashion/1.png",
@@ -28,7 +31,7 @@ const SLIDES = [
 
 const SPACE_BETWEEN = 24;
 
-const Slider = () => {
+const ComplementFashionSlider = () => {
   const swiperRef = useRef<HTMLElement | null>(null);
 
   const onSwiper = (swiper: SwiperType) => {
@@ -75,4 +78,4 @@ const Slider = () => {
   );
 };
 
-export default Slider;
+export default ComplementFashionSlider;

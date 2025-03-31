@@ -3,7 +3,7 @@ import Container from "@/components/UI/Container";
 import Section from "@/components/UI/Section";
 import Image from "next/image";
 import Link from "next/link";
-import Slider from "./components/Slider/Slider";
+import ComplementFashionSlider from "./components/ComplementFashionSlider/ComplementFashionSlider";
 
 const ComplementFashion = () => {
   return (
@@ -34,7 +34,7 @@ const ComplementFashion = () => {
             />
           </div>
           <div className="flex-1 overflow-hidden">
-            <Slider />
+            <ComplementFashionSlider />
           </div>
         </div>
       </Container>

@@ -1,33 +1,34 @@
 "use client";
 
-import ArrowUpRightIcon from "@/components/icons/Arrows/ArrowUpRightIcon";
-import { Button } from "@/components/UI/Button";
-import ProductCard from "@/features/Products/components/ProductCards/ProductCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import { SIZES, SLIDES, SLIDES_SIZES } from "./consts";
+import { SIZES, SLIDES_SIZES } from "./consts";
 import SliderButton from "@/components/UI/SliderButton";
 import ArrowRightIcon from "@/components/icons/Arrows/ArrowRightIcon";
+import { ProductServer } from "@/features/Products/types";
+import ProductServerCard from "@/features/Products/components/ProductCards/ProductServerCard";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { getProductsQueryOptions } from "@/features/Products/api/productsApi";
 
 import "swiper/css";
 import "swiper/css/navigation";
 
 import "./styles.scss";
+import { categorySlugs } from "@/features/Categories/consts/consts";
+import CustomSlide from "./CustomSlide";
+import NewCollectionLoader from "./NewCollectionLoader";
 
-const CustomSlide = () => {
-  return (
-    <div className="flex flex-col justify-between w-full h-full px-4 pt-10 pb-6 bg-main">
-      <span className="text-h4 text-white text-center">
-        Погрузитесь в мир стильных новинок!
-      </span>
-      <Button className="w-full" variant="primary" size="medium">
-        Все новинки <ArrowUpRightIcon />
-      </Button>
-    </div>
+const NewCollectionSlider = () => {
+  const { data } = useSuspenseQuery(
+    getProductsQueryOptions({ category: categorySlugs["new"], per_page: 9 })
   );
-};
 
-const Slider = () => {
+  const productsWithCustom: (ProductServer | "custom")[] = [
+    ...data.items.slice(0, 2),
+    "custom",
+    ...data.items.slice(2),
+  ];
+
   return (
     <div className="overflow-hidden pb-4">
       <Swiper
@@ -35,32 +36,24 @@ const Slider = () => {
         className="new-collection-slider relative"
         spaceBetween={24}
         slidesPerView="auto"
+        onSwiper={(swiper) => {
+          swiper.wrapperEl.classList.add("swiper-wrapper");
+          swiper.wrapperEl.classList.remove("gap-6");
+        }}
+        wrapperClass="gap-6"
       >
-        {SLIDES.map((slide, index) => {
+        {productsWithCustom.map((slide, index) => {
           if (slide === "custom") {
             return (
-              <SwiperSlide
-                style={{
-                  width: "288px",
-                  height: "280px",
-                }}
-                key="custom"
-              >
+              <SwiperSlide key="custom" className="custom-slide">
                 <CustomSlide />
               </SwiperSlide>
             );
           } else {
             const size = SLIDES_SIZES[index];
-            const { width, height } = SIZES[size];
             return (
-              <SwiperSlide
-                key={slide.id}
-                style={{
-                  width,
-                  height,
-                }}
-              >
-                <ProductCard product={slide} />
+              <SwiperSlide key={slide.id} style={SIZES[size]}>
+                <ProductServerCard product={slide} />
               </SwiperSlide>
             );
           }
@@ -78,4 +71,4 @@ const Slider = () => {
   );
 };
 
-export default Slider;
+export default NewCollectionSlider;
