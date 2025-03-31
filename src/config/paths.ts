@@ -6,8 +6,10 @@ export const paths = {
   catalog: {
     root: "/catalog",
     category: {
-      getHref: (slug: string, name: string) =>
-        `${paths.catalog.root}/${slug}?name=${name}`,
+      getHref: (slug: string, name: string, subTo?: number) =>
+        `${paths.catalog.root}/${slug}?name=${name}${
+          subTo ? `&subTo=${subTo}` : ""
+        }`,
     },
     subCategory: {
       getHref: (parentSlug: string, slug: string, name: string) =>

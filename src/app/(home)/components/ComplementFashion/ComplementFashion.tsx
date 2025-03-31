@@ -3,7 +3,8 @@ import Container from "@/components/UI/Container";
 import Section from "@/components/UI/Section";
 import Image from "next/image";
 import Link from "next/link";
-import Slider from "./components/Slider/Slider";
+import ComplementFashionSlider from "./components/ComplementFashionSlider/ComplementFashionSlider";
+import CategoryLink from "@/features/Categories/components/CategoryLink";
 
 const ComplementFashion = () => {
   return (
@@ -17,13 +18,14 @@ const ComplementFashion = () => {
       <Container className="flex flex-col gap-16 my-20 text-white">
         <div className="flex justify-between items-end">
           <h2 className="text-h2 text-white ">Дополните свой образ</h2>
-          <Link
-            href="/"
+          <CategoryLink
+            category="accessories"
+            name="Акссесуары"
             className="flex items-center text-button-normal link-hover"
           >
             Смотреть все
             <ArrowRightIcon className="fill-white group-hover:fill-gray-middle" />
-          </Link>
+          </CategoryLink>
         </div>
         <div className="flex gap-6">
           <div className="relative left-0 w-[184px] h-[640px]">
@@ -34,7 +36,7 @@ const ComplementFashion = () => {
             />
           </div>
           <div className="flex-1 overflow-hidden">
-            <Slider />
+            <ComplementFashionSlider />
           </div>
         </div>
       </Container>

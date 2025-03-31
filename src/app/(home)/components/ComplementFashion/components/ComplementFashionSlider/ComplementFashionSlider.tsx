@@ -1,20 +1,20 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+import { useRef } from "react";
+import { Swiper as SwiperType } from "swiper/types";
+import { getSliderMarginLeft } from "./utils/getSliderMarginLeft";
+
+import ItemCard from "@/features/Fashion/components/ItemCard";
+import SliderButton from "@/components/UI/SliderButton";
+import ArrowRightIcon from "@/components/icons/Arrows/ArrowRightIcon";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import "./style.scss";
-
-import { Autoplay, Navigation } from "swiper/modules";
-import ItemCard from "@/features/Fashion/components/ItemCard";
-import { useRef } from "react";
-import { Swiper as SwiperType } from "swiper/types";
-import SliderButton from "@/components/UI/SliderButton";
-import ArrowRightIcon from "@/components/icons/Arrows/ArrowRightIcon";
-import { getSliderMarginLeft } from "./utils/getSliderMarginLeft";
 
 const SLIDES = [
   "/images/Home/ComplementFashion/1.png",
@@ -28,7 +28,7 @@ const SLIDES = [
 
 const SPACE_BETWEEN = 24;
 
-const Slider = () => {
+const ComplementFashionSlider = () => {
   const swiperRef = useRef<HTMLElement | null>(null);
 
   const onSwiper = (swiper: SwiperType) => {
@@ -75,4 +75,4 @@ const Slider = () => {
   );
 };
 
-export default Slider;
+export default ComplementFashionSlider;

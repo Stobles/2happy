@@ -27,7 +27,7 @@ type ProductCategory = {
   slug: string;
 };
 
-type Attribute = {
+type ProductAttribute = {
   id: number;
   name: string;
   position: number;
@@ -102,7 +102,7 @@ export type ProductServer = {
   categories: ProductCategory[];
   tags: unknown[];
   images: Image[];
-  attributes: Attribute[];
+  attributes: ProductAttribute[];
   default_attributes: unknown[];
   variations: unknown[];
   grouped_products: unknown[];

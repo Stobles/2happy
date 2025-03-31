@@ -1,3 +1,4 @@
+"use client";
 import Breadcrumbs from "@/components/Layout/MainLayout/components/Breadcrumbs/Breadcrumbs";
 import {
   BreadcrumbItem,

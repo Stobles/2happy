@@ -1,5 +1,11 @@
 import { Product } from "@/features/Products/types";
 
+export const SIZES_TW = {
+  big: "w-[288px] h-[552px]",
+  medium: "w-[184px] h-[464px]",
+  small: "w-[184px] h-[376px]",
+} as const;
+
 export const SIZES = {
   big: { width: "288px", height: "552px" },
   medium: { width: "184px", height: "464px" },

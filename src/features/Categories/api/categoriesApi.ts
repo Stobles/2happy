@@ -7,9 +7,10 @@ import { createURLWithParams } from "@/lib/utils";
 
 export type getCategoriesListParameters = {
   parent?: number;
+  per_page?: number;
 };
 
-export const getCategoriesListURL = `${env.WOOCOMMERCE_API}/products/categories?parent={parent}`;
+export const getCategoriesListURL = `${env.WOOCOMMERCE_API}/products/categories`;
 
 export const getCategoriesList = async (
   params?: getCategoriesListParameters
@@ -19,7 +20,6 @@ export const getCategoriesList = async (
     params
   );
 
-  console.log(getCategoriesListURLWithParams);
   const response = await apiInstance.get<unknown, WooResponse<Category[]>>(
     getCategoriesListURLWithParams
   );
@@ -27,7 +27,7 @@ export const getCategoriesList = async (
   return response;
 };
 
-const categoriesQueryKey = (params?: getCategoriesListParameters) => [
+export const categoriesQueryKey = (params?: getCategoriesListParameters) => [
   "categories",
   params?.parent,
 ];
@@ -38,6 +38,7 @@ export const getCategoriesQueryOptions = (
   return queryOptions({
     queryKey: categoriesQueryKey(params),
     queryFn: () => getCategoriesList(params),
+    staleTime: Infinity,
   });
 };
 

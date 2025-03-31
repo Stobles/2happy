@@ -2,7 +2,7 @@
 
 import { Sheet, SheetTrigger } from "@/components/UI/Sheet";
 import { useDelayedState } from "@/hooks/useDelayedState";
-import CategorySheetContent from "./Content";
+import CategorySheetContent from "./CategorySheetContent";
 import ChevronDownIcon from "@/components/icons/Chevron/ChevronDownIcon";
 
 const CategorySheet = ({ isSticky }: { isSticky: boolean }) => {
@@ -46,6 +46,7 @@ const CategorySheet = ({ isSticky }: { isSticky: boolean }) => {
           marginTop,
           maxHeight,
         }}
+        closeSheet={() => setFastState(false)}
         onMouseEnter={() => clearTimer()}
         onMouseLeave={onMouseLeave}
         side="top"

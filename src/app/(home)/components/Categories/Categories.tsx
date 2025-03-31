@@ -3,18 +3,11 @@ import ArrowUpRightIcon from "@/components/icons/Arrows/ArrowUpRightIcon";
 import { Button } from "@/components/UI/Button";
 import Container from "@/components/UI/Container";
 import Section from "@/components/UI/Section";
+import { paths } from "@/config/paths";
 import Image from "next/image";
 import Link from "next/link";
-
-const CATEGORIES = [
-  { id: "1", title: "Платья" },
-  { id: "2", title: "Костюмы" },
-  { id: "3", title: "Брюки" },
-  { id: "4", title: "Рубашки и блузы" },
-  { id: "5", title: "Свитшоты и бомберы" },
-  { id: "6", title: "Юбки и шорты" },
-  { id: "7", title: "Верхняя одежда" },
-];
+import { CATEGORIES } from "./consts";
+import CategoryLink from "@/features/Categories/components/CategoryLink";
 
 const Categories = () => {
   return (
@@ -25,7 +18,10 @@ const Categories = () => {
             Категории <br /> /
           </h2>
           <div className="grid grid-cols-2 gap-x-6 gap-y-4 grid-rows-[28px,128px]">
-            <Link href="" className="link-hover col-span-2 text-button-medium">
+            <Link
+              href={paths.catalog.root}
+              className="link-hover col-span-2 text-button-medium"
+            >
               Смотреть все <ArrowRightIcon />
             </Link>
             <div className="relative">
@@ -47,17 +43,21 @@ const Categories = () => {
           </div>
         </div>
         <div className="basis-[600px] flex flex-col">
-          {CATEGORIES.map((item) => (
+          {CATEGORIES.map((category) => (
             <Button
-              key={item.id}
+              key={category.name}
               variant="tertiary"
               size="large"
               className="w-full justify-between p-4 text-h5 border-b-[1px] border-main"
               asChild
             >
-              <Link href={`${item.id}`}>
-                {item.title} <ArrowUpRightIcon />
-              </Link>
+              <CategoryLink
+                category={category.slug}
+                name={category.name}
+                parent={category.parent}
+              >
+                {category.name} <ArrowUpRightIcon />
+              </CategoryLink>
             </Button>
           ))}
         </div>
