@@ -7,7 +7,7 @@ import {
   SelectItem,
   SelectTriggerPlain,
 } from "@/components/UI/Select";
-import ProductsFiltersSheet from "@/features/Products/components/Dialogs/ProductsFiltersSheet";
+import ProductsFiltersSheet from "@/features/Products/components/Filters/ProductsFiltersSheet";
 import { TSort, useCatalogStore } from "@/features/Products/store/catalogStore";
 import { usePaginationStore } from "@/features/Products/store/paginationStore";
 

@@ -5,7 +5,7 @@ import CatalogHeader from "./CatalogControls";
 import ProductsList from "@/features/Products/components/ProductsList";
 import { usePaginationStore } from "@/features/Products/store/paginationStore";
 
-const Catalog = ({ category }: { category?: string }) => {
+const Catalog = ({ category }: { category?: number }) => {
   const { page, per_page, setPage } = usePaginationStore();
 
   return (

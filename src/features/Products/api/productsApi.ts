@@ -8,7 +8,9 @@ import { WooResponse } from "@/types/api";
 export type getProductsListParameters = {
   page?: number;
   per_page?: number;
-  category?: string;
+  category?: number;
+  min?: number;
+  max?: number;
   order?: string;
   orderby?: string;
 };
@@ -43,7 +45,8 @@ const productsQueryKey = (params: getProductsListParameters) => {
   if (params.order) key.push(`order ${params.order}`);
   if (params.orderby) key.push(`orderby ${params.orderby}`);
   if (params.category) key.push(`category ${params.category}`);
-
+  if (params.min) key.push(`min ${params.min}`);
+  if (params.max) key.push(`max ${params.max}`);
   return key;
 };
 

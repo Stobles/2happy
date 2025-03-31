@@ -18,8 +18,10 @@ import RegisterForm from "./RegisterForm";
 const AuthModal = ({
   children,
   defaultTab = "login",
+  disabled,
 }: {
   children: ReactNode;
+  disabled?: boolean;
   defaultTab?: "login" | "register";
 }) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -27,7 +29,12 @@ const AuthModal = ({
   const closeDialog = () => setOpen(false);
   return (
     <Dialog open={open} onOpenChange={(open) => setOpen(open)}>
-      <DialogTrigger>{children}</DialogTrigger>
+      <DialogTrigger
+        disabled={disabled}
+        className="disabled:pointer-events-none disabled:opacity-60"
+      >
+        {children}
+      </DialogTrigger>
       <DialogContent className="px-8 gap-10" closeClassName="top-10 right-8">
         <DialogHeader>
           <DialogTitle>Войдите или создайте аккаунт</DialogTitle>

@@ -21,6 +21,8 @@ const CatalogPagination = ({
 }) => {
   const { totalItems, totalPages } = useCatalogStore();
 
+  if (!totalItems) return null;
+
   const getPageNumbers = () => {
     if (totalPages <= 5) {
       return Array.from({ length: totalPages }, (_, i) => i + 1);

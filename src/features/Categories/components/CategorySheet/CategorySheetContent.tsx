@@ -35,7 +35,7 @@ const CategorySheetContent = ({
             <div>
               <h3 className="text-h3 pb-4">Одежда</h3>
               <Suspense fallback={<CategoryListLoader count={7} />}>
-                <ClothesList />
+                <ClothesList closeSheet={closeSheet} />
               </Suspense>
             </div>
             <div className="relative w-full h-[120px] shrink-0">
@@ -51,7 +51,7 @@ const CategorySheetContent = ({
             <div>
               <h3 className="text-h3 pb-4">Аксессуары</h3>
               <Suspense fallback={<CategoryListLoader count={3} />}>
-                <AccessoriesList />
+                <AccessoriesList closeSheet={closeSheet} />
               </Suspense>
             </div>
             <div className="relative w-full flex-1">
@@ -69,7 +69,7 @@ const CategorySheetContent = ({
             <div>
               <h3 className="text-h3 pb-4">Верхняя одежда</h3>
               <Suspense fallback={<CategoryListLoader count={5} />}>
-                <OuterwearList />
+                <OuterwearList closeSheet={closeSheet} />
               </Suspense>
             </div>
             <div className="relative w-full h-[168px]">

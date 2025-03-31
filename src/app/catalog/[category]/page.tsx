@@ -35,7 +35,7 @@ const CatalogPage = async ({
           <CatalogCategories parent={+idToFetch} activeSlug={slug} />
         </Suspense>
       </div>
-      <Catalog category={id} />
+      <Catalog category={+id} />
     </Container>
   );
 };

@@ -6,16 +6,20 @@ import ProductServerCard from "./ProductCards/ProductServerCard";
 import { cn } from "@/lib/utils";
 import { usePaginationStore } from "../store/paginationStore";
 import ProductCardLoader from "./ProductCards/ProductCardLoader";
+import { useFiltersStore } from "../store/filtersStore";
 
-const ProductsList = ({ category }: { category?: string }) => {
+const ProductsList = ({ category }: { category?: number }) => {
   const { sort, gridType } = useCatalogStore();
   const { page, per_page } = usePaginationStore();
+  const { priceRange, clearFilters } = useFiltersStore();
 
   const { data, isPending, isPlaceholderData } = useQuery({
     ...getProductsQueryOptions({
       page,
       per_page,
       category,
+      min: priceRange?.min,
+      max: priceRange?.max,
       order: sort.type,
       orderby: sort.field,
     }),
@@ -30,13 +34,21 @@ const ProductsList = ({ category }: { category?: string }) => {
     }
   }, [data]);
 
+  if (!isPending && !data?.items.length) {
+    return (
+      <div className="flex items-center justify-center w-full h-[552px]">
+        <h2 className="text-h2">Ничего не найдено</h2>
+      </div>
+    );
+  }
+
   return (
     <div
       className={cn(
         "grid gap-x-6 gap-y-10 grid-flow-row",
         gridType === "small"
-          ? "grid-cols-4 auto-rows-[552px]"
-          : "grid-cols-2 auto-rows-[928px]",
+          ? "grid-cols-4 auto-rows-[552px] min-h-[552px]"
+          : "grid-cols-2 auto-rows-[928px] min-h-[928px]",
         isPlaceholderData && "opacity-60 pointer-events-none"
       )}
     >

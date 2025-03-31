@@ -3,6 +3,7 @@
 import ChevronDownIcon from "@/components/icons/Chevron/ChevronDownIcon";
 import { Collapsible, CollapsibleContent } from "@/components/UI/Collapsible";
 import { ScrollArea } from "@/components/UI/ScrollArea";
+import { paths } from "@/config/paths";
 import { Category } from "@/features/Categories/types";
 import Link from "next/link";
 import { useState } from "react";
@@ -10,9 +11,11 @@ import { useState } from "react";
 const CategoriesCollapsibleList = ({
   categories,
   showCount,
+  closeSheet,
 }: {
   categories: Category[];
   showCount: number;
+  closeSheet: () => void;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -20,20 +23,25 @@ const CategoriesCollapsibleList = ({
     (a, b) => a.menu_order - b.menu_order
   );
 
-  const mainlist = sortedCategories.slice(0, showCount);
-  const collapsibleList = sortedCategories.slice(showCount - 1, -1);
+  const mainList = sortedCategories.slice(0, showCount);
+  const collapsibleList = sortedCategories.slice(showCount, -1);
 
   return (
     <div>
       <ScrollArea className="pb-[2px]">
         <ul className="space-y-2">
-          {mainlist.map((item) => (
-            <li key={item.id}>
+          {mainList.map((category) => (
+            <li key={category.id}>
               <Link
-                href={`/${item.id}`}
+                onClick={closeSheet}
+                href={paths.catalog.category.getHref(
+                  `${category.slug}_${category.id}`,
+                  category.name,
+                  category.parent
+                )}
                 className="text-button-normal link-hover"
               >
-                {item.name}
+                {category.name}
               </Link>
             </li>
           ))}
