@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { RefObject, useEffect, useState } from "react";
 import * as SliderPrimitive from "@radix-ui/react-slider";
 
 import { cn } from "@/lib/utils";
@@ -11,6 +11,7 @@ interface RangeSliderProps extends SliderPrimitive.SliderProps {
   step: number;
   formatLabel?: (value: number) => string;
   onValueChange?: (values: number[]) => void;
+  clearRef?: RefObject<() => void>;
 }
 
 const RangeSlider = React.forwardRef(
@@ -23,6 +24,7 @@ const RangeSlider = React.forwardRef(
       formatLabel,
       defaultValue,
       onValueChange,
+      clearRef,
       ...props
     }: RangeSliderProps,
     ref
@@ -38,6 +40,10 @@ const RangeSlider = React.forwardRef(
         onValueChange(newValues);
       }
     };
+
+    useEffect(() => {
+      if (clearRef) clearRef.current = () => setLocalValues(initialValue);
+    }, []);
 
     return (
       <SliderPrimitive.Root

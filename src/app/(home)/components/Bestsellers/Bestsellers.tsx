@@ -4,6 +4,8 @@ import { Button } from "@/components/UI/Button";
 import Container from "@/components/UI/Container";
 import Section from "@/components/UI/Section";
 import Image from "next/image";
+import Link from "next/link";
+import CategoryLink from "@/features/Categories/components/CategoryLink";
 
 const Bestsellers = () => {
   return (
@@ -22,8 +24,10 @@ const Bestsellers = () => {
         />
         <h2 className="text-h2">Наши бестселлеры / 25</h2>
         <div className="flex flex-col gap-4">
-          <Button variant="tertiary" size="medium">
-            Смотреть все <ArrowRightIcon />
+          <Button variant="tertiary" size="medium" asChild>
+            <CategoryLink category="bestsellers" name="Бестселлеры">
+              Смотреть все <ArrowRightIcon />
+            </CategoryLink>
           </Button>
           <ItemCard src="/images/Home/Bestsellers/card-2.jpg" href="/" />
         </div>

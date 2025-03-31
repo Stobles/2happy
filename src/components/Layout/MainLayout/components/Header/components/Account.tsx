@@ -8,9 +8,9 @@ import { useUser } from "@/api/authApi";
 import { paths } from "@/config/paths";
 
 const Account = () => {
-  const user = useUser();
+  const { data, isPending } = useUser();
 
-  if (user.data) {
+  if (data) {
     return (
       <Link href={paths.account.root.getHref()}>
         <UserIcon
@@ -23,7 +23,7 @@ const Account = () => {
     );
   }
   return (
-    <AuthModal>
+    <AuthModal disabled={isPending}>
       <UserIcon
         data-tooltip-id="auth"
         data-tooltip-content="Войти"

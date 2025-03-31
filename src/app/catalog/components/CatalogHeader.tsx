@@ -1,6 +1,6 @@
 "use client";
 
-import { useCatalogStore } from "@/features/Products/store/productsStore";
+import { useCatalogStore } from "@/features/Products/store/catalogStore";
 import { useSearchParams } from "next/navigation";
 
 const CatalogHeader = ({ name }: { name?: string }) => {

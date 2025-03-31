@@ -18,30 +18,27 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/UI/Sheet";
-import { ReactNode } from "react";
-
-const FilterCheckbox = ({
-  defaultChecked,
-  onCheck,
-  text,
-}: {
-  defaultChecked?: boolean;
-  onCheck: () => void;
-  text: string;
-}) => {
-  return (
-    <div className="flex items-center gap-2.5">
-      <Checkbox
-        defaultChecked={defaultChecked}
-        onCheckedChange={onCheck}
-        className="w-6 h-6"
-      />
-      <label>{text}</label>
-    </div>
-  );
-};
+import { ReactNode, useRef } from "react";
+import { TPriceRange, useFiltersStore } from "../../store/filtersStore";
+import PriceRangeFilter from "./PriceRangeFilter";
+import FilterCheckbox from "./FilterCheckbox";
+import SizeFilter from "./SizeFilter";
 
 const ProductsFiltersSheet = ({ trigger }: { trigger: ReactNode }) => {
+  const { priceRange, setPriceRange, clearFilters } = useFiltersStore();
+
+  const priceRangeRef = useRef<TPriceRange | undefined>(undefined);
+  const priceRangeClearRef = useRef<() => void>(() => {});
+
+  const handleSubmit = () => {
+    console.log(priceRangeRef.current);
+    if (priceRangeRef.current) setPriceRange(priceRangeRef.current);
+  };
+
+  const handleClear = () => {
+    if (priceRangeClearRef.current) priceRangeClearRef.current();
+    clearFilters();
+  };
   return (
     <Sheet>
       <SheetTrigger>{trigger}</SheetTrigger>
@@ -118,27 +115,19 @@ const ProductsFiltersSheet = ({ trigger }: { trigger: ReactNode }) => {
                 </div>
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem className="flex flex-col min-h-14" value="size">
-              <AccordionTrigger className="text-h5">Размер</AccordionTrigger>
-              <AccordionContent className="flex flex-col gap-4">
-                <FilterCheckbox onCheck={() => {}} text="One Size" />
-                <FilterCheckbox onCheck={() => {}} text="XS" />
-                <FilterCheckbox onCheck={() => {}} text="S" />
-                <FilterCheckbox onCheck={() => {}} text="M" />
-                <FilterCheckbox onCheck={() => {}} text="L" />
-              </AccordionContent>
-            </AccordionItem>
+            <SizeFilter />
             <AccordionItem className="flex flex-col min-h-14" value="price">
               <AccordionTrigger className="text-h5">Цена</AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 px-2">
-                <RangeSlider
-                  className="my-10"
-                  defaultValue={[2000]}
-                  minStepsBetweenThumbs={200}
-                  max={300000}
-                  min={5000}
-                  step={100}
-                  formatLabel={(value) => `${value} \u20B8`}
+                <PriceRangeFilter
+                  defaultValues={priceRange}
+                  onValueCommit={(value) =>
+                    (priceRangeRef.current = {
+                      min: Math.min(...value),
+                      max: Math.max(...value),
+                    })
+                  }
+                  clearRef={priceRangeClearRef}
                 />
               </AccordionContent>
             </AccordionItem>
@@ -156,10 +145,15 @@ const ProductsFiltersSheet = ({ trigger }: { trigger: ReactNode }) => {
           </Accordion>
         </div>
         <SheetFooter className="flex">
-          <Button className="w-full" variant="secondary" size="large">
+          <Button
+            className="w-full"
+            variant="secondary"
+            size="large"
+            onClick={handleClear}
+          >
             Очистить
           </Button>
-          <Button className="w-full" size="large">
+          <Button className="w-full" size="large" onClick={handleSubmit}>
             Применить
           </Button>
         </SheetFooter>

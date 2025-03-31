@@ -41,6 +41,15 @@ export type Image = {
   alt: string;
 };
 
+export type Attribute = {
+  id: number;
+  name: string;
+  slug: string;
+  description: string;
+  menu_order: number;
+  count: number;
+};
+
 export type Link = {
   href: string;
   targetHints?: {
