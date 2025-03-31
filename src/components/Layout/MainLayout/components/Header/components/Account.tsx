@@ -8,7 +8,9 @@ import { useUser } from "@/api/authApi";
 import { paths } from "@/config/paths";
 
 const Account = () => {
-  const { data, isPending } = useUser();
+  const { data, isFetching } = useUser();
+
+  console.log(isFetching);
 
   if (data) {
     return (
@@ -23,7 +25,7 @@ const Account = () => {
     );
   }
   return (
-    <AuthModal disabled={isPending}>
+    <AuthModal disabled={isFetching}>
       <UserIcon
         data-tooltip-id="auth"
         data-tooltip-content="Войти"
