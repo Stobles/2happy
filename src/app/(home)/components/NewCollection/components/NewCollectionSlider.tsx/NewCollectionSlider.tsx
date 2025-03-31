@@ -9,18 +9,17 @@ import { ProductServer } from "@/features/Products/types";
 import ProductServerCard from "@/features/Products/components/ProductCards/ProductServerCard";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { getProductsQueryOptions } from "@/features/Products/api/productsApi";
+import { categoryIds } from "@/features/Categories/consts/consts";
+import CustomSlide from "./CustomSlide";
 
 import "swiper/css";
 import "swiper/css/navigation";
 
 import "./styles.scss";
-import { categorySlugs } from "@/features/Categories/consts/consts";
-import CustomSlide from "./CustomSlide";
-import NewCollectionLoader from "./NewCollectionLoader";
 
 const NewCollectionSlider = () => {
   const { data } = useSuspenseQuery(
-    getProductsQueryOptions({ category: categorySlugs["new"], per_page: 9 })
+    getProductsQueryOptions({ category: categoryIds["new"], per_page: 9 })
   );
 
   const productsWithCustom: (ProductServer | "custom")[] = [

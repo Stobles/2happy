@@ -9,7 +9,7 @@ import Container from "@/components/UI/Container";
 import StyledTooltip from "@/components/UI/StyledTooltip";
 
 import { iconLinks, mainLinks, subLinks } from "./consts/consts";
-import CategorySheet from "./components/CategorySheet/CategorySheet";
+import CategorySheet from "../../../../../features/Categories/components/CategorySheet/CategorySheet";
 import SearchSheet from "./components/SearchSheet";
 import Account from "./components/Account";
 import useObserver from "@/hooks/useObserver";

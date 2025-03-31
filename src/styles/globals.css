@@ -28,7 +28,6 @@ body {
 
 body {
   z-index: -10;
-  scroll-behavior: smooth;
   will-change: scroll-position;
   box-sizing: border-box;
   position: relative;

@@ -11,15 +11,20 @@ import CatalogCategories from "../components/CatalogCategories";
 
 const CatalogPage = async ({
   params,
+  searchParams,
 }: {
   params: Promise<{ category: string }>;
+  searchParams: Promise<{ subTo: string | undefined }>;
 }) => {
   const queryClient = getQueryClient();
 
   const { category } = await params;
+  const { subTo } = await searchParams;
   const [slug, id] = category.split("_");
 
-  queryClient.prefetchQuery(getCategoriesQueryOptions({ parent: +id }));
+  const idToFetch = subTo ? subTo : id;
+
+  queryClient.prefetchQuery(getCategoriesQueryOptions({ parent: +idToFetch }));
 
   return (
     <Container className="my-section flex flex-col gap-12">
@@ -27,10 +32,10 @@ const CatalogPage = async ({
       <div className="w-full flex flex-col gap-16">
         <CatalogHeader />
         <Suspense fallback={<CategorySliderLoader itemsCount={5} />}>
-          <CatalogCategories parent={+id} activeSlug={slug} />
+          <CatalogCategories parent={+idToFetch} activeSlug={slug} />
         </Suspense>
       </div>
-      <Catalog />
+      <Catalog category={id} />
     </Container>
   );
 };

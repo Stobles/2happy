@@ -8,8 +8,8 @@ import { WooResponse } from "@/types/api";
 export type getProductsListParameters = {
   page?: number;
   per_page?: number;
-  order?: "asc" | "desc";
-  category?: number;
+  category?: string;
+  order?: string;
   orderby?: string;
 };
 
@@ -40,6 +40,9 @@ const productsQueryKey = (params: getProductsListParameters) => {
   if (params.category) key.push(`${params.category}`);
   if (params.page) key.push(`page ${params.page}`);
   if (params.per_page) key.push(`per_page ${params.per_page}`);
+  if (params.order) key.push(`order ${params.order}`);
+  if (params.orderby) key.push(`orderby ${params.orderby}`);
+  if (params.category) key.push(`category ${params.category}`);
 
   return key;
 };

@@ -8,7 +8,7 @@ import {
   PaginationNext,
   PaginationEllipsis,
 } from "@/components/UI/Pagination";
-import { useCatalogStore } from "@/features/Products/store/productsStore";
+import { useCatalogStore } from "@/features/Products/store/catalogStore";
 
 const CatalogPagination = ({
   page,

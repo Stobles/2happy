@@ -16,7 +16,14 @@ import AccessoriesList from "./CategoryLists/AccessoriesList";
 import OuterwearList from "./CategoryLists/OuterwearList";
 import CategoryListLoader from "./CategoryLists/CategoryListLoader";
 
-const Content = (props: SheetContentProps) => {
+interface ICategorySheetContentProps extends SheetContentProps {
+  closeSheet: () => void;
+}
+
+const CategorySheetContent = ({
+  closeSheet,
+  ...props
+}: ICategorySheetContentProps) => {
   return (
     <SheetContent className="flex p-0 z-behind-header-2 bg-white" {...props}>
       <SheetHeader className="hidden">
@@ -75,7 +82,13 @@ const Content = (props: SheetContentProps) => {
             </div>
           </div>
         </div>
-        <Button className="w-full" variant="tertiary" size="large" asChild>
+        <Button
+          className="w-full"
+          variant="tertiary"
+          size="large"
+          onClick={closeSheet}
+          asChild
+        >
           <Link href={paths.catalog.root}>
             Перейти в каталог
             <ArrowUpRightIcon />
@@ -86,4 +99,4 @@ const Content = (props: SheetContentProps) => {
   );
 };
 
-export default Content;
+export default CategorySheetContent;

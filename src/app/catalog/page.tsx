@@ -10,7 +10,7 @@ import Catalog from "./components/Catalog";
 import CatalogCategories from "./components/CatalogCategories";
 import CatalogHeader from "./components/CatalogHeader";
 
-const CatalogPage = async () => {
+const CatalogPage = () => {
   const queryClient = getQueryClient();
 
   queryClient.prefetchQuery(getCategoriesQueryOptions({ parent: 0 }));

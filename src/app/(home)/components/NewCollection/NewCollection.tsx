@@ -4,7 +4,7 @@ import NewCollectionSlider from "./components/NewCollectionSlider.tsx/NewCollect
 import SectionImage from "@/components/UI/SectionImage";
 import { Suspense } from "react";
 import { getQueryClient } from "@/api/queryClient";
-import { categorySlugs } from "@/features/Categories/consts/consts";
+import { categoryIds } from "@/features/Categories/consts/consts";
 import { getProductsQueryOptions } from "@/features/Products/api/productsApi";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import NewCollectionLoader from "./components/NewCollectionSlider.tsx/NewCollectionLoader";
@@ -13,7 +13,7 @@ const NewCollection = async () => {
   const queryClient = getQueryClient();
 
   queryClient.prefetchQuery(
-    getProductsQueryOptions({ category: categorySlugs["new"], per_page: 9 })
+    getProductsQueryOptions({ category: categoryIds["new"], per_page: 9 })
   );
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

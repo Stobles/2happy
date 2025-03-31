@@ -1,16 +1,16 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import CategoriesCollapsibleList from "../CategoriesCollapsibleList";
 import { getCategoriesQueryOptions } from "@/features/Categories/api/categoriesApi";
-import { categorySlugs } from "@/features/Categories/consts/consts";
+import { categoryIds } from "@/features/Categories/consts/consts";
 
-const OuterwearList = () => {
+const AccessoriesList = () => {
   const { data } = useSuspenseQuery(
     getCategoriesQueryOptions({
-      parent: categorySlugs["outerwear"],
+      parent: categoryIds["accessories"],
       per_page: 20,
     })
   );
-  return <CategoriesCollapsibleList categories={data.items} showCount={10} />;
+  return <CategoriesCollapsibleList categories={data.items} showCount={3} />;
 };
 
-export default OuterwearList;
+export default AccessoriesList;

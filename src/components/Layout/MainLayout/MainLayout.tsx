@@ -2,7 +2,7 @@ import { ReactNode, Suspense } from "react";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import { getCategoriesQueryOptions } from "@/features/Categories/api/categoriesApi";
-import { categorySlugs } from "@/features/Categories/consts/consts";
+import { categoryIds } from "@/features/Categories/consts/consts";
 import { getQueryClient } from "@/api/queryClient";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
@@ -11,21 +11,21 @@ export const MainLayout = async ({ children }: { children: ReactNode }) => {
 
   queryClient.prefetchQuery(
     getCategoriesQueryOptions({
-      parent: categorySlugs["clothes"],
+      parent: categoryIds["clothes"],
       per_page: 20,
     })
   );
 
   queryClient.prefetchQuery(
     getCategoriesQueryOptions({
-      parent: categorySlugs["accessories"],
+      parent: categoryIds["accessories"],
       per_page: 20,
     })
   );
 
   queryClient.prefetchQuery(
     getCategoriesQueryOptions({
-      parent: categorySlugs["outerwear"],
+      parent: categoryIds["outerwear"],
       per_page: 20,
     })
   );

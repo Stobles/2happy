@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/UI/Button";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Category } from "../../types";
-import { paths } from "@/config/paths";
 
 import Link from "next/link";
 import SliderButton from "@/components/UI/SliderButton";
@@ -17,9 +16,11 @@ import "./styles.css";
 export const CategorySlider = ({
   categories,
   activeSlug,
+  getHref,
 }: {
   categories: Category[] | undefined;
   activeSlug?: string;
+  getHref: (category: Category) => string;
 }) => {
   return (
     <div className="category-slider">
@@ -55,14 +56,7 @@ export const CategorySlider = ({
                 size="small"
                 asChild
               >
-                <Link
-                  href={paths.catalog.category.getHref(
-                    `${category.slug}_${category.id}`,
-                    category.name
-                  )}
-                >
-                  {category.name}
-                </Link>
+                <Link href={getHref(category)}>{category.name}</Link>
               </Button>
             </SwiperSlide>
           ))}

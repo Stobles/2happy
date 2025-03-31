@@ -1,17 +1,24 @@
 import { useQuery } from "@tanstack/react-query";
 import { getProductsQueryOptions } from "../api/productsApi";
 import { useEffect } from "react";
-import { useCatalogStore } from "../store/productsStore";
+import { useCatalogStore } from "../store/catalogStore";
 import ProductServerCard from "./ProductCards/ProductServerCard";
 import { cn } from "@/lib/utils";
 import { usePaginationStore } from "../store/paginationStore";
+import ProductCardLoader from "./ProductCards/ProductCardLoader";
 
-const ProductsList = () => {
-  const { gridType } = useCatalogStore();
+const ProductsList = ({ category }: { category?: string }) => {
+  const { sort, gridType } = useCatalogStore();
   const { page, per_page } = usePaginationStore();
 
-  const { data, isPlaceholderData } = useQuery({
-    ...getProductsQueryOptions({ page, per_page }),
+  const { data, isPending, isPlaceholderData } = useQuery({
+    ...getProductsQueryOptions({
+      page,
+      per_page,
+      category,
+      order: sort.type,
+      orderby: sort.field,
+    }),
     placeholderData: (previousData) => previousData,
   });
   const { setTotalItems, setTotalPages } = useCatalogStore();
@@ -33,6 +40,15 @@ const ProductsList = () => {
         isPlaceholderData && "opacity-60 pointer-events-none"
       )}
     >
+      {isPending && !isPlaceholderData && (
+        <>
+          <ProductCardLoader />
+          <ProductCardLoader />
+          <ProductCardLoader />
+          <ProductCardLoader />
+        </>
+      )}
+
       {data?.items.map((product) => (
         <ProductServerCard key={product.id} product={product} />
       ))}
