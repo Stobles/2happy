@@ -6,14 +6,14 @@ import { Product } from "../../types";
 import { getProductChip } from "../../utils/getProductChip";
 import { Chip } from "@/components/UI/Chip";
 import { MouseEvent } from "react";
-import ImageWithFallback from "@/components/UI/ImageWithFallback";
+import ImageWithLoader from "@/components/UI/ImageWithLoader";
 import ColorSquare from "../Colors/ColorSquare";
 import { paths } from "@/config/paths";
 
 const ProductCard = ({ product }: { product: Product }) => {
   const { id, title, colors, sizes, price, image, sale } = product;
 
-  const chip = getProductChip(product);
+  // const chip = getProductChip(product);
 
   const handleFavoriteClick = (e: MouseEvent<SVGSVGElement>) => {
     e.preventDefault();
@@ -25,20 +25,19 @@ const ProductCard = ({ product }: { product: Product }) => {
         className="flex flex-col h-full gap-4"
       >
         <div className="relative h-full">
-          {chip && (
+          {/* {chip && (
             <Chip className="absolute top-4 left-4 z-10" variant={chip.type}>
               {chip.text}
             </Chip>
-          )}
+          )} */}
           <HeartIcon
             role="button"
             onClick={handleFavoriteClick}
             className="absolute top-4 right-4 z-50 opacity-0 group-hover/product:opacity-100 hover:fill-main"
           />
-          <ImageWithFallback
+          <ImageWithLoader
             src={image}
             className="group-hover/product:opacity-60 transition-opacity"
-            fallbackSrc={image}
             alt="product-image"
           />
         </div>

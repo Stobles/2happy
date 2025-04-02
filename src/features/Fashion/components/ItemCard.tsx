@@ -2,7 +2,7 @@ import Link, { LinkProps } from "next/link";
 import { cn } from "@/lib/utils";
 
 import ArrowUpRightIcon from "@/components/icons/Arrows/ArrowUpRightIcon";
-import ImageWithFallback from "@/components/UI/ImageWithFallback";
+import ImageWithLoader from "@/components/UI/ImageWithLoader";
 
 // Нужно переименовать
 const ItemCard = ({
@@ -21,10 +21,9 @@ const ItemCard = ({
       {...props}
     >
       <ArrowUpRightIcon className="absolute top-4 right-4 z-[1] opacity-0 group-hover:opacity-100 transition-opacity" />
-      <ImageWithFallback
+      <ImageWithLoader
         className="p-2 group-hover:opacity-60 transition-opacity"
         src={src}
-        fallbackSrc={src}
         alt="item-img"
       />
     </Link>
