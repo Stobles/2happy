@@ -6,8 +6,6 @@ import {
   AccordionTrigger,
 } from "@/components/UI/Accordion";
 import { Button } from "@/components/UI/Button";
-import { Checkbox } from "@/components/UI/Checkbox";
-import { RangeSlider } from "@/components/UI/RangeSlider";
 import {
   Sheet,
   SheetClose,
@@ -19,24 +17,62 @@ import {
   SheetTrigger,
 } from "@/components/UI/Sheet";
 import { ReactNode, useRef } from "react";
-import { TPriceRange, useFiltersStore } from "../../store/filtersStore";
+import {
+  TCheckboxFilterItem,
+  TPriceRange,
+  useFiltersStore,
+} from "../../store/filtersStore";
 import PriceRangeFilter from "./PriceRangeFilter";
 import FilterCheckbox from "./FilterCheckbox";
-import SizeFilter from "./SizeFilter";
+import CheckboxListFilter from "./CheckboxListFilter";
+import { useProductsColors, useProductsSizes } from "../../api/filtersApi";
 
 const ProductsFiltersSheet = ({ trigger }: { trigger: ReactNode }) => {
-  const { priceRange, setPriceRange, clearFilters } = useFiltersStore();
+  const {
+    priceRange,
+    colors,
+    sizes,
+    setSizes,
+    setColors,
+    setPriceRange,
+    clearFilters,
+  } = useFiltersStore();
+  const { data: sizesData } = useProductsSizes();
+  const sizesValue =
+    sizesData?.items.map((item) => ({
+      id: item.id,
+      name: item.name,
+    })) ?? [];
+
+  const sizesRef = useRef<TCheckboxFilterItem[]>([]);
+  const sizesClearRef = useRef<() => void>(() => {});
+
+  const { data: colorsData } = useProductsColors();
+  const colorsValue =
+    colorsData?.items.map((item) => ({
+      id: item.id,
+      name: item.name,
+    })) ?? [];
+
+  const colorsRef = useRef<TCheckboxFilterItem[]>([]);
+  const colorsClearRef = useRef<() => void>(() => {});
 
   const priceRangeRef = useRef<TPriceRange | undefined>(undefined);
   const priceRangeClearRef = useRef<() => void>(() => {});
 
   const handleSubmit = () => {
-    console.log(priceRangeRef.current);
     if (priceRangeRef.current) setPriceRange(priceRangeRef.current);
+    if (colorsRef.current) {
+      setColors(colorsRef.current);
+    }
+    if (sizesRef.current) setSizes(sizesRef.current);
   };
 
   const handleClear = () => {
-    if (priceRangeClearRef.current) priceRangeClearRef.current();
+    priceRangeRef.current = undefined;
+    colorsClearRef.current();
+    sizesClearRef.current();
+    priceRangeClearRef.current();
     clearFilters();
   };
   return (
@@ -58,64 +94,20 @@ const ProductsFiltersSheet = ({ trigger }: { trigger: ReactNode }) => {
         </SheetHeader>
         <div className="h-full overflow-x-hidden overflow-y-auto">
           <Accordion type="multiple" className="w-full flex flex-col">
-            <AccordionItem className="flex flex-col min-h-14" value="color">
-              <AccordionTrigger className="text-h5">Цвет</AccordionTrigger>
-              <AccordionContent className="flex flex-col gap-4">
-                <div className="flex items-center gap-2.5">
-                  <Checkbox className="w-6 h-6" />
-                  <label>Белый</label>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Checkbox className="w-6 h-6" />
-                  <label>Белый</label>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Checkbox className="w-6 h-6" />
-                  <label>Белый</label>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Checkbox className="w-6 h-6" />
-                  <label>Белый</label>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Checkbox className="w-6 h-6" />
-                  <label>Белый</label>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Checkbox className="w-6 h-6" />
-                  <label>Белый</label>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Checkbox className="w-6 h-6" />
-                  <label>Белый</label>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Checkbox className="w-6 h-6" />
-                  <label>Белый</label>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Checkbox className="w-6 h-6" />
-                  <label>Белый</label>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Checkbox className="w-6 h-6" />
-                  <label>Белый</label>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Checkbox className="w-6 h-6" />
-                  <label>Белый</label>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Checkbox className="w-6 h-6" />
-                  <label>Белый</label>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Checkbox className="w-6 h-6" />
-                  <label>Белый</label>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-            <SizeFilter />
+            <CheckboxListFilter
+              name="Цвет"
+              filterRef={colorsRef}
+              defaultValue={colors}
+              values={colorsValue}
+              clearRef={colorsClearRef}
+            />
+            <CheckboxListFilter
+              name="Размер"
+              filterRef={sizesRef}
+              defaultValue={sizes}
+              values={sizesValue}
+              clearRef={sizesClearRef}
+            />
             <AccordionItem className="flex flex-col min-h-14" value="price">
               <AccordionTrigger className="text-h5">Цена</AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 px-2">
@@ -136,10 +128,10 @@ const ProductsFiltersSheet = ({ trigger }: { trigger: ReactNode }) => {
                 Распродажа
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4">
-                <FilterCheckbox onCheck={() => {}} text="До 30%" />
+                {/* <FilterCheckbox onCheck={() => {}} text="До 30%" />
                 <FilterCheckbox onCheck={() => {}} text="30%-50%" />
                 <FilterCheckbox onCheck={() => {}} text="50%-60%" />
-                <FilterCheckbox onCheck={() => {}} text="70%" />
+                <FilterCheckbox onCheck={() => {}} text="70%" /> */}
               </AccordionContent>
             </AccordionItem>
           </Accordion>

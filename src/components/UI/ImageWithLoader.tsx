@@ -2,30 +2,20 @@
 
 import { cn } from "@/lib/utils";
 import Image, { ImageProps } from "next/image";
-import { SyntheticEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-const ImageWithFallback = ({
+const ImageWithLoader = ({
   wrapperClassName,
-  fallbackSrc,
   className,
   src,
   alt,
   ...props
-}: { wrapperClassName?: string; fallbackSrc: string } & ImageProps) => {
+}: { wrapperClassName?: string } & ImageProps) => {
   const [imageSrc, setImageSrc] = useState(src);
   const [isLoading, setIsLoading] = useState(true);
 
-  const onLoad = (result: SyntheticEvent<HTMLImageElement, Event>) => {
+  const onLoad = () => {
     setIsLoading(false);
-    if (result.currentTarget.naturalWidth === 0) {
-      setImageSrc(fallbackSrc);
-      setIsLoading(true);
-    }
-  };
-
-  const onError = () => {
-    setImageSrc(fallbackSrc);
-    setIsLoading(true);
   };
 
   useEffect(() => {
@@ -48,7 +38,6 @@ const ImageWithFallback = ({
         sizes="100%"
         className={cn("object-cover object-top", className)}
         onLoad={onLoad}
-        onError={onError}
         alt={alt}
         {...props}
       />
@@ -56,4 +45,4 @@ const ImageWithFallback = ({
   );
 };
 
-export default ImageWithFallback;
+export default ImageWithLoader;

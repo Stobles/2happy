@@ -13,6 +13,8 @@ export type getProductsListParameters = {
   max_price?: number;
   order?: string;
   orderby?: string;
+  color?: number[];
+  size?: number[];
 };
 
 export const getProductsListURL = `${env.WOOCOMMERCE_API}/products`;
@@ -39,7 +41,11 @@ export const getProductsList = async (
 const productsQueryKey = (params: getProductsListParameters) => {
   const key = ["products"];
 
-  if (params.category) key.push(`${params.category}`);
+  // Object.entries(params).forEach(([key, value]) => {
+  //   if()
+  // })
+
+  if (params.category) key.push(`category ${params.category}`);
   if (params.page) key.push(`page ${params.page}`);
   if (params.per_page) key.push(`per_page ${params.per_page}`);
   if (params.order) key.push(`order ${params.order}`);
@@ -47,6 +53,13 @@ const productsQueryKey = (params: getProductsListParameters) => {
   if (params.category) key.push(`category ${params.category}`);
   if (params.min_price) key.push(`min ${params.min_price}`);
   if (params.max_price) key.push(`max ${params.max_price}`);
+  if (params.color?.length) {
+    key.push(`colors ${params.color}`);
+  }
+  if (params.size?.length) {
+    key.push(`sizes ${params.size}`);
+  }
+
   return key;
 };
 

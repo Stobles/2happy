@@ -1,8 +1,10 @@
+import { colorsByName } from "../../consts/colors";
+
 const ColorSquare = ({ color }: { color: string }) => {
   return (
     <div
       style={{
-        backgroundColor: color,
+        backgroundColor: colorsByName[color],
       }}
       className={`w-[16px] h-[16px]`}
     />

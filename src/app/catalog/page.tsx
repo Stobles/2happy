@@ -9,6 +9,7 @@ import SectionImage from "@/components/UI/SectionImage";
 import Catalog from "./components/Catalog";
 import CatalogCategories from "./components/CatalogCategories";
 import CatalogHeader from "./components/CatalogHeader";
+import FiltersList from "@/features/Products/components/Filters/FiltersList";
 
 const CatalogPage = () => {
   const queryClient = getQueryClient();
@@ -25,7 +26,7 @@ const CatalogPage = () => {
             <CatalogCategories parent={0} />
           </Suspense>
         </div>
-        <Catalog />
+        <Catalog key="биба" filtersListSlot={<FiltersList />} />
       </Container>
     </HydrationBoundary>
   );

@@ -2,47 +2,64 @@
 
 import HeartIcon from "@/components/icons/HeartIcon";
 import Link from "next/link";
-import { Product, ProductServer } from "../../types";
-import { getProductChip } from "../../utils/getProductChip";
+import { ProductServer } from "../../types";
 import { Chip } from "@/components/UI/Chip";
 import { MouseEvent } from "react";
-import ImageWithFallback from "@/components/UI/ImageWithFallback";
+import ImageWithLoader from "@/components/UI/ImageWithLoader";
 import ColorSquare from "../Colors/ColorSquare";
 import { paths } from "@/config/paths";
+import { getProductChip } from "../../utils/getProductChip";
 
 const ProductServerCard = ({ product }: { product: ProductServer }) => {
-  const { id, name, price, images } = product;
-
-  // const chip = getProductChip(product);
+  const {
+    id,
+    name,
+    price,
+    sale_price,
+    regular_price,
+    images,
+    on_sale,
+    attributes,
+  } = product;
 
   const handleFavoriteClick = (e: MouseEvent<SVGSVGElement>) => {
     e.preventDefault();
   };
 
-  const productImage = product.images[0] ?? null;
+  const productChip = getProductChip(product);
+
+  const productImage = images?.[0] ?? null;
+
+  const colors =
+    attributes?.find((attr) => attr.slug === "pa_color")?.options ?? [];
+  const sizes =
+    attributes?.find((attr) => attr.slug === "pa_size")?.options ?? [];
 
   return (
     <article className="group/product w-full h-full">
       <Link
-        href={paths.catalog.product.getHref(12)}
+        href={paths.catalog.product.getHref(id)}
         className="flex flex-col h-full gap-4"
       >
         <div className="relative h-full">
-          {/* {chip && (
-            <Chip className="absolute top-4 left-4 z-10" variant={chip.type}>
-              {chip.text}
+          {productChip && (
+            <Chip
+              className="absolute top-4 left-4 z-10"
+              variant={productChip.type}
+              size="small"
+            >
+              {productChip.text}
             </Chip>
-          )} */}
+          )}
           <HeartIcon
             role="button"
             onClick={handleFavoriteClick}
             className="absolute top-4 right-4 z-50 opacity-0 group-hover/product:opacity-100 hover:fill-main"
           />
           {productImage && (
-            <ImageWithFallback
+            <ImageWithLoader
               src={productImage.src}
               className="group-hover/product:opacity-60 transition-opacity"
-              fallbackSrc={productImage.src}
               alt={productImage.alt ?? "product-image"}
             />
           )}
@@ -51,25 +68,31 @@ const ProductServerCard = ({ product }: { product: ProductServer }) => {
           <h5 className="text-h5 mb-5">{name}</h5>
           <div className="w-full relative h-6">
             <div className="absolute w-full flex items-center justify-between gap-2 opacity-0 group-hover/product:opacity-100 transition-opacity">
-              {/* <div className="flex gap-2">
-                {colors.map((color) => (
-                  <ColorSquare key={color.id} color={color.hex} />
+              <div className="flex gap-2">
+                {colors.map((color: string) => (
+                  <ColorSquare key={color} color={color} />
                 ))}
               </div>
               <div className="flex gap-2 text-gray-middle">
-                {sizes.map((size) => (
-                  <span key={size.id} className="text-body2">
-                    {size.size}
+                {sizes.map((size: string) => (
+                  <span key={size} className="text-body2">
+                    {size}
                   </span>
                 ))}
-              </div> */}
+              </div>
             </div>
-            {/* <div className="absolute flex w-full gap-2 opacity-100 group-hover/product:opacity-0 transition-opacity">
-              <span className={`${sale && "text-gray-middle line-through"}`}>
-                {price} &#8376;
-              </span>
-              {sale && <span className="text-red">{sale.price} &#8376;</span>}
-            </div> */}
+            <div className="absolute flex w-full gap-2 opacity-100 group-hover/product:opacity-0 transition-opacity">
+              {on_sale ? (
+                <>
+                  <span className={"text-gray-middle line-through"}>
+                    {regular_price} &#8376;
+                  </span>
+                  <span className="text-red">{sale_price} &#8376;</span>
+                </>
+              ) : (
+                <span>{price} &#8376;</span>
+              )}
+            </div>
           </div>
         </div>
       </Link>

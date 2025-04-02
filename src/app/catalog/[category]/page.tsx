@@ -8,6 +8,7 @@ import SectionImage from "@/components/UI/SectionImage";
 import CatalogHeader from "../components/CatalogHeader";
 import CategorySliderLoader from "@/features/Categories/components/CategorySlider/CategorySliderLoader";
 import CatalogCategories from "../components/CatalogCategories";
+import FiltersList from "@/features/Products/components/Filters/FiltersList";
 
 const CatalogPage = async ({
   params,
@@ -35,7 +36,7 @@ const CatalogPage = async ({
           <CatalogCategories parent={+idToFetch} activeSlug={slug} />
         </Suspense>
       </div>
-      <Catalog category={+id} />
+      <Catalog key="биба" category={+id} filtersListSlot={<FiltersList />} />
     </Container>
   );
 };

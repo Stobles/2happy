@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/UI/Accordion";
-import ImageWithFallback from "@/components/UI/ImageWithFallback";
+import ImageWithLoader from "@/components/UI/ImageWithLoader";
 
 const DescriptionTab = () => {
   return (
@@ -72,11 +72,10 @@ const DescriptionTab = () => {
           </AccordionItem>
         </Accordion>
       </div>
-      <ImageWithFallback
+      <ImageWithLoader
         wrapperClassName="flex-1 top-[-68px] bg-white"
         className="pl-12"
         src="/images/Home/Main/slider-1.jpg"
-        fallbackSrc=""
         alt="desc-image"
       />
     </div>
