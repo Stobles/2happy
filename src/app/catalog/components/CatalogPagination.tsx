@@ -1,4 +1,5 @@
-import { Button } from "@/components/UI/Button";
+"use client";
+
 import {
   Pagination,
   PaginationContent,
@@ -9,16 +10,10 @@ import {
   PaginationEllipsis,
 } from "@/components/UI/Pagination";
 import { useCatalogStore } from "@/features/Products/store/catalogStore";
+import { usePaginationStore } from "@/features/Products/store/paginationStore";
 
-const CatalogPagination = ({
-  page,
-  per_page,
-  setPage,
-}: {
-  page: number;
-  per_page: number;
-  setPage: (page: number) => void;
-}) => {
+const CatalogPagination = () => {
+  const { page, per_page, setPage } = usePaginationStore();
   const { totalItems, totalPages } = useCatalogStore();
 
   if (!totalItems) return null;
@@ -47,6 +42,7 @@ const CatalogPagination = ({
 
   const handlePageChange = (newPage: number) => {
     if (typeof newPage === "number") {
+      document.body.scrollTo({ top: 0, behavior: "smooth" });
       setPage(newPage);
     }
   };

@@ -1,42 +1,15 @@
-import { useQuery } from "@tanstack/react-query";
-import { getProductsQueryOptions } from "../api/productsApi";
-import { useEffect } from "react";
-import { useCatalogStore } from "../store/catalogStore";
-import ProductServerCard from "./ProductCards/ProductServerCard";
+"use client";
+
 import { cn } from "@/lib/utils";
-import { usePaginationStore } from "../store/paginationStore";
+import { useProductsList } from "../hooks/useProductsList";
+
 import ProductCardLoader from "./ProductCards/ProductCardLoader";
-import { useFiltersStore } from "../store/filtersStore";
+import ProductServerCard from "./ProductCards/ProductServerCard";
 
 const ProductsList = ({ category }: { category?: number }) => {
-  const { sort, gridType } = useCatalogStore();
-  const { page, per_page } = usePaginationStore();
-  const { priceRange, colors, sizes } = useFiltersStore();
-
-  console.log(colors, sizes);
-
-  const { data, isPending, isPlaceholderData } = useQuery({
-    ...getProductsQueryOptions({
-      page,
-      per_page,
-      category,
-      color: colors.map((item) => item.id),
-      size: sizes.map((item) => item.id),
-      min_price: priceRange?.min,
-      max_price: priceRange?.max,
-      order: sort.type,
-      orderby: sort.field,
-    }),
-    placeholderData: (previousData) => previousData,
+  const { data, gridType, isPending, isPlaceholderData } = useProductsList({
+    category,
   });
-  const { setTotalItems, setTotalPages } = useCatalogStore();
-
-  useEffect(() => {
-    if (data) {
-      setTotalItems(+data.totalItems);
-      setTotalPages(+data.totalPages);
-    }
-  }, [data]);
 
   if (!isPending && !data?.items.length) {
     return (
@@ -47,27 +20,34 @@ const ProductsList = ({ category }: { category?: number }) => {
   }
 
   return (
-    <div
-      className={cn(
-        "grid gap-x-6 gap-y-10 grid-flow-row",
-        gridType === "small"
-          ? "grid-cols-4 auto-rows-[552px] min-h-[552px]"
-          : "grid-cols-2 auto-rows-[928px] min-h-[928px]",
-        isPlaceholderData && "opacity-60 pointer-events-none"
+    <div className="relative">
+      {isPlaceholderData && (
+        <div className="absolute flex justify-center items-center w-full h-full pointer-events-none z-10">
+          <h2 className="text-h1Akira animate-pulse">2HAPPY</h2>
+        </div>
       )}
-    >
-      {isPending && !isPlaceholderData && (
-        <>
-          <ProductCardLoader />
-          <ProductCardLoader />
-          <ProductCardLoader />
-          <ProductCardLoader />
-        </>
-      )}
+      <div
+        className={cn(
+          "grid gap-x-6 gap-y-10 grid-flow-row",
+          gridType === "small"
+            ? "grid-cols-4 auto-rows-[552px] min-h-[552px]"
+            : "grid-cols-2 auto-rows-[928px] min-h-[928px]",
+          isPlaceholderData && "blur-sm pointer-events-none"
+        )}
+      >
+        {isPending && !isPlaceholderData && (
+          <>
+            <ProductCardLoader />
+            <ProductCardLoader />
+            <ProductCardLoader />
+            <ProductCardLoader />
+          </>
+        )}
 
-      {data?.items.map((product) => (
-        <ProductServerCard key={product.id} product={product} />
-      ))}
+        {data?.items.map((product) => (
+          <ProductServerCard key={product.id} product={product} />
+        ))}
+      </div>
     </div>
   );
 };

@@ -45,6 +45,9 @@ module.exports = {
         "elevation-5": "0px 20px 30px 0px rgba(0, 0, 0, 0.1)",
         "elevation-6": "0px 6px 12px 0px rgba(0, 0, 0, 0.1)",
       },
+      blur: {
+        xs: "2px",
+      },
       backgroundImage: {
         "radial-gradient":
           "radial-gradient(100% 100% at 50% 0%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 100%)",
@@ -234,8 +237,8 @@ module.exports = {
         5000: "5000ms",
       },
       animation: {
-        "collapsible-down": "collapsible-down 0.2s ease-out",
-        "collapsible-up": "collapsible-up 0.2s ease-out",
+        "collapsible-down": "collapsible-down 0.3s ease-out",
+        "collapsible-up": "collapsible-up 0.3s ease-out",
         "accordion-down":
           "accordion-down 0.2s ease-out, shrink-from-0-to-1 0.2s ease-out 0.2s forwards",
         "accordion-up": "accordion-up 0.2s ease-out",

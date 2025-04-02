@@ -15,6 +15,7 @@ export const getCategoriesListURL = `${env.WOOCOMMERCE_API}/products/categories`
 export const getCategoriesList = async (
   params?: getCategoriesListParameters
 ): Promise<WooResponse<Category[]>> => {
+  if (!params?.per_page) params = { ...params, per_page: 30 };
   const getCategoriesListURLWithParams = createURLWithParams(
     getCategoriesListURL,
     params
@@ -29,7 +30,7 @@ export const getCategoriesList = async (
 
 export const categoriesQueryKey = (params?: getCategoriesListParameters) => [
   "categories",
-  params?.parent,
+  `parent ${params?.parent}`,
 ];
 
 export const getCategoriesQueryOptions = (

@@ -32,8 +32,6 @@ const FiltersList = () => {
     filtersLength,
   } = useFiltersStore();
 
-  console.log(filtersLength);
-
   if (!filtersLength) return null;
 
   return (

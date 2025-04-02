@@ -17,14 +17,14 @@ import {
   SheetTrigger,
 } from "@/components/UI/Sheet";
 import { ReactNode, useRef } from "react";
+import PriceRangeFilter from "./PriceRangeFilter";
+import FilterCheckbox from "./FilterCheckbox";
+import CheckboxListFilter from "./CheckboxListFilter";
 import {
   TCheckboxFilterItem,
   TPriceRange,
   useFiltersStore,
 } from "../../store/filtersStore";
-import PriceRangeFilter from "./PriceRangeFilter";
-import FilterCheckbox from "./FilterCheckbox";
-import CheckboxListFilter from "./CheckboxListFilter";
 import { useProductsColors, useProductsSizes } from "../../api/filtersApi";
 
 const ProductsFiltersSheet = ({ trigger }: { trigger: ReactNode }) => {
@@ -38,6 +38,7 @@ const ProductsFiltersSheet = ({ trigger }: { trigger: ReactNode }) => {
     clearFilters,
   } = useFiltersStore();
   const { data: sizesData } = useProductsSizes();
+
   const sizesValue =
     sizesData?.items.map((item) => ({
       id: item.id,
@@ -69,11 +70,13 @@ const ProductsFiltersSheet = ({ trigger }: { trigger: ReactNode }) => {
   };
 
   const handleClear = () => {
-    priceRangeRef.current = undefined;
-    colorsClearRef.current();
     sizesClearRef.current();
+    colorsClearRef.current();
     priceRangeClearRef.current();
+
     clearFilters();
+
+    priceRangeRef.current = undefined;
   };
   return (
     <Sheet>
@@ -128,10 +131,10 @@ const ProductsFiltersSheet = ({ trigger }: { trigger: ReactNode }) => {
                 Распродажа
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4">
-                {/* <FilterCheckbox onCheck={() => {}} text="До 30%" />
-                <FilterCheckbox onCheck={() => {}} text="30%-50%" />
-                <FilterCheckbox onCheck={() => {}} text="50%-60%" />
-                <FilterCheckbox onCheck={() => {}} text="70%" /> */}
+                <FilterCheckbox onCheckedChange={() => {}} text="До 30%" />
+                <FilterCheckbox onCheckedChange={() => {}} text="30%-50%" />
+                <FilterCheckbox onCheckedChange={() => {}} text="50%-60%" />
+                <FilterCheckbox onCheckedChange={() => {}} text="70%" />
               </AccordionContent>
             </AccordionItem>
           </Accordion>
