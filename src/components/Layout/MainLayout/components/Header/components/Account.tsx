@@ -10,8 +10,6 @@ import { paths } from "@/config/paths";
 const Account = () => {
   const { data, isFetching } = useUser();
 
-  console.log(isFetching);
-
   if (data) {
     return (
       <Link href={paths.account.root.getHref()}>

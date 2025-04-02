@@ -27,7 +27,7 @@ const CategoriesCollapsibleList = ({
   const collapsibleList = sortedCategories.slice(showCount, -1);
 
   return (
-    <div>
+    <div className="flex flex-col flex-[0,1,auto] overflow-hidden">
       <ScrollArea className="pb-[2px]">
         <ul className="space-y-2">
           {mainList.map((category) => (

@@ -11,10 +11,6 @@ export const paths = {
           subTo ? `&subTo=${subTo}` : ""
         }`,
     },
-    subCategory: {
-      getHref: (parentSlug: string, slug: string, name: string) =>
-        `${paths.catalog.root}/${parentSlug}/${slug}/?name=${name}`,
-    },
 
     product: {
       getHref: (id: number) => `${paths.catalog.root}/product/${id}`,

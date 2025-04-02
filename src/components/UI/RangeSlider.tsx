@@ -42,7 +42,10 @@ const RangeSlider = React.forwardRef(
     };
 
     useEffect(() => {
-      if (clearRef) clearRef.current = () => setLocalValues(initialValue);
+      if (clearRef)
+        clearRef.current = () => {
+          setLocalValues([min, max]);
+        };
     }, []);
 
     return (

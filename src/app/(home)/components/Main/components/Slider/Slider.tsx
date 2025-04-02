@@ -8,7 +8,7 @@ import { Progress } from "@/components/UI/Progress";
 import ChevronRightIcon from "@/components/icons/Chevron/ChevronRightIcon";
 import ChevronLeftIcon from "@/components/icons/Chevron/ChevronLeftIcon";
 import SliderButton from "@/components/UI/SliderButton";
-import ImageWithFallback from "@/components/UI/ImageWithFallback";
+import ImageWithLoader from "@/components/UI/ImageWithLoader";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -44,7 +44,7 @@ const Slider = () => {
     >
       {SLIDES.map((item) => (
         <SwiperSlide key={item}>
-          <ImageWithFallback src={item} fallbackSrc={item} alt="slider-image" />
+          <ImageWithLoader src={item} alt="slider-image" />
         </SwiperSlide>
       ))}
 

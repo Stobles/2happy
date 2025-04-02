@@ -6,27 +6,24 @@ import { categoryIds } from "@/features/Categories/consts/consts";
 import { getQueryClient } from "@/api/queryClient";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
-export const MainLayout = async ({ children }: { children: ReactNode }) => {
+export const MainLayout = ({ children }: { children: ReactNode }) => {
   const queryClient = getQueryClient();
 
   queryClient.prefetchQuery(
     getCategoriesQueryOptions({
       parent: categoryIds["clothes"],
-      per_page: 20,
     })
   );
 
   queryClient.prefetchQuery(
     getCategoriesQueryOptions({
       parent: categoryIds["accessories"],
-      per_page: 20,
     })
   );
 
   queryClient.prefetchQuery(
     getCategoriesQueryOptions({
       parent: categoryIds["outerwear"],
-      per_page: 20,
     })
   );
   return (

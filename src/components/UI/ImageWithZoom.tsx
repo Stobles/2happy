@@ -1,4 +1,4 @@
-import ImageWithFallback from "@/components/UI/ImageWithFallback";
+import ImageWithLoader from "@/components/UI/ImageWithLoader";
 import { MouseEvent, useState } from "react";
 
 const ImageWithZoom = ({ src }: { src: string }) => {
@@ -20,10 +20,9 @@ const ImageWithZoom = ({ src }: { src: string }) => {
       onMouseMove={handleMouseMove}
       onMouseLeave={resetZoom}
     >
-      <ImageWithFallback
+      <ImageWithLoader
         src={src}
         className=" transition-transform w-full h-auto cursor-zoom-in"
-        fallbackSrc={src}
         style={{
           transformOrigin: `${zoom.x} ${zoom.y}`,
           transform: `scale(${zoom.scale})`,
