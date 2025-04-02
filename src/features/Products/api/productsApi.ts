@@ -41,10 +41,6 @@ export const getProductsList = async (
 const productsQueryKey = (params: getProductsListParameters) => {
   const key = ["products"];
 
-  // Object.entries(params).forEach(([key, value]) => {
-  //   if()
-  // })
-
   if (params.category) key.push(`category ${params.category}`);
   if (params.page) key.push(`page ${params.page}`);
   if (params.per_page) key.push(`per_page ${params.per_page}`);

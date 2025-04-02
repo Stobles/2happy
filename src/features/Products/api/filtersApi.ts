@@ -23,6 +23,7 @@ export const useProductsColors = () => {
   return useQuery({
     queryKey: ["colors"],
     queryFn: (meta) => getAttributesById("1", { signal: meta.signal }),
+    staleTime: Infinity,
   });
 };
 
@@ -30,5 +31,6 @@ export const useProductsSizes = () => {
   return useQuery({
     queryKey: ["sizes"],
     queryFn: (meta) => getAttributesById("2", { signal: meta.signal }),
+    staleTime: Infinity,
   });
 };

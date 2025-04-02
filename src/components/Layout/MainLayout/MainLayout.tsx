@@ -12,21 +12,18 @@ export const MainLayout = ({ children }: { children: ReactNode }) => {
   queryClient.prefetchQuery(
     getCategoriesQueryOptions({
       parent: categoryIds["clothes"],
-      per_page: 20,
     })
   );
 
   queryClient.prefetchQuery(
     getCategoriesQueryOptions({
       parent: categoryIds["accessories"],
-      per_page: 20,
     })
   );
 
   queryClient.prefetchQuery(
     getCategoriesQueryOptions({
       parent: categoryIds["outerwear"],
-      per_page: 20,
     })
   );
   return (

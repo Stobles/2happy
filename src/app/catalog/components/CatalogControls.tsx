@@ -1,3 +1,5 @@
+"use client";
+
 import FiltersIcon from "@/components/icons/FiltersIcon";
 import GridBigIcon from "@/components/icons/GridBigIcon";
 import GridSmallIcon from "@/components/icons/GridSmallIcon";

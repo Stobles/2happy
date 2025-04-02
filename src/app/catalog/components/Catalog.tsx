@@ -1,10 +1,7 @@
-"use client";
-
 import CatalogPagination from "./CatalogPagination";
 import CatalogHeader from "./CatalogControls";
 import ProductsList from "@/features/Products/components/ProductsList";
-import { usePaginationStore } from "@/features/Products/store/paginationStore";
-import { ReactNode, useEffect } from "react";
+import { ReactNode } from "react";
 
 const Catalog = ({
   category,
@@ -13,14 +10,6 @@ const Catalog = ({
   category?: number;
   filtersListSlot: ReactNode;
 }) => {
-  const { page, per_page, setPage } = usePaginationStore();
-
-  useEffect(() => {
-    return () => {
-      console.log("буба");
-    };
-  }, []);
-
   return (
     <div className="flex flex-col gap-10">
       <div className="flex flex-col gap-6">
@@ -29,7 +18,7 @@ const Catalog = ({
         <ProductsList category={category} />
       </div>
 
-      <CatalogPagination page={page} per_page={per_page} setPage={setPage} />
+      <CatalogPagination />
     </div>
   );
 };
