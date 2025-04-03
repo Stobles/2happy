@@ -1,5 +1,5 @@
-import Container from "@/components/UI/Container";
-import SectionImage from "@/components/UI/SectionImage";
+import Container from "@/shared/components/UI/Container";
+import SectionImage from "@/shared/components/UI/SectionImage";
 import ProductSlider from "./ProductSlider/ProductSlider";
 import ProductInfo from "./ProductInfo/ProductInfo";
 

@@ -1,4 +1,4 @@
-import { ButtonLoader, TButtonSizes } from "@/components/UI/Button";
+import { ButtonLoader, TButtonSizes } from "@/shared/components/UI/Button";
 
 const CategorySliderLoader = ({
   itemsCount,

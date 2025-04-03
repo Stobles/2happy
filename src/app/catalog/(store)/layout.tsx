@@ -1,6 +1,6 @@
-import Container from "@/components/UI/Container";
+import Container from "@/shared/components/UI/Container";
 import CatalogHeader from "../components/CatalogHeader";
-import SectionImage from "@/components/UI/SectionImage";
+import SectionImage from "@/shared/components/UI/SectionImage";
 
 export const metadata = {
   title: "2HAPPY",

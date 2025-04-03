@@ -1,12 +1,12 @@
-import ArrowUpRightIcon from "@/components/icons/Arrows/ArrowUpRightIcon";
-import { Button } from "@/components/UI/Button";
-import Container from "@/components/UI/Container";
+import ArrowUpRightIcon from "@/shared/components/icons/Arrows/ArrowUpRightIcon";
+import { Button } from "@/shared/components/UI/Button";
+import Container from "@/shared/components/UI/Container";
 import {
   SheetContent,
   SheetContentProps,
   SheetHeader,
   SheetTitle,
-} from "@/components/UI/Sheet";
+} from "@/shared/components/UI/Sheet";
 import Image from "next/image";
 import Link from "next/link";
 import ClothesList from "./CategoryLists/ClothesList";

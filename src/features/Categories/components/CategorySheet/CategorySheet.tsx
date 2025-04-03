@@ -1,9 +1,9 @@
 "use client";
 
-import { Sheet, SheetTrigger } from "@/components/UI/Sheet";
-import { useDelayedState } from "@/hooks/useDelayedState";
+import { Sheet, SheetTrigger } from "@/shared/components/UI/Sheet";
+import { useDelayedState } from "@/shared/hooks/useDelayedState";
 import CategorySheetContent from "./CategorySheetContent";
-import ChevronDownIcon from "@/components/icons/Chevron/ChevronDownIcon";
+import ChevronDownIcon from "@/shared/components/icons/Chevron/ChevronDownIcon";
 
 const CategorySheet = ({ isSticky }: { isSticky: boolean }) => {
   const { state, setFastState, setDelayedState, clearTimer } =

@@ -1,16 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import EyeShowIcon from "@/components/icons/EyeShowIcon";
-import EyeHideIcon from "@/components/icons/EyeHideIcon";
+import EyeShowIcon from "@/shared/components/icons/EyeShowIcon";
+import EyeHideIcon from "@/shared/components/icons/EyeHideIcon";
 import { Control, FieldValues, Path } from "react-hook-form";
 import {
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-} from "@/components/UI/Form";
-import { Input } from "@/components/UI/Input";
+} from "@/shared/components/UI/Form";
+import { Input } from "@/shared/components/UI/Input";
 
 const PasswordInput = <T extends FieldValues>({
   control,

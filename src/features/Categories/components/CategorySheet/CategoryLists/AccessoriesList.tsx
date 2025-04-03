@@ -1,5 +1,5 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
-import CategoriesCollapsibleList from "../CategoriesCollapsibleList";
+import CategoriesCollapsibleList from "./CategoriesCollapsibleList";
 import { getCategoriesQueryOptions } from "@/features/Categories/api/categoriesApi";
 import { categoryIds } from "@/features/Categories/consts/consts";
 

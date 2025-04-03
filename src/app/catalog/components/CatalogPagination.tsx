@@ -8,7 +8,7 @@ import {
   PaginationPrevious,
   PaginationNext,
   PaginationEllipsis,
-} from "@/components/UI/Pagination";
+} from "@/shared/components/UI/Pagination";
 import { useCatalogStore } from "@/features/Products/store/catalogStore";
 import { usePaginationStore } from "@/features/Products/store/paginationStore";
 

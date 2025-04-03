@@ -1,6 +1,6 @@
 import InstagramCard from "@/features/Fashion/components/InstagramCard";
-import Container from "@/components/UI/Container";
-import Section from "@/components/UI/Section";
+import Container from "@/shared/components/UI/Container";
+import Section from "@/shared/components/UI/Section";
 import Image from "next/image";
 
 const Instagram = () => {

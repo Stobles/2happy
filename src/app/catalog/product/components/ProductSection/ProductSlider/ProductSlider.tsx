@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import Image from "next/image";
-import ImageWithZoom from "@/components/UI/ImageWithZoom";
+import ImageWithZoom from "@/shared/components/UI/ImageWithZoom";
 
 import { Thumbs } from "swiper/modules";
 import { Swiper as SwiperType } from "swiper/types";

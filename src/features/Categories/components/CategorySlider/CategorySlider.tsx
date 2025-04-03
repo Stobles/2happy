@@ -1,13 +1,13 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/UI/Button";
+import { cn } from "@/shared/lib/utils";
+import { Button } from "@/shared/components/UI/Button";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Category } from "../../types";
 
 import Link from "next/link";
-import SliderButton from "@/components/UI/SliderButton";
-import ArrowRightIcon from "@/components/icons/Arrows/ArrowRightIcon";
+import SliderButton from "@/shared/components/UI/SliderButton";
+import ArrowRightIcon from "@/shared/components/icons/Arrows/ArrowRightIcon";
 
 import "swiper/css";
 import "swiper/css/pagination";

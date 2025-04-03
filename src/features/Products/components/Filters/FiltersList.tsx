@@ -1,8 +1,8 @@
 "use client";
 
-import CloseIcon from "@/components/icons/CloseIcon";
+import CloseIcon from "@/shared/components/icons/CloseIcon";
 import { useFiltersStore } from "../../store/filtersStore";
-import { Separator } from "@/components/UI/Separator";
+import { Separator } from "@/shared/components/UI/Separator";
 
 const FilterChip = ({
   text,

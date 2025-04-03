@@ -1,4 +1,4 @@
-import CatalogLayout from "@/components/Layout/CatalogLayout/CatalogLayout";
+import CatalogLayout from "@/shared/components/Layout/CatalogLayout/CatalogLayout";
 
 export const metadata = {
   title: "2HAPPY",

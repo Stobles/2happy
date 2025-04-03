@@ -1,9 +1,9 @@
-import Container from "@/components/UI/Container";
-import Section from "@/components/UI/Section";
+import Container from "@/shared/components/UI/Container";
+import Section from "@/shared/components/UI/Section";
 import NewCollectionSlider from "./components/NewCollectionSlider.tsx/NewCollectionSlider";
-import SectionImage from "@/components/UI/SectionImage";
+import SectionImage from "@/shared/components/UI/SectionImage";
 import { Suspense } from "react";
-import { getQueryClient } from "@/api/queryClient";
+import { getQueryClient } from "@/shared/api/queryClient";
 import { categoryIds } from "@/features/Categories/consts/consts";
 import { getProductsQueryOptions } from "@/features/Products/api/productsApi";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";

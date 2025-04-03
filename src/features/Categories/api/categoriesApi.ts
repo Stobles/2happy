@@ -1,9 +1,9 @@
-import { apiInstance } from "@/api/apiInstance";
+import { apiInstance } from "@/shared/api/apiInstance";
 import { Category } from "../types";
 import { queryOptions, useQuery } from "@tanstack/react-query";
 import { env } from "@/config/env";
-import { WooResponse } from "@/types/api";
-import { createURLWithParams } from "@/lib/utils";
+import { WooResponse } from "@/shared/types/api";
+import { createURLWithParams } from "@/shared/lib/utils";
 
 export type getCategoriesListParameters = {
   parent?: number;

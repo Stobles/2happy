@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import CategorySliderLoader from "@/features/Categories/components/CategorySlider/CategorySliderLoader";
 import { getCategoriesQueryOptions } from "@/features/Categories/api/categoriesApi";
-import { getQueryClient } from "@/api/queryClient";
+import { getQueryClient } from "@/shared/api/queryClient";
 
 import Catalog from "../components/Catalog";
 import CatalogCategories from "../components/CatalogCategories";

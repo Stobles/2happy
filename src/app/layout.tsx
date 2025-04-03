@@ -1,11 +1,11 @@
-import "../styles/components.css";
-import "../styles/globals.css";
-import "../lib/fonts";
+import "../shared/styles/components.css";
+import "../shared/styles/globals.css";
+import "../shared/lib/fonts";
 
-import { akira, lato } from "../lib/fonts";
+import { akira, lato } from "../shared/lib/fonts";
 
 import Providers from "../providers/providers";
-import { MainLayout } from "@/components/Layout/MainLayout/MainLayout";
+import { MainLayout } from "@/shared/components/Layout/MainLayout/MainLayout";
 
 export const metadata = {
   title: "2HAPPY",

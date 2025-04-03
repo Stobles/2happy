@@ -1,4 +1,4 @@
-import { Button } from "@/components/UI/Button";
+import { Button } from "@/shared/components/UI/Button";
 import { Product } from "../../types";
 import ProductCard from "./ProductCard";
 
