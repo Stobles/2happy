@@ -1,19 +1,19 @@
-import HeartIcon from "@/components/icons/HeartIcon";
-import ShareIcon from "@/components/icons/ShareIcon";
-import { Button } from "@/components/UI/Button";
-import { Chip } from "@/components/UI/Chip";
+import HeartIcon from "@/shared/components/icons/HeartIcon";
+import ShareIcon from "@/shared/components/icons/ShareIcon";
+import { Button } from "@/shared/components/UI/Button";
+import { Chip } from "@/shared/components/UI/Chip";
 import {
   RadioButtonsGroup,
   RadioGroupButton,
-} from "@/components/UI/RadioButtons";
+} from "@/shared/components/UI/RadioButtons";
 import {
   RadioColorsGroup,
   RadioGroupColor,
 } from "@/features/Products/components/Colors/RadioColors";
-import { Separator } from "@/components/UI/Separator";
+import { Separator } from "@/shared/components/UI/Separator";
 import SizesTableDialog from "@/features/Products/components/Dialogs/SizesTableDialog";
 import OutOfStockDialog from "@/features/Products/components/Dialogs/OutOfStockDialog";
-import StyledTooltip from "@/components/UI/StyledTooltip";
+import StyledTooltip from "@/shared/components/UI/StyledTooltip";
 
 const ProductInfo = () => {
   return (

@@ -1,4 +1,4 @@
-import { Skeleton } from "@/components/UI/Skeleton";
+import { Skeleton } from "@/shared/components/UI/Skeleton";
 
 const CategoryListLoader = ({ count }: { count: number }) => {
   const array = new Array(count).fill(null);

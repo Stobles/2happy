@@ -1,7 +1,7 @@
-import { Button } from "@/components/UI/Button";
-import Container from "@/components/UI/Container";
-import { Input } from "@/components/UI/Input";
-import Section from "@/components/UI/Section";
+import { Button } from "@/shared/components/UI/Button";
+import Container from "@/shared/components/UI/Container";
+import { Input } from "@/shared/components/UI/Input";
+import Section from "@/shared/components/UI/Section";
 import Link from "next/link";
 
 const Notifications = () => {

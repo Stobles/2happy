@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 import { useProductsList } from "../hooks/useProductsList";
 
 import ProductCardLoader from "./ProductCards/ProductCardLoader";

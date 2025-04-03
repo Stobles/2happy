@@ -1,5 +1,5 @@
-import ArrowUpRightIcon from "@/components/icons/Arrows/ArrowUpRightIcon";
-import { Button } from "@/components/UI/Button";
+import ArrowUpRightIcon from "@/shared/components/icons/Arrows/ArrowUpRightIcon";
+import { Button } from "@/shared/components/UI/Button";
 import CategoryLink from "@/features/Categories/components/CategoryLink";
 import Link from "next/link";
 

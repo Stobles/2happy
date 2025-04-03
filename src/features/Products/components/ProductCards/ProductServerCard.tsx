@@ -1,11 +1,11 @@
 "use client";
 
-import HeartIcon from "@/components/icons/HeartIcon";
+import HeartIcon from "@/shared/components/icons/HeartIcon";
 import Link from "next/link";
 import { ProductServer } from "../../types";
-import { Chip } from "@/components/UI/Chip";
+import { Chip } from "@/shared/components/UI/Chip";
 import { MouseEvent } from "react";
-import ImageWithLoader from "@/components/UI/ImageWithLoader";
+import ImageWithLoader from "@/shared/components/UI/ImageWithLoader";
 import ColorSquare from "../Colors/ColorSquare";
 import { paths } from "@/config/paths";
 import { getProductChip } from "../../utils/getProductChip";

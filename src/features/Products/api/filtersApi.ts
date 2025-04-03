@@ -1,6 +1,6 @@
-import { apiInstance } from "@/api/apiInstance";
+import { apiInstance } from "@/shared/api/apiInstance";
 import { env } from "@/config/env";
-import { Attribute, WooResponse } from "@/types/api";
+import { Attribute, WooResponse } from "@/shared/types/api";
 import { useQuery } from "@tanstack/react-query";
 
 export const getAttributesByIdURL = `${env.WOOCOMMERCE_API}/products/attributes/{id}/terms`;

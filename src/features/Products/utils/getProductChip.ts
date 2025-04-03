@@ -1,4 +1,4 @@
-import { ChipVariant } from "@/components/UI/Chip";
+import { ChipVariant } from "@/shared/components/UI/Chip";
 import { Product, ProductServer } from "../types";
 
 export const getProductChip = (

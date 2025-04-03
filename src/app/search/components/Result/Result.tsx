@@ -1,5 +1,5 @@
-import Container from "@/components/UI/Container";
-import Section from "@/components/UI/Section";
+import Container from "@/shared/components/UI/Container";
+import Section from "@/shared/components/UI/Section";
 import FashionCard from "@/features/Fashion/components/FashionCard";
 
 const Result = () => {

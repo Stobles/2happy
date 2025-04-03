@@ -1,6 +1,6 @@
-import ArrowUpRightIcon from "@/components/icons/Arrows/ArrowUpRightIcon";
-import ImageWithLoader from "@/components/UI/ImageWithLoader";
-import { cn } from "@/lib/utils";
+import ArrowUpRightIcon from "@/shared/components/icons/Arrows/ArrowUpRightIcon";
+import ImageWithLoader from "@/shared/components/UI/ImageWithLoader";
+import { cn } from "@/shared/lib/utils";
 import Link from "next/link";
 
 const FashionCard = ({

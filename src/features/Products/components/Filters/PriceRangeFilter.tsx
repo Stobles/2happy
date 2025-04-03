@@ -1,4 +1,4 @@
-import { RangeSlider } from "@/components/UI/RangeSlider";
+import { RangeSlider } from "@/shared/components/UI/RangeSlider";
 import { RefObject } from "react";
 import { TPriceRange } from "../../store/filtersStore";
 

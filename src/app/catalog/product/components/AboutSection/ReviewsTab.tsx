@@ -1,12 +1,12 @@
-import { Button } from "@/components/UI/Button";
+import { Button } from "@/shared/components/UI/Button";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTriggerPlain,
   SelectValue,
-} from "@/components/UI/Select";
-import Rating from "@/components/UI/Rating";
+} from "@/shared/components/UI/Select";
+import Rating from "@/shared/components/UI/Rating";
 import ReviewCard from "@/features/Reviews/components/ReviewCard";
 
 const ReviewsTab = () => {

@@ -1,13 +1,13 @@
 "use server";
 
-import ArrowRightIcon from "@/components/icons/Arrows/ArrowRightIcon";
-import Container from "@/components/UI/Container";
-import Section from "@/components/UI/Section";
+import ArrowRightIcon from "@/shared/components/icons/Arrows/ArrowRightIcon";
+import Container from "@/shared/components/UI/Container";
+import Section from "@/shared/components/UI/Section";
 import Image from "next/image";
 import Link from "next/link";
 import FinalSaleList from "./components/FinalSaleList";
 import { Suspense } from "react";
-import { getQueryClient } from "@/api/queryClient";
+import { getQueryClient } from "@/shared/api/queryClient";
 import { getProductsQueryOptions } from "@/features/Products/api/productsApi";
 import { categoryIds } from "@/features/Categories/consts/consts";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";

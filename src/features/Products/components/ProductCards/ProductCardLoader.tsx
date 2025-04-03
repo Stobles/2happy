@@ -1,5 +1,5 @@
-import { Skeleton } from "@/components/UI/Skeleton";
-import { cn } from "@/lib/utils";
+import { Skeleton } from "@/shared/components/UI/Skeleton";
+import { cn } from "@/shared/lib/utils";
 
 const ProductCardLoader = ({ className }: { className?: string }) => {
   return (

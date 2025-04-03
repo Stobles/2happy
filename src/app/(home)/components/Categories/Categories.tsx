@@ -1,8 +1,8 @@
-import ArrowRightIcon from "@/components/icons/Arrows/ArrowRightIcon";
-import ArrowUpRightIcon from "@/components/icons/Arrows/ArrowUpRightIcon";
-import { Button } from "@/components/UI/Button";
-import Container from "@/components/UI/Container";
-import Section from "@/components/UI/Section";
+import ArrowRightIcon from "@/shared/components/icons/Arrows/ArrowRightIcon";
+import ArrowUpRightIcon from "@/shared/components/icons/Arrows/ArrowUpRightIcon";
+import { Button } from "@/shared/components/UI/Button";
+import Container from "@/shared/components/UI/Container";
+import Section from "@/shared/components/UI/Section";
 import { paths } from "@/config/paths";
 import Image from "next/image";
 import Link from "next/link";

@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/UI/Button";
+import { Button } from "@/shared/components/UI/Button";
 import {
   Form,
   FormControl,
@@ -8,13 +8,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/UI/Form";
-import { Input } from "@/components/UI/Input";
+} from "@/shared/components/UI/Form";
+import { Input } from "@/shared/components/UI/Input";
 import Link from "next/link";
-import { Checkbox } from "@/components/UI/Checkbox";
-import Notification from "@/components/UI/Notification";
+import { Checkbox } from "@/shared/components/UI/Checkbox";
+import Notification from "@/shared/components/UI/Notification";
 import { useLoginForm } from "../hooks/useLoginForm";
-import LoaderIcon from "@/components/icons/LoaderIcon";
+import LoaderIcon from "@/shared/components/icons/LoaderIcon";
 
 const LoginForm = ({ onSuccess }: { onSuccess: () => void }) => {
   const { loginForm, onSubmit, isPending, error, clearError } = useLoginForm({

@@ -1,6 +1,6 @@
-import { cn } from "@/lib/utils";
-import InstagramIcon from "@/components/icons/Social/InstagramIcon";
-import ImageWithLoader from "@/components/UI/ImageWithLoader";
+import { cn } from "@/shared/lib/utils";
+import InstagramIcon from "@/shared/components/icons/Social/InstagramIcon";
+import ImageWithLoader from "@/shared/components/UI/ImageWithLoader";
 
 const InstagramCard = ({
   src,

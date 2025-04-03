@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { getQueryClient } from "@/api/queryClient";
+import { getQueryClient } from "@/shared/api/queryClient";
 
 import Catalog from "../../components/Catalog";
 import CategorySliderLoader from "@/features/Categories/components/CategorySlider/CategorySliderLoader";

@@ -1,14 +1,14 @@
 "use client";
 
-import FiltersIcon from "@/components/icons/FiltersIcon";
-import GridBigIcon from "@/components/icons/GridBigIcon";
-import GridSmallIcon from "@/components/icons/GridSmallIcon";
+import FiltersIcon from "@/shared/components/icons/FiltersIcon";
+import GridBigIcon from "@/shared/components/icons/GridBigIcon";
+import GridSmallIcon from "@/shared/components/icons/GridSmallIcon";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTriggerPlain,
-} from "@/components/UI/Select";
+} from "@/shared/components/UI/Select";
 import ProductsFiltersSheet from "@/features/Products/components/Filters/ProductsFiltersSheet";
 import { TSort, useCatalogStore } from "@/features/Products/store/catalogStore";
 import { usePaginationStore } from "@/features/Products/store/paginationStore";

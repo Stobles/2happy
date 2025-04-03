@@ -1,6 +1,6 @@
-import { Button } from "@/components/UI/Button";
-import Container from "@/components/UI/Container";
-import Section from "@/components/UI/Section";
+import { Button } from "@/shared/components/UI/Button";
+import Container from "@/shared/components/UI/Container";
+import Section from "@/shared/components/UI/Section";
 import ProductCard from "@/features/Products/components/ProductCards/ProductCard";
 import { Product } from "@/features/Products/types";
 

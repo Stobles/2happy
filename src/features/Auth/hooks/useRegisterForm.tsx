@@ -1,7 +1,7 @@
-import { RegisterInput, registerInputSchema } from "@/api/authApi";
+import { RegisterInput, registerInputSchema } from "@/shared/api/authApi";
 import { FieldError, useForm } from "react-hook-form";
-import SuccessIcon from "@/components/icons/SuccessIcon";
-import ErrorIcon from "@/components/icons/ErrorIcon";
+import SuccessIcon from "@/shared/components/icons/SuccessIcon";
+import ErrorIcon from "@/shared/components/icons/ErrorIcon";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export const useRegisterForm = ({

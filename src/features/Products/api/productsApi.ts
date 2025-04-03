@@ -1,9 +1,9 @@
-import { apiInstance } from "@/api/apiInstance";
+import { apiInstance } from "@/shared/api/apiInstance";
 import { queryOptions } from "@tanstack/react-query";
 import { env } from "@/config/env";
-import { createURLWithParams } from "@/lib/utils";
+import { createURLWithParams } from "@/shared/lib/utils";
 import { ProductServer } from "../types";
-import { WooResponse } from "@/types/api";
+import { WooResponse } from "@/shared/types/api";
 
 export type getProductsListParameters = {
   page?: number;
