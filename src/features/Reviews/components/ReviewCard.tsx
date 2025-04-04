@@ -1,5 +1,9 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/UI/Avatar";
-import Rating from "@/components/UI/Rating";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/shared/components/UI/Avatar";
+import Rating from "@/shared/components/UI/Rating";
 
 const ReviewCard = () => {
   return (

@@ -1,4 +1,4 @@
-import { Image, Links } from "@/types/api";
+import { Image, Links } from "@/shared/types/api";
 
 export interface Product {
   id: string;

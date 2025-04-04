@@ -5,7 +5,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/UI/Dialog";
+} from "@/shared/components/UI/Dialog";
 import {
   Table,
   TableBody,
@@ -13,7 +13,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/UI/Table";
+} from "@/shared/components/UI/Table";
 import { ReactNode } from "react";
 
 const sizes = [

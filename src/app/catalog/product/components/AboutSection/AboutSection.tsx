@@ -1,5 +1,10 @@
-import Container from "@/components/UI/Container";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/UI/Tabs";
+import Container from "@/shared/components/UI/Container";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/shared/components/UI/Tabs";
 import DescriptionTab from "./DescriptionTab";
 import ReviewsTab from "./ReviewsTab";
 

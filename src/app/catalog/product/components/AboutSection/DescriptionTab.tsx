@@ -3,8 +3,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/UI/Accordion";
-import ImageWithLoader from "@/components/UI/ImageWithLoader";
+} from "@/shared/components/UI/Accordion";
+import ImageWithLoader from "@/shared/components/UI/ImageWithLoader";
 
 const DescriptionTab = () => {
   return (

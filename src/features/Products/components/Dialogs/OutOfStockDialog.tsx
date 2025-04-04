@@ -3,8 +3,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/UI/Accordion";
-import { Button } from "@/components/UI/Button";
+} from "@/shared/components/UI/Accordion";
+import { Button } from "@/shared/components/UI/Button";
 import {
   Dialog,
   DialogContent,
@@ -13,13 +13,13 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/UI/Dialog";
-import { Input } from "@/components/UI/Input";
+} from "@/shared/components/UI/Dialog";
+import { Input } from "@/shared/components/UI/Input";
 import {
   RadioButtonsGroup,
   RadioGroupButton,
-} from "@/components/UI/RadioButtons";
-import { Separator } from "@/components/UI/Separator";
+} from "@/shared/components/UI/RadioButtons";
+import { Separator } from "@/shared/components/UI/Separator";
 import Image from "next/image";
 import { ReactNode } from "react";
 

@@ -1,4 +1,4 @@
-import { LoginInput, loginInputSchema, useLogin } from "@/api/authApi";
+import { LoginInput, loginInputSchema, useLogin } from "@/shared/api/authApi";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";

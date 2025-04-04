@@ -1,9 +1,9 @@
-import ArrowSubRightIcon from "@/components/icons/Arrows/ArrowSubRightIcon";
-import GiftIcon from "@/components/icons/GiftIcon";
-import { Button } from "@/components/UI/Button";
-import Container from "@/components/UI/Container";
-import { Input } from "@/components/UI/Input";
-import Section from "@/components/UI/Section";
+import ArrowSubRightIcon from "@/shared/components/icons/Arrows/ArrowSubRightIcon";
+import GiftIcon from "@/shared/components/icons/GiftIcon";
+import { Button } from "@/shared/components/UI/Button";
+import Container from "@/shared/components/UI/Container";
+import { Input } from "@/shared/components/UI/Input";
+import Section from "@/shared/components/UI/Section";
 import Image from "next/image";
 
 const Notifications = () => {

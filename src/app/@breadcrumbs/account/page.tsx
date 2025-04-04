@@ -1,11 +1,11 @@
-import Breadcrumbs from "@/components/Layout/MainLayout/components/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "@/shared/components/Layout/MainLayout/components/Breadcrumbs/Breadcrumbs";
 import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/UI/Breadcrumb";
+} from "@/shared/components/UI/Breadcrumb";
 import { paths } from "@/config/paths";
 
 const AccountBreadcrumbs = () => {

@@ -1,7 +1,7 @@
-import Container from "@/components/UI/Container";
-import { ScrollArea, ScrollBar } from "@/components/UI/ScrollArea";
-import Section from "@/components/UI/Section";
-import SectionImage from "@/components/UI/SectionImage";
+import Container from "@/shared/components/UI/Container";
+import { ScrollArea, ScrollBar } from "@/shared/components/UI/ScrollArea";
+import Section from "@/shared/components/UI/Section";
+import SectionImage from "@/shared/components/UI/SectionImage";
 import ProductCard from "@/features/Products/components/ProductCards/ProductCard";
 import { Product } from "@/features/Products/types";
 

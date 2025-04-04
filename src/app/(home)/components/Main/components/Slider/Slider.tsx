@@ -3,12 +3,12 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import { useState } from "react";
-import { Progress } from "@/components/UI/Progress";
+import { Progress } from "@/shared/components/UI/Progress";
 
-import ChevronRightIcon from "@/components/icons/Chevron/ChevronRightIcon";
-import ChevronLeftIcon from "@/components/icons/Chevron/ChevronLeftIcon";
-import SliderButton from "@/components/UI/SliderButton";
-import ImageWithLoader from "@/components/UI/ImageWithLoader";
+import ChevronRightIcon from "@/shared/components/icons/Chevron/ChevronRightIcon";
+import ChevronLeftIcon from "@/shared/components/icons/Chevron/ChevronLeftIcon";
+import SliderButton from "@/shared/components/UI/SliderButton";
+import ImageWithLoader from "@/shared/components/UI/ImageWithLoader";
 
 import "swiper/css";
 import "swiper/css/pagination";

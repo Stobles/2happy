@@ -1,14 +1,21 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 import { useProductsList } from "../hooks/useProductsList";
 
 import ProductCardLoader from "./ProductCards/ProductCardLoader";
 import ProductServerCard from "./ProductCards/ProductServerCard";
 
-const ProductsList = ({ category }: { category?: number }) => {
+const ProductsList = ({
+  category,
+  tag,
+}: {
+  category?: number;
+  tag?: number;
+}) => {
   const { data, gridType, isPending, isPlaceholderData } = useProductsList({
     category,
+    tag,
   });
 
   if (!isPending && !data?.items.length) {

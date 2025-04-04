@@ -10,9 +10,9 @@ import {
   Id,
 } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import useIsMobile from "@/hooks/useIsMobile";
-import SuccessIcon from "@/components/icons/SuccessIcon";
-import ErrorIcon from "@/components/icons/ErrorIcon";
+import useIsMobile from "@/shared/hooks/useIsMobile";
+import SuccessIcon from "@/shared/components/icons/SuccessIcon";
+import ErrorIcon from "@/shared/components/icons/ErrorIcon";
 
 export type ToastTypes = "success" | "error" | "info" | "warning" | "default";
 export type ToastPositions =

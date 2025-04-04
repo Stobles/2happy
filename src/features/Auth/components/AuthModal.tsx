@@ -1,16 +1,21 @@
 "use client";
 
-import AppleIcon from "@/components/icons/Social/AppleIcon";
-import GoogleIcon from "@/components/icons/Social/GoogleIcon";
-import { Button } from "@/components/UI/Button";
+import AppleIcon from "@/shared/components/icons/Social/AppleIcon";
+import GoogleIcon from "@/shared/components/icons/Social/GoogleIcon";
+import { Button } from "@/shared/components/UI/Button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/UI/Dialog";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/UI/Tabs";
+} from "@/shared/components/UI/Dialog";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/shared/components/UI/Tabs";
 import { ReactNode, useState } from "react";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";

@@ -1,6 +1,6 @@
 "use client";
 
-import { getQueryClient } from "@/api/queryClient";
+import { getQueryClient } from "@/shared/api/queryClient";
 import ToastProvider from "@/providers/ToastProvider";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";

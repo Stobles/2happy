@@ -1,0 +1,40 @@
+@tailwind components;
+
+@layer components {
+  .link-hover {
+    @apply relative flex gap-2 items-center w-max transition-colors duration-300;
+  }
+
+  .link-hover::after {
+    content: "";
+    @apply w-0 h-[1px] bg-gray absolute bottom-[-1px] left-0 transition-all duration-300;
+  }
+
+  .link-hover:hover {
+    @apply text-gray;
+  }
+
+  .link-hover svg {
+    @apply w-4 h-4;
+  }
+
+  .link-hover:hover svg {
+    @apply fill-gray;
+  }
+
+  .link-hover:hover::after {
+    @apply w-full;
+  }
+
+  .link-hovered {
+    @apply text-gray;
+  }
+
+  .link-hovered::after {
+    @apply w-full;
+  }
+
+  .link-active::after {
+    @apply w-full bg-main;
+  }
+}

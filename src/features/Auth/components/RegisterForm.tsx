@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/UI/Button";
+import { Button } from "@/shared/components/UI/Button";
 import {
   Form,
   FormControl,
@@ -8,14 +8,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/UI/Form";
-import { Input } from "@/components/UI/Input";
-import { Checkbox } from "@/components/UI/Checkbox";
+} from "@/shared/components/UI/Form";
+import { Input } from "@/shared/components/UI/Input";
+import { Checkbox } from "@/shared/components/UI/Checkbox";
 import Link from "next/link";
 import { useRegisterForm } from "../hooks/useRegisterForm";
 import PasswordInput from "./PasswordInput";
-import LoaderIcon from "@/components/icons/LoaderIcon";
-import { useRegister } from "@/api/authApi";
+import LoaderIcon from "@/shared/components/icons/LoaderIcon";
+import { useRegister } from "@/shared/api/authApi";
 
 const RegisterForm = ({ onSuccess }: { onSuccess: () => void }) => {
   const { mutate, isPending } = useRegister({ onSuccess });

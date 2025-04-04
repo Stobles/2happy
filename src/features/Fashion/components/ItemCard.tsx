@@ -1,8 +1,8 @@
 import Link, { LinkProps } from "next/link";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 
-import ArrowUpRightIcon from "@/components/icons/Arrows/ArrowUpRightIcon";
-import ImageWithLoader from "@/components/UI/ImageWithLoader";
+import ArrowUpRightIcon from "@/shared/components/icons/Arrows/ArrowUpRightIcon";
+import ImageWithLoader from "@/shared/components/UI/ImageWithLoader";
 
 // Нужно переименовать
 const ItemCard = ({

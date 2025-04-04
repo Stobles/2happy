@@ -1,4 +1,4 @@
-import { Checkbox, TCheckboxProps } from "@/components/UI/Checkbox";
+import { Checkbox, TCheckboxProps } from "@/shared/components/UI/Checkbox";
 
 const FilterCheckbox = ({
   text,

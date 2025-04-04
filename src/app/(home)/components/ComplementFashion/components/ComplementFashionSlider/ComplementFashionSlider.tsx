@@ -7,8 +7,8 @@ import { Swiper as SwiperType } from "swiper/types";
 import { getSliderMarginLeft } from "./utils/getSliderMarginLeft";
 
 import ItemCard from "@/features/Fashion/components/ItemCard";
-import SliderButton from "@/components/UI/SliderButton";
-import ArrowRightIcon from "@/components/icons/Arrows/ArrowRightIcon";
+import SliderButton from "@/shared/components/UI/SliderButton";
+import ArrowRightIcon from "@/shared/components/icons/Arrows/ArrowRightIcon";
 
 import "swiper/css";
 import "swiper/css/pagination";

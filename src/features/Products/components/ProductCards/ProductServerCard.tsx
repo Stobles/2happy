@@ -1,11 +1,11 @@
 "use client";
 
-import HeartIcon from "@/components/icons/HeartIcon";
+import HeartIcon from "@/shared/components/icons/HeartIcon";
 import Link from "next/link";
 import { ProductServer } from "../../types";
-import { Chip } from "@/components/UI/Chip";
+import { Chip } from "@/shared/components/UI/Chip";
 import { MouseEvent } from "react";
-import ImageWithLoader from "@/components/UI/ImageWithLoader";
+import ImageWithLoader from "@/shared/components/UI/ImageWithLoader";
 import ColorSquare from "../Colors/ColorSquare";
 import { paths } from "@/config/paths";
 import { getProductChip } from "../../utils/getProductChip";
@@ -65,7 +65,7 @@ const ProductServerCard = ({ product }: { product: ProductServer }) => {
           )}
         </div>
         <div>
-          <h5 className="text-h5 mb-5">{name}</h5>
+          <h5 className="text-h5 mb-2 h-[48px] line-clamp-2">{name}</h5>
           <div className="w-full relative h-6">
             <div className="absolute w-full flex items-center justify-between gap-2 opacity-0 group-hover/product:opacity-100 transition-opacity">
               <div className="flex gap-2">

@@ -5,9 +5,11 @@ import { ReactNode } from "react";
 
 const Catalog = ({
   category,
+  tag,
   filtersListSlot,
 }: {
   category?: number;
+  tag?: number;
   filtersListSlot: ReactNode;
 }) => {
   return (
@@ -15,7 +17,7 @@ const Catalog = ({
       <div className="flex flex-col gap-6">
         <CatalogHeader />
         {filtersListSlot}
-        <ProductsList category={category} />
+        <ProductsList tag={tag} category={category} />
       </div>
 
       <CatalogPagination />

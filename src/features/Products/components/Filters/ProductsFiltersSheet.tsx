@@ -1,11 +1,11 @@
-import CloseIcon from "@/components/icons/CloseIcon";
+import CloseIcon from "@/shared/components/icons/CloseIcon";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/UI/Accordion";
-import { Button } from "@/components/UI/Button";
+} from "@/shared/components/UI/Accordion";
+import { Button } from "@/shared/components/UI/Button";
 import {
   Sheet,
   SheetClose,
@@ -15,7 +15,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/UI/Sheet";
+} from "@/shared/components/UI/Sheet";
 import { ReactNode, useRef } from "react";
 import PriceRangeFilter from "./PriceRangeFilter";
 import FilterCheckbox from "./FilterCheckbox";

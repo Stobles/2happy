@@ -2,7 +2,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/UI/Accordion";
+} from "@/shared/components/UI/Accordion";
 import FilterCheckbox from "./FilterCheckbox";
 import { RefObject, useEffect, useState } from "react";
 import { TCheckboxFilterItem } from "../../store/filtersStore";
