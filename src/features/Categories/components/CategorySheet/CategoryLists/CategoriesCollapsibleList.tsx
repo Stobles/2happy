@@ -54,13 +54,18 @@ const CategoriesCollapsibleList = ({
           <Collapsible open={isOpen}>
             <CollapsibleContent>
               <ul className="space-y-2 mt-2 pb-[2px]">
-                {collapsibleList.map((item) => (
-                  <li key={item.id}>
+                {collapsibleList.map((category) => (
+                  <li key={category.id}>
                     <Link
-                      href={`/${item.id}`}
+                      href={paths.catalog.category.getHref(
+                        category.id,
+                        category.slug,
+                        category.name,
+                        category.parent
+                      )}
                       className="text-button-normal link-hover"
                     >
-                      {item.name}
+                      {category.name}
                     </Link>
                   </li>
                 ))}

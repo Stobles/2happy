@@ -15,28 +15,29 @@ export const subLinks = [
   },
 ];
 
-export const mainLinks = [
-  {
-    title: "Новинки",
-    href: paths.catalog.new_collection.getHref("Новая коллекция"),
-  },
-  {
-    title: "Бестселлеры",
-    href: paths.catalog.bestsellers.getHref(),
-  },
-  {
-    title: "Коллекции",
-    href: "/collections",
-  },
-  {
-    title: "Final Sale",
-    href: paths.catalog.final_sale.getHref(),
-  },
-  {
-    title: "О нас",
-    href: "/about",
-  },
-];
+export const mainLinks: { title: string; href: string; disabled?: boolean }[] =
+  [
+    {
+      title: "Новинки",
+      href: paths.catalog.new_collection.getHref("Новая коллекция"),
+    },
+    {
+      title: "Бестселлеры",
+      href: paths.catalog.bestsellers.getHref(),
+    },
+    {
+      title: "Коллекции",
+      href: "/collections",
+    },
+    {
+      title: "Final Sale",
+      href: paths.catalog.final_sale.getHref(),
+    },
+    {
+      title: "О нас",
+      href: "/about",
+    },
+  ];
 
 export const iconLinks = [
   {
@@ -56,106 +57,5 @@ export const iconLinks = [
       id: "cart-tooltip",
       content: `Корзина`,
     },
-  },
-];
-
-export const clothCategories = [
-  {
-    id: "costumes",
-    title: "Костюмы",
-  },
-  {
-    id: "costumes",
-    title: "Платья",
-  },
-  {
-    id: "costumes",
-    title: "Юбки и шорты",
-  },
-  {
-    id: "costumes",
-    title: "Рубашки и блузы",
-  },
-  {
-    id: "costumes",
-    title: "Брюки",
-  },
-  {
-    id: "costumes",
-    title: "Поло",
-  },
-  {
-    id: "costumes",
-    title: "Деним",
-  },
-  {
-    id: "costumes",
-    title: "Жакеты и жилеты",
-  },
-  {
-    id: "costumes",
-    title: "Футболка и лонгсливы",
-  },
-  {
-    id: "costumes",
-    title: "Эко-кожа",
-  },
-  {
-    id: "costumes",
-    title: "Майки, боди, топы",
-  },
-  {
-    id: "costumes",
-    title: "Свитшоты и бомберы",
-  },
-  {
-    id: "costumes",
-    title: "Спортивные костюмы",
-  },
-  {
-    id: "costumes",
-    title: "Комбинезоны",
-  },
-  {
-    id: "costumes",
-    title: "Свитера и кардиганы",
-  },
-];
-
-export const accessoriesCategories = [
-  {
-    id: "bags",
-    title: "Сумки",
-  },
-  {
-    id: "something",
-    title: "Шарфы",
-  },
-  {
-    id: "some",
-    title: "Палантины",
-  },
-];
-
-export const outerwearCategories = [
-  {
-    id: "bags",
-    title: "Куртки",
-  },
-  {
-    id: "something",
-    title: "Пальто",
-  },
-  {
-    id: "some",
-    title: "Кожа и экокожа",
-  },
-  {
-    id: "some",
-    title: "Плащи и Тренчи",
-  },
-  {
-    id: "some",
-    title: "Пуховики",
   },
 ];

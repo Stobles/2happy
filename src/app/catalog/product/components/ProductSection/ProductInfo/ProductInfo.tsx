@@ -53,9 +53,8 @@ const ProductInfo = () => {
             <span className="text-description text-gray-middle">Черный</span>
           </div>
           <RadioColorsGroup className="flex gap-2" defaultValue="default">
-            <RadioGroupColor value="small" color="#111111 " id="r1" />
-            <RadioGroupColor value="b" color="#111111 " id="r1" />
-            <RadioGroupColor value="a" color="#111111 " id="r1" />
+            <RadioGroupColor value="small" color="Черный" id="r1" />
+            <RadioGroupColor value="b" color="Серый" id="r1" />
           </RadioColorsGroup>
         </div>
         <Separator />
