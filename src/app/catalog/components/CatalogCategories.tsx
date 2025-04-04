@@ -12,20 +12,21 @@ const CatalogCategories = ({
 }: {
   parent: number;
   activeSlug?: string;
-  subTo?: string | undefined;
 }) => {
   const { data } = useSuspenseQuery(getCategoriesQueryOptions({ parent }));
 
   const getHref = (category: Category) => {
     if (category.parent)
       return paths.catalog.category.getHref(
-        `${category.slug}_${category.id}`,
+        category.id,
+        category.slug,
         category.name,
         category.parent
       );
 
     return paths.catalog.category.getHref(
-      `${category.slug}_${category.id}`,
+      category.id,
+      category.slug,
       category.name
     );
   };

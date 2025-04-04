@@ -12,6 +12,8 @@ export type TCategories =
   | "sweatshirtsAndBomberJackets"
   | "skirts";
 
+export type TTags = "new" | "final_sale" | "bestsellers";
+
 export const categoryIds: Record<TCategories, number> = {
   final_sale: 22,
   new: 17,
@@ -40,4 +42,10 @@ export const categorySlugs: Record<TCategories, string> = {
   shirts: "shirts",
   sweatshirtsAndBomberJackets: "sweatshirts-bomber-jackets",
   skirts: "skirts",
+};
+
+export const tagIds: Record<TTags, number> = {
+  final_sale: 59,
+  bestsellers: 58,
+  new: 57,
 };

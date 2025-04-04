@@ -14,7 +14,7 @@ const AccountList = () => {
         {user.data ? (
           <li>
             <Link
-              href={paths.account.root.getHref()}
+              href={paths.account.getHref()}
               className="link-hover text-button-xs"
             >
               Личный кабинет

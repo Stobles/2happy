@@ -85,7 +85,7 @@ const CategorySheetContent = ({
           onClick={closeSheet}
           asChild
         >
-          <Link href={paths.catalog.root}>
+          <Link href={paths.catalog.getHref()}>
             Перейти в каталог
             <ArrowUpRightIcon />
           </Link>

@@ -19,7 +19,7 @@ const Categories = () => {
           </h2>
           <div className="grid grid-cols-2 gap-x-6 gap-y-4 grid-rows-[28px,128px]">
             <Link
-              href={paths.catalog.root}
+              href={paths.catalog.getHref()}
               className="link-hover col-span-2 text-button-medium"
             >
               Смотреть все <ArrowRightIcon />

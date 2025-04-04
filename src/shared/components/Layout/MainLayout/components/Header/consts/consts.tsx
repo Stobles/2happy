@@ -1,3 +1,4 @@
+import { paths } from "@/config/paths";
 import CartIcon from "@/shared/components/icons/CartIcon";
 import HeartIcon from "@/shared/components/icons/HeartIcon";
 
@@ -17,23 +18,23 @@ export const subLinks = [
 export const mainLinks = [
   {
     title: "Новинки",
-    href: "/",
+    href: paths.catalog.new_collection.getHref("Новая коллекция"),
   },
   {
     title: "Бестселлеры",
-    href: "/",
+    href: paths.catalog.bestsellers.getHref(),
   },
   {
     title: "Коллекции",
-    href: "/",
+    href: "/collections",
   },
   {
     title: "Final Sale",
-    href: "/",
+    href: paths.catalog.final_sale.getHref(),
   },
   {
     title: "О нас",
-    href: "/",
+    href: "/about",
   },
 ];
 

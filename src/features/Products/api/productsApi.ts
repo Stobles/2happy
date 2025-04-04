@@ -9,6 +9,7 @@ export type getProductsListParameters = {
   page?: number;
   per_page?: number;
   category?: number;
+  tag?: number;
   min_price?: number;
   max_price?: number;
   order?: string;
@@ -47,6 +48,7 @@ const productsQueryKey = (params: getProductsListParameters) => {
   if (params.order) key.push(`order ${params.order}`);
   if (params.orderby) key.push(`orderby ${params.orderby}`);
   if (params.category) key.push(`category ${params.category}`);
+  if (params.tag) key.push(`tag ${params.tag}`);
   if (params.min_price) key.push(`min ${params.min_price}`);
   if (params.max_price) key.push(`max ${params.max_price}`);
   if (params.color?.length) {

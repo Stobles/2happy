@@ -19,9 +19,13 @@ const CategoryLink = ({
   parent,
   ...props
 }: ICategoryLinkProps) => {
-  const slug = `${categorySlugs[category]}_${categoryIds[category]}`;
   const parentId = parent && categoryIds[parent];
-  const link = paths.catalog.category.getHref(slug, name, parentId);
+  const link = paths.catalog.category.getHref(
+    categoryIds[category],
+    categorySlugs[category],
+    name,
+    parentId
+  );
 
   return (
     <Link {...props} href={link}>

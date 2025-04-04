@@ -10,6 +10,10 @@ const Sheet = SheetPrimitive.Root;
 
 const SheetTrigger = SheetPrimitive.Trigger;
 
+export type TSheetTrigger = React.ComponentPropsWithoutRef<
+  typeof SheetPrimitive.Trigger
+>;
+
 const SheetClose = SheetPrimitive.Close;
 
 const SheetPortal = SheetPrimitive.Portal;

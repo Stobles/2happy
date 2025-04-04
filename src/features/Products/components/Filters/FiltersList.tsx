@@ -3,6 +3,7 @@
 import CloseIcon from "@/shared/components/icons/CloseIcon";
 import { useFiltersStore } from "../../store/filtersStore";
 import { Separator } from "@/shared/components/UI/Separator";
+import { usePaginationStore } from "../../store/paginationStore";
 
 const FilterChip = ({
   text,
@@ -23,6 +24,7 @@ const FilterChip = ({
 };
 
 const FiltersList = () => {
+  const { clearPagination } = usePaginationStore();
   const {
     colors,
     deleteColor,
@@ -33,6 +35,11 @@ const FiltersList = () => {
   } = useFiltersStore();
 
   if (!filtersLength) return null;
+
+  const handleClear = () => {
+    clearPagination();
+    clearFilters();
+  };
 
   return (
     <div className="flex flex-col gap-4">
@@ -54,7 +61,7 @@ const FiltersList = () => {
         ))}
         <button
           className="text-button-xs p-2 transition-colors rounded-xs hover:bg-gray"
-          onClick={clearFilters}
+          onClick={handleClear}
         >
           Удалить все
         </button>

@@ -9,6 +9,7 @@ import Container from "@/shared/components/UI/Container";
 import StyledTooltip from "@/shared/components/UI/StyledTooltip";
 
 import { iconLinks, mainLinks, subLinks } from "./consts/consts";
+import NavLink from "@/shared/components/UI/NavLink";
 import CategorySheet from "@/features/Categories/components/CategorySheet/CategorySheet";
 import SearchSheet from "./components/SearchSheet";
 import Account from "./components/Account";
@@ -62,12 +63,7 @@ const Header = () => {
               </li>
               {mainLinks.map((link) => (
                 <li key={link.title}>
-                  <Link
-                    href={link.href}
-                    className="text-button-normal link-hover"
-                  >
-                    {link.title}
-                  </Link>
+                  <NavLink href={link.href}>{link.title}</NavLink>
                 </li>
               ))}
             </ul>
