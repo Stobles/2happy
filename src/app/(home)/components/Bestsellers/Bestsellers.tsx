@@ -6,6 +6,7 @@ import Section from "@/shared/components/UI/Section";
 import Image from "next/image";
 import Link from "next/link";
 import CategoryLink from "@/features/Categories/components/CategoryLink";
+import { paths } from "@/config/paths";
 
 const Bestsellers = () => {
   return (
@@ -25,9 +26,9 @@ const Bestsellers = () => {
         <h2 className="text-h2">Наши бестселлеры / 25</h2>
         <div className="flex flex-col gap-4">
           <Button variant="tertiary" size="medium" asChild>
-            <CategoryLink category="bestsellers" name="Бестселлеры">
+            <Link href={paths.catalog.bestsellers.getHref()}>
               Смотреть все <ArrowRightIcon />
-            </CategoryLink>
+            </Link>
           </Button>
           <ItemCard src="/images/Home/Bestsellers/card-2.jpg" href="/" />
         </div>
