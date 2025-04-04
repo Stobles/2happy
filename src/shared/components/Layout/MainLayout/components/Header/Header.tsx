@@ -61,9 +61,9 @@ const Header = () => {
               <li>
                 <CategorySheet isSticky={isSticky} />
               </li>
-              {mainLinks.map((link) => (
-                <li key={link.title}>
-                  <NavLink href={link.href}>{link.title}</NavLink>
+              {mainLinks.map(({ title, ...props }) => (
+                <li key={title}>
+                  <NavLink {...props}>{title}</NavLink>
                 </li>
               ))}
             </ul>

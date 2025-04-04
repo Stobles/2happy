@@ -1,6 +1,6 @@
+import { paths } from "@/config/paths";
 import ArrowUpRightIcon from "@/shared/components/icons/Arrows/ArrowUpRightIcon";
 import { Button } from "@/shared/components/UI/Button";
-import CategoryLink from "@/features/Categories/components/CategoryLink";
 import Link from "next/link";
 
 const CustomSlide = () => {
@@ -10,9 +10,9 @@ const CustomSlide = () => {
         Погрузитесь в мир стильных новинок!
       </span>
       <Button className="w-full" variant="primary" size="medium" asChild>
-        <CategoryLink name="Новая коллекция" category="new">
+        <Link href={paths.catalog.new_collection.getHref("Новая коллекция")}>
           Все новинки <ArrowUpRightIcon />
-        </CategoryLink>
+        </Link>
       </Button>
     </div>
   );
