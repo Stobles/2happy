@@ -11,8 +11,6 @@ const CatalogHeader = ({ defaultName }: { defaultName?: string }) => {
 
   const searchParams = useSearchParams();
 
-  console.log(searchParams.get("name"), defaultName);
-
   useEffect(() => {
     return () => {
       clearFilters();

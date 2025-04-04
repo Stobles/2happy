@@ -38,7 +38,8 @@ const CategoriesCollapsibleList = ({
               <Link
                 onClick={closeSheet}
                 href={paths.catalog.category.getHref(
-                  `${category.slug}_${category.id}`,
+                  category.id,
+                  category.slug,
                   category.name,
                   category.parent
                 )}

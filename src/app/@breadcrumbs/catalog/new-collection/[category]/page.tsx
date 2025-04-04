@@ -13,7 +13,7 @@ import { paths } from "@/config/paths";
 import { useSearchParams } from "next/navigation";
 import { useCategory } from "@/features/Categories/api/categoriesApi";
 
-const CatalogBreadcrumbs = () => {
+const NewCollectionCategoryBreadcrumbs = () => {
   const searchParams = useSearchParams();
 
   const name = searchParams.get("name");
@@ -29,8 +29,10 @@ const CatalogBreadcrumbs = () => {
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href={paths.catalog.getHref()}>
-            Каталог
+          <BreadcrumbLink
+            href={paths.catalog.new_collection.getHref("Новая коллекция")}
+          >
+            Новинки
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
@@ -46,7 +48,7 @@ const CatalogBreadcrumbs = () => {
           <>
             <BreadcrumbItem>
               <BreadcrumbLink
-                href={paths.catalog.category.getHref(
+                href={paths.catalog.new_collection.category.getHref(
                   parentCategory.id,
                   parentCategory.slug,
                   parentCategory.name
@@ -66,4 +68,4 @@ const CatalogBreadcrumbs = () => {
   );
 };
 
-export default CatalogBreadcrumbs;
+export default NewCollectionCategoryBreadcrumbs;

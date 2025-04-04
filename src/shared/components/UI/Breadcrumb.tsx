@@ -4,6 +4,7 @@ import { MoreHorizontal } from "lucide-react";
 
 import { cn } from "@/shared/lib/utils";
 import Link, { LinkProps } from "next/link";
+import { Skeleton } from "./Skeleton";
 
 const Breadcrumb = React.forwardRef<
   HTMLElement,
@@ -74,6 +75,14 @@ const BreadcrumbPage = React.forwardRef<
 ));
 BreadcrumbPage.displayName = "BreadcrumbPage";
 
+const BreadcrumbLoader = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <Skeleton className={cn("w-[55px] h-3", className)} {...props} />
+);
+BreadcrumbLoader.displayName = "BreadcrumbLoader";
+
 const BreadcrumbSeparator = ({
   children,
   className,
@@ -115,6 +124,7 @@ export {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbPage,
+  BreadcrumbLoader,
   BreadcrumbSeparator,
   BreadcrumbEllipsis,
 };

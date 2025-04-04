@@ -4,6 +4,7 @@ import { Sheet, SheetTrigger } from "@/shared/components/UI/Sheet";
 import { useDelayedState } from "@/shared/hooks/useDelayedState";
 import CategorySheetContent from "./CategorySheetContent";
 import ChevronDownIcon from "@/shared/components/icons/Chevron/ChevronDownIcon";
+import CategorySheetTrigger from "./CategorySheetTrigger";
 
 const CategorySheet = ({ isSticky }: { isSticky: boolean }) => {
   const { state, setFastState, setDelayedState, clearTimer } =
@@ -27,20 +28,12 @@ const CategorySheet = ({ isSticky }: { isSticky: boolean }) => {
 
   return (
     <Sheet open={state}>
-      <SheetTrigger
+      <CategorySheetTrigger
+        isHovered={state}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
-        className={`text-button-normal link-hover outline-none ${
-          state ? "link-hovered" : ""
-        }`}
-      >
-        Каталог
-        <ChevronDownIcon
-          className={`group-hover/link:rotate-180 ${
-            state && "fill-gray rotate-180"
-          } transition-[stroke,transform]`}
-        />
-      </SheetTrigger>
+      />
+
       <CategorySheetContent
         style={{
           marginTop,

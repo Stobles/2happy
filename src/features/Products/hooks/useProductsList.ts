@@ -5,7 +5,13 @@ import { useQuery } from "@tanstack/react-query";
 import { useFiltersStore } from "../store/filtersStore";
 import { usePaginationStore } from "../store/paginationStore";
 
-export const useProductsList = ({ category }: { category?: number }) => {
+export const useProductsList = ({
+  category,
+  tag,
+}: {
+  category?: number;
+  tag?: number;
+}) => {
   const { sort, gridType, setTotalItems, setTotalPages } = useCatalogStore();
   const { page, per_page } = usePaginationStore();
   const { priceRange, colors, sizes } = useFiltersStore();
@@ -15,6 +21,7 @@ export const useProductsList = ({ category }: { category?: number }) => {
       page,
       per_page,
       category,
+      tag,
       color: colors.map((item) => item.id),
       size: sizes.map((item) => item.id),
       min_price: priceRange?.min,

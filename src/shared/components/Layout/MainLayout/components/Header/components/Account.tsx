@@ -12,7 +12,7 @@ const Account = () => {
 
   if (data) {
     return (
-      <Link href={paths.account.root.getHref()}>
+      <Link href={paths.account.getHref()}>
         <UserIcon
           data-tooltip-id="account"
           data-tooltip-content="Аккаунт"

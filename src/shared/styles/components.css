@@ -7,13 +7,7 @@
 
   .link-hover::after {
     content: "";
-    width: 0;
-    height: 1px;
-    background-color: theme("colors.gray.DEFAULT");
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    transition: width 0.3s ease;
+    @apply w-0 h-[1px] bg-gray absolute bottom-[-1px] left-0 transition-all duration-300;
   }
 
   .link-hover:hover {
@@ -21,8 +15,7 @@
   }
 
   .link-hover svg {
-    width: 16px;
-    height: 16px;
+    @apply w-4 h-4;
   }
 
   .link-hover:hover svg {
@@ -30,14 +23,18 @@
   }
 
   .link-hover:hover::after {
-    width: 100%;
+    @apply w-full;
   }
 
   .link-hovered {
-    color: theme("colors.gray.DEFAULT");
+    @apply text-gray;
   }
 
   .link-hovered::after {
-    width: 100%;
+    @apply w-full;
+  }
+
+  .link-active::after {
+    @apply w-full bg-main;
   }
 }

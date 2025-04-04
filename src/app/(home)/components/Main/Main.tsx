@@ -26,7 +26,7 @@ const Main = () => {
                 size="large"
                 asChild
               >
-                <Link href={paths.catalog.root}>
+                <Link href={paths.catalog.getHref()}>
                   Перейти в каталог <ArrowUpRightIcon />
                 </Link>
               </Button>
