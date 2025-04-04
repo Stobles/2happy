@@ -30,7 +30,9 @@ const CatalogSelect = ({
         <SelectItem value="desc:date">Сначала новинки</SelectItem>
         <SelectItem value="desc:price">По убыванию цены</SelectItem>
         <SelectItem value="asc:price">По возрастанию цены</SelectItem>
-        <SelectItem value="desc:sale">Размер скидки: по убыванию</SelectItem>
+        {/* <SelectItem value="desc:sale_price">
+          Размер скидки: по убыванию
+        </SelectItem> */}
         <SelectItem value="desc:popularity">По популярности</SelectItem>
       </SelectContent>
     </Select>

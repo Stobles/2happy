@@ -126,7 +126,7 @@ const ProductsFiltersSheet = ({ trigger }: { trigger: ReactNode }) => {
                 />
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem className="flex flex-col min-h-14" value="discount">
+            {/* <AccordionItem className="flex flex-col min-h-14" value="discount">
               <AccordionTrigger className="text-h5 text-red">
                 Распродажа
               </AccordionTrigger>
@@ -136,7 +136,7 @@ const ProductsFiltersSheet = ({ trigger }: { trigger: ReactNode }) => {
                 <FilterCheckbox onCheckedChange={() => {}} text="50%-60%" />
                 <FilterCheckbox onCheckedChange={() => {}} text="70%" />
               </AccordionContent>
-            </AccordionItem>
+            </AccordionItem> */}
           </Accordion>
         </div>
         <SheetFooter className="flex">
