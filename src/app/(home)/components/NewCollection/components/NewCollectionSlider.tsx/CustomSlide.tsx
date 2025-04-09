@@ -9,9 +9,14 @@ const CustomSlide = () => {
       <span className="text-h4 text-white text-center">
         Погрузитесь в мир стильных новинок!
       </span>
-      <Button className="w-full" variant="primary" size="medium" asChild>
+      <Button
+        className="w-full text-white"
+        variant="tertiary"
+        size="medium"
+        asChild
+      >
         <Link href={paths.catalog.new_collection.getHref("Новая коллекция")}>
-          Все новинки <ArrowUpRightIcon />
+          Все новинки <ArrowUpRightIcon className="fill-white stroke-white" />
         </Link>
       </Button>
     </div>

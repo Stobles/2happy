@@ -9,7 +9,6 @@ import { getProductsQueryOptions } from "@/features/Products/api/productsApi";
 import { tagIds } from "@/features/Categories/consts/consts";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import FinalSaleListLoader from "./components/FinalSaleListLoader";
-import CategoryLink from "@/features/Categories/components/CategoryLink";
 import Link from "next/link";
 import { paths } from "@/config/paths";
 

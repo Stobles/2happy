@@ -18,7 +18,7 @@ const NewCollectionPage = () => {
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <div className="flex flex-col gap-12">
-        <Suspense fallback={<CategorySliderLoader itemsCount={5} />}>
+        <Suspense fallback={<CategorySliderLoader itemsCount={3} />}>
           <CategoriesWithTag
             pathname="new_collection"
             tag={tagIds["new"]}

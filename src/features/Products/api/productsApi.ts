@@ -16,6 +16,7 @@ export type getProductsListParameters = {
   orderby?: string;
   color?: number[];
   size?: number[];
+  include?: number[];
 };
 
 export const getProductsListURL = `${env.WOOCOMMERCE_API}/products`;
@@ -40,25 +41,17 @@ export const getProductsList = async (
 };
 
 const productsQueryKey = (params: getProductsListParameters) => {
-  const key = ["products"];
+  const queryKey = ["products"];
 
-  if (params.category) key.push(`category ${params.category}`);
-  if (params.page) key.push(`page ${params.page}`);
-  if (params.per_page) key.push(`per_page ${params.per_page}`);
-  if (params.order) key.push(`order ${params.order}`);
-  if (params.orderby) key.push(`orderby ${params.orderby}`);
-  if (params.category) key.push(`category ${params.category}`);
-  if (params.tag) key.push(`tag ${params.tag}`);
-  if (params.min_price) key.push(`min ${params.min_price}`);
-  if (params.max_price) key.push(`max ${params.max_price}`);
-  if (params.color?.length) {
-    key.push(`colors ${params.color}`);
-  }
-  if (params.size?.length) {
-    key.push(`sizes ${params.size}`);
-  }
+  Object.entries(params).forEach(([key, value]) => {
+    if (value instanceof Array) {
+      if (value.length) queryKey.push(`${key} ${value}`);
+    } else {
+      if (value) queryKey.push(`${key} ${value}`);
+    }
+  });
 
-  return key;
+  return queryKey;
 };
 
 export const getProductsQueryOptions = (params: getProductsListParameters) => {

@@ -1,5 +1,3 @@
-"use client";
-
 import ArrowUpRightIcon from "@/shared/components/icons/Arrows/ArrowUpRightIcon";
 import { Button } from "@/shared/components/UI/Button";
 import Container from "@/shared/components/UI/Container";
