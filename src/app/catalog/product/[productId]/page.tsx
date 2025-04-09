@@ -4,11 +4,12 @@ import AdditionSection from "../components/AdditionSection";
 import ProductSection from "../components/ProductSection/ProductSection";
 import RecentSection from "../components/RecentSection";
 
-const ProductPage = ({
-  params: { productId },
+const ProductPage = async ({
+  params,
 }: {
-  params: { productId: string };
+  params: Promise<{ productId: string }>;
 }) => {
+  const { productId } = await params;
   return (
     <>
       <ProductSection />
