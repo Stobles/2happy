@@ -11,7 +11,7 @@ const SliderButton = ({ slideType, asChild, ...props }: ISliderButtonProps) => {
   const Comp = asChild ? Slot : "button";
 
   const swiper = useSwiper();
-  const [isDisabled, setIsDisabled] = useState(true);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const handleClick = () => {
     if (slideType === "next") swiper.slideNext();
@@ -19,7 +19,7 @@ const SliderButton = ({ slideType, asChild, ...props }: ISliderButtonProps) => {
   };
 
   useEffect(() => {
-    if (!swiper) return;
+    if (!swiper || swiper.params?.loop) return;
 
     const updateState = () => {
       setIsDisabled(slideType === "next" ? swiper.isEnd : swiper.isBeginning);

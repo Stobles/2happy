@@ -38,7 +38,6 @@ const ProductSlider = () => {
         modules={[Thumbs]}
       >
         {SLIDES.map((slide) => (
-          // Ключ нужно будет сделать уникальным
           <SwiperSlide
             key={slide}
             style={{ display: thumbsSwiper ? "block" : "none" }}
@@ -46,7 +45,7 @@ const ProductSlider = () => {
             <Image
               fill
               src={slide}
-              className="object-cover cursor-pointer"
+              className="object-cover cursor-pointer blur-[0.5px]"
               alt="product-slide-thumb"
             />
           </SwiperSlide>

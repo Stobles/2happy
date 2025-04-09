@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 import UserIcon from "@/shared/components/icons/UserIcon";
@@ -6,9 +8,17 @@ import AuthModal from "@/features/Auth/components/AuthModal";
 
 import { useUser } from "@/shared/api/authApi";
 import { paths } from "@/config/paths";
+import { useEffect, useState } from "react";
 
 const Account = () => {
   const { data, isFetching } = useUser();
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  if (!hasMounted) return null;
 
   if (data) {
     return (
@@ -23,7 +33,7 @@ const Account = () => {
     );
   }
   return (
-    <AuthModal disabled={isFetching}>
+    <AuthModal disabled={!!isFetching}>
       <UserIcon
         data-tooltip-id="auth"
         data-tooltip-content="Войти"

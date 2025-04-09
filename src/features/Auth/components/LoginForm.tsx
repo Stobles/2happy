@@ -15,6 +15,7 @@ import { Checkbox } from "@/shared/components/UI/Checkbox";
 import Notification from "@/shared/components/UI/Notification";
 import { useLoginForm } from "../hooks/useLoginForm";
 import LoaderIcon from "@/shared/components/icons/LoaderIcon";
+import PasswordInput from "./PasswordInput";
 
 const LoginForm = ({ onSuccess }: { onSuccess: () => void }) => {
   const { loginForm, onSubmit, isPending, error, clearError } = useLoginForm({
@@ -35,18 +36,7 @@ const LoginForm = ({ onSuccess }: { onSuccess: () => void }) => {
             </FormItem>
           )}
         />
-        <FormField
-          control={loginForm.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input placeholder="Пароль" type="password" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <PasswordInput control={loginForm.control} name="password" />
         {error && (
           <Notification
             variant="error"

@@ -12,6 +12,7 @@ import {
 import ProductsFiltersSheet from "@/features/Products/components/Filters/ProductsFiltersSheet";
 import { TSort, useCatalogStore } from "@/features/Products/store/catalogStore";
 import { usePaginationStore } from "@/features/Products/store/paginationStore";
+import { cn } from "@/shared/lib/utils";
 
 const CatalogSelect = ({
   sort,
@@ -40,7 +41,7 @@ const CatalogSelect = ({
 };
 
 const CatalogControls = () => {
-  const { sort, setGridType, setSort } = useCatalogStore();
+  const { sort, gridType, setGridType, setSort } = useCatalogStore();
   const { setPerPage } = usePaginationStore();
 
   const handleGridChange = (type: "big" | "small") => {
@@ -73,11 +74,17 @@ const CatalogControls = () => {
       </div>
       <div className="flex items-center gap-2">
         <GridSmallIcon
-          className="cursor-pointer [&_*]:cursor-pointer hover:fill-main hover:stroke-transparent"
+          className={cn(
+            "cursor-pointer [&_*]:cursor-pointer hover:fill-main hover:stroke-transparent",
+            gridType === "small" && " fill-main stroke-transparent"
+          )}
           onClick={() => handleGridChange("small")}
         />
         <GridBigIcon
-          className="cursor-pointer [&_*]:cursor-pointer h-[19px]  w-[19px] hover:fill-main hover:stroke-transparent"
+          className={cn(
+            "cursor-pointer [&_*]:cursor-pointer h-[19px]  w-[19px] hover:fill-main hover:stroke-transparent",
+            gridType === "big" && " fill-main stroke-transparent"
+          )}
           onClick={() => handleGridChange("big")}
         />
       </div>

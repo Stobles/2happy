@@ -17,12 +17,14 @@ const buttonVariantsAndSizes = {
       secondary: `text-button-secondary-text border-[1px] border-stroke-black bg-button-secondary-bg 
         hover:bg-button-secondary-bg-hover hover:text-button-secondary-text-hover hover:border-stroke-darkGrey hover:secondary-svg-hover
         focus-visible:bg-button-secondary-bg-focused
-        active:border-[1px] active:text-button-secondary-text-click active:bg-button-secondary-bg-click active:bg-none`,
+        active:border-[1px] active:text-button-secondary-text-click active:bg-button-secondary-bg-click active:bg-none
+        after:opacity-0 hover:after:opacity-100`,
 
       tertiary: `text-button-tertiary-text bg-button-tertiary-bg
         hover:bg-button-tertiary-bg-hover hover:text-button-tertiary-text-hover hover:tertiary-svg-hover
         focus-visible:border-2 focus-visible:border-stroke-black focus-visible:text-button-tertiary-text-focused focus-visible:bg-button-tertiary-bg-focused focus-visible:tertiary-svg-focused 
-        active:border-0 active:bg-button-tertiary-bg-click active:text-button-tertiary-text-click active:tertiary-svg-active`,
+        active:border-0 active:bg-button-tertiary-bg-click active:text-button-tertiary-text-click active:tertiary-svg-active
+        after:opacity-0 hover:after:opacity-100`,
     },
     size: {
       large: "h-[64px] px-[32px] py-[20px] text-button-large",
@@ -47,9 +49,10 @@ const buttonVariantsAndSizes = {
 };
 
 const buttonVariants = cva(
-  `inline-flex w-max items-center justify-center gap-2 whitespace-nowrap uppercase rounded-xs bg-radial-gradient font-medium transition-all duration-300 
+  `relative inline-flex w-max items-center justify-center gap-2 whitespace-nowrap uppercase rounded-xs font-medium transition-all duration-300 
   focus-visible:outline-none focus-visible:border-solid focus-visible:border-2 focus-visible:border-stroke-black 
   disabled:pointer-events-none disabled:border-disabled  disabled:bg-button-bg-disabled disabled:text-button-text-disabled disabled:svg-disabled 
+  after:absolute after:w-full after:h-full after:bg-radial-gradient after:transition-opacity
   [&_svg]:pointer-events-none [&_svg]:size-[24px] [&_svg]:shrink-0 [&_svg]:transition-colors`,
 
   {
