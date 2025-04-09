@@ -37,7 +37,8 @@ const Slider = () => {
       onSwiper={(swiper) => {
         setTotalSlides(swiper.slides.length);
       }}
-      onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex + 1)}
+      loop={true}
+      onSlideChange={(swiper) => setActiveIndex(swiper.realIndex + 1)}
       className="main-slider basis-full overflow-hidden h-[720px]"
       slidesPerView={1}
       modules={[Pagination, Navigation, Autoplay]}
