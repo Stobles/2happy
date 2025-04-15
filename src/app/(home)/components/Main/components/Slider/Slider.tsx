@@ -7,7 +7,7 @@ import { Progress } from "@/shared/components/UI/Progress";
 
 import ChevronRightIcon from "@/shared/components/icons/Chevron/ChevronRightIcon";
 import ChevronLeftIcon from "@/shared/components/icons/Chevron/ChevronLeftIcon";
-import SliderButton from "@/shared/components/UI/SliderButton";
+import SliderButton from "@/shared/components/Slider/SliderButton";
 import ImageWithLoader from "@/shared/components/UI/ImageWithLoader";
 
 import "swiper/css";

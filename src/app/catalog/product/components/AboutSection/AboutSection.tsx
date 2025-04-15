@@ -5,8 +5,9 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/shared/components/UI/Tabs";
-import DescriptionTab from "./DescriptionTab";
-import ReviewsTab from "./ReviewsTab";
+import DescriptionTab from "./DescriptionTab/DescriptionTab";
+import ReviewsTab from "./ReviewsTab/ReviewsTab";
+import { Suspense } from "react";
 
 const AboutSection = () => {
   return (
@@ -18,7 +19,9 @@ const AboutSection = () => {
             <TabsTrigger value="reviews">Отзывы покупателей</TabsTrigger>
           </TabsList>
           <TabsContent className="h-full" value="description">
-            <DescriptionTab />
+            <Suspense fallback>
+              <DescriptionTab />
+            </Suspense>
           </TabsContent>
           <TabsContent className="h-full" value="reviews">
             <ReviewsTab />

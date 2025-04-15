@@ -1,3 +1,5 @@
+"use client";
+
 import HeartIcon from "@/shared/components/icons/HeartIcon";
 import ShareIcon from "@/shared/components/icons/ShareIcon";
 import { Button } from "@/shared/components/UI/Button";
@@ -13,21 +15,31 @@ import {
 import { Separator } from "@/shared/components/UI/Separator";
 import SizesTableDialog from "@/features/Products/components/Dialogs/SizesTableDialog";
 import OutOfStockDialog from "@/features/Products/components/Dialogs/OutOfStockDialog";
-import StyledTooltip from "@/shared/components/UI/StyledTooltip";
+import { env } from "@/config/env";
+import { paths } from "@/config/paths";
+import CopyButton from "@/shared/components/UI/CopyButton";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { getProductByIdQueryOptions } from "@/features/Products/api/productsApi";
+import { useGetProductId } from "@/features/Products/hooks/useGetProductId";
 
 const ProductInfo = () => {
+  const { id, slug } = useGetProductId();
+  const { data } = useSuspenseQuery(getProductByIdQueryOptions(id));
   return (
     <div className="flex flex-col gap-2 justify-between flex-1 basis-[49%]">
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-6">
-          <div className="flex items-center justify-between gap-4">
-            <h2 className="text-h4">
-              Платье трикотажное <br /> с отделкой из сетки и принтом /
-            </h2>
-            <button data-tooltip-id="share" data-tooltip-content="Поделиться">
+          <div className="flex items-start justify-between gap-4">
+            <h2 className="text-h4">{data?.name}</h2>
+            <CopyButton
+              copyText={`${env.APP_URL}${paths.catalog.product.getHref(
+                id,
+                slug
+              )}`}
+              tooltip="Поделиться"
+            >
               <ShareIcon />
-              <StyledTooltip id="share" />
-            </button>
+            </CopyButton>
           </div>
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2">

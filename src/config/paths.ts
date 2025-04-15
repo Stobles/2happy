@@ -46,7 +46,8 @@ export const paths = {
     },
 
     product: {
-      getHref: (id: number) => `${paths.catalog.getHref()}/product/${id}`,
+      getHref: (id: number, slug: string) =>
+        `${paths.catalog.getHref()}/product/${slug}_${id}`,
     },
   },
 

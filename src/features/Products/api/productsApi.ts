@@ -60,3 +60,33 @@ export const getProductsQueryOptions = (params: getProductsListParameters) => {
     queryFn: (meta) => getProductsList(params, { signal: meta.signal }),
   });
 };
+
+export const getProductByIdURL = `${env.WOOCOMMERCE_API}/products/{id}`;
+
+export const getProductById = async (
+  id: number,
+  {
+    signal,
+  }: {
+    signal: AbortSignal;
+  }
+): Promise<ProductServer> => {
+  const response = await apiInstance.get<unknown, ProductServer>(
+    getProductByIdURL.replace("{id}", `${id}`),
+    {
+      signal,
+    }
+  );
+
+  return response;
+};
+
+const productByIdQueryKey = (id: number) => ["product", id];
+
+export const getProductByIdQueryOptions = (id: number) => {
+  return queryOptions({
+    queryKey: productByIdQueryKey(id),
+    queryFn: (meta) => getProductById(id, { signal: meta.signal }),
+    enabled: !!id,
+  });
+};

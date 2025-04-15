@@ -25,6 +25,7 @@ type ProductCategory = {
   id: number;
   name: string;
   slug: string;
+  parent: number;
 };
 
 type ProductAttribute = {
@@ -36,6 +37,30 @@ type ProductAttribute = {
   variation: boolean;
   options: string[];
 };
+
+type MetaProductFeatures = {
+  id: number;
+  key: "_product_features";
+  value: string;
+};
+
+type MetaModelParameters = {
+  id: number;
+  key: "_model_parameters";
+  value: string;
+};
+
+type MetaCompositionAndCare = {
+  id: number;
+  key: "_composition_and_care";
+  value: string;
+};
+
+export type ProductMeta = [
+  MetaProductFeatures,
+  MetaModelParameters,
+  MetaCompositionAndCare
+];
 
 type Dimensions = {
   length: string;
@@ -108,7 +133,7 @@ export type ProductServer = {
   variations: unknown[];
   grouped_products: unknown[];
   menu_order: number;
-  meta_data: unknown[];
+  meta_data: ProductMeta;
   _links: Links;
 };
 
