@@ -5,22 +5,8 @@ import Image from "next/image";
 
 const Instagram = () => {
   return (
-    <Section className="relative bg-gradient-4 h-[1024px]">
-      <Image
-        className="z-[-1]"
-        fill
-        src="/images/section-bg.png"
-        alt="section-bg"
-        quality={90}
-      />
+    <Section className="relative h-[1024px] bg-main">
       <Container className="flex-col gap-10 my-section">
-        <Image
-          className="absolute h-[128px] top-[-88px] left-0"
-          width={1208}
-          height={128}
-          src="/images/section-logo.png"
-          alt="section-logo"
-        />
         <h2 className="text-h2 text-white">
           #2happy <br />/
         </h2>

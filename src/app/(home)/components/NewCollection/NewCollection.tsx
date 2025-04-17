@@ -1,7 +1,6 @@
 import Container from "@/shared/components/UI/Container";
 import Section from "@/shared/components/UI/Section";
 import NewCollectionSlider from "./components/NewCollectionSlider.tsx/NewCollectionSlider";
-import SectionImage from "@/shared/components/UI/SectionImage";
 import { Suspense } from "react";
 import { getQueryClient } from "@/shared/api/queryClient";
 import { tagIds } from "@/features/Categories/consts/consts";
@@ -19,7 +18,6 @@ const NewCollection = async () => {
     <HydrationBoundary state={dehydrate(queryClient)}>
       <Section>
         <Container className="flex-col gap-16 my-section">
-          <SectionImage />
           <h2 className="text-h2">Новая коллекция / 25</h2>
           <Suspense fallback={<NewCollectionLoader />}>
             <NewCollectionSlider />

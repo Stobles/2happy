@@ -2,14 +2,12 @@ import ArrowUpRightIcon from "@/shared/components/icons/Arrows/ArrowUpRightIcon"
 import { Button } from "@/shared/components/UI/Button";
 import Container from "@/shared/components/UI/Container";
 import Section from "@/shared/components/UI/Section";
-import SectionImage from "@/shared/components/UI/SectionImage";
 import FashionCard from "@/features/Fashion/components/FashionCard";
 
 const Fashion = () => {
   return (
     <Section className="my-section">
       <Container className="flex-col gap-16">
-        <SectionImage />
         <h2 className="text-h2">
           Готовые образы <br /> /
         </h2>
