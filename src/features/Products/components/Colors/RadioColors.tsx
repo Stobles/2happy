@@ -9,10 +9,10 @@ import ColorSquare from "@/features/Products/components/Colors/ColorSquare";
 const RadioColorsGroup = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>
->(({ className, ...props }, ref) => {
+>(({ className, disabled, ...props }, ref) => {
   return (
     <RadioGroupPrimitive.Root
-      className={cn("grid gap-2", className)}
+      className={cn("grid gap-2 ", disabled && "blur-xs", className)}
       {...props}
       ref={ref}
     />
@@ -30,7 +30,7 @@ const RadioGroupColor = React.forwardRef<
     <RadioGroupPrimitive.Item
       ref={ref}
       className={cn(
-        "border border-transparent p-1 focus:outline-none focus-visible:ring-1 focus-visible:ring-ring data-[state=checked]:border-gray-middle disabled:bg-white",
+        "border border-transparent p-1 disabled:cursor-default focus:outline-none focus-visible:ring-1 focus-visible:ring-ring data-[state=checked]:border-gray-middle disabled:bg-white",
         className
       )}
       {...props}

@@ -3,7 +3,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { SIZES, SLIDES_SIZES } from "./consts";
-import SliderButton from "@/shared/components/UI/SliderButton";
+import SliderButton from "@/shared/components/Slider/SliderButton";
 import ArrowRightIcon from "@/shared/components/icons/Arrows/ArrowRightIcon";
 import { ProductServer } from "@/features/Products/types";
 import ProductServerCard from "@/features/Products/components/ProductCards/ProductServerCard";

@@ -8,6 +8,12 @@ import ImageWithZoom from "@/shared/components/UI/ImageWithZoom";
 
 import { Thumbs } from "swiper/modules";
 import { Swiper as SwiperType } from "swiper/types";
+import SliderButton from "@/shared/components/Slider/SliderButton";
+import ChevronDownIcon from "@/shared/components/icons/Chevron/ChevronDownIcon";
+import { useGetProductId } from "@/features/Products/hooks/useGetProductId";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { getProductByIdQueryOptions } from "@/features/Products/api/productsApi";
+import ImageGallery from "../../ImageGallery/ImageGallery";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -15,41 +21,47 @@ import "swiper/css/navigation";
 
 import "./styles.scss";
 
-const SLIDES = [
-  "/images/Home/Main/slider-1.jpg",
-  "/images/Home/Main/slider-2.jpg",
-  "/images/Home/Main/slider-3.jpg",
-  "/images/Home/Main/slider-4.jpg",
-  "/images/Home/Main/slider-5.jpg",
-  "/images/Home/Main/slider-6.jpg",
-];
-
 const ProductSlider = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
+  const { id } = useGetProductId();
+  const { data } = useSuspenseQuery(getProductByIdQueryOptions(id));
 
   return (
     <div className="product-slider flex gap-6 flex-1 basis-[51%] overflow-hidden">
       <Swiper
-        className="thumbs-slider"
+        className="relative thumbs-slider"
         onSwiper={setThumbsSwiper}
         direction="vertical"
         slidesPerView={5}
         spaceBetween={8}
         modules={[Thumbs]}
       >
-        {SLIDES.map((slide) => (
+        <SliderButton
+          className="w-full flex justify-center absolute top-0 z-10 bg-white/80 disabled:opacity-0"
+          slideType="prev"
+        >
+          <ChevronDownIcon className="rotate-180" />
+        </SliderButton>
+        {data.images.map((image) => (
           <SwiperSlide
-            key={slide}
+            key={image.id}
+            data-key={image.id}
             style={{ display: thumbsSwiper ? "block" : "none" }}
           >
             <Image
               fill
-              src={slide}
+              src={image.src}
               className="object-cover cursor-pointer blur-[0.5px]"
-              alt="product-slide-thumb"
+              alt={image.alt ?? "product-image-slide"}
             />
           </SwiperSlide>
         ))}
+        <SliderButton
+          className="w-full flex justify-center absolute bottom-0 z-10 bg-white/80 disabled:opacity-0"
+          slideType="next"
+        >
+          <ChevronDownIcon />
+        </SliderButton>
       </Swiper>
 
       <Swiper
@@ -57,9 +69,11 @@ const ProductSlider = () => {
         thumbs={{ swiper: thumbsSwiper }}
         modules={[Thumbs]}
       >
-        {SLIDES.map((slide) => (
-          <SwiperSlide key={slide}>
-            <ImageWithZoom src={slide} />
+        {data.images.map((image, index) => (
+          <SwiperSlide key={image.id}>
+            <ImageGallery images={data.images} initialSlide={index}>
+              <ImageWithZoom src={image.src} alt={image.alt} />
+            </ImageGallery>
           </SwiperSlide>
         ))}
       </Swiper>

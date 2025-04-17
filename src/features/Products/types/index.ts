@@ -25,9 +25,10 @@ type ProductCategory = {
   id: number;
   name: string;
   slug: string;
+  parent: number;
 };
 
-type ProductAttribute = {
+export type ProductAttribute = {
   id: number;
   name: string;
   slug: string;
@@ -37,10 +38,66 @@ type ProductAttribute = {
   options: string[];
 };
 
+type ProductVariationAttribute = {
+  id: number;
+  name: string;
+  slug: string;
+  option: string;
+};
+
+type MetaProductFeatures = {
+  id: number;
+  key: "_product_features";
+  value: string;
+};
+
+type MetaModelParameters = {
+  id: number;
+  key: "_model_parameters";
+  value: string;
+};
+
+type MetaCompositionAndCare = {
+  id: number;
+  key: "_composition_and_care";
+  value: string;
+};
+
+export type ProductMeta = [
+  MetaProductFeatures,
+  MetaModelParameters,
+  MetaCompositionAndCare
+];
+
 type Dimensions = {
   length: string;
   width: string;
   height: string;
+};
+
+type StockStatus = "instock" | "outofstock" | "onbackorder";
+
+export type ProductVariation = {
+  id: number;
+  parent_id: number;
+  sku: string;
+  price: string;
+  regular_price: string;
+  sale_price: string;
+  on_sale: boolean;
+  stock_status: StockStatus;
+  stock_quantity: number | null;
+  purchasable: boolean;
+  weight: string;
+  image: Image | null;
+  attributes: ProductVariationAttribute[];
+  dimensions: Dimensions;
+  meta_data: unknown[];
+  permalink: string;
+  name: string;
+  date_created: string;
+  date_modified: string;
+  _links: Links;
 };
 
 export type ProductServer = {
@@ -81,7 +138,7 @@ export type ProductServer = {
   tax_class: string;
   manage_stock: boolean;
   stock_quantity: number | null;
-  stock_status: string;
+  stock_status: StockStatus;
   backorders: string;
   backorders_allowed: boolean;
   backordered: boolean;
@@ -108,7 +165,7 @@ export type ProductServer = {
   variations: unknown[];
   grouped_products: unknown[];
   menu_order: number;
-  meta_data: unknown[];
+  meta_data: ProductMeta;
   _links: Links;
 };
 

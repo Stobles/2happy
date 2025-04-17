@@ -4,8 +4,10 @@ import { useQuery } from "@tanstack/react-query";
 import { getProductsQueryOptions } from "@/features/Products/api/productsApi";
 import { useLocalStorage } from "@/shared/hooks/useLocalStorage";
 import ProductsScrollableSection from "@/features/Products/components/ProductsScrollableSection";
+import { useGetProductId } from "@/features/Products/hooks/useGetProductId";
 
-const RecentSection = ({ productId }: { productId: number }) => {
+const RecentSection = () => {
+  const { id: productId } = useGetProductId();
   const [recentProducts, _] = useLocalStorage<number[]>("recentProducts", []);
 
   const filteredRecentProducts = recentProducts.filter((id) => id != productId);

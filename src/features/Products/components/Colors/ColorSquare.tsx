@@ -1,4 +1,4 @@
-import { colorsByName } from "../../consts/colors";
+import { colorsByName } from "../../consts/consts";
 
 const ColorSquare = ({ color }: { color: string }) => {
   return (

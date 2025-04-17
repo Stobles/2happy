@@ -11,8 +11,6 @@ import {
 } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useIsMobile from "@/shared/hooks/useIsMobile";
-import SuccessIcon from "@/shared/components/icons/SuccessIcon";
-import ErrorIcon from "@/shared/components/icons/ErrorIcon";
 
 export type ToastTypes = "success" | "error" | "info" | "warning" | "default";
 export type ToastPositions =
@@ -77,16 +75,11 @@ export default function ToastProvider({
     <>
       {children}
       <ToastContainer
-        className="gap-2"
+        className="gap-2 mt-32"
         hideProgressBar
-        closeButton={true}
+        closeButton={false}
         position={defaultPosition}
-        toastClassName={() => "min-w-[300px] p-0"}
-        icon={({ type }) => {
-          if (type === "success") return <SuccessIcon />;
-          if (type === "error") return <ErrorIcon />;
-          else return undefined;
-        }}
+        toastClassName={() => "p-0"}
       />
     </>
   );
