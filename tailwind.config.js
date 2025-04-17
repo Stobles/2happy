@@ -19,6 +19,13 @@ module.exports = {
         xl: "1280px",
         "2xl": "1536px",
       },
+      gridTemplateColumns: {
+        addition:
+          "minmax(296px, 496px) minmax(286px, 150px) minmax(286px, 150px)",
+      },
+      gridTemplateRows: {
+        addition: "408px 232px",
+      },
       cursor: {
         default: "url('/icons/system/cursor-arrow.svg') 2 2, default",
         pointer: "url('/icons/system/cursor-pointer.svg') 2 2, default",

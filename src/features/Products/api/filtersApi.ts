@@ -1,16 +1,21 @@
 import { apiInstance } from "@/shared/api/apiInstance";
 import { env } from "@/config/env";
 import { Attribute, WooResponse } from "@/shared/types/api";
-import { useQuery } from "@tanstack/react-query";
+import { queryOptions, useQuery } from "@tanstack/react-query";
 
-export const getAttributesByIdURL = `${env.WOOCOMMERCE_API}/products/attributes/{id}/terms`;
+export const attributesMap = {
+  colors: 1,
+  sizes: 2,
+};
 
-export const getAttributesById = async (
-  id: string,
+const getAttributesByIdURL = `${env.WOOCOMMERCE_API}/products/attributes/{id}/terms`;
+
+const getAttributesById = async (
+  id: number,
   { signal }: { signal: AbortSignal }
 ): Promise<WooResponse<Attribute[]>> => {
   const response = await apiInstance.get<unknown, WooResponse<Attribute[]>>(
-    getAttributesByIdURL.replace("{id}", id),
+    getAttributesByIdURL.replace("{id}", `${id}`),
     {
       signal,
     }
@@ -19,18 +24,15 @@ export const getAttributesById = async (
   return response;
 };
 
-export const useProductsColors = () => {
-  return useQuery({
-    queryKey: ["colors"],
-    queryFn: (meta) => getAttributesById("1", { signal: meta.signal }),
-    staleTime: Infinity,
+export const getProductAttributesQueryOptions = (id: number) => {
+  return queryOptions({
+    queryKey: ["attributes", id],
+    queryFn: (meta) => getAttributesById(id, { signal: meta.signal }),
   });
 };
 
-export const useProductsSizes = () => {
-  return useQuery({
-    queryKey: ["sizes"],
-    queryFn: (meta) => getAttributesById("2", { signal: meta.signal }),
-    staleTime: Infinity,
-  });
-};
+export const useProductsColors = () =>
+  useQuery(getProductAttributesQueryOptions(attributesMap["colors"]));
+
+export const useProductsSizes = () =>
+  useQuery(getProductAttributesQueryOptions(attributesMap["sizes"]));
