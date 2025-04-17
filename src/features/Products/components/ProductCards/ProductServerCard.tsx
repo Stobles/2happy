@@ -8,9 +8,9 @@ import { MouseEvent } from "react";
 import ImageWithLoader from "@/shared/components/UI/ImageWithLoader";
 import ColorSquare from "../Colors/ColorSquare";
 import { paths } from "@/config/paths";
-import { useProductCardInfo } from "../../hooks/useProductCardInfo";
+import { getProductCardInfo } from "../../utils/getProductCardInfo";
 import { useLocalStorage } from "@/shared/hooks/useLocalStorage";
-import { QueryClient, useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import { getProductByIdQueryOptions } from "../../api/productsApi";
 
 const ProductServerCard = ({ product }: { product: ProductServer }) => {
@@ -19,7 +19,7 @@ const ProductServerCard = ({ product }: { product: ProductServer }) => {
     "recentProducts",
     []
   );
-  const { colors, image, sizes, chip } = useProductCardInfo(product);
+  const { colors, image, sizes, chip } = getProductCardInfo(product);
 
   const handleLinkClick = () => {
     queryClient.setQueryData(

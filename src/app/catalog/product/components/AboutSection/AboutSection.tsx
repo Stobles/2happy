@@ -8,6 +8,7 @@ import {
 import DescriptionTab from "./DescriptionTab/DescriptionTab";
 import ReviewsTab from "./ReviewsTab/ReviewsTab";
 import { Suspense } from "react";
+import DescriptionTabLoader from "./DescriptionTab/DescriptionTabLoader";
 
 const AboutSection = () => {
   return (
@@ -19,7 +20,7 @@ const AboutSection = () => {
             <TabsTrigger value="reviews">Отзывы покупателей</TabsTrigger>
           </TabsList>
           <TabsContent className="h-full" value="description">
-            <Suspense fallback>
+            <Suspense fallback={<DescriptionTabLoader />}>
               <DescriptionTab />
             </Suspense>
           </TabsContent>

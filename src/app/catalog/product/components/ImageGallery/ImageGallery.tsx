@@ -10,8 +10,17 @@ import {
 } from "@/shared/components/UI/Dialog";
 import { ReactNode, useState } from "react";
 import ImageGallerySlider from "./ImageGallerySlider/ImageGallerySlider";
+import { Image } from "@/shared/types/api";
 
-const ImageGallery = ({ children }: { children: ReactNode }) => {
+const ImageGallery = ({
+  children,
+  images,
+  initialSlide,
+}: {
+  children: ReactNode;
+  images: Image[];
+  initialSlide: number;
+}) => {
   const [openWide, setOpenWide] = useState(false);
   return (
     <Dialog>
@@ -29,7 +38,11 @@ const ImageGallery = ({ children }: { children: ReactNode }) => {
               <CloseIcon className="hover:fill-gray" />
             </DialogClose>
           </div>
-          <ImageGallerySlider openWide={openWide} />
+          <ImageGallerySlider
+            openWide={openWide}
+            initialSlide={initialSlide}
+            images={images}
+          />
         </Container>
       </DialogContent>
     </Dialog>

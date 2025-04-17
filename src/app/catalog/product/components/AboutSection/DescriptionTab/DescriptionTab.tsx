@@ -1,12 +1,7 @@
 "use client";
 
 import { getProductByIdQueryOptions } from "@/features/Products/api/productsApi";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/shared/components/UI/Accordion";
+import { Accordion } from "@/shared/components/UI/Accordion";
 import ImageWithLoader from "@/shared/components/UI/ImageWithLoader";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import AccordionDeliveryItem from "./AccordionItems/AccordionDeliveryItem";

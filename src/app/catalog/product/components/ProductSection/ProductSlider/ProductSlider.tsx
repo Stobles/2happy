@@ -69,10 +69,10 @@ const ProductSlider = () => {
         thumbs={{ swiper: thumbsSwiper }}
         modules={[Thumbs]}
       >
-        {data.images.map((image) => (
+        {data.images.map((image, index) => (
           <SwiperSlide key={image.id}>
-            <ImageGallery>
-              <ImageWithZoom src={image.src} />
+            <ImageGallery images={data.images} initialSlide={index}>
+              <ImageWithZoom src={image.src} alt={image.alt} />
             </ImageGallery>
           </SwiperSlide>
         ))}

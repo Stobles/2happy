@@ -4,16 +4,7 @@ import HeartIcon from "@/shared/components/icons/HeartIcon";
 import ShareIcon from "@/shared/components/icons/ShareIcon";
 import { Button } from "@/shared/components/UI/Button";
 import { Chip } from "@/shared/components/UI/Chip";
-import {
-  RadioButtonsGroup,
-  RadioGroupButton,
-} from "@/shared/components/UI/RadioButtons";
-import {
-  RadioColorsGroup,
-  RadioGroupColor,
-} from "@/features/Products/components/Colors/RadioColors";
 import { Separator } from "@/shared/components/UI/Separator";
-import SizesTableDialog from "@/features/Products/components/Dialogs/SizesTableDialog";
 import OutOfStockDialog from "@/features/Products/components/Dialogs/OutOfStockDialog";
 import { env } from "@/config/env";
 import { paths } from "@/config/paths";
@@ -21,10 +12,27 @@ import CopyButton from "@/shared/components/UI/CopyButton";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { getProductByIdQueryOptions } from "@/features/Products/api/productsApi";
 import { useGetProductId } from "@/features/Products/hooks/useGetProductId";
+import ProductInfoSizes from "./ProductInfoSizes";
+import { getProductAttributes } from "@/features/Products/utils/getProductAttributes";
+import ProductInfoColors from "./ProductInfoColors";
+import { useState } from "react";
 
 const ProductInfo = () => {
   const { id, slug } = useGetProductId();
   const { data } = useSuspenseQuery(getProductByIdQueryOptions(id));
+
+  const { colors, sizes } = getProductAttributes(data.attributes);
+
+  const [color, setColor] = useState<{ slug: string; variation: string }>({
+    slug: "",
+    variation: "",
+  });
+
+  const [size, setSize] = useState<{ slug: string; variation: string }>({
+    slug: "",
+    variation: "",
+  });
+
   return (
     <div className="flex flex-col gap-2 justify-between flex-1 basis-[49%]">
       <div className="flex flex-col gap-8">
@@ -58,47 +66,22 @@ const ProductInfo = () => {
           </div>
         </div>
         <Separator />
-        <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-2">
-            <span className="text-body1">Цвет</span>
-            <Separator className="h-4" orientation="vertical" />
-            <span className="text-description text-gray-middle">Черный</span>
-          </div>
-          <RadioColorsGroup className="flex gap-2" defaultValue="default">
-            <RadioGroupColor value="small" color="Черный" id="r1" />
-            <RadioGroupColor value="b" color="Серый" id="r1" />
-          </RadioColorsGroup>
-        </div>
+        <ProductInfoColors
+          id={id}
+          color={color}
+          setColor={setColor}
+          defaultColors={colors}
+        />
         <Separator />
-        <div className="flex flex-col gap-4">
-          <div className="w-full flex justify-between">
-            <span className="text-body1">Размер</span>
-            <SizesTableDialog
-              trigger={
-                <button className="text-button-xs after:bottom-[1px] link-hover">
-                  Таблица размеров
-                </button>
-              }
-            />
-          </div>
-          <RadioButtonsGroup className="flex gap-2" defaultValue="default">
-            <RadioGroupButton value="small" id="r1">
-              S
-            </RadioGroupButton>
-            <RadioGroupButton value="medium" id="r2">
-              M
-            </RadioGroupButton>
-            <RadioGroupButton value="large" id="r3">
-              L
-            </RadioGroupButton>
-            <RadioGroupButton value="extraLarge" id="r4">
-              XL
-            </RadioGroupButton>
-          </RadioButtonsGroup>
-        </div>
+        <ProductInfoSizes
+          id={id}
+          size={size}
+          setSize={setSize}
+          defaultSizes={sizes}
+        />
       </div>
       <div className="flex gap-2">
-        <Button className="w-full"> Добавить в корзину</Button>
+        <Button className="w-full">Добавить в корзину</Button>
         <OutOfStockDialog
           trigger={
             <Button className="w-full" variant="secondary">

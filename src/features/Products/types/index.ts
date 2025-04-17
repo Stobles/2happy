@@ -28,7 +28,7 @@ type ProductCategory = {
   parent: number;
 };
 
-type ProductAttribute = {
+export type ProductAttribute = {
   id: number;
   name: string;
   slug: string;
@@ -36,6 +36,13 @@ type ProductAttribute = {
   visible: boolean;
   variation: boolean;
   options: string[];
+};
+
+type ProductVariationAttribute = {
+  id: number;
+  name: string;
+  slug: string;
+  option: string;
 };
 
 type MetaProductFeatures = {
@@ -66,6 +73,31 @@ type Dimensions = {
   length: string;
   width: string;
   height: string;
+};
+
+type StockStatus = "instock" | "outofstock" | "onbackorder";
+
+export type ProductVariation = {
+  id: number;
+  parent_id: number;
+  sku: string;
+  price: string;
+  regular_price: string;
+  sale_price: string;
+  on_sale: boolean;
+  stock_status: StockStatus;
+  stock_quantity: number | null;
+  purchasable: boolean;
+  weight: string;
+  image: Image | null;
+  attributes: ProductVariationAttribute[];
+  dimensions: Dimensions;
+  meta_data: unknown[];
+  permalink: string;
+  name: string;
+  date_created: string;
+  date_modified: string;
+  _links: Links;
 };
 
 export type ProductServer = {
@@ -106,7 +138,7 @@ export type ProductServer = {
   tax_class: string;
   manage_stock: boolean;
   stock_quantity: number | null;
-  stock_status: string;
+  stock_status: StockStatus;
   backorders: string;
   backorders_allowed: boolean;
   backordered: boolean;
