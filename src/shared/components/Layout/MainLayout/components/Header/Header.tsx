@@ -54,6 +54,7 @@ const Header = () => {
               height={80}
               src="/images/Header/header-logo.jpg"
               alt="header-logo"
+              priority
             />
           </Link>
           <nav className="flex-1 px-2">

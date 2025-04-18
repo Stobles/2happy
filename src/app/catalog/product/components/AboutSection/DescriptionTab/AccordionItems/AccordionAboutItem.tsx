@@ -13,14 +13,16 @@ const AccordionAboutItem = ({ meta }: { meta: ProductMeta }) => {
       <AccordionTrigger>Подробнее о товаре</AccordionTrigger>
       <AccordionContent className="text-gray-dark">
         <ul className="flex flex-col gap-4">
-          {items?.split("\r\n").map((item) => (
-            <li key={item} className="flex gap-2">
-              <div className="w-6 h-6 bg-black">
-                <CheckIcon className="fill-white" />
-              </div>
-              {item}
-            </li>
-          ))}
+          {items?.length
+            ? items?.split("\r\n").map((item) => (
+                <li key={item} className="flex gap-2">
+                  <div className="w-6 h-6 bg-black">
+                    <CheckIcon className="fill-white" />
+                  </div>
+                  {item}
+                </li>
+              ))
+            : null}
           {!items?.length && (
             <p className="text-center">Вкладка не содержит контента</p>
           )}

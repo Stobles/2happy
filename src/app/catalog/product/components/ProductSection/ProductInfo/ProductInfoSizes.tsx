@@ -21,6 +21,9 @@ const ProductInfoSizes = ({
   availableSizes?: string[];
   isLoading?: boolean;
 }) => {
+  const sizesAreLoaded = !isLoading && sizes?.length;
+  const hasNoSizes = !isLoading && sizes?.length === 0;
+
   const isItemAvailable = (item: VariationEntity) =>
     item.disabled || (availableSizes && !availableSizes.includes(item.name));
   return (
@@ -35,7 +38,7 @@ const ProductInfoSizes = ({
           }
         />
       </div>
-      {isLoading ? (
+      {isLoading && (
         <RadioButtonsGroup disabled className="flex gap-2" value={size}>
           {defaultSizes.map((item, index) => (
             <RadioGroupButton key={index} value={item} disabled>
@@ -43,7 +46,8 @@ const ProductInfoSizes = ({
             </RadioGroupButton>
           ))}
         </RadioButtonsGroup>
-      ) : (
+      )}
+      {sizesAreLoaded ? (
         <RadioButtonsGroup
           className="flex gap-2"
           onValueChange={(item: string) => setSize(item)}
@@ -60,7 +64,8 @@ const ProductInfoSizes = ({
             </RadioGroupButton>
           ))}
         </RadioButtonsGroup>
-      )}
+      ) : null}
+      {hasNoSizes && <div>У товара нет размеров</div>}
     </div>
   );
 };
