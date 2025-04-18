@@ -28,6 +28,7 @@ import { getVariationPriceByAttributes } from "@/features/Products/utils/getVari
 import { cn } from "@/shared/lib/utils";
 import { getProductSale } from "@/features/Products/utils/getProductSale";
 import { Skeleton } from "@/shared/components/UI/Skeleton";
+import { IconButton } from "@/shared/components/UI/IconButton";
 
 const ProductInfo = () => {
   const { id, slug } = useGetProductId();
@@ -152,9 +153,9 @@ const ProductInfo = () => {
             </Button>
           }
         />
-        <Button className="[&_svg]:fill-transparent" size="iconNormal">
+        <IconButton className="[&_svg]:fill-transparent" size="normal">
           <HeartIcon className="stroke-white" />
-        </Button>
+        </IconButton>
       </div>
     </div>
   );

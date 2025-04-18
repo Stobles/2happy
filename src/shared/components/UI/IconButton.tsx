@@ -3,6 +3,7 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/shared/lib/utils";
+import { Skeleton } from "./Skeleton";
 
 // Добавить цвета в конфиг tailwind
 
@@ -11,7 +12,7 @@ const iconButtonVariantsAndSizes = {
     variant: {
       primary: `bg-main
         [&_svg]:fill-white
-        hover:bg-gray-dark
+        hover:bg-gray-dark hover:primary-svg-hover
         focus-visible:bg-gray-middle focus-visible:border-1 border-stroke-black
         active:bg-[#27303E]`,
 
@@ -76,27 +77,27 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
 );
 IconButton.displayName = "IconButton";
 
-// export interface ButtonLoaderProps
-//   extends React.HTMLAttributes<HTMLDivElement>,
-//     VariantProps<typeof buttonVariants> {}
+export interface IconButtonLoaderProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof iconButtonVariants> {}
 
-// const ButtonLoader = ({
-//   className,
-//   size = "normal",
-//   ...props
-// }: ButtonLoaderProps) => {
-//   return (
-//     <Skeleton
-//       className={cn(
-//         "w-32 duration-1000",
-//         className,
-//         buttonVariantsAndSizes.variants.size[size ?? "normal"]
-//       )}
-//       {...props}
-//     />
-//   );
-// };
+const IconButtonLoader = ({
+  className,
+  size = "normal",
+  ...props
+}: IconButtonLoaderProps) => {
+  return (
+    <Skeleton
+      className={cn(
+        "duration-1000",
+        className,
+        iconButtonVariantsAndSizes.variants.size[size ?? "normal"]
+      )}
+      {...props}
+    />
+  );
+};
 
-// ButtonLoader.displayName = "ButtonLoader";
+IconButtonLoader.displayName = "IconButtonLoader";
 
-export { IconButton, iconButtonVariants };
+export { IconButton, IconButtonLoader, iconButtonVariants };

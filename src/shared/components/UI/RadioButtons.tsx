@@ -5,6 +5,7 @@ import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 
 import { cn } from "@/shared/lib/utils";
 import { Button } from "./Button";
+import { IconButton } from "./IconButton";
 
 const RadioButtonsGroup = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,
@@ -25,18 +26,18 @@ const RadioGroupButton = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>
 >(({ className, children, ...props }, ref) => {
   return (
-    <Button asChild size="iconSmall" variant="secondary">
+    <IconButton asChild size="small" variant="secondary">
       <RadioGroupPrimitive.Item
         ref={ref}
         className={cn(
-          "px-4 focus:outline-none hover:shadow-elevation-1 focus-visible:ring-1 focus-visible:ring-ring data-[state=checked]:bg-none data-[state=checked]:bg-main data-[state=checked]:text-white disabled:border-gray disabled:bg-white",
+          "px-4 focus:outline-none hover:text-white hover:shadow-elevation-1 focus-visible:ring-1 border border-main focus-visible:ring-ring data-[state=checked]:bg-none data-[state=checked]:bg-main data-[state=checked]:text-white disabled:border-gray disabled:bg-white",
           className
         )}
         {...props}
       >
         {children}
       </RadioGroupPrimitive.Item>
-    </Button>
+    </IconButton>
   );
 });
 RadioGroupButton.displayName = RadioGroupPrimitive.Item.displayName;

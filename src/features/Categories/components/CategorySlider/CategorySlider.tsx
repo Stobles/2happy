@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/shared/components/UI/Button";
+import { IconButton } from "@/shared/components/UI/IconButton";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Category } from "../../types";
 
@@ -38,9 +38,9 @@ export const CategorySlider = ({
           slideType="prev"
           asChild
         >
-          <Button variant="tertiary" size="iconSmall">
+          <IconButton variant="secondary" size="small">
             <ArrowRightIcon className="rotate-180" />
-          </Button>
+          </IconButton>
         </SliderButton>
         {categories
           ?.sort((a, b) => a.menu_order - b.menu_order)
@@ -59,9 +59,9 @@ export const CategorySlider = ({
           slideType="next"
           asChild
         >
-          <Button variant="tertiary" size="iconSmall">
+          <IconButton variant="secondary" size="small">
             <ArrowRightIcon />
-          </Button>
+          </IconButton>
         </SliderButton>
       </Swiper>
     </div>

@@ -2,6 +2,7 @@ import ArrowSubRightIcon from "@/shared/components/icons/Arrows/ArrowSubRightIco
 import GiftIcon from "@/shared/components/icons/GiftIcon";
 import { Button } from "@/shared/components/UI/Button";
 import Container from "@/shared/components/UI/Container";
+import { IconButton } from "@/shared/components/UI/IconButton";
 import { Input } from "@/shared/components/UI/Input";
 import Section from "@/shared/components/UI/Section";
 import Image from "next/image";
@@ -34,9 +35,9 @@ const Notifications = () => {
               placeholder="Email"
               wrapperClassName="rounded-tr-[0px] rounded-br-[0px]"
             />
-            <Button size="iconNormal">
+            <IconButton size="normal">
               <ArrowSubRightIcon />
-            </Button>
+            </IconButton>
           </div>
         </div>
       </Container>
