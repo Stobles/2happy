@@ -25,6 +25,7 @@ import {
   useFiltersStore,
 } from "../../store/filtersStore";
 import { useProductsColors, useProductsSizes } from "../../api/filtersApi";
+import { sortSizes } from "../../utils/sortSizes";
 
 const ProductsFiltersSheet = ({ trigger }: { trigger: ReactNode }) => {
   const {
@@ -38,11 +39,13 @@ const ProductsFiltersSheet = ({ trigger }: { trigger: ReactNode }) => {
   } = useFiltersStore();
   const { data: sizesData } = useProductsSizes();
 
-  const sizesValue =
+  const sizesValue = sortSizes<{ id: number; name: string }>(
     sizesData?.items.map((item) => ({
       id: item.id,
       name: item.name,
-    })) ?? [];
+    })) ?? [],
+    (value) => value.name
+  );
 
   const sizesRef = useRef<TCheckboxFilterItem[]>([]);
   const sizesClearRef = useRef<() => void>(() => {});

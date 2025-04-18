@@ -21,6 +21,9 @@ const AccordionAboutItem = ({ meta }: { meta: ProductMeta }) => {
               {item}
             </li>
           ))}
+          {!items?.length && (
+            <p className="text-center">Вкладка не содержит контента</p>
+          )}
         </ul>
       </AccordionContent>
     </AccordionItem>

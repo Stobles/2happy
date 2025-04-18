@@ -37,4 +37,19 @@
   .link-active::after {
     @apply w-full bg-main;
   }
+
+  .richtext-content {
+    @apply flex flex-col gap-2;
+    ul {
+      @apply list-disc pl-5;
+    }
+
+    ol {
+      @apply list-decimal pl-5;
+    }
+
+    br {
+      @apply block mb-2;
+    }
+  }
 }
