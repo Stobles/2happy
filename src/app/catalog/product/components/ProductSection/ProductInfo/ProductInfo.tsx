@@ -27,6 +27,7 @@ import {
 import { getVariationPriceByAttributes } from "@/features/Products/utils/getVariationPriceByAttributes";
 import { cn } from "@/shared/lib/utils";
 import { getProductSale } from "@/features/Products/utils/getProductSale";
+import { Skeleton } from "@/shared/components/UI/Skeleton";
 
 const ProductInfo = () => {
   const { id, slug } = useGetProductId();
@@ -87,7 +88,9 @@ const ProductInfo = () => {
           </div>
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2">
-              {isLoadingVariation && <div>Загрузка</div>}
+              {isLoadingVariation && (
+                <Skeleton className="w-[120px] h-[28px]" />
+              )}
               {!isLoadingVariation && variationPrice && (
                 <div className="flex gap-2 items-center">
                   <span

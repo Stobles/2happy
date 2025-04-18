@@ -19,20 +19,28 @@ const ProductInfoColors = ({
   defaultColors: string[];
   isLoading?: boolean;
 }) => {
+  const colorsAreLoaded = !isLoading && colors?.length;
+  const hasNoColors = !isLoading && colors?.length === 0;
+
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center gap-2">
         <span className="text-body1">Цвет</span>
-        <Separator className="h-4" orientation="vertical" />
-        <span className="text-description text-gray-middle">{color}</span>
+        {color && (
+          <>
+            <Separator className="h-4" orientation="vertical" />
+            <span className="text-description text-gray-middle">{color}</span>
+          </>
+        )}
       </div>
-      {isLoading ? (
+      {isLoading && (
         <RadioColorsGroup disabled className="flex gap-2">
           {defaultColors.map((item, index) => (
             <RadioGroupColor disabled key={index} value={item} color={item} />
           ))}
         </RadioColorsGroup>
-      ) : (
+      )}
+      {colorsAreLoaded ? (
         <RadioColorsGroup
           onValueChange={(item) => setColor(item)}
           className="flex gap-2"
@@ -48,7 +56,9 @@ const ProductInfoColors = ({
             />
           ))}
         </RadioColorsGroup>
-      )}
+      ) : null}
+
+      {hasNoColors && <div>У товара нет цветов</div>}
     </div>
   );
 };

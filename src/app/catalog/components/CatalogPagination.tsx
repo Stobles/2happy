@@ -42,7 +42,7 @@ const CatalogPagination = () => {
 
   const handlePageChange = (newPage: number) => {
     if (typeof newPage === "number") {
-      document.body.scrollTo({ top: 0, behavior: "smooth" });
+      document.body.scrollTo({ top: 200, behavior: "smooth" });
       setPage(newPage);
     }
   };

@@ -41,7 +41,7 @@ const LoginForm = ({ onSuccess }: { onSuccess: () => void }) => {
           <Notification
             variant="error"
             message={error}
-            onCloseClick={clearError}
+            closeToast={clearError}
             showClose
           />
         )}

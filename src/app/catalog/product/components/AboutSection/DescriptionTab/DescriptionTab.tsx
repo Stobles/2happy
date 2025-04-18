@@ -21,13 +21,15 @@ const DescriptionTab = () => {
         <div className="mb-8">
           <div className="flex gap-2 text-gray-middle mb-4">
             <span>Артикул:</span>
-            <span>{data.sku}</span>
-            <CopyButton
-              copyText={data.sku}
-              className="[&_svg]:fill-gray-middle"
-            >
-              <CopyIcon className="fill-gray-middle" />
-            </CopyButton>
+            <span>{data.sku ? data.sku : "Артикул не указан"}</span>
+            {data.sku && (
+              <CopyButton
+                copyText={data.sku}
+                className="[&_svg]:fill-gray-middle"
+              >
+                <CopyIcon className="fill-gray-middle" />
+              </CopyButton>
+            )}
           </div>
           <DescriptionItem description={data.description} />
         </div>

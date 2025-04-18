@@ -42,6 +42,8 @@ const requestInterceptor: TRequestInterceptor = async (config) => {
 };
 
 export const responseErrorInterceptor = (error: AxiosError) => {
+  if (error.message === "canceled") return;
+
   if (error.response) {
     console.error(
       'Ответ сервера - "Ошибка":',
