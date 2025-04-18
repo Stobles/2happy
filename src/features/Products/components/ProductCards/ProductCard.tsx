@@ -3,33 +3,20 @@
 import HeartIcon from "@/shared/components/icons/HeartIcon";
 import Link from "next/link";
 import { Product } from "../../types";
-import { getProductChip } from "../../utils/getProductChip";
-import { Chip } from "@/shared/components/UI/Chip";
 import { MouseEvent } from "react";
 import ImageWithLoader from "@/shared/components/UI/ImageWithLoader";
 import ColorSquare from "../Colors/ColorSquare";
-import { paths } from "@/config/paths";
 
 const ProductCard = ({ product }: { product: Product }) => {
   const { id, title, colors, sizes, price, image, sale } = product;
-
-  // const chip = getProductChip(product);
 
   const handleFavoriteClick = (e: MouseEvent<SVGSVGElement>) => {
     e.preventDefault();
   };
   return (
     <article className="group/product w-full h-full">
-      <Link
-        href={paths.catalog.product.getHref(12)}
-        className="flex flex-col h-full gap-4"
-      >
+      <Link href={"/"} className="flex flex-col h-full gap-4">
         <div className="relative h-full">
-          {/* {chip && (
-            <Chip className="absolute top-4 left-4 z-10" variant={chip.type}>
-              {chip.text}
-            </Chip>
-          )} */}
           <HeartIcon
             role="button"
             onClick={handleFavoriteClick}

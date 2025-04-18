@@ -1,7 +1,6 @@
 import Container from "@/shared/components/UI/Container";
 import { ScrollArea, ScrollBar } from "@/shared/components/UI/ScrollArea";
 import Section from "@/shared/components/UI/Section";
-import SectionImage from "@/shared/components/UI/SectionImage";
 import ProductServerCard from "./ProductCards/ProductServerCard";
 import ProductCardLoader from "./ProductCards/ProductCardLoader";
 import { ProductServer } from "../types";
@@ -20,7 +19,6 @@ const ProductsScrollableSection = ({
   return (
     <Section>
       <Container className="flex flex-col gap-16 my-section">
-        <SectionImage />
         <h2 className="text-h2">{title}</h2>
         <ScrollArea>
           <div className="grid grid-flow-col auto-cols-[288px] gap-6 h-[552px] mb-6">

@@ -16,9 +16,14 @@ const notificationVariants = cva(
         error: `bg-status-muted-error border border-stroke-error`,
         success: `bg-status-muted-success border border-stroke-success`,
       },
+      size: {
+        large: "",
+        small: "",
+      },
     },
     defaultVariants: {
       variant: "info",
+      size: "large",
     },
   }
 );
@@ -28,7 +33,7 @@ export interface NotificationProps
     VariantProps<typeof notificationVariants> {
   message: string;
   title?: string;
-  onCloseClick?: () => void;
+  closeToast?: () => void;
   showClose?: boolean;
 }
 
@@ -48,19 +53,19 @@ const Notification = ({
   title,
   className,
   showClose = false,
-  onCloseClick,
+  closeToast,
 }: NotificationProps) => {
   return (
     <div className={cn(notificationVariants({ variant, className }))}>
       <div>{ICONS[variant ?? "info"]}</div>
-      <div>
+      <div className="w-[360px] pr-4">
         {title && <h5 className="text-h5">{title}</h5>}
         <span className="text-body2">{message}</span>
       </div>
       {showClose && (
         <button
           type="button"
-          onClick={onCloseClick}
+          onClick={closeToast}
           className="absolute top-4 right-4"
         >
           <CloseIcon className="w-[20px] h-[20px] fill-gray" />

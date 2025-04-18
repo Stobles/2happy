@@ -18,7 +18,6 @@ import {
 } from "@/shared/components/UI/Sheet";
 import { ReactNode, useRef } from "react";
 import PriceRangeFilter from "./PriceRangeFilter";
-import FilterCheckbox from "./FilterCheckbox";
 import CheckboxListFilter from "./CheckboxListFilter";
 import {
   TCheckboxFilterItem,
@@ -26,6 +25,7 @@ import {
   useFiltersStore,
 } from "../../store/filtersStore";
 import { useProductsColors, useProductsSizes } from "../../api/filtersApi";
+import { sortSizes } from "../../utils/sortSizes";
 
 const ProductsFiltersSheet = ({ trigger }: { trigger: ReactNode }) => {
   const {
@@ -39,11 +39,13 @@ const ProductsFiltersSheet = ({ trigger }: { trigger: ReactNode }) => {
   } = useFiltersStore();
   const { data: sizesData } = useProductsSizes();
 
-  const sizesValue =
+  const sizesValue = sortSizes<{ id: number; name: string }>(
     sizesData?.items.map((item) => ({
       id: item.id,
       name: item.name,
-    })) ?? [];
+    })) ?? [],
+    (value) => value.name
+  );
 
   const sizesRef = useRef<TCheckboxFilterItem[]>([]);
   const sizesClearRef = useRef<() => void>(() => {});
@@ -126,17 +128,6 @@ const ProductsFiltersSheet = ({ trigger }: { trigger: ReactNode }) => {
                 />
               </AccordionContent>
             </AccordionItem>
-            {/* <AccordionItem className="flex flex-col min-h-14" value="discount">
-              <AccordionTrigger className="text-h5 text-red">
-                Распродажа
-              </AccordionTrigger>
-              <AccordionContent className="flex flex-col gap-4">
-                <FilterCheckbox onCheckedChange={() => {}} text="До 30%" />
-                <FilterCheckbox onCheckedChange={() => {}} text="30%-50%" />
-                <FilterCheckbox onCheckedChange={() => {}} text="50%-60%" />
-                <FilterCheckbox onCheckedChange={() => {}} text="70%" />
-              </AccordionContent>
-            </AccordionItem> */}
           </Accordion>
         </div>
         <SheetFooter className="flex">

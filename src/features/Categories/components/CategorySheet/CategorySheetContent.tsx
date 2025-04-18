@@ -4,6 +4,7 @@ import Container from "@/shared/components/UI/Container";
 import {
   SheetContent,
   SheetContentProps,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
 } from "@/shared/components/UI/Sheet";
@@ -26,8 +27,11 @@ const CategorySheetContent = ({
 }: ICategorySheetContentProps) => {
   return (
     <SheetContent className="flex p-0 z-behind-header-2 bg-white" {...props}>
-      <SheetHeader className="hidden">
-        <SheetTitle>Каталог</SheetTitle>
+      <SheetHeader className="sr-only">
+        <SheetTitle className="sr-only">Каталог</SheetTitle>
+        <SheetDescription className="sr-only">
+          Список категорий доступных на сайте
+        </SheetDescription>
       </SheetHeader>
       <Container className="flex-col py-8">
         <div className="flex pb-12 overflow-auto">

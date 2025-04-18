@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Category } from "../../types";
 
 import CategoryButton from "../CategoryButton";
-import SliderButton from "@/shared/components/UI/SliderButton";
+import SliderButton from "@/shared/components/Slider/SliderButton";
 import ArrowRightIcon from "@/shared/components/icons/Arrows/ArrowRightIcon";
 
 import "swiper/css";

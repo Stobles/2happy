@@ -1,6 +1,5 @@
 import Container from "@/shared/components/UI/Container";
 import CatalogHeader from "../components/CatalogHeader";
-import SectionImage from "@/shared/components/UI/SectionImage";
 
 export const metadata = {
   title: "2HAPPY",
@@ -18,7 +17,6 @@ const StoreLayout = ({
 }>) => {
   return (
     <Container className="my-section flex-col gap-16">
-      <SectionImage />
       <CatalogHeader defaultName="Женская одежда и аксессуары" />
       {children}
     </Container>

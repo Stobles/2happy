@@ -8,17 +8,24 @@ import { MouseEvent } from "react";
 import ImageWithLoader from "@/shared/components/UI/ImageWithLoader";
 import ColorSquare from "../Colors/ColorSquare";
 import { paths } from "@/config/paths";
-import { useProductCardInfo } from "../../hooks/useProductCardInfo";
+import { getProductCardInfo } from "../../utils/getProductCardInfo";
 import { useLocalStorage } from "@/shared/hooks/useLocalStorage";
+import { useQueryClient } from "@tanstack/react-query";
+import { getProductByIdQueryOptions } from "../../api/productsApi";
 
 const ProductServerCard = ({ product }: { product: ProductServer }) => {
+  const queryClient = useQueryClient();
   const [_, setRecentProducts] = useLocalStorage<number[]>(
     "recentProducts",
     []
   );
-  const { colors, image, sizes, chip } = useProductCardInfo(product);
+  const { colors, image, sizes, chip } = getProductCardInfo(product);
 
   const handleLinkClick = () => {
+    queryClient.setQueryData(
+      getProductByIdQueryOptions(product.id).queryKey,
+      product
+    );
     setRecentProducts((oldData) => [
       product.id,
       ...oldData.filter((item) => item != product.id).slice(0, 10),
@@ -33,7 +40,7 @@ const ProductServerCard = ({ product }: { product: ProductServer }) => {
     <article className="group/product w-full h-full">
       <Link
         onClick={handleLinkClick}
-        href={paths.catalog.product.getHref(product.id)}
+        href={paths.catalog.product.getHref(product.id, product.slug)}
         className="flex flex-col h-full gap-4"
       >
         <div className="relative h-full">

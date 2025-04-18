@@ -8,7 +8,7 @@ import { paths } from "@/config/paths";
 
 const Main = () => {
   return (
-    <Section className="pt-12 pb-20">
+    <Section className="pt-12 pb-20 border-b border-main">
       <Container className="gap-6 items-center h-full">
         <div className="basis-full">
           <h1 className="text-h1Akira mb-10">2HAPPY</h1>

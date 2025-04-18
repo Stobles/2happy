@@ -10,16 +10,16 @@ import AccountList from "./components/AccountList";
 
 const Footer = () => {
   return (
-    <footer className="bg-radial-gradient bg-main">
+    <footer className="bg-main">
       <Container className="flex-col">
         {/* Footer Header */}
 
-        <div className="w-full flex justify-between items-center py-12 border-b-[1px] border-white">
+        <div className="w-full flex justify-between items-center pb-12 pt-16 border-b-[1px] border-white">
           <Link href="/">
             <Image
-              src="/images/footer-logo.jpg"
-              width={288}
-              height={80}
+              src="/images/footer-logo.png"
+              width={480}
+              height={46}
               alt="footer_logo"
             />
           </Link>
