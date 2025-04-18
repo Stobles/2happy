@@ -5,6 +5,7 @@ import * as SheetPrimitive from "@radix-ui/react-dialog";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/shared/lib/utils";
+import CloseIcon from "../icons/CloseIcon";
 
 const Sheet = SheetPrimitive.Root;
 
@@ -14,7 +15,23 @@ export type TSheetTrigger = React.ComponentPropsWithoutRef<
   typeof SheetPrimitive.Trigger
 >;
 
-const SheetClose = SheetPrimitive.Close;
+const SheetClose = React.forwardRef<
+  React.ElementRef<typeof SheetPrimitive.Close>,
+  React.ComponentPropsWithoutRef<typeof SheetPrimitive.Close>
+>(({ className, ...props }, ref) => (
+  <SheetPrimitive.Close
+    ref={ref}
+    className={cn(
+      "absolute right-4 top-4 z-over-header rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 disabled:pointer-events-none data-[state=open]:bg-secondary",
+      className
+    )}
+    {...props}
+  >
+    <CloseIcon />
+  </SheetPrimitive.Close>
+));
+
+SheetClose.displayName = "SheetClose";
 
 const SheetPortal = SheetPrimitive.Portal;
 
@@ -56,7 +73,6 @@ export interface SheetContentProps
   extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
     VariantProps<typeof sheetVariants> {
   overlayClassName?: string;
-  closeIcon?: React.ReactNode;
 }
 
 const SheetContent = React.forwardRef<
@@ -64,14 +80,7 @@ const SheetContent = React.forwardRef<
   SheetContentProps
 >(
   (
-    {
-      side = "right",
-      className,
-      children,
-      overlayClassName,
-      closeIcon,
-      ...props
-    },
+    { side = "right", className, children, overlayClassName, ...props },
     ref
   ) => (
     <SheetPortal>
@@ -84,11 +93,6 @@ const SheetContent = React.forwardRef<
         className={cn(sheetVariants({ side }), className)}
         {...props}
       >
-        {closeIcon && (
-          <SheetPrimitive.Close className="absolute right-4 top-4 z-over-header rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 disabled:pointer-events-none data-[state=open]:bg-secondary">
-            {closeIcon}
-          </SheetPrimitive.Close>
-        )}
         {children}
       </SheetPrimitive.Content>
     </SheetPortal>

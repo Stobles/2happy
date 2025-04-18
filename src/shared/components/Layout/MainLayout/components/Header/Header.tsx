@@ -16,6 +16,9 @@ import Account from "./components/Account";
 import useObserver from "@/shared/hooks/useObserver";
 
 import "./style.css";
+import HeartIcon from "@/shared/components/icons/HeartIcon";
+import CartSheet from "@/features/Cart/components/CartSheet";
+import CartIcon from "@/shared/components/icons/CartIcon";
 
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -72,17 +75,20 @@ const Header = () => {
           <div className="flex gap-10">
             <SearchSheet />
             <div className="flex gap-6">
-              {iconLinks.map((icon) => (
-                <Link
-                  key={icon.tooltip.id}
-                  href={icon.href}
-                  data-tooltip-id={icon.tooltip.id}
-                  data-tooltip-content={icon.tooltip.content}
-                >
-                  {icon.element}
-                  <StyledTooltip id={icon.tooltip.id} />
-                </Link>
-              ))}
+              <Link
+                href="/"
+                data-tooltip-id="favorite"
+                data-tooltip-content="Избранное"
+              >
+                <HeartIcon className="hover:fill-black" />
+                <StyledTooltip id="favorite" />
+              </Link>
+              <CartSheet>
+                <div data-tooltip-id="cart" data-tooltip-content="Корзина">
+                  <CartIcon className="hover:fill-black" />
+                  <StyledTooltip id="cart" />
+                </div>
+              </CartSheet>
               <Account />
             </div>
           </div>

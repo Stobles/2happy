@@ -35,11 +35,6 @@ const buttonVariantsAndSizes = {
         "h-[40px] px-[24px] py-[12px] text-button-small [&_svg]:size-[16px]",
       extraSmall:
         "h-[32px] px-[24px] py-[8px] text-button-xs normal-case [&_svg]:size-[16px]",
-      iconLarge: "h-[64px] p-[20px]",
-      iconNormal: "h-[56px] p-[16px]",
-      iconMedium: "h-[48px] p-[12px]",
-      iconSmall: "h-[40px] p-[8px]",
-      iconXS: "h-[32px] p-[8px] [&_svg]:size-[16px]",
     },
   },
   defaultVariants: {

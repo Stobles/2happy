@@ -1,4 +1,8 @@
 import { ButtonLoader } from "@/shared/components/UI/Button";
+import {
+  IconButton,
+  IconButtonLoader,
+} from "@/shared/components/UI/IconButton";
 import { Separator } from "@/shared/components/UI/Separator";
 import { Skeleton } from "@/shared/components/UI/Skeleton";
 
@@ -27,10 +31,10 @@ const ProductInfoLoader = () => {
             <Skeleton className="w-[100px] h-4" />
           </div>
           <div className="flex gap-2">
-            <ButtonLoader className="w-12" size="iconSmall" />
-            <ButtonLoader className="w-12" size="iconSmall" />
-            <ButtonLoader className="w-12" size="iconSmall" />
-            <ButtonLoader className="w-12" size="iconSmall" />
+            <IconButtonLoader className="w-12" size="small" />
+            <IconButtonLoader className="w-12" size="small" />
+            <IconButtonLoader className="w-12" size="small" />
+            <IconButtonLoader className="w-12" size="small" />
           </div>
         </div>
         <Separator />
@@ -40,28 +44,17 @@ const ProductInfoLoader = () => {
             <Skeleton className="w-[80px] h-4" />
           </div>
           <div className="flex gap-2">
-            <ButtonLoader className="w-12" size="iconSmall" />
-            <ButtonLoader className="w-12" size="iconSmall" />
-            <ButtonLoader className="w-12" size="iconSmall" />
-            <ButtonLoader className="w-12" size="iconSmall" />
+            <IconButtonLoader className="w-12" size="small" />
+            <IconButtonLoader className="w-12" size="small" />
+            <IconButtonLoader className="w-12" size="small" />
+            <IconButtonLoader className="w-12" size="small" />
           </div>
         </div>
       </div>
       <div className="flex gap-2">
         <ButtonLoader className="w-full" />
         <ButtonLoader className="w-full" />
-        <ButtonLoader size="iconNormal" />
-        {/* <Button className="w-full"> Добавить в корзину</Button>
-        <OutOfStockDialog
-          trigger={
-            <Button className="w-full" variant="secondary">
-              Купить
-            </Button>
-          }
-        />
-        <Button className="[&_svg]:fill-transparent" size="iconNormal">
-          <HeartIcon className="stroke-white" />
-        </Button> */}
+        <IconButtonLoader className="w-24" />
       </div>
     </div>
   );

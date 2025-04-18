@@ -26,9 +26,13 @@ const CategorySheetContent = ({
   ...props
 }: ICategorySheetContentProps) => {
   return (
-    <SheetContent className="flex p-0 z-behind-header-2 bg-white" {...props}>
+    <SheetContent
+      className="flex p-0 bg-white z-behind-header-2"
+      overlayClassName="z-behind-header"
+      {...props}
+    >
       <SheetHeader className="sr-only">
-        <SheetTitle className="sr-only">Каталог</SheetTitle>
+        <SheetTitle className="sr-only">Категории</SheetTitle>
         <SheetDescription className="sr-only">
           Список категорий доступных на сайте
         </SheetDescription>
