@@ -25,7 +25,7 @@ const FEATURES: { icon: ReactNode; title: string; text: string }[] = [
 
 const Features = () => {
   return (
-    <Section className="bg-main bg-radial-gradient">
+    <Section className="bg-main">
       <Container className="my-section">
         <ul className="flex w-full gap-6">
           {FEATURES.map((feature) => (

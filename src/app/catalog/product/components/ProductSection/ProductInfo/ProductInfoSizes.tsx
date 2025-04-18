@@ -1,25 +1,28 @@
-import { getProductVariationsQueryOptions } from "@/features/Products/api/productsApi";
 import SizesTableDialog from "@/features/Products/components/Dialogs/SizesTableDialog";
-import { getProductVariations } from "@/features/Products/utils/getProductVariations";
+import { VariationEntity } from "@/features/Products/utils/getProductVariationOptions";
 import {
   RadioButtonsGroup,
   RadioGroupButton,
 } from "@/shared/components/UI/RadioButtons";
-import { useQuery } from "@tanstack/react-query";
 import { Dispatch, SetStateAction } from "react";
 
 const ProductInfoSizes = ({
-  id,
+  size,
   setSize,
+  sizes,
   defaultSizes,
+  availableSizes,
+  isLoading,
 }: {
-  id: number;
-  size: { slug: string; variation: string };
-  setSize: Dispatch<SetStateAction<{ slug: string; variation: string }>>;
+  size: string;
+  sizes: VariationEntity[] | undefined;
+  setSize: Dispatch<SetStateAction<string>>;
   defaultSizes: string[];
+  availableSizes?: string[];
+  isLoading?: boolean;
 }) => {
-  const { data, isFetching } = useQuery(getProductVariationsQueryOptions(id));
-  const { sizes } = getProductVariations(data?.items);
+  const isItemAvailable = (item: VariationEntity) =>
+    item.disabled || (availableSizes && !availableSizes.includes(item.name));
   return (
     <div className="flex flex-col gap-4">
       <div className="w-full flex justify-between">
@@ -32,12 +35,8 @@ const ProductInfoSizes = ({
           }
         />
       </div>
-      {isFetching ? (
-        <RadioButtonsGroup
-          disabled
-          className="flex gap-2"
-          defaultValue="default"
-        >
+      {isLoading ? (
+        <RadioButtonsGroup disabled className="flex gap-2" value={size}>
           {defaultSizes.map((item, index) => (
             <RadioGroupButton key={index} value={item} disabled>
               {item}
@@ -45,12 +44,17 @@ const ProductInfoSizes = ({
           ))}
         </RadioButtonsGroup>
       ) : (
-        <RadioButtonsGroup className="flex gap-2" defaultValue="default">
-          {sizes.map((item, index) => (
+        <RadioButtonsGroup
+          className="flex gap-2"
+          onValueChange={(item: string) => setSize(item)}
+          value={size}
+        >
+          {sizes?.map((item, index) => (
             <RadioGroupButton
               key={index}
               value={item.name}
-              onClick={() => setSize({ slug: item.slug, variation: item.name })}
+              onClick={() => setSize(item.name)}
+              disabled={isItemAvailable(item)}
             >
               {item.name}
             </RadioGroupButton>

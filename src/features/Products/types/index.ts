@@ -38,6 +38,14 @@ export type ProductAttribute = {
   options: string[];
 };
 
+export type ProductTags = "new" | "bestseller" | "final-sale";
+
+export type ProductTagEntity = {
+  id: number;
+  slug: ProductTags;
+  name: string;
+};
+
 type ProductVariationAttribute = {
   id: number;
   name: string;
@@ -158,7 +166,7 @@ export type ProductServer = {
   parent_id: number;
   purchase_note: string;
   categories: ProductCategory[];
-  tags: unknown[];
+  tags: ProductTagEntity[];
   images: Image[];
   attributes: ProductAttribute[];
   default_attributes: unknown[];

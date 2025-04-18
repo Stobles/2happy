@@ -9,29 +9,65 @@ import OutOfStockDialog from "@/features/Products/components/Dialogs/OutOfStockD
 import { env } from "@/config/env";
 import { paths } from "@/config/paths";
 import CopyButton from "@/shared/components/UI/CopyButton";
-import { useSuspenseQuery } from "@tanstack/react-query";
-import { getProductByIdQueryOptions } from "@/features/Products/api/productsApi";
+import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
+import {
+  getProductByIdQueryOptions,
+  getProductVariationsQueryOptions,
+} from "@/features/Products/api/productsApi";
 import { useGetProductId } from "@/features/Products/hooks/useGetProductId";
 import ProductInfoSizes from "./ProductInfoSizes";
 import { getProductAttributes } from "@/features/Products/utils/getProductAttributes";
 import ProductInfoColors from "./ProductInfoColors";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { getAttributesByProductPrice } from "@/features/Products/utils/getAttributesByProductPrice";
+import {
+  createColorToSizeMap,
+  getProductVariationOptions,
+} from "@/features/Products/utils/getProductVariationOptions";
+import { getVariationPriceByAttributes } from "@/features/Products/utils/getVariationPriceByAttributes";
+import { cn } from "@/shared/lib/utils";
+import { getProductSale } from "@/features/Products/utils/getProductSale";
 
 const ProductInfo = () => {
   const { id, slug } = useGetProductId();
   const { data } = useSuspenseQuery(getProductByIdQueryOptions(id));
 
-  const { colors, sizes } = getProductAttributes(data.attributes);
+  const { colors: defaultColors, sizes: defaultSizes } = getProductAttributes(
+    data.attributes
+  );
 
-  const [color, setColor] = useState<{ slug: string; variation: string }>({
-    slug: "",
-    variation: "",
-  });
+  const { data: variations, isLoading: isLoadingVariation } = useQuery(
+    getProductVariationsQueryOptions(id)
+  );
 
-  const [size, setSize] = useState<{ slug: string; variation: string }>({
-    slug: "",
-    variation: "",
-  });
+  const { size: defaultSize, color: defaultColor } =
+    getAttributesByProductPrice(data, variations?.items);
+
+  const [color, setColor] = useState<string>(defaultColor);
+  const [size, setSize] = useState<string>(defaultSize);
+
+  const variationPrice = getVariationPriceByAttributes(
+    variations?.items,
+    size,
+    color
+  );
+
+  const { sizes, colors } = useMemo(
+    () => getProductVariationOptions(variations?.items),
+    [variations?.items]
+  );
+
+  const colorToSizeMap = useMemo(
+    () => createColorToSizeMap(variations?.items),
+    [variations?.items]
+  );
+
+  const availableSizesByColor = colorToSizeMap.get(color);
+
+  useEffect(() => {
+    setSize(defaultSize);
+    setColor(defaultColor);
+  }, [defaultSize, defaultColor]);
 
   return (
     <div className="flex flex-col gap-2 justify-between flex-1 basis-[49%]">
@@ -51,13 +87,34 @@ const ProductInfo = () => {
           </div>
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2">
-              <span className="text-h5 text-gray-middle line-through">
-                85 000 T
-              </span>
-              <span className="text-h4">25 000 T</span>
-              <Chip size="small" variant="pink">
-                -70%
-              </Chip>
+              {isLoadingVariation && <div>Загрузка</div>}
+              {!isLoadingVariation && variationPrice && (
+                <div className="flex gap-2 items-center">
+                  <span
+                    className={cn(
+                      "text-h5 text-main",
+                      variationPrice.on_sale && "line-through text-gray-middle"
+                    )}
+                  >
+                    {variationPrice.regular_price} &#8376;
+                  </span>
+                  {variationPrice.on_sale && (
+                    <>
+                      <span className="text-h4">
+                        {variationPrice.sale_price} &#8376;
+                      </span>
+                      <Chip size="medium" variant="pink">
+                        {`- ${getProductSale(
+                          +variationPrice.regular_price,
+                          +variationPrice.sale_price
+                        )}%`}
+                      </Chip>
+                    </>
+                  )}
+                </div>
+              )}
+
+              {!isLoadingVariation && !variationPrice && <div>Нет цены</div>}
             </div>
 
             <div className="text-gray-middle text-description">
@@ -67,17 +124,20 @@ const ProductInfo = () => {
         </div>
         <Separator />
         <ProductInfoColors
-          id={id}
           color={color}
+          colors={colors}
           setColor={setColor}
-          defaultColors={colors}
+          defaultColors={defaultColors}
+          isLoading={isLoadingVariation}
         />
         <Separator />
         <ProductInfoSizes
-          id={id}
           size={size}
+          sizes={sizes}
           setSize={setSize}
-          defaultSizes={sizes}
+          defaultSizes={defaultSizes}
+          availableSizes={availableSizesByColor}
+          isLoading={isLoadingVariation}
         />
       </div>
       <div className="flex gap-2">

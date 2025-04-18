@@ -14,6 +14,8 @@ import { useGetProductId } from "@/features/Products/hooks/useGetProductId";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { getProductByIdQueryOptions } from "@/features/Products/api/productsApi";
 import ImageGallery from "../../ImageGallery/ImageGallery";
+import { getProductChip } from "@/features/Products/utils/getProductChip";
+import { Chip } from "@/shared/components/UI/Chip";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -26,8 +28,19 @@ const ProductSlider = () => {
   const { id } = useGetProductId();
   const { data } = useSuspenseQuery(getProductByIdQueryOptions(id));
 
+  const chip = getProductChip(data);
+
   return (
-    <div className="product-slider flex gap-6 flex-1 basis-[51%] overflow-hidden">
+    <div className="product-slider relative flex gap-6 flex-1 basis-[51%] overflow-hidden">
+      {chip && (
+        <Chip
+          className="absolute right-4 top-4 z-10"
+          variant={chip.type}
+          size="small"
+        >
+          {chip.text}
+        </Chip>
+      )}
       <Swiper
         className="relative thumbs-slider"
         onSwiper={setThumbsSwiper}

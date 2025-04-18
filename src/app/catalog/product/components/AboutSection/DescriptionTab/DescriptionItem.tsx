@@ -1,11 +1,15 @@
+import { sanitizeHtml } from "@/shared/lib/sanitizeHtml";
+
 const DescriptionItem = ({ description }: { description: string }) => {
-  const descriptionFormatted = description.replace(/<[^>]+>/g, "");
+  const { safeHTML, parse } = sanitizeHtml(description);
   return (
     <div>
-      {descriptionFormatted}
-      {!descriptionFormatted && (
-        <p className="text-center w-full">У товара отсутствует описание</p>
-      )}
+      <div className="richtext-content text-gray-dark">
+        {safeHTML && parse(safeHTML)}
+        {!safeHTML && (
+          <p className="text-center">У товара отсутствует описание</p>
+        )}
+      </div>
     </div>
   );
 };

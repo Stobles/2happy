@@ -1,7 +1,6 @@
 import Container from "@/shared/components/UI/Container";
 import Section from "@/shared/components/UI/Section";
 import Image from "next/image";
-import ComplementFashionSlider from "./components/ComplementFashionSlider/ComplementFashionSlider";
 import ItemCard from "@/features/Fashion/components/ItemCard";
 import { Button } from "@/shared/components/UI/Button";
 import ArrowUpRightIcon from "@/shared/components/icons/Arrows/ArrowUpRightIcon";
@@ -27,12 +26,13 @@ const ComplementFashion = () => {
               href="/"
               src="/images/Home/ComplementFashion/1.jpg"
             />
+
             <ItemCard
               className="row-span-2"
               href="/"
-              src="/images/Home/ComplementFashion/1.jpg"
+              src="/images/Home/ComplementFashion/2.jpg"
             />
-            <ItemCard href="/" src="/images/Home/ComplementFashion/1.jpg" />
+            <ItemCard href="/" src="/images/Home/ComplementFashion/3.jpg" />
             <div className="flex flex-col justify-end">
               <Button
                 variant="tertiary"

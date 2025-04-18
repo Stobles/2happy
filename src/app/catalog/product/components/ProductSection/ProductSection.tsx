@@ -1,5 +1,3 @@
-"use client";
-
 import Container from "@/shared/components/UI/Container";
 import ProductSlider from "./ProductSlider/ProductSlider";
 import ProductInfo from "./ProductInfo/ProductInfo";

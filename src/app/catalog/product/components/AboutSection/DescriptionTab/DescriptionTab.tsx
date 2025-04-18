@@ -10,8 +10,7 @@ import CopyButton from "@/shared/components/UI/CopyButton";
 import CopyIcon from "@/shared/components/icons/CopyIcon";
 import DescriptionItem from "./DescriptionItem";
 import AccordionAboutItem from "./AccordionItems/AccordionAboutItem";
-import AccordionCareItem from "./AccordionItems/AccordionCareItem";
-import AccordionModelItem from "./AccordionItems/AccordionModelItem";
+import AccordionWithRichText from "./AccordionItems/AccordionWithRichText";
 
 const DescriptionTab = () => {
   const { id } = useGetProductId();
@@ -34,8 +33,16 @@ const DescriptionTab = () => {
         </div>
         <Accordion type="multiple">
           <AccordionAboutItem meta={data.meta_data} />
-          <AccordionCareItem meta={data.meta_data} />
-          <AccordionModelItem meta={data.meta_data} />
+          <AccordionWithRichText
+            title="Состав и уход"
+            value="_composition_and_care"
+            meta={data.meta_data}
+          />
+          <AccordionWithRichText
+            title="Параметры модели"
+            value="_model_parameters"
+            meta={data.meta_data}
+          />
           <AccordionDeliveryItem />
         </Accordion>
       </div>
