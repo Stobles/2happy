@@ -96,8 +96,9 @@ const ProductInfo = () => {
                 <div className="flex gap-2 items-center">
                   <span
                     className={cn(
-                      "text-h5 text-main",
-                      variationPrice.on_sale && "line-through text-gray-middle"
+                      "text-h4 text-main",
+                      variationPrice.on_sale &&
+                        "text-h5 line-through text-gray-middle"
                     )}
                   >
                     {variationPrice.regular_price} &#8376;
