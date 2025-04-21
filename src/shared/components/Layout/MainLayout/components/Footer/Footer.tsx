@@ -17,7 +17,7 @@ const Footer = () => {
         <div className="w-full flex justify-between items-center pb-12 pt-16 border-b-[1px] border-white">
           <Link href="/">
             <Image
-              src="/images/footer-logo.png"
+              src="/images/2happy-white-logo.png"
               width={480}
               height={46}
               alt="footer_logo"

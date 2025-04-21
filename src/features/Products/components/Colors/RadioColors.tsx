@@ -35,7 +35,7 @@ const RadioGroupColor = React.forwardRef<
       )}
       {...props}
     >
-      <ColorSquare color={color} />
+      <ColorSquare className="border border-main" color={color} />
     </RadioGroupPrimitive.Item>
   );
 });
