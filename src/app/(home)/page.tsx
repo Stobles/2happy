@@ -8,7 +8,7 @@ import Main from "./components/Main/Main";
 import NewCollection from "./components/NewCollection/NewCollection";
 import Notifications from "./components/Notifications/Notifications";
 
-export const revalidate = 60;
+export const revalidate = 380;
 
 const HomePage = () => {
   return (

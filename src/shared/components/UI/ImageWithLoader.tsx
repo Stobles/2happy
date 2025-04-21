@@ -27,8 +27,7 @@ const ImageWithLoader = ({
       <div
         className={cn(
           `absolute flex justify-center items-center w-full h-full z-10 bg-white opacity-0 transition-opacity`,
-          isLoading && "opacity-100",
-          className
+          isLoading && "opacity-100"
         )}
       >
         <span className="animate-pulse font-akira text-3xl">2HAPPY</span>

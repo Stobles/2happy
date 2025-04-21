@@ -19,6 +19,9 @@ const ProductBreadcrumbs = () => {
   const [_, id] = productId.split("_");
   const { data, isFetching } = useQuery(getProductByIdQueryOptions(Number(id)));
 
+  const sortedBreadcrumbs =
+    data?.categories && data.categories.sort((a, b) => a.parent - b.parent);
+
   return (
     <Breadcrumbs>
       <BreadcrumbList>
@@ -39,9 +42,9 @@ const ProductBreadcrumbs = () => {
             <BreadcrumbLoader />
           </>
         )}
-        {data?.categories && (
+        {sortedBreadcrumbs && (
           <>
-            {data.categories.map((item) => (
+            {sortedBreadcrumbs.map((item) => (
               <Fragment key={item.id}>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>

@@ -9,10 +9,11 @@ export const getAttributesByProductPrice = (
   const productSale = product.sale_price;
 
   for (const variation of variations) {
-    if (
-      variation.regular_price === productRegular &&
-      variation.sale_price === productSale
-    ) {
+    const isOnSale = product.on_sale
+      ? variation.sale_price === productSale
+      : true;
+
+    if (variation.regular_price === productRegular && isOnSale) {
       const size =
         variation.attributes.find((attr) => attr.slug === "pa_size")?.option ||
         "";
