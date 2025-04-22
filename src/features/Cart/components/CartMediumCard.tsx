@@ -20,7 +20,7 @@ const CartMediumCard = ({
       {...props}
     >
       <ImageWithLoader
-        wrapperClassName="w-[148px]"
+        wrapperClassName="w-[148px] shrink-0"
         src="/images/Home/Main/slider-2.jpg"
         alt="product-alt"
       />
