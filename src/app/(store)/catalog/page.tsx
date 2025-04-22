@@ -1,4 +1,4 @@
-import Catalog from "../components/Catalog";
+import Catalog from "../../(store)/components/Catalog";
 import FiltersList from "@/features/Products/components/Filters/FiltersList";
 import MainCategories from "./components/MainCategories";
 import { getQueryClient } from "@/shared/api/queryClient";

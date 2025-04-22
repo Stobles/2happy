@@ -1,5 +1,5 @@
 import FiltersList from "@/features/Products/components/Filters/FiltersList";
-import Catalog from "../../components/Catalog";
+import Catalog from "../../../(store)/components/Catalog";
 import { tagIds } from "@/features/Categories/consts/consts";
 
 const FinalSalePage = () => {

@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import Features from "./components/Features/Features";
 import Notifications from "./components/Notifications/Notifications";
 
-const CatalogLayout = ({ children }: { children: ReactNode }) => {
+const StoreLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
       {children}
@@ -12,4 +12,4 @@ const CatalogLayout = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export default CatalogLayout;
+export default StoreLayout;

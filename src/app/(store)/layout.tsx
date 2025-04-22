@@ -1,4 +1,4 @@
-import CatalogLayout from "@/shared/components/Layout/StoreLayout/StoreLayout";
+import StoreLayout from "@/shared/components/Layout/StoreLayout/StoreLayout";
 
 export const metadata = {
   title: "2HAPPY",
@@ -9,12 +9,12 @@ export const metadata = {
   },
 };
 
-const CatalogPageLayout = ({
+const StoreRouteLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  return <CatalogLayout>{children}</CatalogLayout>;
+  return <StoreLayout>{children}</StoreLayout>;
 };
 
-export default CatalogPageLayout;
+export default StoreRouteLayout;

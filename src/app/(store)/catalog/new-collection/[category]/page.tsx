@@ -1,11 +1,11 @@
 import { Suspense } from "react";
 import { getQueryClient } from "@/shared/api/queryClient";
 
-import Catalog from "@/app/catalog/components/Catalog";
+import Catalog from "@/app/(store)/components/Catalog";
 import CategorySliderLoader from "@/features/Categories/components/CategorySlider/CategorySliderLoader";
 import FiltersList from "@/features/Products/components/Filters/FiltersList";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
-import CategoriesWithTag from "@/app/catalog/components/CategoriesWithTag";
+import CategoriesWithTag from "@/app/(store)/components/CategoriesWithTag";
 import { tagIds } from "@/features/Categories/consts/consts";
 
 const NewCollectionCategoryPage = async ({

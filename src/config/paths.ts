@@ -44,11 +44,14 @@ export const paths = {
     final_sale: {
       getHref: () => `${paths.catalog.getHref()}/final-sale?name=Final Sale`,
     },
+  },
 
-    product: {
-      getHref: (id: number, slug: string) =>
-        `${paths.catalog.getHref()}/product/${slug}_${id}`,
-    },
+  product: {
+    getHref: (id: number, slug: string) => `/product/${slug}_${id}`,
+  },
+
+  cart: {
+    getHref: () => "/cart",
   },
 
   account: {
