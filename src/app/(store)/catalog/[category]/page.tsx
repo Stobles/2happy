@@ -1,9 +1,9 @@
 import { Suspense } from "react";
 import { getQueryClient } from "@/shared/api/queryClient";
 
-import Catalog from "../../components/Catalog";
+import Catalog from "../../../(store)/components/Catalog";
 import CategorySliderLoader from "@/features/Categories/components/CategorySlider/CategorySliderLoader";
-import CatalogCategories from "../../components/CatalogCategories";
+import CatalogCategories from "../../../(store)/components/CatalogCategories";
 import FiltersList from "@/features/Products/components/Filters/FiltersList";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 

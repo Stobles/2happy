@@ -78,10 +78,7 @@ const ProductInfo = () => {
           <div className="flex items-start justify-between gap-4">
             <h2 className="text-h4">{data?.name}</h2>
             <CopyButton
-              copyText={`${env.APP_URL}${paths.catalog.product.getHref(
-                id,
-                slug
-              )}`}
+              copyText={`${env.APP_URL}${paths.product.getHref(id, slug)}`}
               tooltip="Поделиться"
             >
               <ShareIcon />
