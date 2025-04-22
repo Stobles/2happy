@@ -17,7 +17,7 @@ import useObserver from "@/shared/hooks/useObserver";
 
 import "./style.css";
 import HeartIcon from "@/shared/components/icons/HeartIcon";
-import CartSheet from "@/features/Cart/components/CartSheet";
+import CartSheet from "@/features/Cart/components/CartSheet/CartSheet";
 import CartIcon from "@/shared/components/icons/CartIcon";
 
 const Header = () => {
