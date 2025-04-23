@@ -1,5 +1,5 @@
 import { Button } from "@/shared/components/UI/Button";
-import CartMediumCard from "../CartMediumCard";
+import CartMediumCard from "../Cards/CartMediumCard";
 
 const CartSheetContent = () => {
   return (

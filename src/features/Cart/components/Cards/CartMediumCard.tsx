@@ -4,6 +4,7 @@ import TrashIcon from "@/shared/components/icons/TrashIcon";
 import { IconButton } from "@/shared/components/UI/IconButton";
 import ImageWithLoader from "@/shared/components/UI/ImageWithLoader";
 import { Separator } from "@/shared/components/UI/Separator";
+import StyledTooltip from "@/shared/components/UI/StyledTooltip";
 import { cn } from "@/shared/lib/utils";
 import { ComponentPropsWithoutRef } from "react";
 
@@ -54,14 +55,18 @@ const CartMediumCard = ({
             </IconButton>
             <div className="text-body2 py-1 px-8 bg-gray-light">1</div>
             <IconButton
-              className="border border-black"
+              className="border border-black "
               variant="secondary"
               size="extraSmall"
             >
               <PlusIcon />
             </IconButton>
-            <button>
+            <button
+              data-tooltip-id="cart-delete"
+              data-tooltip-content="Удалить товар"
+            >
               <TrashIcon className="stroke-gray-middle hover:stroke-red" />
+              <StyledTooltip id="cart-delete" />
             </button>
           </div>
         </div>

@@ -20,6 +20,7 @@ module.exports = {
         "2xl": "1536px",
       },
       gridTemplateColumns: {
+        cartCard: "minmax(60px, 120px) 152px minmax(60px, 120px) 80px",
         addition:
           "minmax(296px, 496px) minmax(286px, 150px) minmax(286px, 150px)",
       },
@@ -60,6 +61,8 @@ module.exports = {
           "radial-gradient(100% 100% at 50% 0%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 100%)",
         "gradient-4":
           "linear-gradient(180deg, #FCFCFF8D -22.24%, rgba(0, 0, 0, 0) 100%)",
+        "gradient-7": "linear-gradient(360deg, #111112 0%, #F0F0F3 98.1%)",
+
         "footer-texture": "url('/img/footer-texture.png')",
       },
       fontFamily: {
@@ -266,6 +269,12 @@ module.exports = {
             fontSize: "48px",
             lineHeight: "56px",
           },
+        },
+
+        ".text-h1-table": {
+          fontSize: "12px",
+          lineHeight: "16px",
+          fontWeight: "600",
         },
 
         // Text/Headlines

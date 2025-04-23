@@ -120,3 +120,42 @@ export const getProductVariationsQueryOptions = (id: number) => {
     enabled: !!id,
   });
 };
+
+type getRelatedProductsParameters = {
+  product_ids?: number[];
+  per_page?: number;
+};
+
+const getRelatedProductsURL = `${env.CUSTOM_API}/related-products`;
+
+const getRelatedProducts = async (
+  params: getRelatedProductsParameters,
+  { signal }: { signal: AbortSignal }
+): Promise<ProductServer[]> => {
+  const getRelatedProductsURLWithParams = createURLWithParams(
+    getRelatedProductsURL,
+    params
+  );
+
+  const response = await apiInstance.get<unknown, ProductServer[]>(
+    getRelatedProductsURLWithParams,
+    {
+      signal,
+    }
+  );
+
+  return response;
+};
+
+const relatedProductsQueryKey = ({
+  product_ids,
+}: getRelatedProductsParameters) => ["relatedProducts", `${product_ids}`];
+
+export const getRelatedProductsQueryOptions = (
+  params: getRelatedProductsParameters
+) => {
+  return queryOptions({
+    queryKey: relatedProductsQueryKey(params),
+    queryFn: (meta) => getRelatedProducts(params, { signal: meta.signal }),
+  });
+};

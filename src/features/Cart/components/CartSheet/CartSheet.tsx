@@ -17,7 +17,7 @@ const CartSheet = ({ children }: { children: ReactNode }) => {
     <Sheet>
       <SheetTrigger>{children}</SheetTrigger>
       <SheetContent
-        className="w-full h-full z-over-header max-w-[680px] p-10 pt-14"
+        className="w-full h-full flex flex-col z-over-header max-w-[680px] p-10 pt-14"
         overlayClassName="z-over-header"
       >
         <SheetHeader className="flex flex-col gap-4 mb-4">
@@ -26,7 +26,9 @@ const CartSheet = ({ children }: { children: ReactNode }) => {
           <SheetClose className="top-6 right-10" />
         </SheetHeader>
 
-        {hasItems ? <CartSheetContent /> : <CartSheetEmpty />}
+        <div className="flex-1">
+          {hasItems ? <CartSheetContent /> : <CartSheetEmpty />}
+        </div>
       </SheetContent>
     </Sheet>
   );
