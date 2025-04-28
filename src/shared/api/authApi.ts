@@ -4,7 +4,7 @@ import {
   useQuery,
   useQueryClient,
 } from "@tanstack/react-query";
-import { apiInstance } from "./apiInstance";
+import { formattedApiInstance } from "./formattedApiInstance";
 import { AuthResponse, UserData } from "@/shared/types/api";
 import { z } from "zod";
 import { useAuthStore } from "@/shared/store/authStore";
@@ -13,7 +13,9 @@ import Cookies from "js-cookie";
 export const getUserURL = "/wp/v2/users/me";
 
 export const getUser = async (): Promise<UserData> => {
-  const response = await apiInstance.get<unknown, UserData>(getUserURL);
+  const response = await formattedApiInstance.get<unknown, UserData>(
+    getUserURL
+  );
 
   return response;
 };
@@ -67,7 +69,7 @@ export type LoginInput = z.infer<typeof loginInputSchema>;
 
 const loginUser = (data: LoginInput): Promise<AuthResponse> => {
   const modifiedData = { username: data.email, password: data.password };
-  return apiInstance.post<
+  return formattedApiInstance.post<
     unknown,
     AuthResponse,
     { username: string; password: string }
@@ -131,5 +133,5 @@ export type RegisterInput = Omit<
 >;
 
 const registerUser = (data: RegisterInput): Promise<AuthResponse> => {
-  return apiInstance.post("/custom/v1/register", data);
+  return formattedApiInstance.post("/custom/v1/register", data);
 };

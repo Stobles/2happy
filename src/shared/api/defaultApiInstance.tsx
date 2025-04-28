@@ -1,5 +1,4 @@
 import { env } from "@/config/env";
-import { WooResponse } from "@/shared/types/api";
 import axios, {
   AxiosError,
   AxiosHeaders,
@@ -10,8 +9,8 @@ import axios, {
 
 import Cookies from "js-cookie";
 
-export const apiInstance: AxiosInstance = axios.create({
-  baseURL: `${env.API_URL}`,
+export const defaultApiInstance: AxiosInstance = axios.create({
+  baseURL: `${env.APP_URL}/api`,
   timeout: 50000,
   headers: {
     "Content-Type": "application/json",
@@ -29,13 +28,6 @@ const requestInterceptor: TRequestInterceptor = async (config) => {
   const access_token = Cookies.get("access_token");
   if (access_token) {
     headers.set("Authorization", `Bearer ${access_token}`);
-  }
-
-  if (config.url?.includes(env.WOOCOMMERCE_API)) {
-    const base = btoa(
-      `${env.WOOCOMMERCE_USERNAME}:${env.WOOCOMMERCE_PASSWORD}`
-    );
-    headers.set("Authorization", `Basic ${base}`);
   }
 
   return { ...config, headers };
@@ -58,19 +50,15 @@ export const responseErrorInterceptor = (error: AxiosError) => {
   return Promise.reject(error);
 };
 
-apiInstance.interceptors.request.use(requestInterceptor, (error) => error);
+defaultApiInstance.interceptors.request.use(
+  requestInterceptor,
+  (error) => error
+);
 
-apiInstance.interceptors.response.use((config) => {
-  if (config.headers["x-wp-total"] && config.headers["x-wp-totalpages"]) {
-    const response: WooResponse<typeof config.data> = {
-      items: config.data,
-      totalItems: config.headers["x-wp-total"],
-      totalPages: config.headers["x-wp-totalpages"],
-    };
-    return response;
-  }
-  return config.data;
-}, responseErrorInterceptor);
+defaultApiInstance.interceptors.response.use(
+  (config) => config,
+  responseErrorInterceptor
+);
 
 export type BodyType<Data> = Data;
 export type ErrorType<Error> = AxiosError<Error>;

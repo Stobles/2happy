@@ -4,19 +4,18 @@ import {
   RadioButtonsGroup,
   RadioGroupButton,
 } from "@/shared/components/UI/RadioButtons";
-import { Dispatch, SetStateAction } from "react";
 
 const ProductInfoSizes = ({
   size,
-  setSize,
   sizes,
+  handleSizeChange,
   defaultSizes,
   availableSizes,
   isLoading,
 }: {
   size: string;
   sizes: VariationEntity[] | undefined;
-  setSize: Dispatch<SetStateAction<string>>;
+  handleSizeChange: (value: string) => void;
   defaultSizes: string[];
   availableSizes?: string[];
   isLoading?: boolean;
@@ -50,14 +49,13 @@ const ProductInfoSizes = ({
       {sizesAreLoaded ? (
         <RadioButtonsGroup
           className="flex gap-2"
-          onValueChange={(item: string) => setSize(item)}
+          onValueChange={(item: string) => handleSizeChange(item)}
           value={size}
         >
           {sizes?.map((item, index) => (
             <RadioGroupButton
               key={index}
               value={item.name}
-              onClick={() => setSize(item.name)}
               disabled={isItemAvailable(item)}
             >
               {item.name}
