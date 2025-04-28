@@ -4,18 +4,17 @@ import {
 } from "@/features/Products/components/Colors/RadioColors";
 import { VariationEntity } from "@/features/Products/utils/getProductVariationOptions";
 import { Separator } from "@/shared/components/UI/Separator";
-import { Dispatch, SetStateAction } from "react";
 
 const ProductInfoColors = ({
   color,
   colors,
-  setColor,
+  handleColorChange,
   defaultColors,
   isLoading,
 }: {
   color: string;
   colors: VariationEntity[] | undefined;
-  setColor: Dispatch<SetStateAction<string>>;
+  handleColorChange: (value: string) => void;
   defaultColors: string[];
   isLoading?: boolean;
 }) => {
@@ -42,7 +41,7 @@ const ProductInfoColors = ({
       )}
       {colorsAreLoaded ? (
         <RadioColorsGroup
-          onValueChange={(item) => setColor(item)}
+          onValueChange={(item) => handleColorChange(item)}
           className="flex gap-2"
           value={color}
         >
@@ -51,7 +50,6 @@ const ProductInfoColors = ({
               key={item.name}
               value={item.name}
               color={item.name}
-              onClick={() => setColor(item.name)}
               disabled={item.disabled}
             />
           ))}

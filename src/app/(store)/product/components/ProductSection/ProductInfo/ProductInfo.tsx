@@ -29,6 +29,7 @@ import { cn } from "@/shared/lib/utils";
 import { getProductSale } from "@/features/Products/utils/getProductSale";
 import { Skeleton } from "@/shared/components/UI/Skeleton";
 import { IconButton } from "@/shared/components/UI/IconButton";
+import AddToCartButton from "./AddToCartButton";
 
 const ProductInfo = () => {
   const { id, slug } = useGetProductId();
@@ -54,6 +55,15 @@ const ProductInfo = () => {
     color
   );
 
+  const variationId = useMemo(() => {
+    return variations?.items.find((item) => {
+      return (
+        item.attributes[0].option === color &&
+        item.attributes[1].option === size
+      );
+    })?.id;
+  }, [color, size]);
+
   const { sizes, colors } = useMemo(
     () => getProductVariationOptions(variations?.items),
     [variations?.items]
@@ -64,7 +74,26 @@ const ProductInfo = () => {
     [variations?.items]
   );
 
-  const availableSizesByColor = colorToSizeMap.get(color);
+  const [availableSizes, setAvailableSizes] = useState<string[]>(
+    () => colorToSizeMap.get(color) ?? []
+  );
+
+  const handleColorChange = (value: string) => {
+    setColor(value);
+
+    setAvailableSizes(() => {
+      const sizes = colorToSizeMap.get(value) ?? [];
+      if (sizes && !sizes?.includes(size)) {
+        setSize(sizes[0]);
+      }
+
+      return sizes;
+    });
+  };
+
+  const handleSizeChange = (value: string) => {
+    setSize(value);
+  };
 
   useEffect(() => {
     setSize(defaultSize);
@@ -128,7 +157,7 @@ const ProductInfo = () => {
         <ProductInfoColors
           color={color}
           colors={colors}
-          setColor={setColor}
+          handleColorChange={handleColorChange}
           defaultColors={defaultColors}
           isLoading={isLoadingVariation}
         />
@@ -136,14 +165,14 @@ const ProductInfo = () => {
         <ProductInfoSizes
           size={size}
           sizes={sizes}
-          setSize={setSize}
+          handleSizeChange={handleSizeChange}
           defaultSizes={defaultSizes}
-          availableSizes={availableSizesByColor}
+          availableSizes={availableSizes}
           isLoading={isLoadingVariation}
         />
       </div>
       <div className="flex gap-2">
-        <Button className="w-full">Добавить в корзину</Button>
+        <AddToCartButton variationId={variationId ?? 0} quantity={1} />
         <OutOfStockDialog
           trigger={
             <Button className="w-full" variant="secondary">

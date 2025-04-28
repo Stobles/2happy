@@ -7,6 +7,7 @@ const createEnv = () => {
     APP_URL: z.string().optional().default("http://localhost:3000"),
     CUSTOM_API: z.string(),
     WOOCOMMERCE_API: z.string(),
+    WOOCOMMERCE_STORE_API: z.string(),
     WOOCOMMERCE_USERNAME: z.string(),
     WOOCOMMERCE_PASSWORD: z.string(),
   });
@@ -17,6 +18,7 @@ const createEnv = () => {
     API_HOSTNAME: process.env.NEXT_PUBLIC_API_HOSTNAME,
     CUSTOM_API: process.env.NEXT_PUBLIC_CUSTOM_API,
     WOOCOMMERCE_API: process.env.NEXT_PUBLIC_WOOCOMMERCE_API,
+    WOOCOMMERCE_STORE_API: process.env.NEXT_PUBLIC_WOOCOMMERCE_STORE_API,
     WOOCOMMERCE_USERNAME: process.env.NEXT_PUBLIC_WOOCOMMERCE_USERNAME,
     WOOCOMMERCE_PASSWORD: process.env.NEXT_PUBLIC_WOOCOMMERCE_PASSWORD,
   };

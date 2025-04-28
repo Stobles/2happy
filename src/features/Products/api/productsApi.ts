@@ -1,4 +1,4 @@
-import { apiInstance } from "@/shared/api/apiInstance";
+import { formattedApiInstance } from "@/shared/api/formattedApiInstance";
 import { queryOptions } from "@tanstack/react-query";
 import { env } from "@/config/env";
 import { createURLWithParams } from "@/shared/lib/utils";
@@ -30,12 +30,12 @@ export const getProductsList = async (
     params
   );
 
-  const response = await apiInstance.get<unknown, WooResponse<ProductServer[]>>(
-    getProductsListURLWithParams,
-    {
-      signal,
-    }
-  );
+  const response = await formattedApiInstance.get<
+    unknown,
+    WooResponse<ProductServer[]>
+  >(getProductsListURLWithParams, {
+    signal,
+  });
 
   return response;
 };
@@ -71,7 +71,7 @@ export const getProductById = async (
     signal: AbortSignal;
   }
 ): Promise<ProductServer> => {
-  const response = await apiInstance.get<unknown, ProductServer>(
+  const response = await formattedApiInstance.get<unknown, ProductServer>(
     getProductByIdURL.replace("{id}", `${id}`),
     {
       signal,
@@ -101,7 +101,7 @@ const getProductVariations = async (
     signal: AbortSignal;
   }
 ): Promise<WooResponse<ProductVariation[]>> => {
-  const response = await apiInstance.get<
+  const response = await formattedApiInstance.get<
     unknown,
     WooResponse<ProductVariation[]>
   >(getProductVariationsURL.replace("{id}", `${id}`), {
@@ -137,7 +137,7 @@ const getRelatedProducts = async (
     params
   );
 
-  const response = await apiInstance.get<unknown, ProductServer[]>(
+  const response = await formattedApiInstance.get<unknown, ProductServer[]>(
     getRelatedProductsURLWithParams,
     {
       signal,

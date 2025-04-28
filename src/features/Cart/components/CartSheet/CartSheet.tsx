@@ -10,9 +10,14 @@ import {
 import { ReactNode } from "react";
 import CartSheetEmpty from "./CartSheetEmpty";
 import CartSheetContent from "./CartSheetContent";
+import { useCart } from "../../api/cartQueries";
 
 const CartSheet = ({ children }: { children: ReactNode }) => {
   const hasItems = true;
+
+  const { data } = useCart();
+
+  console.log(data, "алло");
   return (
     <Sheet>
       <SheetTrigger>{children}</SheetTrigger>
