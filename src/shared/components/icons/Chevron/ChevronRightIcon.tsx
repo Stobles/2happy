@@ -1,4 +1,4 @@
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/utils/cn";
 import { SVGProps } from "react";
 
 const ChevronRightIcon = ({ className, ...props }: SVGProps<SVGSVGElement>) => (

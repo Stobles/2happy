@@ -1,4 +1,4 @@
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/utils/cn";
 import InstagramIcon from "@/shared/components/icons/Social/InstagramIcon";
 import ImageWithLoader from "@/shared/components/UI/ImageWithLoader";
 

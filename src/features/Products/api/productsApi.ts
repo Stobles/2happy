@@ -1,7 +1,7 @@
 import { formattedApiInstance } from "@/shared/api/formattedApiInstance";
 import { queryOptions } from "@tanstack/react-query";
 import { env } from "@/config/env";
-import { createURLWithParams } from "@/shared/lib/utils";
+import { createURLWithParams } from "@/shared/utils/createURLWithParams";
 import { ProductServer, ProductVariation } from "../types";
 import { WooResponse } from "@/shared/types/api";
 

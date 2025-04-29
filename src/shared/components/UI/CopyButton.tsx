@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/utils/cn";
 import CheckIcon from "../icons/CheckIcon";
 import StyledTooltip from "./StyledTooltip";
 import {

@@ -6,9 +6,11 @@ import { Button } from "@/shared/components/UI/Button";
 import Cookies from "js-cookie";
 
 const AddToCartButton = ({
+  parentId,
   variationId,
   quantity,
 }: {
+  parentId: number;
   variationId: number;
   quantity: number;
 }) => {
@@ -19,7 +21,13 @@ const AddToCartButton = ({
       className="w-full"
       disabled={isPending}
       onClick={() =>
-        mutate({ params: { id: variationId, quantity: quantity }, nonce })
+        mutate({
+          params: {
+            id: variationId,
+            quantity: quantity,
+          },
+          nonce,
+        })
       }
     >
       Добавить в корзину

@@ -1,4 +1,4 @@
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/utils/cn";
 import { Button } from "@/shared/components/UI/Button";
 import { ReactNode } from "react";
 

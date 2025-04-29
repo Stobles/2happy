@@ -1,4 +1,4 @@
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/utils/cn";
 import { cva, VariantProps } from "class-variance-authority";
 import { ReactNode } from "react";
 import SuccessIcon from "../icons/SuccessIcon";

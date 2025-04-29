@@ -3,7 +3,7 @@ import { Category } from "../types";
 import { queryOptions, useQuery } from "@tanstack/react-query";
 import { env } from "@/config/env";
 import { WooResponse } from "@/shared/types/api";
-import { createURLWithParams } from "@/shared/lib/utils";
+import { createURLWithParams } from "@/shared/utils/createURLWithParams";
 
 //------------ Categories List ------------\\
 

@@ -1,5 +1,5 @@
 import Link, { LinkProps } from "next/link";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/utils/cn";
 
 import ArrowUpRightIcon from "@/shared/components/icons/Arrows/ArrowUpRightIcon";
 import ImageWithLoader from "@/shared/components/UI/ImageWithLoader";

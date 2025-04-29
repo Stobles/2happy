@@ -1,7 +1,7 @@
 import React, { RefObject, useEffect, useState } from "react";
 import * as SliderPrimitive from "@radix-ui/react-slider";
 
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/utils/cn";
 
 interface RangeSliderProps extends SliderPrimitive.SliderProps {
   className?: string;

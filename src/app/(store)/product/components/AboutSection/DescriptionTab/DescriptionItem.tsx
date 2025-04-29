@@ -1,4 +1,4 @@
-import { sanitizeHtml } from "@/shared/lib/sanitizeHtml";
+import { sanitizeHtml } from "@/shared/utils/sanitizeHtml";
 
 const DescriptionItem = ({ description }: { description: string }) => {
   const { safeHTML, parse } = sanitizeHtml(description);

@@ -5,8 +5,6 @@ import { queryOptions, useQuery } from "@tanstack/react-query";
 
 import Cookies from "js-cookie";
 import { CartResponse } from "../types";
-import { AxiosResponse } from "axios";
-
 const getCartURL = `${env.WOOCOMMERCE_STORE_API}/cart`;
 
 export const fetchNonce = async (): Promise<string> => {
@@ -23,8 +21,8 @@ export const fetchNonce = async (): Promise<string> => {
   return nonce;
 };
 
-const getCart = (): Promise<AxiosResponse<CartResponse>> => {
-  return formattedApiInstance.get<CartResponse>(getCartURL);
+const getCart = (): Promise<CartResponse> => {
+  return formattedApiInstance.get<unknown, CartResponse>(getCartURL);
 };
 
 export const getCartQueryOptions = () =>

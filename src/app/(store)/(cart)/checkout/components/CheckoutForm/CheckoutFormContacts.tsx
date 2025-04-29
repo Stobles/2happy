@@ -12,7 +12,7 @@ import {
 } from "@/shared/components/UI/Form";
 import { Input } from "@/shared/components/UI/Input";
 import { PhoneInput } from "@/shared/components/UI/PhoneInput";
-import { getStatusIcon } from "@/shared/lib/getStatusIconForInput";
+import { getStatusIcon } from "@/shared/utils/getStatusIconForInput";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useForm } from "react-hook-form";

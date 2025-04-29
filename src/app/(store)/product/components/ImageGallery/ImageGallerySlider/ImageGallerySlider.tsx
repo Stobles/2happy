@@ -8,7 +8,7 @@ import SliderProgress from "@/shared/components/Slider/SliderProgress";
 import ImageWithZoom from "@/shared/components/UI/ImageWithZoom";
 import { NavigationOptions } from "swiper/types";
 import { Image } from "@/shared/types/api";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/utils/cn";
 
 import "swiper/css";
 import "swiper/css/pagination";
