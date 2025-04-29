@@ -1,6 +1,7 @@
 import CarIcon from "@/shared/components/icons/Features/CarIcon";
 import MapIcon from "@/shared/components/icons/Features/MapIcon";
 import ParcelIcon from "@/shared/components/icons/Features/ParcelIcon";
+import QualityIcon from "@/shared/components/icons/Features/QualityIcon";
 import Container from "@/shared/components/UI/Container";
 import Section from "@/shared/components/UI/Section";
 import { ReactNode } from "react";
@@ -12,9 +13,9 @@ const FEATURES: { icon: ReactNode; title: string; text: string }[] = [
     text: "Отправляем заказы в кратчайшие сроки",
   },
   {
-    icon: <MapIcon />,
-    title: "Простое отслеживание",
-    text: "Контролируйте статус заказа в любое время",
+    icon: <QualityIcon />,
+    title: "Гарантия качества",
+    text: "Контроль на каждом этапе создания",
   },
   {
     icon: <ParcelIcon />,
