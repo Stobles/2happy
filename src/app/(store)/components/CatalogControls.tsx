@@ -12,7 +12,7 @@ import {
 import ProductsFiltersSheet from "@/features/Products/components/Filters/ProductsFiltersSheet";
 import { TSort, useCatalogStore } from "@/features/Products/store/catalogStore";
 import { usePaginationStore } from "@/features/Products/store/paginationStore";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/utils/cn";
 
 const CatalogSelect = ({
   sort,

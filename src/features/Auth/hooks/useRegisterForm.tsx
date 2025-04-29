@@ -1,6 +1,6 @@
 import { RegisterInput, registerInputSchema } from "@/shared/api/authApi";
 import { useForm } from "react-hook-form";
-import { getStatusIcon } from "@/shared/lib/getStatusIconForInput";
+import { getStatusIcon } from "@/shared/utils/getStatusIconForInput";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export const useRegisterForm = ({

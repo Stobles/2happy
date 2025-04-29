@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/shared/components/UI/Accordion";
-import { sanitizeHtml } from "@/shared/lib/sanitizeHtml";
+import { sanitizeHtml } from "@/shared/utils/sanitizeHtml";
 
 const AccordionWithRichText = ({
   meta,

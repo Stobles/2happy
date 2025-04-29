@@ -17,7 +17,7 @@ import {
 import { Input } from "./Input";
 import { Popover, PopoverContent, PopoverTrigger } from "./Popover";
 import { ScrollArea } from "./ScrollArea";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/utils/cn";
 import ChevronDownIcon from "../icons/Chevron/ChevronDownIcon";
 
 type PhoneInputProps = Omit<

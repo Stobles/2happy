@@ -1,16 +1,12 @@
-import {
-  useMutation,
-  useQuery,
-  useQueryClient,
-  queryOptions,
-} from "@tanstack/react-query";
-import { formattedApiInstance } from "@/shared/api/formattedApiInstance";
-import { createURLWithParams } from "@/shared/lib/utils";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { createURLWithParams } from "@/shared/utils/createURLWithParams";
 import { env } from "@/config/env";
 import { CartResponse } from "../types";
 import { AxiosResponse } from "axios";
 
 import Cookies from "js-cookie";
+import { getCartQueryOptions } from "./cartQueries";
+import { defaultApiInstance } from "@/shared/api/defaultApiInstance";
 
 export type AddToCartParams = {
   id?: number;
@@ -35,9 +31,13 @@ const addToCart = ({
 }): Promise<AxiosResponse<CartResponse>> => {
   const addToCartURLWithParams = createURLWithParams(addToCartURL, params);
 
-  return formattedApiInstance.post<unknown, AxiosResponse<CartResponse>>(
-    addToCartURLWithParams,
-    null,
+  return defaultApiInstance.post<unknown, AxiosResponse<CartResponse>>(
+    addToCartURL,
+    {
+      id: params.id,
+      quantity: params.quantity,
+      item_data: [{ key: "parent_id", value: 178 }],
+    },
     {
       headers: {
         Nonce: nonce,
@@ -57,12 +57,12 @@ export const useAddToCart = ({
 
   return useMutation({
     mutationFn: addToCart,
-    onSuccess: (data) => {
+    onSuccess: (res) => {
       const oldNonce = Cookies.get("nonce");
-      const newNonce = data.headers["nonce"];
+      const newNonce = res.headers["nonce"];
 
       if (newNonce != oldNonce) Cookies.set("nonce", newNonce);
-      queryClient.invalidateQueries({ queryKey: ["cart"] });
+      queryClient.setQueryData(getCartQueryOptions().queryKey, res.data);
       onSuccess?.();
     },
     onError,

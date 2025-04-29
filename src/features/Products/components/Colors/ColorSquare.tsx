@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef } from "react";
 import { colorsByName } from "../../consts/consts";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/utils/cn";
 
 const ColorSquare = ({
   color,

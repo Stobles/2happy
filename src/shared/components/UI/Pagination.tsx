@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/utils/cn";
 import ArrowRightIcon from "../icons/Arrows/ArrowRightIcon";
 
 const Pagination = ({ className, ...props }: React.ComponentProps<"div">) => (

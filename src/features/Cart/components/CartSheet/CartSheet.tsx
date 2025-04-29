@@ -7,19 +7,19 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/shared/components/UI/Sheet";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import CartSheetEmpty from "./CartSheetEmpty";
 import CartSheetContent from "./CartSheetContent";
 import { useCart } from "../../api/cartQueries";
+import { getWordForm } from "@/shared/utils/getWordForm";
 
 const CartSheet = ({ children }: { children: ReactNode }) => {
-  const hasItems = true;
+  const [open, setOpen] = useState<boolean>(false);
 
-  const { data } = useCart();
+  const { data, isPending } = useCart();
 
-  console.log(data, "алло");
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={(open) => setOpen(open)}>
       <SheetTrigger>{children}</SheetTrigger>
       <SheetContent
         className="w-full h-full flex flex-col z-over-header max-w-[680px] p-10 pt-14"
@@ -27,13 +27,26 @@ const CartSheet = ({ children }: { children: ReactNode }) => {
       >
         <SheetHeader className="flex flex-col gap-4 mb-4">
           <SheetTitle>Корзина</SheetTitle>
-          <SheetDescription>В вашей корзине 5 товаров</SheetDescription>
+          {data?.items_count ? (
+            <SheetDescription>
+              В вашей корзине {data?.items_count}{" "}
+              {getWordForm(data?.items_count, {
+                one: "товар",
+                several: "товара",
+                many: "товаров",
+              })}
+            </SheetDescription>
+          ) : null}
           <SheetClose className="top-6 right-10" />
         </SheetHeader>
 
-        <div className="flex-1">
-          {hasItems ? <CartSheetContent /> : <CartSheetEmpty />}
-        </div>
+        {isPending && <div>Загрузка...</div>}
+        {!isPending && data?.items_count ? (
+          <CartSheetContent cartData={data} setOpen={setOpen} />
+        ) : null}
+        {!isPending && !data?.items_count ? (
+          <CartSheetEmpty setOpen={setOpen} />
+        ) : null}
       </SheetContent>
     </Sheet>
   );

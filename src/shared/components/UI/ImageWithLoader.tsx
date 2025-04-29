@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/utils/cn";
 import Image, { ImageProps } from "next/image";
 import { useEffect, useState } from "react";
 

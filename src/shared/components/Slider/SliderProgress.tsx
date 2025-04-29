@@ -3,7 +3,7 @@
 import { useSwiper } from "swiper/react";
 import { useEffect, useState } from "react";
 import { Progress } from "@/shared/components/UI/Progress";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/utils/cn";
 
 const SliderProgress = ({
   className,

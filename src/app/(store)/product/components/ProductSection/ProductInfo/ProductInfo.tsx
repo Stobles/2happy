@@ -25,7 +25,7 @@ import {
   getProductVariationOptions,
 } from "@/features/Products/utils/getProductVariationOptions";
 import { getVariationPriceByAttributes } from "@/features/Products/utils/getVariationPriceByAttributes";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/utils/cn";
 import { getProductSale } from "@/features/Products/utils/getProductSale";
 import { Skeleton } from "@/shared/components/UI/Skeleton";
 import { IconButton } from "@/shared/components/UI/IconButton";
@@ -34,61 +34,53 @@ import AddToCartButton from "./AddToCartButton";
 const ProductInfo = () => {
   const { id, slug } = useGetProductId();
   const { data } = useSuspenseQuery(getProductByIdQueryOptions(id));
+  const { data: variations, isLoading: isLoadingVariation } = useQuery(
+    getProductVariationsQueryOptions(id)
+  );
 
   const { colors: defaultColors, sizes: defaultSizes } = getProductAttributes(
     data.attributes
   );
 
-  const { data: variations, isLoading: isLoadingVariation } = useQuery(
-    getProductVariationsQueryOptions(id)
-  );
-
   const { size: defaultSize, color: defaultColor } =
     getAttributesByProductPrice(data, variations?.items);
 
-  const [color, setColor] = useState<string>(defaultColor);
-  const [size, setSize] = useState<string>(defaultSize);
-
-  const variationPrice = getVariationPriceByAttributes(
-    variations?.items,
-    size,
-    color
-  );
-
-  const variationId = useMemo(() => {
-    return variations?.items.find((item) => {
-      return (
-        item.attributes[0].option === color &&
-        item.attributes[1].option === size
-      );
-    })?.id;
-  }, [color, size]);
-
-  const { sizes, colors } = useMemo(
-    () => getProductVariationOptions(variations?.items),
-    [variations?.items]
-  );
+  const [color, setColor] = useState(defaultColor);
+  const [size, setSize] = useState(defaultSize);
 
   const colorToSizeMap = useMemo(
     () => createColorToSizeMap(variations?.items),
     [variations?.items]
   );
 
-  const [availableSizes, setAvailableSizes] = useState<string[]>(
-    () => colorToSizeMap.get(color) ?? []
+  const availableSizes = useMemo(() => {
+    return colorToSizeMap.get(color) ?? [];
+  }, [color, colorToSizeMap]);
+
+  const { sizes, colors } = useMemo(
+    () => getProductVariationOptions(variations?.items),
+    [variations?.items]
   );
+
+  const variationPrice = useMemo(
+    () => getVariationPriceByAttributes(variations?.items, size, color),
+    [variations?.items, size, color]
+  );
+
+  const variationId = useMemo(() => {
+    return variations?.items.find(
+      (item) =>
+        item.attributes[0].option === color &&
+        item.attributes[1].option === size
+    )?.id;
+  }, [variations?.items, color, size]);
 
   const handleColorChange = (value: string) => {
     setColor(value);
-
-    setAvailableSizes(() => {
-      const sizes = colorToSizeMap.get(value) ?? [];
-      if (sizes && !sizes?.includes(size)) {
-        setSize(sizes[0]);
-      }
-
-      return sizes;
-    });
+    const availableSizes = colorToSizeMap.get(value);
+    if (availableSizes && !availableSizes.includes(size)) {
+      setSize(availableSizes[0]);
+    }
   };
 
   const handleSizeChange = (value: string) => {
@@ -172,7 +164,11 @@ const ProductInfo = () => {
         />
       </div>
       <div className="flex gap-2">
-        <AddToCartButton variationId={variationId ?? 0} quantity={1} />
+        <AddToCartButton
+          parentId={id}
+          variationId={variationId ?? 0}
+          quantity={1}
+        />
         <OutOfStockDialog
           trigger={
             <Button className="w-full" variant="secondary">
