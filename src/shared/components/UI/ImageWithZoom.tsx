@@ -1,5 +1,5 @@
 import ImageWithLoader from "@/shared/components/UI/ImageWithLoader";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/utils/cn";
 import { ImageProps } from "next/image";
 import { MouseEvent, useState } from "react";
 

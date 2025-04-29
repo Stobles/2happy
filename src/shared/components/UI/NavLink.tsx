@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/utils/cn";
 import Link, { LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
 import { ComponentPropsWithoutRef } from "react";

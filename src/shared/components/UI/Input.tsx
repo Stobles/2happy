@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/utils/cn";
 
 const Input = React.forwardRef<
   HTMLInputElement,
@@ -35,7 +35,7 @@ const Input = React.forwardRef<
         <input
           type={type}
           className={cn(
-            "flex w-full py-4 rounded-md bg-transparent text-placeholder autofill:shadow-[inset_0_0_1000px] autofill:shadow-status-muted-warning file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-gray-dark focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+            "flex w-full py-4 rounded-md bg-transparent text-placeholder autofill:shadow-[inset_0_0_1000px] autofill:shadow-status-muted-warning file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-gray-dark focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
             hasError && "autofill:shadow-status-muted-error",
             className
           )}

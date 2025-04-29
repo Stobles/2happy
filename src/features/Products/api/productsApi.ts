@@ -1,7 +1,7 @@
-import { apiInstance } from "@/shared/api/apiInstance";
+import { formattedApiInstance } from "@/shared/api/formattedApiInstance";
 import { queryOptions } from "@tanstack/react-query";
 import { env } from "@/config/env";
-import { createURLWithParams } from "@/shared/lib/utils";
+import { createURLWithParams } from "@/shared/utils/createURLWithParams";
 import { ProductServer, ProductVariation } from "../types";
 import { WooResponse } from "@/shared/types/api";
 
@@ -30,12 +30,12 @@ export const getProductsList = async (
     params
   );
 
-  const response = await apiInstance.get<unknown, WooResponse<ProductServer[]>>(
-    getProductsListURLWithParams,
-    {
-      signal,
-    }
-  );
+  const response = await formattedApiInstance.get<
+    unknown,
+    WooResponse<ProductServer[]>
+  >(getProductsListURLWithParams, {
+    signal,
+  });
 
   return response;
 };
@@ -71,7 +71,7 @@ export const getProductById = async (
     signal: AbortSignal;
   }
 ): Promise<ProductServer> => {
-  const response = await apiInstance.get<unknown, ProductServer>(
+  const response = await formattedApiInstance.get<unknown, ProductServer>(
     getProductByIdURL.replace("{id}", `${id}`),
     {
       signal,
@@ -101,7 +101,7 @@ const getProductVariations = async (
     signal: AbortSignal;
   }
 ): Promise<WooResponse<ProductVariation[]>> => {
-  const response = await apiInstance.get<
+  const response = await formattedApiInstance.get<
     unknown,
     WooResponse<ProductVariation[]>
   >(getProductVariationsURL.replace("{id}", `${id}`), {
@@ -118,5 +118,44 @@ export const getProductVariationsQueryOptions = (id: number) => {
     queryKey: productVariationsQueryKey(id),
     queryFn: (meta) => getProductVariations(id, { signal: meta.signal }),
     enabled: !!id,
+  });
+};
+
+type getRelatedProductsParameters = {
+  product_ids?: number[];
+  per_page?: number;
+};
+
+const getRelatedProductsURL = `${env.CUSTOM_API}/related-products`;
+
+const getRelatedProducts = async (
+  params: getRelatedProductsParameters,
+  { signal }: { signal: AbortSignal }
+): Promise<ProductServer[]> => {
+  const getRelatedProductsURLWithParams = createURLWithParams(
+    getRelatedProductsURL,
+    params
+  );
+
+  const response = await formattedApiInstance.get<unknown, ProductServer[]>(
+    getRelatedProductsURLWithParams,
+    {
+      signal,
+    }
+  );
+
+  return response;
+};
+
+const relatedProductsQueryKey = ({
+  product_ids,
+}: getRelatedProductsParameters) => ["relatedProducts", `${product_ids}`];
+
+export const getRelatedProductsQueryOptions = (
+  params: getRelatedProductsParameters
+) => {
+  return queryOptions({
+    queryKey: relatedProductsQueryKey(params),
+    queryFn: (meta) => getRelatedProducts(params, { signal: meta.signal }),
   });
 };

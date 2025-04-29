@@ -1,4 +1,4 @@
-import { apiInstance } from "@/shared/api/apiInstance";
+import { formattedApiInstance } from "@/shared/api/formattedApiInstance";
 import { env } from "@/config/env";
 import { Attribute, WooResponse } from "@/shared/types/api";
 import { queryOptions, useQuery } from "@tanstack/react-query";
@@ -14,12 +14,12 @@ const getAttributesById = async (
   id: number,
   { signal }: { signal: AbortSignal }
 ): Promise<WooResponse<Attribute[]>> => {
-  const response = await apiInstance.get<unknown, WooResponse<Attribute[]>>(
-    getAttributesByIdURL.replace("{id}", `${id}`),
-    {
-      signal,
-    }
-  );
+  const response = await formattedApiInstance.get<
+    unknown,
+    WooResponse<Attribute[]>
+  >(getAttributesByIdURL.replace("{id}", `${id}`), {
+    signal,
+  });
 
   return response;
 };

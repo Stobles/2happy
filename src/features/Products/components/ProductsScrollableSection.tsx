@@ -12,9 +12,9 @@ const ProductsScrollableSection = ({
 }: {
   title: string;
   data: ProductServer[] | undefined;
-  isLoading: boolean;
+  isLoading?: boolean;
 }) => {
-  if (!isLoading && !data) return null;
+  if (!isLoading && (!data || !data.length)) return null;
 
   return (
     <Section>

@@ -2,7 +2,7 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { MoreHorizontal } from "lucide-react";
 
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/utils/cn";
 import Link, { LinkProps } from "next/link";
 import { Skeleton } from "./Skeleton";
 

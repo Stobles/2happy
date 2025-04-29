@@ -1,9 +1,9 @@
-import { apiInstance } from "@/shared/api/apiInstance";
+import { formattedApiInstance } from "@/shared/api/formattedApiInstance";
 import { Category } from "../types";
 import { queryOptions, useQuery } from "@tanstack/react-query";
 import { env } from "@/config/env";
 import { WooResponse } from "@/shared/types/api";
-import { createURLWithParams } from "@/shared/lib/utils";
+import { createURLWithParams } from "@/shared/utils/createURLWithParams";
 
 //------------ Categories List ------------\\
 
@@ -23,9 +23,10 @@ export const getCategoriesList = async (
     params
   );
 
-  const response = await apiInstance.get<unknown, WooResponse<Category[]>>(
-    getCategoriesListURLWithParams
-  );
+  const response = await formattedApiInstance.get<
+    unknown,
+    WooResponse<Category[]>
+  >(getCategoriesListURLWithParams);
 
   return response;
 };
@@ -67,7 +68,7 @@ export const getCategoriesWithTag = async (
     params
   );
 
-  const response = await apiInstance.get<unknown, Category[]>(
+  const response = await formattedApiInstance.get<unknown, Category[]>(
     getCategoriesWithTagURLWithParams
   );
 
@@ -97,7 +98,7 @@ export const getCategoriesWithTagQueryOptions = (
 export const getCategoryURL = `${env.WOOCOMMERCE_API}/products/categories/{id}`;
 
 export const getCategory = async (id: number | null): Promise<Category> => {
-  const response = await apiInstance.get<unknown, Category>(
+  const response = await formattedApiInstance.get<unknown, Category>(
     getCategoryURL.replace("{id}", `${id}`)
   );
 

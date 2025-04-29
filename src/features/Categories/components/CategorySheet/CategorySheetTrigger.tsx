@@ -3,7 +3,7 @@
 import { paths } from "@/config/paths";
 import ChevronDownIcon from "@/shared/components/icons/Chevron/ChevronDownIcon";
 import { SheetTrigger, TSheetTrigger } from "@/shared/components/UI/Sheet";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/utils/cn";
 import { usePathname } from "next/navigation";
 
 const EXCLUDE_PATHS = [

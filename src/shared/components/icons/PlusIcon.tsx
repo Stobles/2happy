@@ -1,24 +1,17 @@
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/utils/cn";
 import { SVGProps } from "react";
 
 const PlusIcon = ({ className, ...props }: SVGProps<SVGSVGElement>) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="17"
-      height="16"
-      viewBox="0 0 17 16"
+      width="25"
+      height="24"
+      viewBox="0 0 25 24"
       className={cn("fill-main transition-[fill,stroke,transform]", className)}
       {...props}
     >
-      <g clipPath="url(#a)">
-        <path d="M.445 8.615v-1.23H7.83V0h1.23v7.385h7.385v1.23H9.061V16H7.83V8.615H.445Z" />
-      </g>
-      <defs>
-        <clipPath id="a">
-          <path fill="#fff" d="M.445 0h16v16h-16z" />
-        </clipPath>
-      </defs>
+      <path d="M4.445 12.615v-1.23h7.385V4h1.23v7.385h7.385v1.23h-7.384V20H11.83v-7.385H4.445Z" />
     </svg>
   );
 };

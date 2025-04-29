@@ -16,7 +16,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/shared/components/UI/Tabs";
-import { ReactNode, useState } from "react";
+import { ComponentPropsWithoutRef, ReactNode, useState } from "react";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 
@@ -24,10 +24,14 @@ const AuthModal = ({
   children,
   defaultTab = "login",
   disabled,
+  buttonSlot,
+  triggerProps,
 }: {
   children: ReactNode;
   disabled?: boolean;
   defaultTab?: "login" | "register";
+  buttonSlot?: ReactNode;
+  triggerProps?: ComponentPropsWithoutRef<typeof DialogTrigger>;
 }) => {
   const [open, setOpen] = useState<boolean>(false);
 
@@ -37,6 +41,7 @@ const AuthModal = ({
       <DialogTrigger
         disabled={disabled}
         className="disabled:pointer-events-none disabled:opacity-60"
+        {...triggerProps}
       >
         {children}
       </DialogTrigger>
@@ -45,22 +50,26 @@ const AuthModal = ({
           <DialogTitle>Войдите или создайте аккаунт</DialogTitle>
         </DialogHeader>
         <div className="flex flex-col gap-8">
-          <Tabs defaultValue={defaultTab}>
-            <TabsList borderClass="bg-light-disabled">
-              <TabsTrigger className="uppercase" value="login">
-                Войти
-              </TabsTrigger>
-              <TabsTrigger className="uppercase" value="register">
-                Создать аккаунт
-              </TabsTrigger>
-            </TabsList>
-            <TabsContent className="w-full mt-8 ring-0" value="login">
-              <LoginForm onSuccess={closeDialog} />
-            </TabsContent>
-            <TabsContent className="w-full mt-8 ring-0" value="register">
-              <RegisterForm onSuccess={closeDialog} />
-            </TabsContent>
-          </Tabs>
+          <div className="flex flex-col gap-4">
+            <Tabs defaultValue={defaultTab}>
+              <TabsList borderClass="bg-light-disabled">
+                <TabsTrigger className="uppercase" value="login">
+                  Войти
+                </TabsTrigger>
+                <TabsTrigger className="uppercase" value="register">
+                  Создать аккаунт
+                </TabsTrigger>
+              </TabsList>
+              <TabsContent className="w-full mt-8 ring-0" value="login">
+                <LoginForm onSuccess={closeDialog} />
+              </TabsContent>
+              <TabsContent className="w-full mt-8 ring-0" value="register">
+                <RegisterForm onSuccess={closeDialog} />
+              </TabsContent>
+            </Tabs>
+            {buttonSlot}
+          </div>
+
           <span className="flex gap-2 items-center uppercase text-gray after:w-full after:h-[1px] after:bg-gray before:w-full before:h-[1px] before:bg-gray">
             Или
           </span>

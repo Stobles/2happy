@@ -3,28 +3,34 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Container from "@/shared/components/UI/Container";
 import StyledTooltip from "@/shared/components/UI/StyledTooltip";
 
-import { iconLinks, mainLinks, subLinks } from "./consts/consts";
+import { fetchNonce } from "@/features/Cart/api/cartQueries";
+import { mainLinks, subLinks } from "./consts/consts";
+
 import NavLink from "@/shared/components/UI/NavLink";
 import CategorySheet from "@/features/Categories/components/CategorySheet/CategorySheet";
 import SearchSheet from "./components/SearchSheet";
 import Account from "./components/Account";
 import useObserver from "@/shared/hooks/useObserver";
+import HeartIcon from "@/shared/components/icons/HeartIcon";
+import CartSheet from "@/features/Cart/components/CartSheet/CartSheet";
+import CartIcon from "@/shared/components/icons/CartIcon";
 
 import "./style.css";
-import HeartIcon from "@/shared/components/icons/HeartIcon";
-import CartSheet from "@/features/Cart/components/CartSheet";
-import CartIcon from "@/shared/components/icons/CartIcon";
 
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
   const upperHeaderRef = useRef(null);
 
   useObserver(upperHeaderRef, (entry) => setIsSticky(!entry.isIntersecting));
+
+  useEffect(() => {
+    fetchNonce();
+  }, []);
 
   return (
     <>
