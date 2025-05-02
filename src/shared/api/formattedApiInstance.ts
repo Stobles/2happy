@@ -11,7 +11,7 @@ import axios, {
 import Cookies from "js-cookie";
 
 export const formattedApiInstance: AxiosInstance = axios.create({
-  baseURL: `${env.API_URL}`,
+  baseURL: `${env.APP_URL}/api`,
   timeout: 50000,
   headers: {
     "Content-Type": "application/json",
