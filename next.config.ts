@@ -16,20 +16,20 @@ const nextConfig: NextConfig = {
     return [];
   },
 
-  async rewrites() {
-    const rewrites = [
-      {
-        source: "/api/:path*",
-        destination: `${env.API_URL}/:path*`,
-      },
-    ];
+  // async rewrites() {
+  //   const rewrites = [
+  //     {
+  //       source: "/api/:path*",
+  //       destination: `${env.API_URL}/:path*`,
+  //     },
+  //   ];
 
-    return {
-      beforeFiles: rewrites,
-      afterFiles: [],
-      fallback: [],
-    };
-  },
+  //   return {
+  //     beforeFiles: rewrites,
+  //     afterFiles: [],
+  //     fallback: [],
+  //   };
+  // },
 };
 
 export default nextConfig;
