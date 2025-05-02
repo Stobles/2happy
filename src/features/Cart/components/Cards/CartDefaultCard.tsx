@@ -11,9 +11,14 @@ import { CartItemResponse } from "../../types";
 import { useCartItemInfo } from "../../hooks/useCartItemInfo";
 import { cn } from "@/shared/utils/cn";
 import { Chip } from "@/shared/components/UI/Chip";
+import { useDeleteCartItem, useUpdateCartItem } from "../../api/cartMutations";
+import Link from "next/link";
+import { paths } from "@/config/paths";
 
 const CartDefaultCard = ({ cartItem }: { cartItem: CartItemResponse }) => {
   const {
+    key,
+    parentId,
     image,
     name,
     size,
@@ -23,12 +28,22 @@ const CartDefaultCard = ({ cartItem }: { cartItem: CartItemResponse }) => {
     sku,
     salePrice,
     salePercent,
+    variation,
     isOnSale,
     sumPrice,
     currencySymbol,
   } = useCartItemInfo(cartItem);
+
+  const { mutate: deleteCartItem, isPending } = useDeleteCartItem({});
+
+  const { mutate: updateCartItem } = useUpdateCartItem({});
   return (
-    <article className="w-full py-8 border-b border-gray">
+    <article
+      className={cn(
+        "w-full py-8 border-b border-gray",
+        isPending && "opacity-50 pointer-events-none"
+      )}
+    >
       <div className="grid grid-cols-[520px_1fr] gap-x-12">
         <div className="flex gap-6">
           <ImageWithLoader
@@ -37,7 +52,14 @@ const CartDefaultCard = ({ cartItem }: { cartItem: CartItemResponse }) => {
             alt={image.alt}
           />
           <div className="flex flex-col gap-6">
-            <h5 className="text-h5">{name}</h5>
+            <Link
+              href={paths.product.getHref(parentId, name, {
+                color: variation.color,
+                size: variation.size,
+              })}
+            >
+              <h5 className="text-h5">{name}</h5>
+            </Link>
             <div className="flex gap-4 text-body-2">
               <span>Артикул:</span>
               <span>{sku}</span>
@@ -59,7 +81,7 @@ const CartDefaultCard = ({ cartItem }: { cartItem: CartItemResponse }) => {
           </div>
         </div>
         <div className="flex flex-col justify-between">
-          <div className="grid grid-cols-cartCard justify-between w-full h-min items-center">
+          <div className="grid grid-cols-cartCard justify-between w-full h-min items-start">
             <div className="flex flex-col gap-2 items-center">
               <span className={cn(isOnSale && "line-through text-gray-middle")}>
                 {regularPrice} {currencySymbol}
@@ -80,6 +102,9 @@ const CartDefaultCard = ({ cartItem }: { cartItem: CartItemResponse }) => {
                 variant="secondary"
                 className="border border-main"
                 size="small"
+                onClick={() => {
+                  updateCartItem({ key, quantity: quantity - 1 });
+                }}
               >
                 <MinusIcon />
               </IconButton>
@@ -90,6 +115,9 @@ const CartDefaultCard = ({ cartItem }: { cartItem: CartItemResponse }) => {
                 variant="secondary"
                 className="border border-main"
                 size="small"
+                onClick={() => {
+                  updateCartItem({ key, quantity: quantity + 1 });
+                }}
               >
                 <PlusIcon />
               </IconButton>
@@ -101,6 +129,9 @@ const CartDefaultCard = ({ cartItem }: { cartItem: CartItemResponse }) => {
             </div>
             <div className="flex justify-center">
               <button
+                onClick={() => {
+                  deleteCartItem({ key });
+                }}
                 data-tooltip-id="cart-delete"
                 data-tooltip-content="Удалить товар"
               >

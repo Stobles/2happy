@@ -1,3 +1,5 @@
+import { createURLWithParams } from "@/shared/utils/createURLWithParams";
+
 const buildQuery = (params: Record<string, string | number | undefined>) => {
   const queryParams = new URLSearchParams();
   for (const [key, value] of Object.entries(params)) {
@@ -47,7 +49,11 @@ export const paths = {
   },
 
   product: {
-    getHref: (id: number, slug: string) => `/product/${slug}_${id}`,
+    getHref: (id: number, slug: string, params?: Record<string, unknown>) => {
+      const productUrl = `/product/${slug}_${id}`;
+
+      return createURLWithParams(productUrl, params);
+    },
   },
 
   cart: {
