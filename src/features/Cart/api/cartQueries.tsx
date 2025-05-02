@@ -10,7 +10,9 @@ const getCartURL = `${env.WOOCOMMERCE_STORE_API}/cart`;
 export const fetchNonce = async (): Promise<string> => {
   const response = await defaultApiInstance.get(getCartURL);
 
-  const nonce = response.headers["nonce"];
+  const nonce = response.headers["nonce"] || response.headers["Nonce"];
+
+  console.log(response.headers, nonce);
 
   Cookies.set("nonce", nonce);
 
