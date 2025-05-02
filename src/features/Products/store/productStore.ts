@@ -1,22 +1,14 @@
-// import { create } from "zustand";
+import { Image } from "@/shared/types/api";
+import { create } from "zustand";
 
-// type TProductStore = {
-//   productId: number;
-//   productSlug: string;
-//   setProductSlugAndId: (product: string) => void;
-// };
+type TProductStore = {
+  images: Image[];
+  setImages: (images: Image[]) => void;
+};
 
-// export const useProductStore = create<TProductStore>((set) => ({
-//   productId: 0,
-//   productSlug: "",
-//   setProductSlugAndId: (product: string) => {
-//     const [slug, id] = product.split("_");
-
-//     console.log(product);
-
-//     set({
-//       productId: Number(id),
-//       productSlug: slug,
-//     });
-//   },
-// }));
+export const useProductStore = create<TProductStore>((set) => ({
+  images: [],
+  setImages: (images) => {
+    set({ images });
+  },
+}));

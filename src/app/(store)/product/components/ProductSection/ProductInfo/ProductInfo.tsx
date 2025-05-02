@@ -32,19 +32,30 @@ import { IconButton } from "@/shared/components/UI/IconButton";
 import AddToCartButton from "./AddToCartButton";
 import { useSearchParams } from "next/navigation";
 import { useQueryParams } from "@/shared/hooks/useQueryParams";
+import { useProductStore } from "@/features/Products/store/productStore";
+import { getVariationsImages } from "@/features/Products/utils/getVariationsImages";
 
 const ProductInfo = () => {
   const { id, slug } = useGetProductId();
-  const { data } = useSuspenseQuery(getProductByIdQueryOptions(id));
-  const { data: variations, isLoading: isLoadingVariation } = useQuery(
-    getProductVariationsQueryOptions(id)
+  const { data, isSuccess: isProductSuccess } = useSuspenseQuery(
+    getProductByIdQueryOptions(id)
   );
+  const {
+    data: variations,
+    isLoading: isLoadingVariation,
+    isSuccess: isVariationSuccess,
+  } = useQuery(getProductVariationsQueryOptions(id));
 
   const params = useSearchParams();
+  const setSearchParams = useQueryParams();
 
   const { colors: defaultColors, sizes: defaultSizes } = getProductAttributes(
     data.attributes
   );
+
+  const { setImages } = useProductStore();
+
+  const imagesMap = getVariationsImages(variations?.items);
 
   const { size: defaultSize, color: defaultColor } =
     getAttributesByProductPrice(data, variations?.items);
@@ -79,8 +90,6 @@ const ProductInfo = () => {
     )?.id;
   }, [variations?.items, color, size]);
 
-  const setSearchParams = useQueryParams();
-
   const handleColorChange = (value: string) => {
     setColor(value);
 
@@ -102,6 +111,18 @@ const ProductInfo = () => {
     setSize(params.get("size") ?? defaultSize);
     setColor(params.get("color") ?? defaultColor);
   }, [defaultSize, defaultColor]);
+
+  useEffect(() => {
+    if (isProductSuccess) setImages(data.images);
+  }, [isProductSuccess]);
+
+  // useEffect(() => {
+  //   if (isVariationSuccess) {
+  //     const variationImages = variationId ? imagesMap.get(variationId) : [];
+
+  //     if (variationImages?.length) setImages(variationImages);
+  //   }
+  // }, [isVariationSuccess]);
 
   return (
     <div className="flex flex-col gap-2 justify-between flex-1 basis-[49%]">
