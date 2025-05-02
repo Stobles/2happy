@@ -10,8 +10,9 @@ import axios, {
 import Cookies from "js-cookie";
 
 export const defaultApiInstance: AxiosInstance = axios.create({
-  baseURL: `${env.API_URL}/api`,
+  baseURL: `${env.APP_URL}`,
   timeout: 50000,
+
   headers: {
     "Content-Type": "application/json",
   },

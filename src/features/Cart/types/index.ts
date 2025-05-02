@@ -1,6 +1,7 @@
 export type CartItemResponse = {
   key: string;
   id: number;
+  parent_id: number;
   type: string;
   quantity: number;
   quantity_limits: {

@@ -9,6 +9,7 @@ import { AuthResponse, UserData } from "@/shared/types/api";
 import { z } from "zod";
 import { useAuthStore } from "@/shared/store/authStore";
 import Cookies from "js-cookie";
+import { getCartQueryOptions } from "@/features/Cart/api/cartQueries";
 
 export const getUserURL = "/wp/v2/users/me";
 
@@ -53,6 +54,7 @@ export const useLogin = ({
       Cookies.set("access_token", token);
       setAccessToken(token);
       queryClient.invalidateQueries(getUserQueryOptions());
+      queryClient.invalidateQueries(getCartQueryOptions());
       onSuccess?.();
     },
     onError: onError,
@@ -85,6 +87,7 @@ export const useRegister = ({ onSuccess }: { onSuccess?: () => void }) => {
       Cookies.set("access_token", token);
       setAccessToken(token);
       queryClient.invalidateQueries(getUserQueryOptions());
+      queryClient.invalidateQueries(getCartQueryOptions());
       onSuccess?.();
     },
   });

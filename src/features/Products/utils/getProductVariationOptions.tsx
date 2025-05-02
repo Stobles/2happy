@@ -1,3 +1,4 @@
+import { Image } from "@/shared/types/api";
 import { ProductVariation } from "../types";
 import { sortSizes } from "./sortSizes";
 
@@ -19,7 +20,6 @@ export const getProductVariationOptions = (
     return {
       colors: [],
       sizes: [],
-      colorToSizeMap: new Map<string, Set<string>>(),
     };
   const colorsMap = new Map<string, VariationEntity>();
   const sizesMap = new Map<string, VariationEntity>();
