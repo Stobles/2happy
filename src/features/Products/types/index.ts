@@ -105,6 +105,7 @@ export type ProductVariation = {
   name: string;
   date_created: string;
   date_modified: string;
+  woo_variation_gallery_images: Image[];
   _links: Links;
 };
 
