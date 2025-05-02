@@ -30,6 +30,8 @@ import { getProductSale } from "@/features/Products/utils/getProductSale";
 import { Skeleton } from "@/shared/components/UI/Skeleton";
 import { IconButton } from "@/shared/components/UI/IconButton";
 import AddToCartButton from "./AddToCartButton";
+import { useSearchParams } from "next/navigation";
+import { useQueryParams } from "@/shared/hooks/useQueryParams";
 
 const ProductInfo = () => {
   const { id, slug } = useGetProductId();
@@ -37,6 +39,8 @@ const ProductInfo = () => {
   const { data: variations, isLoading: isLoadingVariation } = useQuery(
     getProductVariationsQueryOptions(id)
   );
+
+  const params = useSearchParams();
 
   const { colors: defaultColors, sizes: defaultSizes } = getProductAttributes(
     data.attributes
@@ -75,8 +79,13 @@ const ProductInfo = () => {
     )?.id;
   }, [variations?.items, color, size]);
 
+  const setSearchParams = useQueryParams();
+
   const handleColorChange = (value: string) => {
     setColor(value);
+
+    setSearchParams({ color: value });
+
     const availableSizes = colorToSizeMap.get(value);
     if (availableSizes && !availableSizes.includes(size)) {
       setSize(availableSizes[0]);
@@ -85,11 +94,13 @@ const ProductInfo = () => {
 
   const handleSizeChange = (value: string) => {
     setSize(value);
+
+    setSearchParams({ size: value });
   };
 
   useEffect(() => {
-    setSize(defaultSize);
-    setColor(defaultColor);
+    setSize(params.get("size") ?? defaultSize);
+    setColor(params.get("color") ?? defaultColor);
   }, [defaultSize, defaultColor]);
 
   return (

@@ -40,7 +40,7 @@ const ProductServerCard = ({ product }: { product: ProductServer }) => {
     <article className="group/product w-full h-full">
       <Link
         onClick={handleLinkClick}
-        href={paths.product.getHref(product.id, product.slug)}
+        href={paths.product.getHref(product.id, product.name)}
         className="flex flex-col h-full gap-4"
       >
         <div className="relative h-full">

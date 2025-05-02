@@ -12,6 +12,7 @@ import CartSheetEmpty from "./CartSheetEmpty";
 import CartSheetContent from "./CartSheetContent";
 import { useCart } from "../../api/cartQueries";
 import { getWordForm } from "@/shared/utils/getWordForm";
+import CartSheetLoader from "./CartSheetLoader";
 
 const CartSheet = ({ children }: { children: ReactNode }) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -40,7 +41,7 @@ const CartSheet = ({ children }: { children: ReactNode }) => {
           <SheetClose className="top-6 right-10" />
         </SheetHeader>
 
-        {isPending && <div>Загрузка...</div>}
+        {isPending && <CartSheetLoader />}
         {!isPending && data?.items_count ? (
           <CartSheetContent cartData={data} setOpen={setOpen} />
         ) : null}

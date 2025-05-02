@@ -1,3 +1,4 @@
+import { paths } from "@/config/paths";
 import AuthModal from "@/features/Auth/components/AuthModal";
 import { useCartInfo } from "@/features/Cart/hooks/useCartInfo";
 import { CartResponse } from "@/features/Cart/types";
@@ -41,7 +42,12 @@ const CartInfo = ({ cartData }: { cartData: CartResponse }) => {
             </Button>
           }
         >
-          <Button variant="primary" size="medium" className="w-full">
+          <Button
+            variant="primary"
+            size="medium"
+            className="w-full"
+            disabled={!cartData.items_count}
+          >
             Перейти к оплате
           </Button>
         </AuthModal>
@@ -74,8 +80,9 @@ const CartInfo = ({ cartData }: { cartData: CartResponse }) => {
           variant="secondary"
           size="medium"
           className="w-full bg-white z-20"
+          asChild
         >
-          Продолжить покупки
+          <Link href={paths.catalog.getHref()}>Продолжить покупки</Link>
         </Button>
       </div>
     </div>

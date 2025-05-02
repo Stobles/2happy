@@ -29,6 +29,8 @@ export const useCartItemInfo = (cartItem: CartItemResponse) => {
       );
 
   return {
+    key: cartItem.key,
+    parentId: cartItem.parent_id,
     image: cartItem.images[0],
     name: cartItem.name,
     size,
@@ -44,6 +46,12 @@ export const useCartItemInfo = (cartItem: CartItemResponse) => {
     sumPrice,
     salePercent,
     isOnSale,
+    variation: {
+      size: cartItem.variation.find((item) => item.attribute === "Размер")
+        ?.value,
+      color: cartItem.variation.find((item) => item.attribute === "Цвет")
+        ?.value,
+    },
     currencySymbol: cartItem.prices.currency_symbol,
   };
 };

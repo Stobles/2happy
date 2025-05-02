@@ -12,16 +12,14 @@ const CartList = () => {
     <Container className="my-section flex-col gap-12">
       <div className="flex gap-2 items-end">
         <h1 className="text-h2">Корзина /</h1>
-        {data?.items_count && (
-          <span className="text-body2 text-gray-middle mb-1">
-            {data?.items_count}{" "}
-            {getWordForm(data?.items_count, {
-              one: "товар",
-              several: "товара",
-              many: "товаров",
-            })}
-          </span>
-        )}
+        <span className="text-body2 text-gray-middle mb-1">
+          {data?.items_count}{" "}
+          {getWordForm(data?.items_count ?? 0, {
+            one: "товар",
+            several: "товара",
+            many: "товаров",
+          })}
+        </span>
       </div>
       <div className="flex flex-col">
         <div className="grid grid-cols-[520px_1fr] gap-x-12 py-3 text-body2 text-gray-middle border-b border-gray">
@@ -33,12 +31,16 @@ const CartList = () => {
           </div>
         </div>
         <div className="flex flex-col">
-          {data?.items_count && (
+          {!!data?.items_count ? (
             <>
               {data?.items.map((item) => (
                 <CartCard key={item.key} cartItem={item} />
               ))}
             </>
+          ) : (
+            <h2 className="text-h2 text-center my-12">
+              В вашей корзине нет товаров
+            </h2>
           )}
         </div>
       </div>

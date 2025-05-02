@@ -23,11 +23,11 @@ const iconButtonVariantsAndSizes = {
         after:opacity-0 hover:after:opacity-100`,
     },
     size: {
-      large: "h-[64px] p-2 [&_svg]:size-12",
-      normal: "h-[56px] p-4",
-      medium: "h-[48px] p-3",
-      small: "h-[40px] p-2",
-      extraSmall: "h-[32px] p-2 [&_svg]:size-4",
+      large: " min-w-[64px] h-[64px] p-2 [&_svg]:size-12",
+      normal: " min-w-[56px] h-[56px] p-4",
+      medium: " min-w-[48px] h-[48px] p-3",
+      small: "min-w-[40px] h-[40px] p-2",
+      extraSmall: "min-w-[32px] h-[32px] p-2 [&_svg]:size-4",
     },
   },
   defaultVariants: {

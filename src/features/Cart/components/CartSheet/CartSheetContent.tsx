@@ -25,6 +25,9 @@ const CartSheetContent = ({
               key={item.key}
               cartItem={item}
               className="flex-shrink-0"
+              onClick={() => {
+                setOpen(false);
+              }}
             />
           ))}
         </div>
