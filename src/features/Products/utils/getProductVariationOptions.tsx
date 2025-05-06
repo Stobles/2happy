@@ -1,4 +1,3 @@
-import { Image } from "@/shared/types/api";
 import { ProductVariation } from "../types";
 import { sortSizes } from "./sortSizes";
 

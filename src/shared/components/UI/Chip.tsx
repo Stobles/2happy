@@ -8,18 +8,18 @@ const chipVariants = cva(`flex rounded-xs text-white`, {
       red: "bg-red",
       pink: "text-red bg-status-muted-error",
       yellow: "bg-yellow",
-      grey: "bg-gray",
+      gray: "text-gray-dark bg-gray-light",
       green: "bg-green",
       black: "bg-main",
     },
     size: {
       normal: "text-button-small p-2",
-      medium: "text-button-xs py-1.5 px-3",
+      medium: "text-button-xs p-3",
       small: "text-button-xs py-1 px-2",
     },
   },
   defaultVariants: {
-    variant: "grey",
+    variant: "gray",
     size: "normal",
   },
 });

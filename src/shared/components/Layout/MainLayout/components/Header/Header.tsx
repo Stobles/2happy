@@ -17,7 +17,7 @@ import SearchSheet from "./components/SearchSheet";
 import Account from "./components/Account";
 import useObserver from "@/shared/hooks/useObserver";
 import HeartIcon from "@/shared/components/icons/HeartIcon";
-import CartSheet from "@/features/Cart/components/CartSheet/CartSheet";
+import CartSheet from "@/features/Cart/components/Sheets/CartSheet/CartSheet";
 import CartIcon from "@/shared/components/icons/CartIcon";
 
 import "./style.css";

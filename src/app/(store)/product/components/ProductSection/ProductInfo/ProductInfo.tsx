@@ -1,76 +1,91 @@
 "use client";
 
-import HeartIcon from "@/shared/components/icons/HeartIcon";
-import ShareIcon from "@/shared/components/icons/ShareIcon";
-import { Button } from "@/shared/components/UI/Button";
-import { Chip } from "@/shared/components/UI/Chip";
-import { Separator } from "@/shared/components/UI/Separator";
-import OutOfStockDialog from "@/features/Products/components/Dialogs/OutOfStockDialog";
 import { env } from "@/config/env";
 import { paths } from "@/config/paths";
-import CopyButton from "@/shared/components/UI/CopyButton";
-import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
-import {
-  getProductByIdQueryOptions,
-  getProductVariationsQueryOptions,
-} from "@/features/Products/api/productsApi";
-import { useGetProductId } from "@/features/Products/hooks/useGetProductId";
-import ProductInfoSizes from "./ProductInfoSizes";
-import { getProductAttributes } from "@/features/Products/utils/getProductAttributes";
-import ProductInfoColors from "./ProductInfoColors";
-import { useEffect, useMemo, useState } from "react";
-import { getAttributesByProductPrice } from "@/features/Products/utils/getAttributesByProductPrice";
-import {
-  createColorToSizeMap,
-  getProductVariationOptions,
-} from "@/features/Products/utils/getProductVariationOptions";
-import { getVariationPriceByAttributes } from "@/features/Products/utils/getVariationPriceByAttributes";
+import { ReactNode, useMemo } from "react";
+
+import ShareIcon from "@/shared/components/icons/ShareIcon";
+
 import { cn } from "@/shared/utils/cn";
-import { getProductSale } from "@/features/Products/utils/getProductSale";
 import { Skeleton } from "@/shared/components/UI/Skeleton";
-import { IconButton } from "@/shared/components/UI/IconButton";
-import AddToCartButton from "./AddToCartButton";
-import { useSearchParams } from "next/navigation";
-import { useQueryParams } from "@/shared/hooks/useQueryParams";
-import { useProductStore } from "@/features/Products/store/productStore";
-import { getVariationsImages } from "@/features/Products/utils/getVariationsImages";
+import { Chip } from "@/shared/components/UI/Chip";
+import { Separator } from "@/shared/components/UI/Separator";
 
-const ProductInfo = () => {
-  const { id, slug } = useGetProductId();
-  const { data, isSuccess: isProductSuccess } = useSuspenseQuery(
-    getProductByIdQueryOptions(id)
-  );
-  const {
-    data: variations,
-    isLoading: isLoadingVariation,
-    isSuccess: isVariationSuccess,
-  } = useQuery(getProductVariationsQueryOptions(id));
+import CopyButton from "@/shared/components/UI/CopyButton";
+import ProductInfoSizes from "./ProductInfoSizes";
+import ProductInfoColors from "./ProductInfoColors";
 
-  const params = useSearchParams();
-  const setSearchParams = useQueryParams();
+import { Image } from "@/shared/types/api";
+
+import { useGetProductByIdSuspense } from "@/features/Products/hooks/useGetProductByIdSuspense";
+import { useGetProductVariations } from "@/features/Products/hooks/useGetProductVariations";
+import {
+  TProductAttributesHandler,
+  useProductAttributes,
+} from "@/features/Products/hooks/useProductAttributes";
+
+import {
+  getProductAttributes,
+  getProductSale,
+  getProductVariationOptions,
+  getVariationPriceByAttributes,
+  getVariationsImages,
+} from "@/features/Products/utils";
+import { getVariation } from "@/features/Products/utils/getVariation";
+import { ProductVariation } from "@/features/Products/types";
+
+const ProductInfo = ({
+  id,
+  defaultSize,
+  defaultColor,
+  handleChange,
+  renderButtons,
+  setImages,
+}: {
+  id: number;
+  defaultSize?: string | null;
+  defaultColor?: string | null;
+  handleChange?: TProductAttributesHandler;
+  renderButtons?: (
+    variation: ProductVariation | null,
+    disabled: boolean
+  ) => ReactNode;
+  setImages: (images: Image[]) => void;
+}) => {
+  const { data } = useGetProductByIdSuspense(id, (data) => {
+    setImages(data.images);
+  });
+  const { data: variations, isLoading: isLoadingVariation } =
+    useGetProductVariations(id, (data) => {
+      const imagesMap = getVariationsImages(data);
+
+      const variation = getVariation(data, color, size);
+
+      setVariation(variation);
+
+      // const variationImages = variation?.id ? imagesMap.get(variation?.id) : [];
+      // if (variationImages?.length) setImages(variationImages);
+    });
 
   const { colors: defaultColors, sizes: defaultSizes } = getProductAttributes(
     data.attributes
   );
 
-  const { setImages } = useProductStore();
-
-  const imagesMap = getVariationsImages(variations?.items);
-
-  const { size: defaultSize, color: defaultColor } =
-    getAttributesByProductPrice(data, variations?.items);
-
-  const [color, setColor] = useState(defaultColor);
-  const [size, setSize] = useState(defaultSize);
-
-  const colorToSizeMap = useMemo(
-    () => createColorToSizeMap(variations?.items),
-    [variations?.items]
-  );
-
-  const availableSizes = useMemo(() => {
-    return colorToSizeMap.get(color) ?? [];
-  }, [color, colorToSizeMap]);
+  const {
+    color,
+    size,
+    variation,
+    availableSizes,
+    handleColorChange,
+    handleSizeChange,
+    setVariation,
+  } = useProductAttributes({
+    data,
+    variations: variations?.items,
+    handleChange,
+    defaultColor,
+    defaultSize,
+  });
 
   const { sizes, colors } = useMemo(
     () => getProductVariationOptions(variations?.items),
@@ -82,56 +97,21 @@ const ProductInfo = () => {
     [variations?.items, size, color]
   );
 
-  const variationId = useMemo(() => {
-    return variations?.items.find(
-      (item) =>
-        item.attributes[0].option === color &&
-        item.attributes[1].option === size
-    )?.id;
-  }, [variations?.items, color, size]);
-
-  const handleColorChange = (value: string) => {
-    setColor(value);
-
-    setSearchParams({ color: value });
-
-    const availableSizes = colorToSizeMap.get(value);
-    if (availableSizes && !availableSizes.includes(size)) {
-      setSize(availableSizes[0]);
-    }
-  };
-
-  const handleSizeChange = (value: string) => {
-    setSize(value);
-
-    setSearchParams({ size: value });
-  };
-
-  useEffect(() => {
-    setSize(params.get("size") ?? defaultSize);
-    setColor(params.get("color") ?? defaultColor);
-  }, [defaultSize, defaultColor]);
-
-  useEffect(() => {
-    if (isProductSuccess) setImages(data.images);
-  }, [isProductSuccess]);
-
-  // useEffect(() => {
-  //   if (isVariationSuccess) {
-  //     const variationImages = variationId ? imagesMap.get(variationId) : [];
-
-  //     if (variationImages?.length) setImages(variationImages);
-  //   }
-  // }, [isVariationSuccess]);
+  const isVariationOutOfStock = variation
+    ? variation?.stock_status === "outofstock"
+    : false;
 
   return (
     <div className="flex flex-col gap-2 justify-between flex-1 basis-[49%]">
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-8 mb-20">
         <div className="flex flex-col gap-6">
           <div className="flex items-start justify-between gap-4">
             <h2 className="text-h4">{data?.name}</h2>
             <CopyButton
-              copyText={`${env.APP_URL}${paths.product.getHref(id, slug)}`}
+              copyText={`${env.APP_URL}${paths.product.getHref(
+                data.id,
+                data.slug
+              )}`}
               tooltip="Поделиться"
             >
               <ShareIcon />
@@ -158,7 +138,7 @@ const ProductInfo = () => {
                       <span className="text-h4">
                         {variationPrice.sale_price} &#8376;
                       </span>
-                      <Chip size="medium" variant="pink">
+                      <Chip size="normal" variant="pink">
                         {`- ${getProductSale(
                           +variationPrice.regular_price,
                           +variationPrice.sale_price
@@ -168,8 +148,15 @@ const ProductInfo = () => {
                   )}
                 </div>
               )}
-
               {!isLoadingVariation && !variationPrice && <div>Нет цены</div>}
+              <Chip variant="gray" size="normal">
+                Нет на складе
+              </Chip>
+              {isVariationOutOfStock && (
+                <Chip variant="gray" size="medium">
+                  Нет на складе
+                </Chip>
+              )}
             </div>
 
             <div className="text-gray-middle text-description">
@@ -195,23 +182,7 @@ const ProductInfo = () => {
           isLoading={isLoadingVariation}
         />
       </div>
-      <div className="flex gap-2">
-        <AddToCartButton
-          parentId={id}
-          variationId={variationId ?? 0}
-          quantity={1}
-        />
-        <OutOfStockDialog
-          trigger={
-            <Button className="w-full" variant="secondary">
-              Купить
-            </Button>
-          }
-        />
-        <IconButton className="[&_svg]:fill-transparent" size="normal">
-          <HeartIcon className="stroke-white" />
-        </IconButton>
-      </div>
+      {renderButtons ? renderButtons(variation, isLoadingVariation) : null}
     </div>
   );
 };

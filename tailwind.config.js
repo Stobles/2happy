@@ -335,6 +335,11 @@ module.exports = {
           fontSize: "12px",
           lineHeight: "16px",
         },
+        ".text-title-em": {
+          fontWeight: 400,
+          fontSize: "1em",
+          lineHeight: "1.5em",
+        },
         ".text-description": {
           fontWeight: 400,
           fontSize: "12px",
