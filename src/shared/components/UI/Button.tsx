@@ -4,6 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/shared/utils/cn";
 import { Skeleton } from "./Skeleton";
+import LoaderIcon from "../icons/LoaderIcon";
 
 const buttonVariantsAndSizes = {
   variants: {
@@ -46,7 +47,7 @@ const buttonVariantsAndSizes = {
 const buttonVariants = cva(
   `relative inline-flex w-max items-center justify-center gap-2 whitespace-nowrap uppercase rounded-xs font-medium transition-all duration-300 
   focus-visible:outline-none focus-visible:border-solid focus-visible:border-2 focus-visible:border-stroke-black 
-  disabled:pointer-events-none disabled:border-disabled  disabled:bg-button-bg-disabled disabled:text-button-text-disabled disabled:svg-disabled 
+  disabled:pointer-events-none disabled:border-disabled  disabled:bg-button-bg-disabled disabled:text-button-text-disabled disabled:svg-disabled disabled:border-0 
   after:absolute after:w-full after:h-full after:bg-radial-gradient after:transition-opacity after:left-0
   [&_svg]:pointer-events-none [&_svg]:size-[24px] [&_svg]:shrink-0 [&_svg]:transition-colors`,
 

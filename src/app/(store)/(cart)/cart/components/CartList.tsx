@@ -5,6 +5,7 @@ import CartCard from "@/features/Cart/components/Cards/CartDefaultCard";
 import Container from "@/shared/components/UI/Container";
 import CartInfo from "./CartInfo";
 import { getWordForm } from "@/shared/utils/getWordForm";
+import CartButtons from "./CartButtons";
 
 const CartList = () => {
   const { data, isPending } = useCart();
@@ -34,7 +35,13 @@ const CartList = () => {
           {!!data?.items_count ? (
             <>
               {data?.items.map((item) => (
-                <CartCard key={item.key} cartItem={item} />
+                <CartCard
+                  key={item.key}
+                  cartItem={item}
+                  renderButtons={(cartItem) => (
+                    <CartButtons cartItem={cartItem} />
+                  )}
+                />
               ))}
             </>
           ) : (

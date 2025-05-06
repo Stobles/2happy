@@ -1,5 +1,3 @@
-import EditIcon from "@/shared/components/icons/EditIcon";
-import HeartIcon from "@/shared/components/icons/HeartIcon";
 import MinusIcon from "@/shared/components/icons/MinusIcon";
 import PlusIcon from "@/shared/components/icons/PlusIcon";
 import TrashIcon from "@/shared/components/icons/TrashIcon";
@@ -14,8 +12,15 @@ import { Chip } from "@/shared/components/UI/Chip";
 import { useDeleteCartItem, useUpdateCartItem } from "../../api/cartMutations";
 import Link from "next/link";
 import { paths } from "@/config/paths";
+import { ReactNode } from "react";
 
-const CartDefaultCard = ({ cartItem }: { cartItem: CartItemResponse }) => {
+const CartDefaultCard = ({
+  cartItem,
+  renderButtons,
+}: {
+  cartItem: CartItemResponse;
+  renderButtons?: (cartItem: CartItemResponse) => ReactNode;
+}) => {
   const {
     key,
     parentId,
@@ -102,6 +107,7 @@ const CartDefaultCard = ({ cartItem }: { cartItem: CartItemResponse }) => {
                 variant="secondary"
                 className="border border-main"
                 size="small"
+                disabled={quantity <= cartItem.quantity_limits.maximum}
                 onClick={() => {
                   updateCartItem({ key, quantity: quantity - 1 });
                 }}
@@ -115,6 +121,7 @@ const CartDefaultCard = ({ cartItem }: { cartItem: CartItemResponse }) => {
                 variant="secondary"
                 className="border border-main"
                 size="small"
+                disabled={quantity >= cartItem.quantity_limits.maximum}
                 onClick={() => {
                   updateCartItem({ key, quantity: quantity + 1 });
                 }}
@@ -140,22 +147,7 @@ const CartDefaultCard = ({ cartItem }: { cartItem: CartItemResponse }) => {
               </button>
             </div>
           </div>
-          <div className="flex justify-end gap-4">
-            <IconButton
-              variant="secondary"
-              size="small"
-              className="border border-gray"
-            >
-              <HeartIcon />
-            </IconButton>
-            <IconButton
-              variant="secondary"
-              size="small"
-              className="border border-gray"
-            >
-              <EditIcon />
-            </IconButton>
-          </div>
+          {renderButtons && renderButtons(cartItem)}
         </div>
       </div>
     </article>

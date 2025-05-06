@@ -1,10 +1,10 @@
 import { Button } from "@/shared/components/UI/Button";
-import CartMediumCard from "../Cards/CartMediumCard";
+import CartMediumCard from "../../Cards/CartMediumCard";
 import Link from "next/link";
 import { paths } from "@/config/paths";
 import { Dispatch, SetStateAction } from "react";
-import { CartResponse } from "../../types";
-import { useCartInfo } from "../../hooks/useCartInfo";
+import { CartResponse } from "../../../types";
+import { useCartInfo } from "../../../hooks/useCartInfo";
 
 const CartSheetContent = ({
   cartData,
