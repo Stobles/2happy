@@ -97,6 +97,10 @@ const ProductInfo = ({
     [variations?.items, size, color]
   );
 
+  const isVariationOutOfStock = variation
+    ? variation?.stock_status === "outofstock"
+    : false;
+
   return (
     <div className="flex flex-col gap-2 justify-between flex-1 basis-[49%]">
       <div className="flex flex-col gap-8 mb-20">
@@ -134,7 +138,7 @@ const ProductInfo = ({
                       <span className="text-h4">
                         {variationPrice.sale_price} &#8376;
                       </span>
-                      <Chip size="medium" variant="pink">
+                      <Chip size="normal" variant="pink">
                         {`- ${getProductSale(
                           +variationPrice.regular_price,
                           +variationPrice.sale_price
@@ -144,8 +148,15 @@ const ProductInfo = ({
                   )}
                 </div>
               )}
-
               {!isLoadingVariation && !variationPrice && <div>Нет цены</div>}
+              <Chip variant="gray" size="normal">
+                Нет на складе
+              </Chip>
+              {isVariationOutOfStock && (
+                <Chip variant="gray" size="medium">
+                  Нет на складе
+                </Chip>
+              )}
             </div>
 
             <div className="text-gray-middle text-description">

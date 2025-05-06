@@ -51,7 +51,6 @@ export const useCartItemInfo = (cartItem: CartItemResponse) => {
     ),
     sumPrice,
     salePercent,
-    isOnSale,
     variation: {
       size: cartItem.variation.find((item) => item.attribute === "Размер")
         ?.value,
@@ -59,5 +58,6 @@ export const useCartItemInfo = (cartItem: CartItemResponse) => {
         ?.value,
     },
     currencySymbol: cartItem.prices.currency_symbol,
+    isOnSale,
   };
 };
