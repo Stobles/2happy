@@ -12,7 +12,7 @@ import {
 import { ReactNode, useState } from "react";
 import CartSheetEmpty from "./CartSheetEmpty";
 import CartSheetContent from "./CartSheetContent";
-import { useCart } from "../../api/cartQueries";
+import { useCart } from "../../../api/cartQueries";
 import { getWordForm } from "@/shared/utils/getWordForm";
 import CartSheetLoader from "./CartSheetLoader";
 

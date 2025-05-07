@@ -1,5 +1,5 @@
 import { Skeleton } from "@/shared/components/UI/Skeleton";
-import { CartMediumCardLoader } from "../Cards/CartMediumCard";
+import { CartMediumCardLoader } from "../../Cards/CartMediumCard";
 import { ButtonLoader } from "@/shared/components/UI/Button";
 
 const CartSheetLoader = () => {

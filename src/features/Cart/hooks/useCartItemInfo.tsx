@@ -37,6 +37,12 @@ export const useCartItemInfo = (cartItem: CartItemResponse) => {
     color,
     quantity,
     sku: cartItem.sku,
+    price: new Intl.NumberFormat("ru-RU").format(
+      getPriceWithMinors(
+        cartItem.prices.price,
+        cartItem.prices.currency_minor_unit
+      )
+    ),
     regularPrice: new Intl.NumberFormat("ru-RU").format(
       getPriceWithMinors(regularPrice, cartItem.prices.currency_minor_unit)
     ),
@@ -45,7 +51,6 @@ export const useCartItemInfo = (cartItem: CartItemResponse) => {
     ),
     sumPrice,
     salePercent,
-    isOnSale,
     variation: {
       size: cartItem.variation.find((item) => item.attribute === "Размер")
         ?.value,
@@ -53,5 +58,6 @@ export const useCartItemInfo = (cartItem: CartItemResponse) => {
         ?.value,
     },
     currencySymbol: cartItem.prices.currency_symbol,
+    isOnSale,
   };
 };
