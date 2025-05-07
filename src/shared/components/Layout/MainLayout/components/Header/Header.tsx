@@ -43,7 +43,7 @@ const Header = () => {
         ref={upperHeaderRef}
         className="min-h-[56px] border-b-[1px] border-main z-header bg-white "
       >
-        <Container className="h-full items-center justify-end gap-5 py-5">
+        <Container className="h-full items-center justify-end gap-5">
           {subLinks.map((link) => (
             <Link
               key={link.title}

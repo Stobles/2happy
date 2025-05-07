@@ -6,7 +6,6 @@ import { akira, lato } from "../shared/lib/fonts";
 
 import Providers from "../providers/providers";
 import { MainLayout } from "@/shared/components/Layout/MainLayout/MainLayout";
-import { fetchNonce } from "@/features/Cart/api/cartQueries";
 
 export const metadata = {
   title: "2HAPPY",
