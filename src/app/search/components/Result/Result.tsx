@@ -1,6 +1,6 @@
 import Container from "@/shared/components/UI/Container";
 import Section from "@/shared/components/UI/Section";
-import FashionCard from "@/features/Fashion/components/FashionCard";
+import FashionCard from "@/features/Products/components/Cards/FashionCard";
 
 const Result = () => {
   return (

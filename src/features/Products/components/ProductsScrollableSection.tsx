@@ -1,8 +1,9 @@
 import Container from "@/shared/components/UI/Container";
-import { ScrollArea, ScrollBar } from "@/shared/components/UI/ScrollArea";
 import Section from "@/shared/components/UI/Section";
-import ProductServerCard from "./ProductCards/ProductServerCard";
-import ProductCardLoader from "./ProductCards/ProductCardLoader";
+import ProductServerCard from "./Cards/ProductServerCard";
+
+import { ScrollArea, ScrollBar } from "@/shared/components/UI/ScrollArea";
+import { ProductCardLoader } from "./Cards/ProductServerCard";
 import { ProductServer } from "../types";
 
 const ProductsScrollableSection = ({

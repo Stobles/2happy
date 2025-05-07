@@ -1,5 +1,5 @@
 import ArrowRightIcon from "@/shared/components/icons/Arrows/ArrowRightIcon";
-import ItemCard from "@/features/Fashion/components/ItemCard";
+import ItemCard from "@/features/Products/components/Cards/ItemCard";
 import { Button } from "@/shared/components/UI/Button";
 import Container from "@/shared/components/UI/Container";
 import Section from "@/shared/components/UI/Section";

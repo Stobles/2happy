@@ -1,7 +1,7 @@
 import Container from "@/shared/components/UI/Container";
 import Section from "@/shared/components/UI/Section";
 import Image from "next/image";
-import ItemCard from "@/features/Fashion/components/ItemCard";
+import ItemCard from "@/features/Products/components/Cards/ItemCard";
 import { Button } from "@/shared/components/UI/Button";
 import ArrowUpRightIcon from "@/shared/components/icons/Arrows/ArrowUpRightIcon";
 import Link from "next/link";

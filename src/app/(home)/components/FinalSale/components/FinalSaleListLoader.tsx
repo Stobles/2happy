@@ -1,5 +1,4 @@
-import { Skeleton } from "@/shared/components/UI/Skeleton";
-import ProductCardLoader from "@/features/Products/components/ProductCards/ProductCardLoader";
+import { ProductCardLoader } from "@/features/Products/components/Cards/ProductServerCard";
 
 const FinalSaleListLoader = () => {
   return (

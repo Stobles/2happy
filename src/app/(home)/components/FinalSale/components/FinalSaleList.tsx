@@ -2,7 +2,7 @@
 
 import { tagIds } from "@/features/Categories/consts/consts";
 import { getProductsQueryOptions } from "@/features/Products/api/productsApi";
-import ProductServerCard from "@/features/Products/components/ProductCards/ProductServerCard";
+import ProductServerCard from "@/features/Products/components/Cards/ProductServerCard";
 import { useSuspenseQuery } from "@tanstack/react-query";
 
 const FinalSaleList = () => {
