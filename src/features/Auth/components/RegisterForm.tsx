@@ -37,7 +37,7 @@ const RegisterForm = ({ onSuccess }: { onSuccess: () => void }) => {
               <FormItem>
                 <FormControl>
                   <Input
-                    placeholder="Имя"
+                    placeholder="Имя и фамилия"
                     endIcon={getStatusIcon(field.value, fieldState.error)}
                     hasError={!!fieldState.error}
                     {...field}

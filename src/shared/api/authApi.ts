@@ -10,6 +10,7 @@ import { z } from "zod";
 import { useAuthStore } from "@/shared/store/authStore";
 import Cookies from "js-cookie";
 import { getCartQueryOptions } from "@/features/Cart/api/cartQueries";
+import { getQueryClient } from "./queryClient";
 
 export const getUserURL = "/wp/v2/users/me";
 
@@ -32,6 +33,7 @@ export const getUserQueryOptions = () => {
 
 export const useUser = () => {
   const userToken = useAuthStore((state) => state.userToken);
+  console.log(userToken);
   return useQuery({
     ...getUserQueryOptions(),
     enabled: !!userToken,
@@ -101,10 +103,7 @@ export const registerInputSchema = z
       .refine(
         (val) => val.trim().length > 0,
         "Имя не может состоять из пробелов"
-      )
-      .refine((val) => !/\s+/g.test(val), {
-        message: "Имя не должно содержать пробелы",
-      }),
+      ),
     email: z.string().email("Неверный Email"),
     password: z
       .string()
@@ -137,4 +136,16 @@ export type RegisterInput = Omit<
 
 const registerUser = (data: RegisterInput): Promise<AuthResponse> => {
   return formattedApiInstance.post("/custom/v1/register", data);
+};
+
+export const useLogout = () => {
+  const queryClient = getQueryClient();
+  const { clearUserToken } = useAuthStore();
+  const handleLogout = () => {
+    Cookies.remove("access_token");
+    clearUserToken();
+    queryClient.removeQueries(getUserQueryOptions());
+  };
+
+  return { handleLogout };
 };

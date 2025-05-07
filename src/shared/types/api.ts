@@ -19,7 +19,7 @@ export type UserData = {
   url: string;
   description: string;
   link: string;
-  user_email: string;
+  email: string;
   slug: string;
   avatar_urls: Record<string, string>;
   meta: unknown;
