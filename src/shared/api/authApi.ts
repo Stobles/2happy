@@ -33,7 +33,6 @@ export const getUserQueryOptions = () => {
 
 export const useUser = () => {
   const userToken = useAuthStore((state) => state.userToken);
-  console.log(userToken);
   return useQuery({
     ...getUserQueryOptions(),
     enabled: !!userToken,

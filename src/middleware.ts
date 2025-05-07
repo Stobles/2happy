@@ -11,11 +11,10 @@ export function middleware(request: NextRequest) {
 
   const payload = parseJwt(token);
 
-  if (payload && payload.exp && payload.sub) {
-    console.log("Токен имеет правильную структуру");
-  } else {
+  console.log(payload);
+
+  if (!payload || !payload.exp)
     return NextResponse.redirect(new URL("/", request.url));
-  }
 
   return NextResponse.next();
 }

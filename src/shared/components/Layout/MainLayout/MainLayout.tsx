@@ -8,7 +8,7 @@ import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import Link from "next/link";
 import HeartIcon from "../../icons/HeartIcon";
 import StyledTooltip from "../../UI/StyledTooltip";
-import CartSheet from "@/features/Cart/components/CartSheet/CartSheet";
+import CartSheet from "@/features/Cart/components/Sheets/CartSheet/CartSheet";
 import CartIcon from "../../icons/CartIcon";
 import UserAccount from "@/features/User/components/UserAccount";
 

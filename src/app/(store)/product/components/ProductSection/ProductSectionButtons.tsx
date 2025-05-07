@@ -3,7 +3,7 @@ import AddedToCartSheet from "@/features/Cart/components/Sheets/AddedToCartSheet
 import { CartItemResponse, CartResponse } from "@/features/Cart/types";
 import { getRelatedProductsQueryOptions } from "@/features/Products/api/productsApi";
 import OutOfStockDialog from "@/features/Products/components/Dialogs/OutOfStockDialog";
-import ProductServerCard from "@/features/Products/components/ProductCards/ProductServerCard";
+import ProductServerCard from "@/features/Products/components/Cards/ProductServerCard";
 import { ProductVariation } from "@/features/Products/types";
 import HeartIcon from "@/shared/components/icons/HeartIcon";
 import { Button } from "@/shared/components/UI/Button";

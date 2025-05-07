@@ -71,7 +71,9 @@ const UserAccount = () => {
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Профиль</DropdownMenuItem>
+            <Link href={paths.account.getHref()}>
+              <DropdownMenuItem>Профиль</DropdownMenuItem>
+            </Link>
             <DropdownMenuItem>Адресная книга</DropdownMenuItem>
             <DropdownMenuItem>Мои заказы</DropdownMenuItem>
             <DropdownMenuSeparator />
