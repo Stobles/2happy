@@ -63,8 +63,8 @@ const ProductInfo = ({
 
       setVariation(variation);
 
-      // const variationImages = variation?.id ? imagesMap.get(variation?.id) : [];
-      // if (variationImages?.length) setImages(variationImages);
+      const variationImages = variation?.id ? imagesMap.get(variation?.id) : [];
+      if (variationImages?.length) setImages(variationImages);
     });
 
   const { colors: defaultColors, sizes: defaultSizes } = getProductAttributes(
@@ -85,6 +85,7 @@ const ProductInfo = ({
     handleChange,
     defaultColor,
     defaultSize,
+    setImages,
   });
 
   const { sizes, colors } = useMemo(
