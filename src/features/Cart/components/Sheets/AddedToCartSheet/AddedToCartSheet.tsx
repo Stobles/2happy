@@ -15,7 +15,6 @@ import ArrowUpRightIcon from "@/shared/components/icons/Arrows/ArrowUpRightIcon"
 import { Separator } from "@/shared/components/UI/Separator";
 import { CartItemResponse } from "@/features/Cart/types";
 import { paths } from "@/config/paths";
-import ProductServerCard from "@/features/Products/components/ProductCards/ProductServerCard";
 
 const AddedToCartSheet = ({
   cartItem,

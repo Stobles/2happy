@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { getAttributesByProductPrice } from "../utils/getAttributesByProductPrice";
-import { getVariation } from "../utils";
+import { getVariation, getVariationsImages } from "../utils";
 import { ProductServer, ProductVariation } from "../types";
 import { createColorToSizeMap } from "../utils/getProductVariationOptions";
+import { Image } from "@/shared/types/api";
 
 export type TProductAttributesHandler = (params: {
   type: "size" | "color";
@@ -15,12 +16,14 @@ export const useProductAttributes = ({
   defaultColor,
   defaultSize,
   handleChange,
+  setImages,
 }: {
   data: ProductServer;
   variations: ProductVariation[] | undefined;
   defaultColor?: string | null;
   defaultSize?: string | null;
   handleChange?: TProductAttributesHandler;
+  setImages: (images: Image[]) => void;
 }) => {
   const { size: productDefaultSize, color: productDefaultColor } =
     getAttributesByProductPrice(data, variations);
@@ -28,6 +31,11 @@ export const useProductAttributes = ({
   const [color, setColor] = useState(productDefaultColor);
   const [size, setSize] = useState(productDefaultSize);
   const [variation, setVariation] = useState<ProductVariation | null>(null);
+
+  const imagesMap = useMemo(
+    () => getVariationsImages(variations),
+    [variations]
+  );
 
   const colorToSizeMap = useMemo(
     () => createColorToSizeMap(variations),
@@ -43,6 +51,11 @@ export const useProductAttributes = ({
 
     setColor(newColor);
     setVariation(newVariation);
+
+    const variationImages = newVariation?.id
+      ? imagesMap.get(newVariation?.id)
+      : [];
+    if (variationImages?.length) setImages(variationImages);
 
     const availableSizesForColor = colorToSizeMap.get(newColor);
     if (availableSizesForColor && !availableSizesForColor.includes(size)) {

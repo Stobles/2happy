@@ -57,6 +57,7 @@ const CategoriesCollapsibleList = ({
                 {collapsibleList.map((category) => (
                   <li key={category.id}>
                     <Link
+                      onClick={closeSheet}
                       href={paths.catalog.category.getHref(
                         category.id,
                         category.slug,
