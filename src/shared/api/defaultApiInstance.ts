@@ -8,6 +8,7 @@ import axios, {
 } from "axios";
 
 import Cookies from "js-cookie";
+import { parseJwt } from "../utils/parseJWT";
 
 export const defaultApiInstance: AxiosInstance = axios.create({
   baseURL: `${env.API_URL}`,
