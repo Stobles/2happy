@@ -13,22 +13,51 @@ export type AuthResponse = {
   token: string;
 };
 
+export type UserAddress = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  address: string;
+  postalCode: string;
+  country: string;
+  region: string;
+  city: string;
+  phone: string;
+  isDefaultShipping: boolean;
+  isDefaultBilling: boolean;
+};
+
 export type UserData = {
   id: number;
   name: string;
+  first_name: string;
+  last_name: string;
   url: string;
   description: string;
   link: string;
-  user_email: string;
+  email: string;
   slug: string;
   avatar_urls: Record<string, string>;
-  meta: unknown;
+  meta: {
+    birth_date: string;
+    phone_number: string;
+  };
+  multiple_addresses: UserAddress[];
   is_super_admin: boolean;
   woocommerce_meta: unknown;
   _links: Links;
 };
 
 // ---------- // Other // ---------- //
+
+export type ProductCategory = {
+  id: number;
+  name: string;
+  slug: string;
+  parent: number;
+};
+
+export type StockStatus = "instock" | "outofstock" | "onbackorder";
 
 export type Image = {
   id: number;

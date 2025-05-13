@@ -10,12 +10,11 @@ import { Thumbs } from "swiper/modules";
 import { Swiper as SwiperType } from "swiper/types";
 import SliderButton from "@/shared/components/Slider/SliderButton";
 import ChevronDownIcon from "@/shared/components/icons/Chevron/ChevronDownIcon";
-import { useGetProductId } from "@/features/Products/hooks/useGetProductId";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { getProductByIdQueryOptions } from "@/features/Products/api/productsApi";
 import ImageGallery from "../../ImageGallery/ImageGallery";
 import { getProductChip } from "@/features/Products/utils/getProductChip";
-import { useProductStore } from "@/features/Products/store/productStore";
+import { Image as ImageType } from "@/shared/types/api";
 import { Chip } from "@/shared/components/UI/Chip";
 
 import "swiper/css";
@@ -24,12 +23,9 @@ import "swiper/css/navigation";
 
 import "./styles.scss";
 
-const ProductSlider = () => {
+const ProductSlider = ({ id, images }: { id: number; images: ImageType[] }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
-  const { id } = useGetProductId();
   const { data } = useSuspenseQuery(getProductByIdQueryOptions(id));
-
-  const { images } = useProductStore();
 
   const chip = getProductChip(data);
 

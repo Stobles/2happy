@@ -2,24 +2,24 @@ import { cn } from "@/shared/utils/cn";
 import { cva, VariantProps } from "class-variance-authority";
 import { forwardRef } from "react";
 
-const chipVariants = cva(`flex rounded-xs text-white`, {
+const chipVariants = cva(`flex rounded-xs text-white whitespace-nowrap w-min`, {
   variants: {
     variant: {
       red: "bg-red",
       pink: "text-red bg-status-muted-error",
       yellow: "bg-yellow",
-      grey: "bg-gray",
+      gray: "text-gray-dark bg-gray-light",
       green: "bg-green",
       black: "bg-main",
     },
     size: {
       normal: "text-button-small p-2",
-      medium: "text-button-xs py-1.5 px-3",
+      medium: "text-button-xs p-3",
       small: "text-button-xs py-1 px-2",
     },
   },
   defaultVariants: {
-    variant: "grey",
+    variant: "gray",
     size: "normal",
   },
 });

@@ -10,6 +10,9 @@ import { z } from "zod";
 import { useAuthStore } from "@/shared/store/authStore";
 import Cookies from "js-cookie";
 import { getCartQueryOptions } from "@/features/Cart/api/cartQueries";
+import { getQueryClient } from "./queryClient";
+import { useRouter } from "next/navigation";
+import { paths } from "@/config/paths";
 
 export const getUserURL = "/wp/v2/users/me";
 
@@ -51,7 +54,7 @@ export const useLogin = ({
   return useMutation({
     mutationFn: loginUser,
     onSuccess: ({ token }) => {
-      Cookies.set("access_token", token);
+      Cookies.set("access_token", token, { expires: 5 });
       setAccessToken(token);
       queryClient.invalidateQueries(getUserQueryOptions());
       queryClient.invalidateQueries(getCartQueryOptions());
@@ -84,7 +87,7 @@ export const useRegister = ({ onSuccess }: { onSuccess?: () => void }) => {
   return useMutation({
     mutationFn: registerUser,
     onSuccess: ({ token }) => {
-      Cookies.set("access_token", token);
+      Cookies.set("access_token", token, { expires: 5 });
       setAccessToken(token);
       queryClient.invalidateQueries(getUserQueryOptions());
       queryClient.invalidateQueries(getCartQueryOptions());
@@ -101,10 +104,7 @@ export const registerInputSchema = z
       .refine(
         (val) => val.trim().length > 0,
         "Имя не может состоять из пробелов"
-      )
-      .refine((val) => !/\s+/g.test(val), {
-        message: "Имя не должно содержать пробелы",
-      }),
+      ),
     email: z.string().email("Неверный Email"),
     password: z
       .string()
@@ -137,4 +137,21 @@ export type RegisterInput = Omit<
 
 const registerUser = (data: RegisterInput): Promise<AuthResponse> => {
   return formattedApiInstance.post("/custom/v1/register", data);
+};
+
+export const useLogout = () => {
+  const queryClient = getQueryClient();
+  const { clearUserToken } = useAuthStore();
+
+  const router = useRouter();
+
+  const handleLogout = () => {
+    Cookies.remove("access_token");
+    clearUserToken();
+    queryClient.removeQueries(getUserQueryOptions());
+
+    router.push(paths.home.getHref());
+  };
+
+  return { handleLogout };
 };

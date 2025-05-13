@@ -3,10 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 
 import Container from "@/shared/components/UI/Container";
-import StyledTooltip from "@/shared/components/UI/StyledTooltip";
 
 import { fetchNonce } from "@/features/Cart/api/cartQueries";
 import { mainLinks, subLinks } from "./consts/consts";
@@ -14,15 +13,11 @@ import { mainLinks, subLinks } from "./consts/consts";
 import NavLink from "@/shared/components/UI/NavLink";
 import CategorySheet from "@/features/Categories/components/CategorySheet/CategorySheet";
 import SearchSheet from "./components/SearchSheet";
-import Account from "./components/Account";
 import useObserver from "@/shared/hooks/useObserver";
-import HeartIcon from "@/shared/components/icons/HeartIcon";
-import CartSheet from "@/features/Cart/components/CartSheet/CartSheet";
-import CartIcon from "@/shared/components/icons/CartIcon";
 
 import "./style.css";
 
-const Header = () => {
+const Header = ({ buttonsSlot }: { buttonsSlot: ReactNode }) => {
   const [isSticky, setIsSticky] = useState(false);
   const upperHeaderRef = useRef(null);
 
@@ -43,7 +38,7 @@ const Header = () => {
         ref={upperHeaderRef}
         className="min-h-[56px] border-b-[1px] border-main z-header bg-white "
       >
-        <Container className="h-full items-center justify-end gap-5 py-5">
+        <Container className="h-full items-center justify-end gap-5">
           {subLinks.map((link) => (
             <Link
               key={link.title}
@@ -80,23 +75,7 @@ const Header = () => {
           </nav>
           <div className="flex gap-10">
             <SearchSheet />
-            <div className="flex gap-6">
-              <Link
-                href="/"
-                data-tooltip-id="favorite"
-                data-tooltip-content="Избранное"
-              >
-                <HeartIcon className="hover:fill-black" />
-                <StyledTooltip id="favorite" />
-              </Link>
-              <CartSheet>
-                <div data-tooltip-id="cart" data-tooltip-content="Корзина">
-                  <CartIcon className="hover:fill-black" />
-                  <StyledTooltip id="cart" />
-                </div>
-              </CartSheet>
-              <Account />
-            </div>
+            {buttonsSlot}
           </div>
         </Container>
       </header>

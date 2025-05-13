@@ -62,7 +62,8 @@ module.exports = {
         "gradient-4":
           "linear-gradient(180deg, #FCFCFF8D -22.24%, rgba(0, 0, 0, 0) 100%)",
         "gradient-7": "linear-gradient(360deg, #111112 0%, #F0F0F3 98.1%)",
-
+        "account-breadcrumbs":
+          "linear-gradient(90deg,rgba(17, 17, 18, 1) 0%, rgba(17, 17, 18, 1) 60%, rgba(17, 17, 18, .75) 75%, rgba(17, 17, 18, 1) 100%)",
         "footer-texture": "url('/img/footer-texture.png')",
       },
       fontFamily: {
@@ -334,6 +335,11 @@ module.exports = {
           fontWeight: 400,
           fontSize: "12px",
           lineHeight: "16px",
+        },
+        ".text-title-em": {
+          fontWeight: 400,
+          fontSize: "1em",
+          lineHeight: "1.5em",
         },
         ".text-description": {
           fontWeight: 400,

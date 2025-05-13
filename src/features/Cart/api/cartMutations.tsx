@@ -40,21 +40,26 @@ const addToCart = ({
 export const useAddToCart = ({
   onSuccess,
   onError,
+  onMutate,
 }: {
-  onSuccess?: () => void;
+  onMutate?: (params: AddToCartParams) => void;
+  onSuccess?: (data: CartResponse) => void;
   onError?: (error: Error) => void;
 }) => {
   const queryClient = useQueryClient();
 
+  const nonce = Cookies.get("nonce");
+
   return useMutation({
-    mutationFn: addToCart,
+    mutationFn: (params: AddToCartParams) => addToCart({ params, nonce }),
+    onMutate,
     onSuccess: (res) => {
       const oldNonce = Cookies.get("nonce");
       const newNonce = res.headers["nonce"];
 
       if (newNonce != oldNonce) Cookies.set("nonce", newNonce);
       queryClient.setQueryData(getCartQueryOptions().queryKey, res.data);
-      onSuccess?.();
+      onSuccess?.(res.data);
     },
     onError,
   });
@@ -189,6 +194,8 @@ export const useUpdateCartItem = ({
 
         return {
           ...old,
+          items_count:
+            updateType === "plus" ? old.items_count + 1 : old.items_count - 1,
           totals: {
             ...old.totals,
             total_price:
@@ -212,14 +219,16 @@ export const useUpdateCartItem = ({
 
       return { previousCart };
     },
-    // onSuccess: (res) => {
-    //   const oldNonce = Cookies.get("nonce");
-    //   const newNonce = res.headers["nonce"];
+    onSuccess: (res) => {
+      if (res) {
+        const oldNonce = Cookies.get("nonce");
+        const newNonce = res.headers["nonce"];
 
-    //   if (newNonce != oldNonce) Cookies.set("nonce", newNonce);
-    //   queryClient.invalidateQueries(getCartQueryOptions());
-    //   onSuccess?.();
-    // },
+        if (newNonce != oldNonce) Cookies.set("nonce", newNonce);
+        queryClient.setQueryData(getCartQueryOptions().queryKey, res.data);
+        onSuccess?.();
+      }
+    },
     onError: (error, __, context) => {
       if (context) {
         queryClient.setQueryData(

@@ -27,7 +27,10 @@ const requestInterceptor: TRequestInterceptor = async (config) => {
   const headers = new AxiosHeaders({ ...config.headers });
 
   const access_token = Cookies.get("access_token");
-  if (access_token) {
+
+  const parsedToken = parseJwt(access_token);
+
+  if (parsedToken && parsedToken.exp) {
     headers.set("Authorization", `Bearer ${access_token}`);
   }
 

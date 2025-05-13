@@ -14,6 +14,7 @@ export const twMergeConf = extendTailwindMerge<"text", "bg">({
         "text-body1",
         "text-body2",
         "text-title",
+        "text-title-em",
         "text-description",
         "text-placeholder",
         "text-button-large",

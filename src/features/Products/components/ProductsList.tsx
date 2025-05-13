@@ -3,8 +3,8 @@
 import { cn } from "@/shared/utils/cn";
 import { useProductsList } from "../hooks/useProductsList";
 
-import ProductCardLoader from "./ProductCards/ProductCardLoader";
-import ProductServerCard from "./ProductCards/ProductServerCard";
+import { ProductCardLoader } from "./Cards/ProductServerCard";
+import ProductServerCard from "./Cards/ProductServerCard";
 
 const ProductsList = ({
   category,

@@ -6,7 +6,7 @@ import { useRef } from "react";
 import { Swiper as SwiperType } from "swiper/types";
 import { getSliderMarginLeft } from "./utils/getSliderMarginLeft";
 
-import ItemCard from "@/features/Fashion/components/ItemCard";
+import ItemCard from "@/features/Products/components/Cards/ItemCard";
 import SliderButton from "@/shared/components/Slider/SliderButton";
 import ArrowRightIcon from "@/shared/components/icons/Arrows/ArrowRightIcon";
 

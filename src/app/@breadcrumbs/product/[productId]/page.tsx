@@ -13,14 +13,14 @@ import { useQuery } from "@tanstack/react-query";
 import { getProductByIdQueryOptions } from "@/features/Products/api/productsApi";
 import { useParams } from "next/navigation";
 import React, { Fragment } from "react";
+import { sortCategories } from "@/features/Products/utils/sortCategories";
 
 const ProductBreadcrumbs = () => {
   const { productId } = useParams<{ productId: string }>();
   const [_, id] = productId.split("_");
   const { data, isFetching } = useQuery(getProductByIdQueryOptions(Number(id)));
 
-  const sortedBreadcrumbs =
-    data?.categories && data.categories.sort((a, b) => a.parent - b.parent);
+  const sortedBreadcrumbs = sortCategories(data?.categories);
 
   return (
     <Breadcrumbs>

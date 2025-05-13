@@ -9,6 +9,10 @@ import CloseIcon from "../icons/CloseIcon";
 
 const Sheet = SheetPrimitive.Root;
 
+export type TSheetProps = React.ComponentPropsWithoutRef<
+  typeof SheetPrimitive.Root
+>;
+
 const SheetTrigger = SheetPrimitive.Trigger;
 
 export type TSheetTrigger = React.ComponentPropsWithoutRef<

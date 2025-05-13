@@ -1,4 +1,4 @@
-import { Image, Links } from "@/shared/types/api";
+import { Image, Links, ProductCategory, StockStatus } from "@/shared/types/api";
 
 export interface Product {
   id: string;
@@ -20,13 +20,6 @@ export interface Product {
   isNew?: boolean;
   isBestseller?: boolean;
 }
-
-type ProductCategory = {
-  id: number;
-  name: string;
-  slug: string;
-  parent: number;
-};
 
 export type ProductAttribute = {
   id: number;
@@ -82,8 +75,6 @@ type Dimensions = {
   width: string;
   height: string;
 };
-
-type StockStatus = "instock" | "outofstock" | "onbackorder";
 
 export type ProductVariation = {
   id: number;
