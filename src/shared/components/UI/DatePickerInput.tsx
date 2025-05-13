@@ -45,9 +45,9 @@ const DatePickerInput = ({
           onSelect={onSelect}
           disabled={disabled}
           captionLayout="dropdown"
-          fromYear={1900}
-          toYear={new Date().getFullYear()}
-          initialFocus
+          startMonth={new Date(1900, 11)}
+          endMonth={new Date()}
+          autoFocus
         />
       </PopoverContent>
     </Popover>
