@@ -50,7 +50,8 @@ export const paths = {
 
   product: {
     getHref: (id: number, slug: string, params?: Record<string, unknown>) => {
-      const productUrl = `/product/${slug}_${id}`;
+      const decodedSlug = decodeURIComponent(slug);
+      const productUrl = `/product/${encodeURIComponent(decodedSlug)}_${id}`;
 
       return createURLWithParams(productUrl, params);
     },
@@ -61,7 +62,11 @@ export const paths = {
   },
 
   account: {
-    getHref: () => "/account",
+    getHref: (params?: Record<string, unknown>) => {
+      const accountUrl = `/account/`;
+
+      return createURLWithParams(accountUrl, params);
+    },
   },
 
   search: {

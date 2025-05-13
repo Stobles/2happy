@@ -38,19 +38,11 @@ const CartItemChangeDialog = ({
   const { mutate: deleteCartItem, isPending } = useDeleteCartItem({});
 
   const isAddButtonDisabled = (variation: ProductVariation | null) => {
-    console.log("работает");
-
     if (variation == null) return true;
+
     const { size: variationSize, color: variationColor } =
       getVariationsAttributes(variation);
 
-    console.log(
-      cartItemSize,
-      cartItemColor,
-      variationSize,
-      variationColor,
-      cartItemSize === variationSize && cartItemColor === variationColor
-    );
     return cartItemSize === variationSize && cartItemColor === variationColor;
   };
 

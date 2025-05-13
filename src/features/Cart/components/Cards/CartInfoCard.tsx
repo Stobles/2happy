@@ -1,7 +1,7 @@
 import ImageWithLoader from "@/shared/components/UI/ImageWithLoader";
 import { Separator } from "@/shared/components/UI/Separator";
 import { CartItemResponse } from "../../types";
-import { useCartItemInfo } from "../../hooks/useCartItemInfo";
+import { getCartItemInfo } from "../../utils/getCartItemInfo";
 
 const CartInfoCard = ({ cartItem }: { cartItem: CartItemResponse }) => {
   const {
@@ -13,7 +13,7 @@ const CartInfoCard = ({ cartItem }: { cartItem: CartItemResponse }) => {
     price,
     sumPrice,
     currencySymbol,
-  } = useCartItemInfo(cartItem);
+  } = getCartItemInfo(cartItem);
   return (
     <article className="flex flex-col gap-4 w-full pb-6 border-b border-b-gray last:border-b-0 last:pb-0 text-title-em">
       <div className="flex gap-4">

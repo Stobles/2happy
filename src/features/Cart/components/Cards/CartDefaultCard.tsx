@@ -9,14 +9,15 @@ import ImageWithLoader from "@/shared/components/UI/ImageWithLoader";
 import { Separator } from "@/shared/components/UI/Separator";
 import StyledTooltip from "@/shared/components/UI/StyledTooltip";
 import { CartItemResponse } from "../../types";
-import { useCartItemInfo } from "../../hooks/useCartItemInfo";
+import { getCartItemInfo } from "../../utils/getCartItemInfo";
 import { cn } from "@/shared/utils/cn";
 import { Chip } from "@/shared/components/UI/Chip";
-import { useDeleteCartItem, useUpdateCartItem } from "../../api/cartMutations";
+import { useDeleteCartItem } from "../../api/cartMutations";
 import Link from "next/link";
 import { paths } from "@/config/paths";
 import { ReactNode } from "react";
 import { Skeleton } from "@/shared/components/UI/Skeleton";
+import { useChangeQuantity } from "../../hooks/useChangeQuantity";
 
 const CartDefaultCard = ({
   cartItem,
@@ -41,11 +42,33 @@ const CartDefaultCard = ({
     isOnSale,
     sumPrice,
     currencySymbol,
-  } = useCartItemInfo(cartItem);
+    categories,
+    isInStock,
+  } = getCartItemInfo(cartItem);
 
   const { mutate: deleteCartItem, isPending } = useDeleteCartItem({});
 
-  const { mutate: updateCartItem } = useUpdateCartItem({});
+  const {
+    handleDecreaseQuantity,
+    handleIncreaseQuantity,
+    isDecreaseDisabled,
+    isIncreaseDisabled,
+  } = useChangeQuantity();
+
+  const lastCategory = categories[categories.length - 1];
+
+  const productLink = isInStock
+    ? paths.product.getHref(parentId, name, {
+        color: variation.color,
+        size: variation.size,
+      })
+    : paths.catalog.category.getHref(
+        lastCategory.id,
+        lastCategory.slug,
+        lastCategory.name,
+        lastCategory.parent
+      );
+
   return (
     <article
       className={cn(
@@ -61,12 +84,7 @@ const CartDefaultCard = ({
             alt={image.alt}
           />
           <div className="flex flex-col gap-6">
-            <Link
-              href={paths.product.getHref(parentId, name, {
-                color: variation.color,
-                size: variation.size,
-              })}
-            >
+            <Link href={productLink}>
               <h5 className="text-h5">{name}</h5>
             </Link>
             <div className="flex gap-4 text-body-2">
@@ -106,38 +124,44 @@ const CartDefaultCard = ({
                 </>
               )}
             </div>
-            <div className="flex gap-2 h-min">
-              <IconButton
-                variant="secondary"
-                className="border border-main"
-                size="small"
-                disabled={quantity <= cartItem.quantity_limits.minimum}
-                onClick={() => {
-                  updateCartItem({ key, quantity: quantity - 1 });
-                }}
-              >
-                <MinusIcon />
-              </IconButton>
-              <div className="flex justify-center w-14 p-2 bg-gray-light">
-                <span className="text-body2">{quantity}</span>
+            {isInStock ? (
+              <>
+                <div className="flex gap-2 h-min">
+                  <IconButton
+                    variant="secondary"
+                    className="border border-main"
+                    size="small"
+                    disabled={isDecreaseDisabled(cartItem)}
+                    onClick={() => handleDecreaseQuantity(cartItem)}
+                  >
+                    <MinusIcon />
+                  </IconButton>
+                  <div className="flex justify-center w-14 p-2 bg-gray-light">
+                    <span className="text-body2">{quantity}</span>
+                  </div>
+                  <IconButton
+                    variant="secondary"
+                    className="border border-main"
+                    size="small"
+                    disabled={isIncreaseDisabled(cartItem)}
+                    onClick={() => handleIncreaseQuantity(cartItem)}
+                  >
+                    <PlusIcon />
+                  </IconButton>
+                </div>
+                <div className="flex justify-center">
+                  <span>
+                    {sumPrice} {currencySymbol}
+                  </span>
+                </div>
+              </>
+            ) : (
+              <div className="col-span-2 justify-items-end">
+                <Chip className="w-min" variant="gray" size="medium">
+                  Нет на складе
+                </Chip>
               </div>
-              <IconButton
-                variant="secondary"
-                className="border border-main"
-                size="small"
-                disabled={quantity >= cartItem.quantity_limits.maximum}
-                onClick={() => {
-                  updateCartItem({ key, quantity: quantity + 1 });
-                }}
-              >
-                <PlusIcon />
-              </IconButton>
-            </div>
-            <div className="flex justify-center">
-              <span>
-                {sumPrice} {currencySymbol}
-              </span>
-            </div>
+            )}
             <div className="flex justify-center">
               <button
                 onClick={() => {

@@ -225,7 +225,6 @@ export const useUpdateCartItem = ({
         const newNonce = res.headers["nonce"];
 
         if (newNonce != oldNonce) Cookies.set("nonce", newNonce);
-        console.log("срабатывает");
         queryClient.setQueryData(getCartQueryOptions().queryKey, res.data);
         onSuccess?.();
       }

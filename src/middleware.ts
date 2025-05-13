@@ -11,8 +11,6 @@ export function middleware(request: NextRequest) {
 
   const payload = parseJwt(token);
 
-  console.log(payload);
-
   if (!payload || !payload.exp)
     return NextResponse.redirect(new URL("/", request.url));
 

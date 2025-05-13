@@ -18,6 +18,7 @@ import {
   DropdownMenuTrigger,
 } from "@/shared/components/UI/DropdownMenu";
 import { useDelayedState } from "@/shared/hooks/useDelayedState";
+import { ACCOUNT_TABS } from "../utils/isValidTab";
 
 const UserAccount = () => {
   const { data, isFetching } = useUser();
@@ -71,11 +72,15 @@ const UserAccount = () => {
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <Link href={paths.account.getHref()}>
+            <Link href={paths.account.getHref({ tab: ACCOUNT_TABS.PROFILE })}>
               <DropdownMenuItem>Профиль</DropdownMenuItem>
             </Link>
-            <DropdownMenuItem>Адресная книга</DropdownMenuItem>
-            <DropdownMenuItem>Мои заказы</DropdownMenuItem>
+            <Link href={paths.account.getHref({ tab: ACCOUNT_TABS.ADDRESSES })}>
+              <DropdownMenuItem>Адресная книга</DropdownMenuItem>
+            </Link>
+            <Link href={paths.account.getHref({ tab: ACCOUNT_TABS.ORDERS })}>
+              <DropdownMenuItem>Мои заказы</DropdownMenuItem>
+            </Link>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={handleLogout}>Выйти</DropdownMenuItem>
           </DropdownMenuContent>

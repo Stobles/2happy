@@ -10,13 +10,14 @@ import { Separator } from "@/shared/components/UI/Separator";
 import StyledTooltip from "@/shared/components/UI/StyledTooltip";
 import { cn } from "@/shared/utils/cn";
 import { ComponentPropsWithoutRef } from "react";
-import { useCartItemInfo } from "../../hooks/useCartItemInfo";
+import { getCartItemInfo } from "../../utils/getCartItemInfo";
 import { CartItemResponse } from "../../types";
 import { Chip } from "@/shared/components/UI/Chip";
-import { useDeleteCartItem, useUpdateCartItem } from "../../api/cartMutations";
+import { useDeleteCartItem } from "../../api/cartMutations";
 import { Skeleton } from "@/shared/components/UI/Skeleton";
 import Link from "next/link";
 import { paths } from "@/config/paths";
+import { useChangeQuantity } from "../../hooks/useChangeQuantity";
 
 const CartMediumCard = ({
   cartItem,
@@ -41,11 +42,16 @@ const CartMediumCard = ({
     isOnSale,
     variation,
     currencySymbol,
-  } = useCartItemInfo(cartItem);
+  } = getCartItemInfo(cartItem);
 
   const { mutate: deleteCartItem, isPending } = useDeleteCartItem({});
 
-  const { mutate: updateCartItem } = useUpdateCartItem({});
+  const {
+    handleDecreaseQuantity,
+    handleIncreaseQuantity,
+    isDecreaseDisabled,
+    isIncreaseDisabled,
+  } = useChangeQuantity();
   return (
     <article
       className={cn(
@@ -105,7 +111,8 @@ const CartMediumCard = ({
               className="border border-black"
               variant="secondary"
               size="extraSmall"
-              onClick={() => updateCartItem({ key, quantity: quantity - 1 })}
+              disabled={isDecreaseDisabled(cartItem)}
+              onClick={() => handleDecreaseQuantity(cartItem)}
             >
               <MinusIcon />
             </IconButton>
@@ -114,7 +121,8 @@ const CartMediumCard = ({
               className="border border-black "
               variant="secondary"
               size="extraSmall"
-              onClick={() => updateCartItem({ key, quantity: quantity + 1 })}
+              disabled={isIncreaseDisabled(cartItem)}
+              onClick={() => handleIncreaseQuantity(cartItem)}
             >
               <PlusIcon />
             </IconButton>
