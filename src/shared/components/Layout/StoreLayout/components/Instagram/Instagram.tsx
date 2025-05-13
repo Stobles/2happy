@@ -1,4 +1,4 @@
-import InstagramCard from "@/features/Fashion/components/InstagramCard";
+import InstagramCard from "@/features/Products/components/Cards/InstagramCard";
 import Container from "@/shared/components/UI/Container";
 import Section from "@/shared/components/UI/Section";
 

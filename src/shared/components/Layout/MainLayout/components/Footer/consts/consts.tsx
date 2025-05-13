@@ -1,5 +1,5 @@
 import FacebookIcon from "@/shared/components/icons/Social/FacebookIcon";
-import InstagramIcon from "@/shared/components/icons/Social/InstagramIcon";
+import InstagramRoundedIcon from "@/shared/components/icons/Social/InstagramRoundedIcon";
 import TwitterIcon from "@/shared/components/icons/Social/TwitterIcon";
 import { ReactNode } from "react";
 
@@ -19,7 +19,7 @@ export const socialIcons: { href: string; element: ReactNode }[] = [
   },
   {
     href: "/",
-    element: <InstagramIcon />,
+    element: <InstagramRoundedIcon />,
   },
 ];
 

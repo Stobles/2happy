@@ -1,3 +1,6 @@
+import { ProductCategory } from "@/shared/types/api";
+import { StockStatus } from "@/shared/types/api";
+
 export type CartItemResponse = {
   key: string;
   id: number;
@@ -67,6 +70,9 @@ export type CartItemResponse = {
   };
   catalog_visibility: string;
   extensions: Record<string, unknown>;
+  stock_status: StockStatus;
+  stock_quantity: number;
+  product_categories: ProductCategory[];
 };
 
 export type CartResponse = {

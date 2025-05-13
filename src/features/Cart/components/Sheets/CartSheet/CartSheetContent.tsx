@@ -4,7 +4,7 @@ import Link from "next/link";
 import { paths } from "@/config/paths";
 import { Dispatch, SetStateAction } from "react";
 import { CartResponse } from "../../../types";
-import { useCartInfo } from "../../../hooks/useCartInfo";
+import { getCartInfo } from "../../../utils/getCartInfo";
 
 const CartSheetContent = ({
   cartData,
@@ -14,7 +14,7 @@ const CartSheetContent = ({
   setOpen: Dispatch<SetStateAction<boolean>>;
 }) => {
   const { totalPriceWithoutSale, totalDiscount, totalPrice, currencySymbol } =
-    useCartInfo(cartData);
+    getCartInfo(cartData);
 
   return (
     <div className="flex flex-col justify-between w-full h-full flex-1 overflow-hidden">

@@ -1,7 +1,7 @@
 import { Button } from "@/shared/components/UI/Button";
 import Container from "@/shared/components/UI/Container";
 import Section from "@/shared/components/UI/Section";
-import ProductCard from "@/features/Products/components/ProductCards/ProductCard";
+import ProductCard from "@/features/Products/components/Cards/ProductCard";
 import { Product } from "@/features/Products/types";
 
 const PRODUCTS: Product[] = [

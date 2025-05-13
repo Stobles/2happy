@@ -6,7 +6,7 @@ import { SIZES, SLIDES_SIZES } from "./consts";
 import SliderButton from "@/shared/components/Slider/SliderButton";
 import ArrowRightIcon from "@/shared/components/icons/Arrows/ArrowRightIcon";
 import { ProductServer } from "@/features/Products/types";
-import ProductServerCard from "@/features/Products/components/ProductCards/ProductServerCard";
+import ProductServerCard from "@/features/Products/components/Cards/ProductServerCard";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { getProductsQueryOptions } from "@/features/Products/api/productsApi";
 import { tagIds } from "@/features/Categories/consts/consts";

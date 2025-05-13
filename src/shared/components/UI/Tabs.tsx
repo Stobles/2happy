@@ -27,14 +27,18 @@ const TabsList = React.forwardRef<
         "absolute bottom-[1px] w-full h-0.5 bg-dark-disabled z-[-1]",
         borderClass
       )}
-    ></div>
+    />
   </div>
 ));
 TabsList.displayName = TabsPrimitive.List.displayName;
 
+export type TabsTriggerProps = React.ComponentPropsWithoutRef<
+  typeof TabsPrimitive.Trigger
+>;
+
 const TabsTrigger = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
+  TabsTriggerProps
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.Trigger
     ref={ref}

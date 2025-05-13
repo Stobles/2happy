@@ -2,6 +2,9 @@ import { useParams } from "next/navigation";
 
 export const parseProductId = (input: string): { slug: string; id: number } => {
   const [slug, id] = input.split("_");
+
+  console.log(slug, id);
+
   if (!slug || !id || isNaN(Number(id)))
     throw new Error("Неправильный [productId]");
   return { slug, id: Number(id) };
