@@ -12,6 +12,7 @@ import { useSearchParams } from "next/navigation";
 import { useQueryParams } from "@/shared/hooks/useQueryParams";
 import { useUser } from "@/shared/api/authApi";
 import AddressesTab from "./components/AddressesTab/AddressesTab";
+import OrdersTab from "./components/OrdersTab/OrdersTab";
 
 const AccountPage = () => {
   const params = useSearchParams();
@@ -45,7 +46,9 @@ const AccountPage = () => {
         <PageTabsContent value={ACCOUNT_TABS.ADDRESSES}>
           <AddressesTab />
         </PageTabsContent>
-        <PageTabsContent value={ACCOUNT_TABS.ORDERS}>Заказы</PageTabsContent>
+        <PageTabsContent value={ACCOUNT_TABS.ORDERS}>
+          <OrdersTab />
+        </PageTabsContent>
       </PageTabs>
     </div>
   );
