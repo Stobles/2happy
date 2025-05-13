@@ -5,7 +5,7 @@ import { TabsContent } from "@radix-ui/react-tabs";
 
 const OrdersTab = () => {
   return (
-    <Container className="my-section">
+    <Container className="mb-section">
       <Tabs className="w-full space-y-6" defaultValue="orders">
         <TabsList>
           <TabsTrigger value="orders">Мои заказы</TabsTrigger>

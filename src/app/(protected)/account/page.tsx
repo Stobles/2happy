@@ -13,6 +13,9 @@ import { useQueryParams } from "@/shared/hooks/useQueryParams";
 import { useUser } from "@/shared/api/authApi";
 import AddressesTab from "./components/AddressesTab/AddressesTab";
 import OrdersTab from "./components/OrdersTab/OrdersTab";
+import Container from "@/shared/components/UI/Container";
+import ProfileTabLoader from "./components/ProfileTab/ProfileTabLoader";
+import AddressesTabLoader from "./components/AddressesTab/AddressesTabLoader";
 
 const AccountPage = () => {
   const params = useSearchParams();
@@ -40,15 +43,17 @@ const AccountPage = () => {
             Мои заказы
           </PageTabsTrigger>
         </PageTabsList>
-        <PageTabsContent value={ACCOUNT_TABS.PROFILE}>
-          {!isLoading && data ? <ProfileTab /> : "Загрузка..."}
-        </PageTabsContent>
-        <PageTabsContent value={ACCOUNT_TABS.ADDRESSES}>
-          <AddressesTab />
-        </PageTabsContent>
-        <PageTabsContent value={ACCOUNT_TABS.ORDERS}>
-          <OrdersTab />
-        </PageTabsContent>
+        <Container className="w-full my-section">
+          <PageTabsContent className="w-full" value={ACCOUNT_TABS.PROFILE}>
+            {!isLoading && data ? <ProfileTab /> : <ProfileTabLoader />}
+          </PageTabsContent>
+          <PageTabsContent className="w-full" value={ACCOUNT_TABS.ADDRESSES}>
+            {!isLoading && data ? <AddressesTab /> : <AddressesTabLoader />}
+          </PageTabsContent>
+          <PageTabsContent className="w-full" value={ACCOUNT_TABS.ORDERS}>
+            {!isLoading && data ? <OrdersTab /> : "Загрузка..."}
+          </PageTabsContent>
+        </Container>
       </PageTabs>
     </div>
   );

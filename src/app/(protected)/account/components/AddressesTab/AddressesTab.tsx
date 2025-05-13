@@ -15,7 +15,7 @@ const AddressesTab = () => {
 
   return (
     <Container className="block">
-      <div className="flex flex-col gap-12 my-section">
+      <div className="flex flex-col gap-12 mb-section">
         <div className="border border-main bg-gray-light py-4 px-5">
           <h4 className="text-h5">Адресная книга</h4>
         </div>
