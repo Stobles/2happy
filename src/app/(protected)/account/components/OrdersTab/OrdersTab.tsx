@@ -1,11 +1,11 @@
-import OrdersList from "@/features/Orders/components/OrdersList";
+import OrdersList from "@/features/Orders/components/OrdersList/OrdersList";
 import Container from "@/shared/components/UI/Container";
 import { Tabs, TabsList, TabsTrigger } from "@/shared/components/UI/Tabs";
 import { TabsContent } from "@radix-ui/react-tabs";
 
 const OrdersTab = () => {
   return (
-    <Container className="mb-section">
+    <Container>
       <Tabs className="w-full space-y-6" defaultValue="orders">
         <TabsList>
           <TabsTrigger value="orders">Мои заказы</TabsTrigger>

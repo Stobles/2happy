@@ -64,6 +64,8 @@ module.exports = {
         "gradient-7": "linear-gradient(360deg, #111112 0%, #F0F0F3 98.1%)",
         "account-breadcrumbs":
           "linear-gradient(90deg,rgba(17, 17, 18, 1) 0%, rgba(17, 17, 18, 1) 60%, rgba(17, 17, 18, .75) 75%, rgba(17, 17, 18, 1) 100%)",
+        "order-card-help":
+          "linear-gradient(180deg, rgba(243, 243, 244, 0) 0%, rgba(228, 231, 235, 0.6) 100%)",
         "footer-texture": "url('/img/footer-texture.png')",
       },
       fontFamily: {

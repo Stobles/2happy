@@ -1,7 +1,11 @@
-import CatalogPagination from "./CatalogPagination";
+"use client";
+
+import CatalogPagination from "../../../shared/components/CatalogPagination";
 import CatalogHeader from "./CatalogControls";
 import ProductsList from "@/features/Products/components/ProductsList";
-import { ReactNode } from "react";
+import { ReactNode, useRef } from "react";
+import { usePaginationStore } from "@/features/Products/store/paginationStore";
+import { useCatalogStore } from "@/features/Products/store/catalogStore";
 
 const Catalog = ({
   category,
@@ -12,15 +16,27 @@ const Catalog = ({
   tag?: number;
   filtersListSlot: ReactNode;
 }) => {
+  const scrollToRef = useRef<HTMLDivElement>(null);
+
+  const { page, per_page, setPage } = usePaginationStore();
+  const { totalItems, totalPages } = useCatalogStore();
   return (
     <div className="flex flex-col gap-10">
       <div className="flex flex-col gap-6">
         <CatalogHeader />
         {filtersListSlot}
-        <ProductsList tag={tag} category={category} />
+        <ProductsList scrollToRef={scrollToRef} tag={tag} category={category} />
       </div>
 
-      <CatalogPagination />
+      <CatalogPagination
+        page={page}
+        per_page={per_page}
+        scrollToRef={scrollToRef}
+        setPage={setPage}
+        scrollInset={100}
+        totalItems={totalItems}
+        totalPages={totalPages}
+      />
     </div>
   );
 };
