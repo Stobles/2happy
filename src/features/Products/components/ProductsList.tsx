@@ -5,11 +5,14 @@ import { useProductsList } from "../hooks/useProductsList";
 
 import { ProductCardLoader } from "./Cards/ProductServerCard";
 import ProductServerCard from "./Cards/ProductServerCard";
+import { RefObject } from "react";
 
 const ProductsList = ({
+  scrollToRef,
   category,
   tag,
 }: {
+  scrollToRef: RefObject<HTMLDivElement | null>;
   category?: number;
   tag?: number;
 }) => {
@@ -27,7 +30,7 @@ const ProductsList = ({
   }
 
   return (
-    <div className="relative">
+    <div ref={scrollToRef} className="relative">
       {isPlaceholderData && (
         <div className="absolute flex justify-center items-center w-full h-full pointer-events-none z-10">
           <h2 className="text-h1Akira animate-pulse">2HAPPY</h2>

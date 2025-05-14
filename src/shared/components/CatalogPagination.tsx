@@ -9,13 +9,25 @@ import {
   PaginationNext,
   PaginationEllipsis,
 } from "@/shared/components/UI/Pagination";
-import { useCatalogStore } from "@/features/Products/store/catalogStore";
-import { usePaginationStore } from "@/features/Products/store/paginationStore";
+import { RefObject } from "react";
 
-const CatalogPagination = () => {
-  const { page, per_page, setPage } = usePaginationStore();
-  const { totalItems, totalPages } = useCatalogStore();
-
+const CatalogPagination = ({
+  page,
+  per_page,
+  totalItems,
+  totalPages,
+  scrollToRef,
+  scrollInset,
+  setPage,
+}: {
+  page: number;
+  per_page: number;
+  totalItems: number;
+  totalPages: number;
+  scrollToRef?: RefObject<HTMLDivElement | null>;
+  scrollInset?: number;
+  setPage: (page: number) => void;
+}) => {
   if (!totalItems) return null;
 
   const getPageNumbers = () => {
@@ -42,7 +54,13 @@ const CatalogPagination = () => {
 
   const handlePageChange = (newPage: number) => {
     if (typeof newPage === "number") {
-      document.body.scrollTo({ top: 200, behavior: "smooth" });
+      if (scrollToRef && scrollToRef.current) {
+        const offsetTop = scrollInset
+          ? scrollToRef.current?.offsetTop + scrollInset
+          : scrollToRef.current?.offsetTop;
+        document.body.scrollTo({ top: offsetTop, behavior: "smooth" });
+      }
+
       setPage(newPage);
     }
   };
