@@ -1,5 +1,9 @@
 import { formattedApiInstance } from "@/shared/api/formattedApiInstance";
-import { queryOptions } from "@tanstack/react-query";
+import {
+  InfiniteData,
+  infiniteQueryOptions,
+  queryOptions,
+} from "@tanstack/react-query";
 import { env } from "@/config/env";
 import { createURLWithParams } from "@/shared/utils/createURLWithParams";
 import { ProductServer, ProductVariation } from "../types";
@@ -55,9 +59,28 @@ const productsQueryKey = (params: getProductsListParameters) => {
 };
 
 export const getProductsQueryOptions = (params: getProductsListParameters) => {
-  return queryOptions({
+  return infiniteQueryOptions<
+    WooResponse<ProductServer[]>,
+    Error,
+    InfiniteData<WooResponse<ProductServer[]>, number>,
+    readonly unknown[],
+    number
+  >({
     queryKey: productsQueryKey(params),
-    queryFn: (meta) => getProductsList(params, { signal: meta.signal }),
+    queryFn: (meta) =>
+      getProductsList(
+        { page: meta.pageParam, ...params },
+        { signal: meta.signal }
+      ),
+    initialPageParam: 1,
+    getNextPageParam: (_, res, prevPage) => {
+      const newPage = prevPage + 1;
+      const totalPages = res[0].totalPages;
+
+      const hasNextPage = Number(totalPages) >= newPage;
+
+      return hasNextPage ? newPage : null;
+    },
   });
 };
 
