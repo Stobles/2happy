@@ -16,6 +16,7 @@ import { useSearchParams } from "next/navigation";
 import RefundsTab from "./components/RefundsTab";
 import Image from "next/image";
 import DeliveryTab from "./components/DeliveryTab";
+import KaspiTab from "./components/KaspiTab";
 
 const HelpPage = () => {
   const params = useSearchParams();
@@ -70,7 +71,7 @@ const HelpPage = () => {
           className="w-full mt-section mb-section"
           value={HELP_TABS.KASPI}
         >
-          sdfsdfs
+          <KaspiTab />
         </PageTabsContent>
       </PageTabs>
     </div>
