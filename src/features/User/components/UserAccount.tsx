@@ -51,8 +51,9 @@ const UserAccount = () => {
       >
         <DropdownMenu open={open} onOpenChange={(open) => setFastState(open)}>
           <DropdownMenuTrigger>
-            <Link href={paths.account.getHref()}>
+            <Link className="relative" href={paths.account.getHref()}>
               <UserIcon className="hover:fill-main transition-colors" />
+              <span className="absolute top-0 right-0 w-1 h-1 rounded-full bg-red" />
             </Link>
           </DropdownMenuTrigger>
           <DropdownMenuContent
@@ -95,6 +96,7 @@ const UserAccount = () => {
         data-tooltip-content="Войти"
         className="hover:fill-main transition-colors"
       />
+
       <StyledTooltip id="auth" />
     </AuthModal>
   );

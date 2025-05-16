@@ -1,7 +1,11 @@
 import { env } from "@/config/env";
 import { defaultApiInstance } from "@/shared/api/defaultApiInstance";
 import { formattedApiInstance } from "@/shared/api/formattedApiInstance";
-import { queryOptions, useQuery } from "@tanstack/react-query";
+import {
+  queryOptions,
+  useQuery,
+  useSuspenseQuery,
+} from "@tanstack/react-query";
 
 import Cookies from "js-cookie";
 import { CartResponse } from "../types";
@@ -33,6 +37,12 @@ export const getCartQueryOptions = () =>
 
 export const useCart = () => {
   return useQuery({
+    ...getCartQueryOptions(),
+  });
+};
+
+export const useSuspenseCart = () => {
+  return useSuspenseQuery({
     ...getCartQueryOptions(),
   });
 };

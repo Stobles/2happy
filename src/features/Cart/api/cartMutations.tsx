@@ -241,3 +241,48 @@ export const useUpdateCartItem = ({
     },
   });
 };
+
+const deleteCartURL = `${env.CUSTOM_API}/clear-cart`;
+
+const deleteCart = ({
+  nonce,
+}: {
+  nonce: string | undefined;
+}): Promise<AxiosResponse<CartResponse>> => {
+  return defaultApiInstance.post<unknown, AxiosResponse<CartResponse>>(
+    deleteCartURL,
+    {
+      headers: {
+        Nonce: nonce,
+      },
+    }
+  );
+};
+
+export const useDeleteCart = ({
+  onSuccess,
+  onError,
+  onMutate,
+}: {
+  onMutate?: () => void;
+  onSuccess?: (data: CartResponse) => void;
+  onError?: (error: Error) => void;
+}) => {
+  const queryClient = useQueryClient();
+
+  const nonce = Cookies.get("nonce");
+
+  return useMutation({
+    mutationFn: () => deleteCart({ nonce }),
+    onMutate,
+    onSuccess: (res) => {
+      const oldNonce = Cookies.get("nonce");
+      const newNonce = res.headers["nonce"];
+
+      if (newNonce != oldNonce) Cookies.set("nonce", newNonce);
+      queryClient.removeQueries(getCartQueryOptions());
+      onSuccess?.(res.data);
+    },
+    onError,
+  });
+};

@@ -56,6 +56,9 @@ const CartList = () => {
               ))}
             </>
           ) : null}
+          {!isPending && !data?.items_count ? (
+            <h2 className="text-h2 my-12 text-center">Ваша корзина пуста</h2>
+          ) : null}
         </div>
       </div>
       {data && <CartInfo cartData={data} />}

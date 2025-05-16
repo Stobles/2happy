@@ -16,10 +16,11 @@ import SearchSheet from "./components/SearchSheet";
 import useObserver from "@/shared/hooks/useObserver";
 
 import "./style.css";
+import UpperHeader from "./components/UpperHeader";
 
 const Header = ({ buttonsSlot }: { buttonsSlot: ReactNode }) => {
   const [isSticky, setIsSticky] = useState(false);
-  const upperHeaderRef = useRef(null);
+  const upperHeaderRef = useRef<HTMLDivElement>(null);
 
   useObserver(upperHeaderRef, (entry) => setIsSticky(!entry.isIntersecting));
 
@@ -34,22 +35,7 @@ const Header = ({ buttonsSlot }: { buttonsSlot: ReactNode }) => {
       {/* Это подложка под большой header, чтобы была тень и border, но скрывались под CategorySheet */}
       <div className="absolute h-[var(--full-header-height)] left-0 top-0 w-full z-[49] shadow-header border-b-[1px] border-main"></div>
 
-      <div
-        ref={upperHeaderRef}
-        className="min-h-[56px] border-b-[1px] border-main z-header bg-white "
-      >
-        <Container className="h-full items-center justify-end gap-5">
-          {subLinks.map((link) => (
-            <Link
-              key={link.title}
-              href={link.href}
-              className="text-button-xs link-hover"
-            >
-              {link.title}
-            </Link>
-          ))}
-        </Container>
-      </div>
+      <UpperHeader ref={upperHeaderRef} />
       <header className="sticky top-0 min-h-[80px] bg-white z-header">
         <Container className="items-center">
           <Link href="/">

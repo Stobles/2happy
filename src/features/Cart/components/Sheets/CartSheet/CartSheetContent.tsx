@@ -5,6 +5,8 @@ import { paths } from "@/config/paths";
 import { Dispatch, SetStateAction } from "react";
 import { CartResponse } from "../../../types";
 import { getCartInfo } from "../../../utils/getCartInfo";
+import NavigateToCartButton from "../../NavigateToCartButton";
+import { useUser } from "@/shared/api/authApi";
 
 const CartSheetContent = ({
   cartData,
@@ -63,9 +65,15 @@ const CartSheetContent = ({
         </div>
       </div>
       <div className="flex flex-col gap-4">
-        <Button variant="primary" size="large" className="w-full">
-          Оформить заказ
-        </Button>
+        <NavigateToCartButton
+          buttonProps={{
+            text: "Оформить заказ",
+            size: "large",
+            onClick: () => {
+              setOpen(false);
+            },
+          }}
+        />
         <Button
           className="w-full"
           variant="secondary"

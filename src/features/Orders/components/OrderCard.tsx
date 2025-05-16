@@ -1,7 +1,5 @@
 import InfoBoldIcon from "@/shared/components/icons/InfoBoldIcon";
-import InfoIcon from "@/shared/components/icons/InfoIcon";
 import WhatsAppBoldIcon from "@/shared/components/icons/Social/WhatsAppBoldIcon";
-import WhatsAppIcon from "@/shared/components/icons/Social/WhatsAppIcon";
 import {
   AccordionContent,
   AccordionItem,
@@ -12,8 +10,11 @@ import { Separator } from "@/shared/components/UI/Separator";
 import Link from "next/link";
 import { useId } from "react";
 import OrderProductCard from "./OrderProductCard";
+import { OrderResponse } from "../types";
+import { format } from "date-fns";
+import { Skeleton } from "@/shared/components/UI/Skeleton";
 
-const OrderCard = () => {
+const OrderCard = ({ order }: { order: OrderResponse }) => {
   const id = useId();
   return (
     <article>
@@ -22,22 +23,25 @@ const OrderCard = () => {
           <div className="w-full grid grid-cols-3">
             <div className="flex flex-col gap-2">
               <span>Дата заказа</span>
-              <span className="text-gray-middle">10.04.2025</span>
+              <span className="text-gray-middle">
+                {`${format(new Date(order.date_created), "dd.MM.yyyy")}`}
+              </span>
             </div>
             <div className="flex flex-col gap-2">
               <span>Номер заказа</span>
-              <span className="text-gray-middle">773757</span>
+              <span className="text-gray-middle">{order.number}</span>
             </div>
             <div className="flex flex-col gap-2">
               <span>Сумма заказа</span>
-              <span className="text-gray-middle">213 000 ₸</span>
+              <span className="text-gray-middle">{order.total} ₸</span>
             </div>
           </div>
         </AccordionTrigger>
         <AccordionContent className="space-y-14 pb-8">
           <div>
-            <OrderProductCard />
-            <OrderProductCard />
+            {order.line_items.map((item) => (
+              <OrderProductCard key={item.id} product={item} />
+            ))}
           </div>
           <div className="flex justify-between gap-4">
             <div className="flex flex-col gap-14 max-w-[488px] w-full">
@@ -76,18 +80,20 @@ const OrderCard = () => {
                 <h5 className="text-h5 pt-6 px-6 pb-4">Способ оплаты</h5>
                 <Separator className="w-full" />
                 <div className="flex flex-col p-6">
-                  <span>КАРТА VISA (**** 8855)</span>
+                  <span className="uppercase">
+                    {order.payment_method_title}
+                  </span>
                   <div className="flex justify-between border-b border-gray py-4 text-gray-dark">
                     <span>Товары:</span>
-                    <span>213 000 ₸</span>
+                    <span>{order.total} ₸</span>
                   </div>
                   <div className="flex justify-between border-b border-gray py-4 text-gray-dark">
                     <span>Скидка:</span>
-                    <span>213 000 ₸</span>
+                    <span>{order.discount_total} ₸</span>
                   </div>
                   <div className="flex justify-between text-h5 pt-6">
                     <span>Итого:</span>
-                    <span>213 000₸</span>
+                    <span>{order.total} ₸</span>
                   </div>
                 </div>
               </div>
@@ -96,12 +102,14 @@ const OrderCard = () => {
                 <h5 className="text-h5 pt-6 px-6 pb-4">Адрес доставки</h5>
                 <Separator className="w-full" />
                 <div className="flex flex-col gap-4 p-6">
-                  <span className="text-body1">Голикова Инесса</span>
+                  <span className="text-body1">
+                    {order.billing.first_name} {order.billing.last_name}
+                  </span>
                   <div className="flex flex-col gap-2 text-gray-dark text-body2">
-                    <span>ул. Попова, д. 78 / 150000</span>
-                    <span>Казахстан, СКО</span>
-                    <span>г. Петропавловск</span>
-                    <span>+7-777-77-77</span>
+                    <span>{order.billing.address_1}</span>
+                    <span>{order.billing.country}</span>
+                    <span>{order.billing.city}</span>
+                    <span>{order.billing.phone}</span>
                   </div>
                 </div>
               </div>
@@ -114,3 +122,7 @@ const OrderCard = () => {
 };
 
 export default OrderCard;
+
+export const OrderCardLoader = () => {
+  return <Skeleton className="w-full h-[88px]" />;
+};

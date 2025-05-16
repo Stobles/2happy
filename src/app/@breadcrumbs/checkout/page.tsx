@@ -8,10 +8,17 @@ import {
 } from "@/shared/components/UI/Breadcrumb";
 import { paths } from "@/config/paths";
 import { Button } from "@/shared/components/UI/Button";
+import Link from "next/link";
 
 const CheckoutBreadcrumbs = () => {
   return (
-    <Breadcrumbs rightSlot={<Button size="large">Продолжить покупки</Button>}>
+    <Breadcrumbs
+      rightSlot={
+        <Button size="large" asChild>
+          <Link href={paths.checkout.getHref()}>Продолжить покупки</Link>
+        </Button>
+      }
+    >
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink href={paths.home.getHref()}>Главная</BreadcrumbLink>

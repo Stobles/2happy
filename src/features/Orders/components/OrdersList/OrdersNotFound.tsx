@@ -1,5 +1,7 @@
+import { paths } from "@/config/paths";
 import ArrowUpRightIcon from "@/shared/components/icons/Arrows/ArrowUpRightIcon";
 import { Button } from "@/shared/components/UI/Button";
+import Link from "next/link";
 
 const OrdersNotFound = () => {
   return (
@@ -11,10 +13,12 @@ const OrdersNotFound = () => {
           ждут вас!
         </p>
       </div>
-      <Button size="medium">
-        Перейти в каталог
-        <ArrowUpRightIcon />
-      </Button>
+      <Link href={paths.catalog.getHref()}>
+        <Button size="medium">
+          Перейти в каталог
+          <ArrowUpRightIcon />
+        </Button>
+      </Link>
     </div>
   );
 };

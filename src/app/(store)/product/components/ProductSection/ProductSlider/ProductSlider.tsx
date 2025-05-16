@@ -30,7 +30,7 @@ const ProductSlider = ({ id, images }: { id: number; images: ImageType[] }) => {
   const chip = getProductChip(data);
 
   return (
-    <div className="product-slider relative flex gap-6 flex-1 basis-[51%] overflow-hidden">
+    <div className="product-slider relative h-[624px] flex gap-6 flex-1 basis-[51%] overflow-hidden">
       {chip && (
         <Chip
           className="absolute right-4 top-4 z-10"
