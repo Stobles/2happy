@@ -67,6 +67,8 @@ module.exports = {
         "order-card-help":
           "linear-gradient(180deg, rgba(243, 243, 244, 0) 0%, rgba(228, 231, 235, 0.6) 100%)",
         "footer-texture": "url('/img/footer-texture.png')",
+        "help-gradient":
+          "linear-gradient(-90deg, rgba(0, 0, 0, 0.442308) 31.8%, #000000 61.72%)",
       },
       fontFamily: {
         sans: ["var(--font-lato)"],

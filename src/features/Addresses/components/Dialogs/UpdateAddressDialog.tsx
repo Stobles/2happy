@@ -8,20 +8,29 @@ import {
   DialogTrigger,
 } from "@/shared/components/UI/Dialog";
 import { ReactNode, useState } from "react";
-import AddressForm from "./AddressForm";
+import AddressForm from "../AddressForm";
 import { notify } from "@/shared/lib/notify";
 import { useUser } from "@/shared/api/authApi";
 import {
   UpdateUserAddressInput,
-  useCreateUserAddress,
-} from "../api/addressApi";
+  useUpdateUserAddress,
+} from "../../api/addressApi";
+import { UserAddress } from "@/shared/types/api";
 
-const AddAddressDialog = ({ children }: { children: ReactNode }) => {
+const UpdateAddressDialog = ({
+  title,
+  address,
+  children,
+}: {
+  title: string;
+  children: ReactNode;
+  address: UserAddress;
+}) => {
   const [open, setOpen] = useState<boolean>(false);
 
   const { data: user } = useUser();
 
-  const { mutate, isPending } = useCreateUserAddress({
+  const { mutate, isPending } = useUpdateUserAddress({
     onSuccess: () => {
       setOpen(false);
     },
@@ -32,7 +41,7 @@ const AddAddressDialog = ({ children }: { children: ReactNode }) => {
   });
 
   const onSubmit = (data: UpdateUserAddressInput) => {
-    mutate({ user_id: user?.id ?? 0, data });
+    mutate({ id: address.id, user_id: user?.id ?? 0, data });
   };
   return (
     <Dialog open={open} onOpenChange={(open) => setOpen(open)}>
@@ -47,10 +56,17 @@ const AddAddressDialog = ({ children }: { children: ReactNode }) => {
           </DialogDescription>
           <DialogClose className="top-6 right-10" />
         </DialogHeader>
-        <AddressForm onSubmit={onSubmit} isPending={isPending} />
+        <div className="rounded-xs border border-main bg-gray-light py-4 px-5">
+          <h4 className="text-h5">{title}</h4>
+        </div>
+        <AddressForm
+          defaultValues={address}
+          onSubmit={onSubmit}
+          isPending={isPending}
+        />
       </DialogContent>
     </Dialog>
   );
 };
 
-export default AddAddressDialog;
+export default UpdateAddressDialog;

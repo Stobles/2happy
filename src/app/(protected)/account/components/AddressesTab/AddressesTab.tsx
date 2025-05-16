@@ -1,5 +1,5 @@
-import AddAddressDialog from "@/features/Addresses/components/AddAddressDialog";
-import AddressCard from "@/features/Addresses/components/AddressCard";
+import AddAddressDialog from "@/features/Addresses/components/Dialogs/AddAddressDialog";
+import AddressCard from "@/features/Addresses/components/Cards/AddressCard";
 import { useUser } from "@/shared/api/authApi";
 import { Button } from "@/shared/components/UI/Button";
 import Container from "@/shared/components/UI/Container";
@@ -30,7 +30,7 @@ const AddressesTab = () => {
         <div className="flex flex-col gap-4 border border-main p-6 mt-12">
           <h5 className="text-h5">Добавить новый адрес</h5>
           <div className="flex justify-end">
-            <AddAddressDialog>
+            <AddAddressDialog title="Новый адрес">
               <Button>Добавить</Button>
             </AddAddressDialog>
           </div>

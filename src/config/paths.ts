@@ -61,6 +61,18 @@ export const paths = {
     getHref: () => "/cart",
   },
 
+  checkout: {
+    getHref: () => "/checkout",
+  },
+
+  help: {
+    getHref: (params?: Record<string, unknown>) => {
+      const helpUrl = `/help/`;
+
+      return createURLWithParams(helpUrl, params);
+    },
+  },
+
   account: {
     getHref: (params?: Record<string, unknown>) => {
       const accountUrl = `/account/`;

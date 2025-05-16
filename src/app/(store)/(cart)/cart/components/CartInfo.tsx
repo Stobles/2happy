@@ -1,15 +1,16 @@
 import { paths } from "@/config/paths";
-import AuthModal from "@/features/Auth/components/AuthModal";
 import { getCartInfo } from "@/features/Cart/utils/getCartInfo";
 import { CartResponse } from "@/features/Cart/types";
 import WarningIcon from "@/shared/components/icons/WarningIcon";
 import { Button } from "@/shared/components/UI/Button";
 import ImageWithLoader from "@/shared/components/UI/ImageWithLoader";
 import Link from "next/link";
+import NavigateToCartButton from "@/features/Cart/components/NavigateToCartButton";
 
 const CartInfo = ({ cartData }: { cartData: CartResponse }) => {
   const { totalPriceWithoutSale, totalDiscount, totalPrice, currencySymbol } =
     getCartInfo(cartData);
+
   return (
     <div className="grid grid-cols-[repeat(2,_minmax(300px,_490px))_296px] gap-x-6">
       <div className="flex flex-col gap-8 shadow-elevation-6 rounded-xs border border-main py-8 px-6">
@@ -34,23 +35,10 @@ const CartInfo = ({ cartData }: { cartData: CartResponse }) => {
             {totalPrice} {currencySymbol}
           </span>
         </div>
-        <AuthModal
-          triggerProps={{ asChild: true }}
-          buttonSlot={
-            <Button className="w-full" variant="secondary" size="normal">
-              Продолжить как гость
-            </Button>
-          }
-        >
-          <Button
-            variant="primary"
-            size="medium"
-            className="w-full"
-            disabled={!cartData.items_count}
-          >
-            Перейти к оплате
-          </Button>
-        </AuthModal>
+
+        <NavigateToCartButton
+          buttonProps={{ disabled: !cartData.items_count }}
+        />
       </div>
       <div className="flex gap-2 bg-light-disabled py-10 px-4 rounded-xs h-min">
         <WarningIcon className="shrink-0" />

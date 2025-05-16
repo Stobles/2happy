@@ -1,9 +1,18 @@
+"use client";
+
+import { paths } from "@/config/paths";
+import { useSuspenseCart } from "@/features/Cart/api/cartQueries";
 import CartSmallCard from "@/features/Cart/components/Cards/CartSmallCard";
+import { getCartInfo } from "@/features/Cart/utils/getCartInfo";
 import EditIcon from "@/shared/components/icons/EditIcon";
 import { IconButton } from "@/shared/components/UI/IconButton";
 import Link from "next/link";
 
 const CheckoutSide = () => {
+  const { data: cartData } = useSuspenseCart();
+  const { totalPriceWithoutSale, totalDiscount, totalPrice, currencySymbol } =
+    getCartInfo(cartData);
+
   return (
     <aside className="flex flex-col gap-6">
       <div className="flex flex-col gap-4 border border-main rounded-xs py-7 px-6">
@@ -11,16 +20,22 @@ const CheckoutSide = () => {
         <div className="flex flex-col text-gray-dark text-body2">
           <div className="flex justify-between py-3 border-b border-gray">
             <span>Товары:</span>
-            <span>255 000 ₸</span>
+            <span>
+              {totalPriceWithoutSale} {currencySymbol}
+            </span>
           </div>
           <div className="flex justify-between py-3 border-b border-gray">
             <span>Скидка:</span>
-            <span>- 55 000 ₸</span>
+            <span>
+              - {totalDiscount} {currencySymbol}
+            </span>
           </div>
         </div>
         <div className="flex items-center justify-between text-h5 h-12">
           <span>Итого:</span>
-          <span>195 000 T</span>
+          <span>
+            {totalPrice} {currencySymbol}
+          </span>
         </div>
       </div>
       <div className="text-title rounded-xs bg-light-disabled p-4">
@@ -35,20 +50,25 @@ const CheckoutSide = () => {
       <div className="flex flex-col gap-6 border border-main rounded-xs p-6">
         <div className="flex justify-between">
           <h5 className="text-h5">
-            Корзина <span className="text-body2 text-gray-middle">(3)</span>
+            Корзина{" "}
+            <span className="text-body2 text-gray-middle">
+              ({cartData.items_count})
+            </span>
           </h5>
-          <IconButton
-            variant="secondary"
-            size="extraSmall"
-            className="p-1 [&_svg]:size-6"
-          >
-            <EditIcon />
-          </IconButton>
+          <Link href={paths.cart.getHref()}>
+            <IconButton
+              variant="secondary"
+              size="extraSmall"
+              className="p-1 [&_svg]:size-6"
+            >
+              <EditIcon />
+            </IconButton>
+          </Link>
         </div>
         <div className="flex flex-col gap-8">
-          <CartSmallCard />
-          <CartSmallCard />
-          <CartSmallCard />
+          {cartData.items.map((item) => (
+            <CartSmallCard key={item.id} cartItem={item} />
+          ))}
         </div>
       </div>
     </aside>

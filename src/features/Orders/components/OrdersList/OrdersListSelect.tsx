@@ -5,9 +5,20 @@ import {
   SelectTriggerPlain,
 } from "@/shared/components/UI/Select";
 
-const OrdersListSelect = () => {
+const OrdersListSelect = ({
+  value,
+  onSelect,
+}: {
+  value: string;
+  onSelect: (value: string) => void;
+}) => {
   return (
-    <Select>
+    <Select
+      value={value}
+      onValueChange={(value) => {
+        onSelect(value);
+      }}
+    >
       <SelectTriggerPlain className="text-button-xs">
         Сортировать по
       </SelectTriggerPlain>

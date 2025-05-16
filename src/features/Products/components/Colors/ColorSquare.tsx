@@ -12,7 +12,11 @@ const ColorSquare = ({
       style={{
         backgroundColor: colorsByName[color],
       }}
-      className={cn(`w-[16px] h-[16px]`, className)}
+      className={cn(
+        `w-[16px] h-[16px]`,
+        color === "Белый" && "border border-gray",
+        className
+      )}
       {...props}
     />
   );

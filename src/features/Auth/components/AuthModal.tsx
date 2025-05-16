@@ -37,9 +37,14 @@ const AuthModal = ({
 
   const closeDialog = () => setOpen(false);
   return (
-    <Dialog open={open} onOpenChange={(open) => setOpen(open)}>
+    <Dialog
+      open={open}
+      onOpenChange={(open) => {
+        if (triggerProps?.disabled) setOpen(false);
+        else setOpen(open);
+      }}
+    >
       <DialogTrigger
-        disabled={disabled}
         className="disabled:pointer-events-none disabled:opacity-60"
         {...triggerProps}
       >

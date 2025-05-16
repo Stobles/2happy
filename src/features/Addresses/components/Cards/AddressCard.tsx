@@ -1,11 +1,11 @@
 import { Button } from "@/shared/components/UI/Button";
-import DeleteAddressDialog from "./DeleteAddressDialog";
+import DeleteAddressDialog from "../Dialogs/DeleteAddressDialog";
 import { UserAddress } from "@/shared/types/api";
 import { formatPhoneNumberIntl } from "react-phone-number-input";
-import { useDeleteUserAddress } from "../api/addressApi";
+import { useDeleteUserAddress } from "../../api/addressApi";
 import { useUser } from "@/shared/api/authApi";
 import { useState } from "react";
-import UpdateAddressDialog from "./UpdateAddressDialog";
+import UpdateAddressDialog from "../Dialogs/UpdateAddressDialog";
 import { notify } from "@/shared/lib/notify";
 
 const AddressCard = ({ address }: { address: UserAddress }) => {
@@ -39,7 +39,7 @@ const AddressCard = ({ address }: { address: UserAddress }) => {
         </div>
       </div>
       <div className="flex justify-end gap-6">
-        <UpdateAddressDialog address={address}>
+        <UpdateAddressDialog title="Адрес" address={address}>
           <Button variant="secondary">Редактировать</Button>
         </UpdateAddressDialog>
         <DeleteAddressDialog

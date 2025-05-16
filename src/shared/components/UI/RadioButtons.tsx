@@ -20,6 +20,12 @@ const RadioButtonsGroup = React.forwardRef<
 });
 RadioButtonsGroup.displayName = RadioGroupPrimitive.Root.displayName;
 
+export type RadioGroupButtonProps = React.ComponentPropsWithoutRef<
+  typeof RadioGroupPrimitive.Item
+>;
+
+export const RadioGroupButtonPlain = RadioGroupPrimitive.Item;
+
 const RadioGroupButton = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>
