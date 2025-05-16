@@ -49,7 +49,7 @@ PageTabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
 const PageTabsContent = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
->(({ className, ...props }, ref) => (
+>(({ className, children, ...props }, ref) => (
   <TabsPrimitive.Content
     ref={ref}
     className={cn(
@@ -57,7 +57,9 @@ const PageTabsContent = React.forwardRef<
       className
     )}
     {...props}
-  />
+  >
+    <Container>{children}</Container>
+  </TabsPrimitive.Content>
 ));
 PageTabsContent.displayName = TabsPrimitive.Content.displayName;
 

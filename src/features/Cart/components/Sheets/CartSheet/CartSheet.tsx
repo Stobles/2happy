@@ -23,7 +23,14 @@ const CartSheet = ({ children }: { children: ReactNode }) => {
 
   return (
     <Sheet open={open} onOpenChange={(open) => setOpen(open)}>
-      <SheetTrigger>{children}</SheetTrigger>
+      <SheetTrigger className="relative">
+        {children}
+        {data?.items_count ? (
+          <span className="absolute size-4 -top-1 -right-1 bg-red rounded-full text-white text-[12px]">
+            {data?.items_count}
+          </span>
+        ) : null}
+      </SheetTrigger>
       <SheetContent
         className="w-full h-full flex flex-col z-over-header max-w-[680px] p-10 pt-14"
         overlayClassName="z-over-header"

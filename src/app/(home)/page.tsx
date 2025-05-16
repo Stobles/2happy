@@ -21,7 +21,7 @@ const HomePage = () => {
       <Categories />
       <FinalSale />
       <Instagram />
-      <Notifications />
+      {/* <Notifications /> */}
     </>
   );
 };
