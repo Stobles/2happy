@@ -69,6 +69,10 @@ module.exports = {
         "footer-texture": "url('/img/footer-texture.png')",
         "help-gradient":
           "linear-gradient(-90deg, rgba(0, 0, 0, 0.442308) 31.8%, #000000 61.72%)",
+        "checkout-order-gradient":
+          "linear-gradient(90deg, rgba(243, 243, 244, 0) 32.98%, #E4E7EB 100%)",
+        "checkout-login-suggest-gradient":
+          "linear-gradient(180deg, rgba(17, 17, 18, 0.3) 0%, rgba(17, 17, 18, 0.6) 100%)",
       },
       fontFamily: {
         sans: ["var(--font-lato)"],

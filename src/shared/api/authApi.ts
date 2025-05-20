@@ -156,3 +156,16 @@ export const useLogout = () => {
 
   return { handleLogout };
 };
+
+export const useGetToken = () => {
+  const { data: user } = useUser();
+
+  const { mutate } = useLogin({});
+
+  const getToken = (password: string) => {
+    if (!user) return;
+    mutate({ email: user?.email, password });
+  };
+
+  return getToken;
+};

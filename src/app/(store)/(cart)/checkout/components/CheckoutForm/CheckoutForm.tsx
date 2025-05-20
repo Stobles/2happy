@@ -13,15 +13,18 @@ import CheckoutAuthorizedForm from "./CheckoutAuthorizedForm";
 import { useUser } from "@/shared/api/authApi";
 import CheckoutFormWithAddress from "./CheckoutFormWithAddress";
 import { CheckoutFormInput } from "./types";
-import { getCartQueryOptions, useCart } from "@/features/Cart/api/cartQueries";
+import { useCart } from "@/features/Cart/api/cartQueries";
 import { useCreateOrder } from "@/features/Orders/api/ordersApi";
 import { useCreateUserAddress } from "@/features/Addresses/api/addressApi";
-import { getQueryClient } from "@/shared/api/queryClient";
 import { useDeleteCart } from "@/features/Cart/api/cartMutations";
+import { useRouter } from "next/navigation";
+import { paths } from "@/config/paths";
+import LoaderIcon from "@/shared/components/icons/LoaderIcon";
 
 const CheckoutForm = () => {
-  const queryClient = getQueryClient();
   const [step, setStep] = useState<"contacts" | "payment">("contacts");
+
+  const router = useRouter();
 
   const { data: user } = useUser();
   const { data: cart } = useCart();
@@ -30,11 +33,13 @@ const CheckoutForm = () => {
   const [payment, setPayment] = useState<string>("");
 
   const { mutate: deleteCart } = useDeleteCart({});
-  const { mutate: createOrder } = useCreateOrder({
-    onSuccess: () => {
-      deleteCart();
-    },
-  });
+  const { mutate: createOrder, isPending: isCreateOrderPending } =
+    useCreateOrder({
+      onSuccess: (data) => {
+        router.replace(paths.successCheckout.getHref(data.id));
+        deleteCart();
+      },
+    });
   const { mutate: createAddress } = useCreateUserAddress({});
 
   const defaultAuthorizedValues: CheckoutFormInput = useMemo(
@@ -204,9 +209,12 @@ const CheckoutForm = () => {
               />
               <Button
                 className="w-full"
-                disabled={!contacts || !payment}
+                disabled={!contacts || !payment || isCreateOrderPending}
                 onClick={handleSubmit}
               >
+                {isCreateOrderPending && (
+                  <LoaderIcon className="animate-spin" />
+                )}
                 Перейти к оплате
               </Button>
             </>

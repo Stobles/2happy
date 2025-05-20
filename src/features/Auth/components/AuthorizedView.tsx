@@ -1,3 +1,5 @@
+"use client";
+
 import { useUser } from "@/shared/api/authApi";
 import { ReactNode } from "react";
 

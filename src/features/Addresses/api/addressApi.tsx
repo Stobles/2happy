@@ -2,7 +2,7 @@ import { env } from "@/config/env";
 import { getUserQueryOptions } from "@/shared/api/authApi";
 import { formattedApiInstance } from "@/shared/api/formattedApiInstance";
 import { getQueryClient } from "@/shared/api/queryClient";
-import { UserAddress, UserData } from "@/shared/types/api";
+import { CustomAPIError, UserAddress, UserData } from "@/shared/types/api";
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 
@@ -28,12 +28,6 @@ export const addressSchema = z.object({
 
 export type UpdateUserAddressInput = z.infer<typeof addressSchema>;
 
-export type UserAddressError<TData = unknown> = {
-  code: string;
-  data: TData;
-  message: string;
-};
-
 const createUserAddress = ({
   user_id,
   data,
@@ -53,7 +47,7 @@ export const useCreateUserAddress = ({
   ...options
 }: UseMutationOptions<
   UserAddress[],
-  AxiosError<UserAddressError>,
+  AxiosError<CustomAPIError>,
   { user_id: number; data: UpdateUserAddressInput },
   unknown
 >) => {
@@ -99,7 +93,7 @@ export const useUpdateUserAddress = ({
   ...options
 }: UseMutationOptions<
   UserAddress[],
-  AxiosError<UserAddressError>,
+  AxiosError<CustomAPIError>,
   { user_id: number; data: UpdateUserAddressInput },
   unknown
 >) => {

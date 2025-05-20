@@ -9,6 +9,7 @@ export type OrderResponse = {
   version: string;
   status: string;
   currency: string;
+  currency_symbol: string;
   date_created: string;
   date_created_gmt: string;
   date_modified: string;
