@@ -71,6 +71,12 @@ export type ProductCategory = {
   parent: number;
 };
 
+export type CustomAPIError<TData = unknown> = {
+  code: string;
+  data: TData;
+  message: string;
+};
+
 export type StockStatus = "instock" | "outofstock" | "onbackorder";
 
 export type Image = {

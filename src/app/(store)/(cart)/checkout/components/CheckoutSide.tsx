@@ -18,13 +18,13 @@ const CheckoutSide = () => {
       <div className="flex flex-col gap-4 border border-main rounded-xs py-7 px-6">
         <h5 className="text-h5">Сумма заказа</h5>
         <div className="flex flex-col text-gray-dark text-body2">
-          <div className="flex justify-between py-3 border-b border-gray">
+          <div className="flex justify-between py-3 border-b border-gray-light">
             <span>Товары:</span>
             <span>
               {totalPriceWithoutSale} {currencySymbol}
             </span>
           </div>
-          <div className="flex justify-between py-3 border-b border-gray">
+          <div className="flex justify-between py-3 border-b border-gray-light">
             <span>Скидка:</span>
             <span>
               - {totalDiscount} {currencySymbol}

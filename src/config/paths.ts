@@ -65,6 +65,10 @@ export const paths = {
     getHref: () => "/checkout",
   },
 
+  successCheckout: {
+    getHref: (id: number) => `/success-checkout/${id}`,
+  },
+
   help: {
     getHref: (params?: Record<string, unknown>) => {
       const helpUrl = `/help/`;

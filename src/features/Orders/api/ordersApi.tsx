@@ -4,9 +4,11 @@ import { WooResponse } from "@/shared/types/api";
 import { createURLWithParams } from "@/shared/utils";
 import { CreateOrderPayload, OrderResponse } from "../types";
 import {
+  QueryOptions,
   queryOptions,
   useMutation,
   UseMutationOptions,
+  useQuery,
 } from "@tanstack/react-query";
 import { getQueryClient } from "@/shared/api/queryClient";
 
@@ -54,6 +56,42 @@ export const getOrdersQueryOptions = (params: getOrdersListParameters) => {
     queryKey: ordersQueryKey(params),
     queryFn: (meta) => getOrdersList(params, { signal: meta.signal }),
   });
+};
+
+const getOrderURL = `${env.WOOCOMMERCE_API}/orders/{id}`;
+
+export const getOrder = async (
+  id: number,
+  signal: AbortSignal
+): Promise<OrderResponse> => {
+  const response = await formattedApiInstance.get<unknown, OrderResponse>(
+    getOrderURL.replace("{id}", `${id}`),
+    {
+      signal,
+    }
+  );
+
+  return response;
+};
+
+const orderQueryKey = (id: number) => {
+  const queryKey = ["order", id];
+
+  return queryKey;
+};
+
+export const getOrderQueryOptions = (id: number) => {
+  return queryOptions({
+    queryKey: orderQueryKey(id),
+    queryFn: (meta) => getOrder(id, meta.signal),
+  });
+};
+
+export const useGetOrder = ({
+  id,
+  ...options
+}: { id: number } & QueryOptions) => {
+  return useQuery({ ...getOrderQueryOptions(id) });
 };
 
 export const createOrder = async ({
