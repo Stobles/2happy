@@ -151,7 +151,7 @@ const ProductInfo = ({
               )}
               {!isLoadingVariation && !variationPrice && <div>Нет цены</div>}
               {isVariationOutOfStock && (
-                <Chip variant="gray" size="medium">
+                <Chip variant="gray" size="medium" className="py-1.5">
                   Нет на складе
                 </Chip>
               )}

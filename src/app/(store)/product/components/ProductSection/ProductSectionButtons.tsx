@@ -41,6 +41,25 @@ const ProductSectionButtons = ({
     if (addedCartItem) setCartItem(addedCartItem);
   };
 
+  if (variation?.stock_status === "outofstock") {
+    return (
+      <div className="flex gap-2">
+        <OutOfStockDialog>
+          <Button variant="secondary" className="w-full" disabled={disabled}>
+            Узнать о поступлении
+          </Button>
+        </OutOfStockDialog>
+        <IconButton
+          className="[&_svg]:fill-transparent"
+          size="normal"
+          disabled={disabled}
+        >
+          <HeartIcon className="stroke-white" />
+        </IconButton>
+      </div>
+    );
+  }
+
   return (
     <div className="flex gap-2">
       <div className="w-full flex gap-2">
@@ -53,13 +72,9 @@ const ProductSectionButtons = ({
         >
           Добавить в корзину
         </AddToCartButton>
-        <OutOfStockDialog
-          trigger={
-            <Button className="w-1/2" variant="secondary" disabled={disabled}>
-              Купить
-            </Button>
-          }
-        />
+        <Button className="w-1/2" variant="secondary" disabled={disabled}>
+          Купить
+        </Button>
       </div>
       <IconButton
         className="[&_svg]:fill-transparent"

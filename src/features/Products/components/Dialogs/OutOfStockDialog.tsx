@@ -23,10 +23,10 @@ import { Separator } from "@/shared/components/UI/Separator";
 import Image from "next/image";
 import { ReactNode } from "react";
 
-const OutOfStockDialog = ({ trigger }: { trigger: ReactNode }) => {
+const OutOfStockDialog = ({ children }: { children: ReactNode }) => {
   return (
     <Dialog>
-      <DialogTrigger asChild>{trigger}</DialogTrigger>
+      <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="w-full max-w-[680px]">
         <DialogHeader>
           <DialogTitle className="text-h4">Узнать о поступлении</DialogTitle>

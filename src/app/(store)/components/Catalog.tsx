@@ -18,8 +18,8 @@ const Catalog = ({
 }) => {
   const scrollToRef = useRef<HTMLDivElement>(null);
 
-  const { page, per_page, setPage } = usePaginationStore();
-  const { totalItems, totalPages } = useCatalogStore();
+  // const { page, per_page, setPage } = usePaginationStore();
+  // const { totalItems, totalPages } = useCatalogStore();
   return (
     <div className="flex flex-col gap-10">
       <div className="flex flex-col gap-6">
@@ -28,7 +28,7 @@ const Catalog = ({
         <ProductsList scrollToRef={scrollToRef} tag={tag} category={category} />
       </div>
 
-      <CatalogPagination
+      {/* <CatalogPagination
         page={page}
         per_page={per_page}
         scrollToRef={scrollToRef}
@@ -36,7 +36,7 @@ const Catalog = ({
         scrollInset={100}
         totalItems={totalItems}
         totalPages={totalPages}
-      />
+      /> */}
     </div>
   );
 };

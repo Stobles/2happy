@@ -50,7 +50,6 @@ const ProductInfoColors = ({
               key={item.name}
               value={item.name}
               color={item.name}
-              disabled={item.disabled}
             />
           ))}
         </RadioColorsGroup>
