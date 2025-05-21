@@ -1,3 +1,5 @@
+"use client";
+
 import Container from "@/shared/components/UI/Container";
 import {
   Tabs,
@@ -6,7 +8,6 @@ import {
   TabsTrigger,
 } from "@/shared/components/UI/Tabs";
 import DescriptionTab from "./DescriptionTab/DescriptionTab";
-import ReviewsTab from "./ReviewsTab/ReviewsTab";
 import { Suspense } from "react";
 import DescriptionTabLoader from "./DescriptionTab/DescriptionTabLoader";
 
@@ -17,16 +18,16 @@ const AboutSection = () => {
         <Tabs className="w-full" defaultValue="description">
           <TabsList>
             <TabsTrigger value="description">Описание</TabsTrigger>
-            <TabsTrigger value="reviews">Отзывы покупателей</TabsTrigger>
+            {/* <TabsTrigger value="reviews">Отзывы покупателей</TabsTrigger> */}
           </TabsList>
           <TabsContent className="h-full" value="description">
             <Suspense fallback={<DescriptionTabLoader />}>
               <DescriptionTab />
             </Suspense>
           </TabsContent>
-          <TabsContent className="h-full" value="reviews">
+          {/* <TabsContent className="h-full" value="reviews">
             <ReviewsTab />
-          </TabsContent>
+          </TabsContent> */}
         </Tabs>
       </Container>
     </div>

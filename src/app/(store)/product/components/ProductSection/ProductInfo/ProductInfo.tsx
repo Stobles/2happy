@@ -105,7 +105,7 @@ const ProductInfo = ({
   return (
     <div className="flex flex-col gap-2 justify-between flex-1 basis-[49%]">
       <div className="flex flex-col gap-8 mb-20">
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-2">
           <div className="flex items-start justify-between gap-4">
             <h2 className="text-h4">{data?.name}</h2>
             <CopyButton
@@ -118,6 +118,7 @@ const ProductInfo = ({
               <ShareIcon />
             </CopyButton>
           </div>
+          <span className="text-gray-middle">Артикул: {data.sku}</span>
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2">
               {isLoadingVariation && (
