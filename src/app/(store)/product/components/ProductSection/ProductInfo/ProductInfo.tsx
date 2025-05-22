@@ -41,10 +41,12 @@ const ProductInfo = ({
   handleChange,
   renderButtons,
   setImages,
+  className,
 }: {
   id: number;
   defaultSize?: string | null;
   defaultColor?: string | null;
+  className?: string;
   handleChange?: TProductAttributesHandler;
   renderButtons?: (
     variation: ProductVariation | null,
@@ -52,12 +54,12 @@ const ProductInfo = ({
   ) => ReactNode;
   setImages: (images: Image[]) => void;
 }) => {
-  const { data } = useGetProductByIdSuspense(id, (data) => {
+  const { data: product } = useGetProductByIdSuspense(id, (data) => {
     setImages(data.images);
   });
   const { data: variations, isLoading: isLoadingVariation } =
     useGetProductVariations(id, (data) => {
-      const imagesMap = getVariationsImages(data);
+      const imagesMap = getVariationsImages(data, product.images);
 
       const variation = getVariation(data, color, size);
 
@@ -68,7 +70,7 @@ const ProductInfo = ({
     });
 
   const { colors: defaultColors, sizes: defaultSizes } = getProductAttributes(
-    data.attributes
+    product.attributes
   );
 
   const {
@@ -80,11 +82,11 @@ const ProductInfo = ({
     handleSizeChange,
     setVariation,
   } = useProductAttributes({
-    data,
+    data: product,
     variations: variations?.items,
-    handleChange,
     defaultColor,
     defaultSize,
+    handleChange,
     setImages,
   });
 
@@ -103,22 +105,27 @@ const ProductInfo = ({
     : false;
 
   return (
-    <div className="flex flex-col gap-2 justify-between flex-1 basis-[49%]">
+    <div
+      className={cn(
+        "flex flex-col gap-2 justify-between flex-1 basis-[49%]",
+        className
+      )}
+    >
       <div className="flex flex-col gap-8 mb-20">
         <div className="flex flex-col gap-2">
           <div className="flex items-start justify-between gap-4">
-            <h2 className="text-h4">{data?.name}</h2>
+            <h2 className="text-h4">{product?.name}</h2>
             <CopyButton
               copyText={`${env.APP_URL}${paths.product.getHref(
-                data.id,
-                data.slug
+                product.id,
+                product.slug
               )}`}
               tooltip="Поделиться"
             >
               <ShareIcon />
             </CopyButton>
           </div>
-          <span className="text-gray-middle">Артикул: {data.sku}</span>
+          <span className="text-gray-middle">Артикул: {product.sku}</span>
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2">
               {isLoadingVariation && (
@@ -140,7 +147,7 @@ const ProductInfo = ({
                       <span className="text-h4">
                         {variationPrice.sale_price} &#8376;
                       </span>
-                      <Chip size="normal" variant="pink">
+                      <Chip size="normal" variant="pink" className="px-3">
                         {`- ${getProductSale(
                           +variationPrice.regular_price,
                           +variationPrice.sale_price

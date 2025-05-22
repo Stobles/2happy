@@ -27,16 +27,6 @@ const Catalog = ({
         {filtersListSlot}
         <ProductsList scrollToRef={scrollToRef} tag={tag} category={category} />
       </div>
-
-      {/* <CatalogPagination
-        page={page}
-        per_page={per_page}
-        scrollToRef={scrollToRef}
-        setPage={setPage}
-        scrollInset={100}
-        totalItems={totalItems}
-        totalPages={totalPages}
-      /> */}
     </div>
   );
 };

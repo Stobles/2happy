@@ -67,9 +67,9 @@ const Footer = () => {
               <li>
                 <a
                   className="text-button-xs link-hover"
-                  href="tel:+77777777777"
+                  href="tel:+77021657378"
                 >
-                  +7–777–777–77–77
+                  +7-702-165-73-78
                 </a>
               </li>
               <li>

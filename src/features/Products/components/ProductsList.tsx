@@ -45,8 +45,6 @@ const ProductsList = ({
     );
   }
 
-  console.log(isFetchingNextPage);
-
   return (
     <div ref={scrollToRef} className="relative">
       {isPlaceholderData && (

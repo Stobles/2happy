@@ -23,12 +23,10 @@ import RegisterForm from "./RegisterForm";
 const AuthModal = ({
   children,
   defaultTab = "login",
-  disabled,
   buttonSlot,
   triggerProps,
 }: {
   children: ReactNode;
-  disabled?: boolean;
   defaultTab?: "login" | "register";
   buttonSlot?: ReactNode;
   triggerProps?: ComponentPropsWithoutRef<typeof DialogTrigger>;

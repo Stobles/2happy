@@ -39,7 +39,7 @@
   }
 
   .richtext-content {
-    @apply flex flex-col gap-2;
+    @apply flex flex-col gap-2 whitespace-pre-line;
     ul {
       @apply list-disc pl-5;
     }

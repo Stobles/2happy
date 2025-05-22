@@ -59,6 +59,15 @@ const productsQueryKey = (params: getProductsListParameters) => {
 };
 
 export const getProductsQueryOptions = (params: getProductsListParameters) => {
+  return queryOptions({
+    queryKey: productsQueryKey(params),
+    queryFn: (meta) => getProductsList({ ...params }, { signal: meta.signal }),
+  });
+};
+
+export const getProductsInfiniteQueryOptions = (
+  params: getProductsListParameters
+) => {
   return infiniteQueryOptions<
     WooResponse<ProductServer[]>,
     Error,

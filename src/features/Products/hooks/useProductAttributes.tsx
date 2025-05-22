@@ -22,6 +22,7 @@ export const useProductAttributes = ({
   variations: ProductVariation[] | undefined;
   defaultColor?: string | null;
   defaultSize?: string | null;
+
   handleChange?: TProductAttributesHandler;
   setImages: (images: Image[]) => void;
 }) => {
@@ -33,7 +34,7 @@ export const useProductAttributes = ({
   const [variation, setVariation] = useState<ProductVariation | null>(null);
 
   const imagesMap = useMemo(
-    () => getVariationsImages(variations),
+    () => getVariationsImages(variations, data.images),
     [variations]
   );
 
@@ -80,7 +81,13 @@ export const useProductAttributes = ({
     setSize(size);
     setColor(color);
 
-    if (variations) setVariation(() => getVariation(variations, color, size));
+    if (variations) {
+      const variation = getVariation(variations, color, size);
+      setVariation(variation);
+
+      const variationImages = variation?.id ? imagesMap.get(variation?.id) : [];
+      if (variationImages?.length) setImages(variationImages);
+    }
   }, [data, variations]);
 
   return {

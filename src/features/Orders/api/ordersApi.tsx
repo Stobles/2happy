@@ -4,6 +4,8 @@ import { WooResponse } from "@/shared/types/api";
 import { createURLWithParams } from "@/shared/utils";
 import { CreateOrderPayload, OrderResponse } from "../types";
 import {
+  InfiniteData,
+  infiniteQueryOptions,
   QueryOptions,
   queryOptions,
   useMutation,
@@ -55,6 +57,34 @@ export const getOrdersQueryOptions = (params: getOrdersListParameters) => {
   return queryOptions({
     queryKey: ordersQueryKey(params),
     queryFn: (meta) => getOrdersList(params, { signal: meta.signal }),
+  });
+};
+
+export const getOrdersInfiniteQueryOptions = (
+  params: getOrdersListParameters
+) => {
+  return infiniteQueryOptions<
+    WooResponse<OrderResponse[]>,
+    Error,
+    InfiniteData<WooResponse<OrderResponse[]>, number>,
+    readonly unknown[],
+    number
+  >({
+    queryKey: ordersQueryKey(params),
+    queryFn: (meta) =>
+      getOrdersList(
+        { page: meta.pageParam, ...params },
+        { signal: meta.signal }
+      ),
+    initialPageParam: 1,
+    getNextPageParam: (_, res, prevPage) => {
+      const newPage = prevPage + 1;
+      const totalPages = res[0].totalPages;
+
+      const hasNextPage = Number(totalPages) >= newPage;
+
+      return hasNextPage ? newPage : null;
+    },
   });
 };
 
