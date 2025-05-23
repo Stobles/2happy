@@ -8,7 +8,7 @@ import {
 } from "@/shared/components/UI/Breadcrumb";
 import { paths } from "@/config/paths";
 
-const CartBreadcrumbs = () => {
+const AboutBreadcrumbs = () => {
   return (
     <Breadcrumbs className="h-[80px] bg-main">
       <BreadcrumbList>
@@ -26,4 +26,4 @@ const CartBreadcrumbs = () => {
   );
 };
 
-export default CartBreadcrumbs;
+export default AboutBreadcrumbs;

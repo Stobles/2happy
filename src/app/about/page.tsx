@@ -1,3 +1,5 @@
+"use client";
+
 import DividerSection from "./components/DividerSection";
 import AboutSection from "./components/AboutSection";
 import Main from "./components/Main";
