@@ -60,7 +60,7 @@ const Header = ({ buttonsSlot }: { buttonsSlot: ReactNode }) => {
             </ul>
           </nav>
           <div className="flex gap-10">
-            <SearchSheet />
+            {/* <SearchSheet /> */}
             {buttonsSlot}
           </div>
         </Container>
