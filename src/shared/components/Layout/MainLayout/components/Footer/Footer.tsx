@@ -89,7 +89,8 @@ const Footer = () => {
               <li>
                 <a
                   className="text-button-xs link-hover"
-                  href="mailto:2happykz@mail.ru"
+                  target="_blank"
+                  href="https://yandex.ru/maps/-/CHC56AzE"
                 >
                   Посмотреть на карте
                 </a>

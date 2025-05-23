@@ -38,14 +38,14 @@ export const MainLayout = ({ children }: { children: ReactNode }) => {
         <Header
           buttonsSlot={
             <div className="flex gap-6">
-              <Link
+              {/* <Link
                 href="/"
                 data-tooltip-id="favorite"
                 data-tooltip-content="Избранное"
               >
                 <HeartIcon className="hover:fill-black" />
                 <StyledTooltip id="favorite" />
-              </Link>
+              </Link> */}
               <CartSheet>
                 <div data-tooltip-id="cart" data-tooltip-content="Корзина">
                   <CartIcon className="hover:fill-black" />

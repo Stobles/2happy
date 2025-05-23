@@ -65,6 +65,14 @@ export const paths = {
     getHref: () => "/contacts",
   },
 
+  offert: {
+    getHref: () => "/offert",
+  },
+
+  policy: {
+    getHref: () => "/policy",
+  },
+
   about: {
     getHref: () => "/about",
     partnership: {
