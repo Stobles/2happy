@@ -1,6 +1,7 @@
 import ImageWithLoader from "@/shared/components/UI/ImageWithLoader";
 import { Separator } from "@/shared/components/UI/Separator";
 import { OrderProductItem } from "../types";
+import OrderProductDialog from "./OrderProductDialog";
 
 const OrderProductCard = ({ product }: { product: OrderProductItem }) => {
   const color = product.meta_data.find((item) => item.key === "pa_color");
@@ -15,7 +16,9 @@ const OrderProductCard = ({ product }: { product: OrderProductItem }) => {
           alt=""
         />
         <div className="flex flex-col gap-4">
-          <h5 className="text-h5">{product.name}</h5>
+          <OrderProductDialog orderItem={product}>
+            <h5 className="text-h5">{product.name}</h5>
+          </OrderProductDialog>
           <div className="flex gap-4 text-gray-middle">
             <span>Артикул:</span>
             <span>{product.sku}</span>

@@ -23,9 +23,12 @@ module.exports = {
         cartCard: "minmax(60px, 120px) 152px minmax(60px, 120px) 80px",
         addition:
           "minmax(296px, 496px) minmax(286px, 150px) minmax(286px, 150px)",
+        aboutProducts:
+          "minmax(320px, 392px) 80px minmax(200px, 288px) minmax(150px, 184px) minmax(150px, 184px)",
       },
       gridTemplateRows: {
         addition: "408px 232px",
+        aboutProducts: "264px 104px 280px",
       },
       cursor: {
         default: "url('/icons/system/cursor-arrow.svg') 2 2, default",
@@ -45,6 +48,8 @@ module.exports = {
         around: "0px 0px 70px -30px rgba(0, 0, 0, 1)",
         feature:
           " 0px -2px 10px 0px rgba(255, 255, 255, 0.3) inset, 0px 20px 30px 0px rgba(48, 48, 48, 0.25)",
+        value: "0px 0px 20px -6px rgba(17, 17, 18, 0.2)",
+        choose: "inset 0 0 120px rgba(255, 255, 255, 0.2)",
         "elevation-1": "0px 4px 4px 0px rgba(17, 17, 18, 0.2)",
         "elevation-2": "0px 4px 8px 0px rgba(37, 40, 43, 0.2)",
         "elevation-3": "0px 8px 16px 0px rgba(17, 17, 18, 0.2)",
@@ -57,6 +62,12 @@ module.exports = {
         xs: "2px",
       },
       backgroundImage: {
+        "choose-gradient":
+          "linear-gradient(180deg, rgba(17, 17, 18, 0) 0%, #111112 72.14%)",
+        "partnership-banner":
+          "linear-gradient(250.2deg, rgba(252, 252, 255, 0) 61.39%, #FCFCFF 70.12%),linear-gradient(179.99deg, rgba(252, 252, 255, 0) 76.85%, #FCFCFF 122.87%);",
+        banner:
+          "linear-gradient(0deg, rgba(17, 17, 18, 0.6), rgba(17, 17, 18, 0.6)),linear-gradient(180deg, rgba(17, 17, 18, 0) 0%, #111112 100%);",
         "radial-gradient":
           "radial-gradient(100% 100% at 50% 0%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 100%)",
         "gradient-4":
@@ -73,6 +84,8 @@ module.exports = {
           "linear-gradient(90deg, rgba(243, 243, 244, 0) 32.98%, #E4E7EB 100%)",
         "checkout-login-suggest-gradient":
           "linear-gradient(180deg, rgba(17, 17, 18, 0.3) 0%, rgba(17, 17, 18, 0.6) 100%)",
+        "about-main-gradient":
+          "linear-gradient(180.38deg, rgba(0, 0, 0, 0) 1.92%, #000000 98.38%);",
       },
       fontFamily: {
         sans: ["var(--font-lato)"],
@@ -312,6 +325,12 @@ module.exports = {
           fontWeight: "600",
           textTransform: "uppercase",
         },
+        ".text-h3Akira": {
+          fontFamily: "var(--font-akira)",
+          fontWeight: "800",
+          fontSize: "112px",
+          lineHeight: "120px",
+        },
         ".text-h4": {
           fontSize: "24px",
           lineHeight: "32px",
@@ -323,6 +342,12 @@ module.exports = {
           lineHeight: "24px",
           fontWeight: "600",
           textTransform: "uppercase",
+        },
+        ".text-h5-italic": {
+          fontSize: "18px",
+          fontStyle: "italic",
+          lineHeight: "24px",
+          fontWeight: "600",
         },
 
         // Text/Body
@@ -463,6 +488,13 @@ module.exports = {
         ".header-hover": {
           borderBottom: 0,
           boxShadow: "none",
+        },
+
+        ".gradient-border": {
+          border: "1px solid",
+          borderImageSource:
+            "linear-gradient(225deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2))",
+          borderImageSlice: "1",
         },
 
         ".icon-glass-hover": {

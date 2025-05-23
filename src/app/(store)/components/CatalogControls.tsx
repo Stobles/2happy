@@ -10,9 +10,10 @@ import {
   SelectTriggerPlain,
 } from "@/shared/components/UI/Select";
 import ProductsFiltersSheet from "@/features/Products/components/Filters/ProductsFiltersSheet";
-import { TSort, useCatalogStore } from "@/features/Products/store/catalogStore";
+import { useCatalogStore } from "@/features/Products/store/catalogStore";
 import { usePaginationStore } from "@/features/Products/store/paginationStore";
 import { cn } from "@/shared/utils/cn";
+import { TSort } from "@/shared/types/other";
 
 const CatalogSelect = ({
   sort,

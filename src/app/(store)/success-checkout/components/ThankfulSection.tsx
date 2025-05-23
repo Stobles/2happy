@@ -44,7 +44,7 @@ const ThankfulSection = () => {
                   <PhoneIcon className="fill-white" />
                 </div>
                 <a
-                  href="tel:+77015557060"
+                  href="tel:+77021657378"
                   className="relative text-body1 after:absolute after:w-full after:h-[1px] after:bg-white after:left-0 after:bottom-0"
                 >
                   +7–701–555–70–60
@@ -66,7 +66,7 @@ const ThankfulSection = () => {
                   <WhatsAppIcon className="fill-white" />
                 </div>
                 <a
-                  href="https://wa.me/77015557060"
+                  href="https://wa.me/77021657378"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="relative text-body1 after:absolute after:w-full after:h-[1px] after:bg-white after:left-0 after:bottom-0"

@@ -148,7 +148,7 @@ export const useLogout = () => {
   const handleLogout = () => {
     Cookies.remove("access_token");
     clearUserToken();
-    queryClient.invalidateQueries(getCartQueryOptions());
+    queryClient.removeQueries(getCartQueryOptions());
     queryClient.removeQueries(getUserQueryOptions());
 
     router.push(paths.home.getHref());

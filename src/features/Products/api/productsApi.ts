@@ -59,6 +59,15 @@ const productsQueryKey = (params: getProductsListParameters) => {
 };
 
 export const getProductsQueryOptions = (params: getProductsListParameters) => {
+  return queryOptions({
+    queryKey: productsQueryKey(params),
+    queryFn: (meta) => getProductsList({ ...params }, { signal: meta.signal }),
+  });
+};
+
+export const getProductsInfiniteQueryOptions = (
+  params: getProductsListParameters
+) => {
   return infiniteQueryOptions<
     WooResponse<ProductServer[]>,
     Error,
@@ -180,5 +189,44 @@ export const getRelatedProductsQueryOptions = (
   return queryOptions({
     queryKey: relatedProductsQueryKey(params),
     queryFn: (meta) => getRelatedProducts(params, { signal: meta.signal }),
+  });
+};
+
+type getHasPurchasedParameters = {
+  product_id?: number;
+};
+
+const getHasPurchasedURL = `${env.CUSTOM_API}/has-purchased`;
+
+const getHasPurchased = async (
+  params: getHasPurchasedParameters,
+  { signal }: { signal: AbortSignal }
+): Promise<{ hasPurchased: boolean }> => {
+  const getHasPurchasedURLWithParams = createURLWithParams(
+    getHasPurchasedURL,
+    params
+  );
+
+  const response = await formattedApiInstance.get<
+    unknown,
+    { hasPurchased: boolean }
+  >(getHasPurchasedURLWithParams, {
+    signal,
+  });
+
+  return response;
+};
+
+const hasPurchasedQueryKey = ({ product_id }: getHasPurchasedParameters) => [
+  "has_purchased",
+  `${product_id}`,
+];
+
+export const getHasPurchasedQueryOptions = (
+  params: getHasPurchasedParameters
+) => {
+  return queryOptions({
+    queryKey: hasPurchasedQueryKey(params),
+    queryFn: (meta) => getHasPurchased(params, { signal: meta.signal }),
   });
 };

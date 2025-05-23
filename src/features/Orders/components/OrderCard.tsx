@@ -11,14 +11,19 @@ import Link from "next/link";
 import { useId } from "react";
 import OrderProductCard from "./OrderProductCard";
 import { OrderResponse } from "../types";
-import { format } from "date-fns";
+import { differenceInDays, format } from "date-fns";
 import { Skeleton } from "@/shared/components/UI/Skeleton";
 
 const OrderCard = ({ order }: { order: OrderResponse }) => {
-  const id = useId();
+  const isReturnDisabled =
+    !!order.date_paid &&
+    differenceInDays(new Date(), new Date(order.date_paid)) > 20;
   return (
     <article>
-      <AccordionItem className="border border-gray px-6" value={`order_${id}`}>
+      <AccordionItem
+        className="border border-gray px-6"
+        value={`order_${order.id}`}
+      >
         <AccordionTrigger className="py-4 text-body2">
           <div className="w-full grid grid-cols-3">
             <div className="flex flex-col gap-2">
@@ -47,7 +52,11 @@ const OrderCard = ({ order }: { order: OrderResponse }) => {
             <div className="flex flex-col gap-14 max-w-[488px] w-full">
               <div className="w-full flex flex-col gap-6">
                 <Button className="w-full">Повторить заказ</Button>
-                <Button className="w-full" variant="secondary">
+                <Button
+                  className="w-full"
+                  variant="secondary"
+                  disabled={isReturnDisabled}
+                >
                   Оформить возврат
                 </Button>
               </div>

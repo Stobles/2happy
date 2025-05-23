@@ -35,7 +35,7 @@ export const mainLinks: { title: string; href: string; disabled?: boolean }[] =
     },
     {
       title: "О нас",
-      href: "/about",
+      href: paths.about.getHref(),
     },
   ];
 

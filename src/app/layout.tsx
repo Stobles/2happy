@@ -6,6 +6,7 @@ import { akira, lato } from "../shared/lib/fonts";
 
 import Providers from "../providers/providers";
 import { MainLayout } from "@/shared/components/Layout/MainLayout/MainLayout";
+import WhatsAppButton from "@/shared/components/Layout/MainLayout/components/WhatsAppButton";
 
 export const metadata = {
   title: "2HAPPY",
