@@ -1,7 +1,7 @@
 "use client";
 
 import { useInfiniteQuery } from "@tanstack/react-query";
-import ReviewCard from "./ReviewCard";
+import ReviewCard, { ReviewCardLoader } from "./ReviewCard";
 import { getCommentsListQueryOptions } from "../api/reviewsApi";
 import { TSort } from "@/shared/types/other";
 import {
@@ -12,6 +12,7 @@ import {
 } from "@/shared/components/UI/Select";
 import { useRef, useState } from "react";
 import useObserver, { useIntersection } from "@/shared/hooks/useObserver";
+import { getWordForm } from "@/shared/utils";
 
 const ReviewsSelect = ({
   sort,
@@ -38,7 +39,7 @@ const ReviewsSelect = ({
 const ReviewsList = () => {
   const [sort, setSort] = useState<TSort>({ type: "desc", field: "date" });
 
-  const { data, isPending, fetchNextPage, isFetchingNextPage } =
+  const { data, isPending, fetchNextPage, isLoading, isFetchingNextPage } =
     useInfiniteQuery({
       ...getCommentsListQueryOptions({
         per_page: 12,
@@ -66,10 +67,18 @@ const ReviewsList = () => {
     );
   }
 
+  const reviewWordForm = getWordForm(Number(data?.totalItems) ?? 0, {
+    one: "Отзыв",
+    several: "Отзыва",
+    many: "Отзывов",
+  });
+
   return (
     <div className="space-y-12">
       <div className="flex justify-between items-center">
-        <h4 className="text-h4">{data?.totalItems} отзыва</h4>
+        <h4 className="text-h4">
+          {data?.totalItems ?? 0} {reviewWordForm}
+        </h4>
         <ReviewsSelect
           sort={sort}
           onChange={(value) =>
@@ -81,6 +90,12 @@ const ReviewsList = () => {
         {data?.items.map((review) => (
           <ReviewCard key={review.id} review={review} />
         ))}
+        {!data && isLoading && (
+          <>
+            <ReviewCardLoader />
+            <ReviewCardLoader />
+          </>
+        )}
         {isFetchingNextPage && (
           <h2 className="text-h2Akira w-full text-center animate-pulse mb-4 mt-10">
             2HAPPY

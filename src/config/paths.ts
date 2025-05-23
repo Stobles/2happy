@@ -61,6 +61,10 @@ export const paths = {
     getHref: () => "/cart",
   },
 
+  contacts: {
+    getHref: () => "/contacts",
+  },
+
   about: {
     getHref: () => "/about",
     partnership: {

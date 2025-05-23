@@ -1,3 +1,5 @@
+import { Image } from "@/shared/types/api";
+
 export type WPComment = {
   id: number;
   post: number; // ID поста, к которому прикреплён комментарий
@@ -21,6 +23,6 @@ export type WPComment = {
   meta: {
     city: "";
     country: "";
-    images: string[];
+    images: Image[];
   }; // Дополнительные метаданные, если есть
 };
