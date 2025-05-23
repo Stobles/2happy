@@ -61,8 +61,34 @@ export const paths = {
     getHref: () => "/cart",
   },
 
+  contacts: {
+    getHref: () => "/contacts",
+  },
+
+  offert: {
+    getHref: () => "/offert",
+  },
+
+  policy: {
+    getHref: () => "/policy",
+  },
+
+  about: {
+    getHref: () => "/about",
+    partnership: {
+      getHref: () => `${paths.about.getHref()}/partnership`,
+    },
+    reviews: {
+      getHref: () => `${paths.about.getHref()}/reviews`,
+    },
+  },
+
   checkout: {
     getHref: () => "/checkout",
+  },
+
+  successCheckout: {
+    getHref: (id: number) => `/success-checkout/${id}`,
   },
 
   help: {

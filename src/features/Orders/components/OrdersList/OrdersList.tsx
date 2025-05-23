@@ -2,11 +2,11 @@ import { Accordion } from "@/shared/components/UI/Accordion";
 import OrderCard, { OrderCardLoader } from "../OrderCard";
 import OrdersNotFound from "./OrdersNotFound";
 import OrdersListSelect from "./OrdersListSelect";
-import CatalogPagination from "@/shared/components/CatalogPagination";
-import { useQuery } from "@tanstack/react-query";
-import { getOrdersQueryOptions } from "../../api/ordersApi";
-import { useMemo, useState } from "react";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { getOrdersInfiniteQueryOptions } from "../../api/ordersApi";
+import { useMemo, useRef, useState } from "react";
 import { useUser } from "@/shared/api/authApi";
+import useObserver, { useIntersection } from "@/shared/hooks/useObserver";
 
 const OrdersList = () => {
   const { data: user } = useUser();
@@ -14,24 +14,36 @@ const OrdersList = () => {
   const [sort, setSort] = useState<string>("desc:date");
   const [order, orderby] = useMemo(() => sort.split(":"), [sort]);
 
-  const [page, setPage] = useState<number>(1);
-
   const {
     data: orders,
     isPending,
-    isPlaceholderData,
-  } = useQuery({
-    ...getOrdersQueryOptions({
+    fetchNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery({
+    ...getOrdersInfiniteQueryOptions({
       orderby,
       order,
       customer: user?.id,
-      page,
       per_page: 10,
     }),
-    placeholderData: (previousData) => previousData,
+    select: (result) => ({
+      totalPages: result.pages[0].totalPages,
+      items: result.pages.map((item) => item.items).flat(),
+      totalItems: result.pages[0].totalItems,
+    }),
   });
 
-  if (isPending && !isPlaceholderData) {
+  const callbackRef = useIntersection(() => {
+    fetchNextPage();
+  });
+
+  const noResults = !isPending && !orders?.items.length;
+
+  if (noResults) {
+    return <OrdersNotFound />;
+  }
+
+  if (isPending && !isFetchingNextPage) {
     return (
       <div className="space-y-4">
         <OrderCardLoader />
@@ -39,10 +51,6 @@ const OrdersList = () => {
       </div>
     );
   }
-
-  if (!orders?.totalItems || (orders?.totalItems && orders.totalItems === "0"))
-    return <OrdersNotFound />;
-
   return (
     <Accordion type="multiple">
       <div className="flex flex-col gap-12">
@@ -54,19 +62,18 @@ const OrdersList = () => {
             />
           </div>
           <div className="flex flex-col gap-4">
-            {orders.items.map((item) => (
+            {orders?.items.map((item) => (
               <OrderCard key={item.id} order={item} />
             ))}
+            {isFetchingNextPage && (
+              <h2 className="text-h2Akira w-full text-center animate-pulse mb-4 mt-10">
+                2HAPPY
+              </h2>
+            )}
           </div>
         </div>
         <div>
-          <CatalogPagination
-            page={page}
-            per_page={10}
-            totalItems={Number(orders?.totalItems) ?? 0}
-            totalPages={Number(orders?.totalPages) ?? 0}
-            setPage={setPage}
-          />
+          <div ref={callbackRef} className="w-full h-[1px]" />
         </div>
       </div>
     </Accordion>

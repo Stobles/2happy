@@ -148,11 +148,24 @@ export const useLogout = () => {
   const handleLogout = () => {
     Cookies.remove("access_token");
     clearUserToken();
-    queryClient.invalidateQueries(getCartQueryOptions());
+    queryClient.removeQueries(getCartQueryOptions());
     queryClient.removeQueries(getUserQueryOptions());
 
     router.push(paths.home.getHref());
   };
 
   return { handleLogout };
+};
+
+export const useGetToken = () => {
+  const { data: user } = useUser();
+
+  const { mutate } = useLogin({});
+
+  const getToken = (password: string) => {
+    if (!user) return;
+    mutate({ email: user?.email, password });
+  };
+
+  return getToken;
 };

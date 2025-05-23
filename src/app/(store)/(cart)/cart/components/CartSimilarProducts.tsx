@@ -1,12 +1,20 @@
 "use client";
 
+import { useCart } from "@/features/Cart/api/cartQueries";
 import { getRelatedProductsQueryOptions } from "@/features/Products/api/productsApi";
 import ProductsScrollableSection from "@/features/Products/components/ProductsScrollableSection";
 import { useQuery } from "@tanstack/react-query";
 
 const CartSimilarProducts = () => {
+  const { data: cart } = useCart();
+
+  const cartProductIds = cart?.items.map((item) => item.parent_id);
+
   const { data, isPending } = useQuery(
-    getRelatedProductsQueryOptions({ product_ids: [178], per_page: 20 })
+    getRelatedProductsQueryOptions({
+      product_ids: cartProductIds,
+      per_page: 20,
+    })
   );
   return (
     <ProductsScrollableSection

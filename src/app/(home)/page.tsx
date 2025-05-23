@@ -4,16 +4,16 @@ import Categories from "./components/Categories/Categories";
 import Fashion from "./components/Fashion/Fashion";
 import FinalSale from "./components/FinalSale/FinalSale";
 import Instagram from "./components/Instagram/Instagram";
-import Main from "./components/Main/Main";
 import NewCollection from "./components/NewCollection/NewCollection";
-import Notifications from "./components/Notifications/Notifications";
+import NewMain from "./components/NewMain/NewMain";
+import WhatsAppButton from "@/shared/components/Layout/MainLayout/components/WhatsAppButton";
 
 export const revalidate = 380;
 
 const HomePage = () => {
   return (
     <>
-      <Main />
+      <NewMain />
       <NewCollection />
       <Bestsellers />
       <Fashion />
@@ -21,7 +21,7 @@ const HomePage = () => {
       <Categories />
       <FinalSale />
       <Instagram />
-      {/* <Notifications /> */}
+      <WhatsAppButton />
     </>
   );
 };

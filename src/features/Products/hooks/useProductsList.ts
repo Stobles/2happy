@@ -1,7 +1,10 @@
 import { useEffect } from "react";
 import { useCatalogStore } from "../store/catalogStore";
-import { getProductsQueryOptions } from "../api/productsApi";
-import { useQuery } from "@tanstack/react-query";
+import {
+  getProductsInfiniteQueryOptions,
+  getProductsQueryOptions,
+} from "../api/productsApi";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { useFiltersStore } from "../store/filtersStore";
 import { usePaginationStore } from "../store/paginationStore";
 
@@ -13,13 +16,18 @@ export const useProductsList = ({
   tag?: number;
 }) => {
   const { sort, gridType, setTotalItems, setTotalPages } = useCatalogStore();
-  const { page, per_page } = usePaginationStore();
   const { priceRange, colors, sizes } = useFiltersStore();
 
-  const { data, isPending, isPlaceholderData } = useQuery({
-    ...getProductsQueryOptions({
-      page,
-      per_page,
+  const {
+    data,
+    isPending,
+    isPlaceholderData,
+    fetchNextPage,
+    isFetchingNextPage,
+    hasNextPage,
+  } = useInfiniteQuery({
+    ...getProductsInfiniteQueryOptions({
+      per_page: 12,
       category,
       tag,
       color: colors.map((item) => item.id),
@@ -29,7 +37,11 @@ export const useProductsList = ({
       order: sort.type,
       orderby: sort.field,
     }),
-    placeholderData: (previousData) => previousData,
+    select: (result) => ({
+      totalPages: result.pages[0].totalPages,
+      items: result.pages.map((item) => item.items).flat(),
+      totalItems: result.pages[0].totalItems,
+    }),
   });
 
   useEffect(() => {
@@ -44,5 +56,13 @@ export const useProductsList = ({
     };
   }, [data]);
 
-  return { data, gridType, isPending, isPlaceholderData };
+  return {
+    data,
+    gridType,
+    isPending,
+    isPlaceholderData,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  };
 };

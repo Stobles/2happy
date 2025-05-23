@@ -1,5 +1,9 @@
 import { formattedApiInstance } from "@/shared/api/formattedApiInstance";
-import { queryOptions } from "@tanstack/react-query";
+import {
+  InfiniteData,
+  infiniteQueryOptions,
+  queryOptions,
+} from "@tanstack/react-query";
 import { env } from "@/config/env";
 import { createURLWithParams } from "@/shared/utils/createURLWithParams";
 import { ProductServer, ProductVariation } from "../types";
@@ -57,7 +61,35 @@ const productsQueryKey = (params: getProductsListParameters) => {
 export const getProductsQueryOptions = (params: getProductsListParameters) => {
   return queryOptions({
     queryKey: productsQueryKey(params),
-    queryFn: (meta) => getProductsList(params, { signal: meta.signal }),
+    queryFn: (meta) => getProductsList({ ...params }, { signal: meta.signal }),
+  });
+};
+
+export const getProductsInfiniteQueryOptions = (
+  params: getProductsListParameters
+) => {
+  return infiniteQueryOptions<
+    WooResponse<ProductServer[]>,
+    Error,
+    InfiniteData<WooResponse<ProductServer[]>, number>,
+    readonly unknown[],
+    number
+  >({
+    queryKey: productsQueryKey(params),
+    queryFn: (meta) =>
+      getProductsList(
+        { page: meta.pageParam, ...params },
+        { signal: meta.signal }
+      ),
+    initialPageParam: 1,
+    getNextPageParam: (_, res, prevPage) => {
+      const newPage = prevPage + 1;
+      const totalPages = res[0].totalPages;
+
+      const hasNextPage = Number(totalPages) >= newPage;
+
+      return hasNextPage ? newPage : null;
+    },
   });
 };
 
@@ -157,5 +189,44 @@ export const getRelatedProductsQueryOptions = (
   return queryOptions({
     queryKey: relatedProductsQueryKey(params),
     queryFn: (meta) => getRelatedProducts(params, { signal: meta.signal }),
+  });
+};
+
+type getHasPurchasedParameters = {
+  product_id?: number;
+};
+
+const getHasPurchasedURL = `${env.CUSTOM_API}/has-purchased`;
+
+const getHasPurchased = async (
+  params: getHasPurchasedParameters,
+  { signal }: { signal: AbortSignal }
+): Promise<{ hasPurchased: boolean }> => {
+  const getHasPurchasedURLWithParams = createURLWithParams(
+    getHasPurchasedURL,
+    params
+  );
+
+  const response = await formattedApiInstance.get<
+    unknown,
+    { hasPurchased: boolean }
+  >(getHasPurchasedURLWithParams, {
+    signal,
+  });
+
+  return response;
+};
+
+const hasPurchasedQueryKey = ({ product_id }: getHasPurchasedParameters) => [
+  "has_purchased",
+  `${product_id}`,
+];
+
+export const getHasPurchasedQueryOptions = (
+  params: getHasPurchasedParameters
+) => {
+  return queryOptions({
+    queryKey: hasPurchasedQueryKey(params),
+    queryFn: (meta) => getHasPurchased(params, { signal: meta.signal }),
   });
 };

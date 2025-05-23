@@ -1,8 +1,18 @@
+"use client";
+
 import { Button } from "@/shared/components/UI/Button";
 import Container from "@/shared/components/UI/Container";
 import Section from "@/shared/components/UI/Section";
 import ProductCard from "@/features/Products/components/Cards/ProductCard";
 import { Product } from "@/features/Products/types";
+import { useGetProductId } from "@/features/Products/hooks/useGetProductId";
+import { useGetProductById } from "@/features/Products/hooks/useGetProductById ";
+import { useQuery } from "@tanstack/react-query";
+import { getProductsQueryOptions } from "@/features/Products/api/productsApi";
+import ProductServerCard, {
+  ProductCardLoader,
+} from "@/features/Products/components/Cards/ProductServerCard";
+import ProductsScrollableSection from "@/features/Products/components/ProductsScrollableSection";
 
 const PRODUCTS: Product[] = [
   {
@@ -60,22 +70,22 @@ const PRODUCTS: Product[] = [
 ];
 
 const AdditionSection = () => {
+  const { id } = useGetProductId();
+
+  const { data: product } = useGetProductById(id);
+
+  const { data, isLoading } = useQuery({
+    ...getProductsQueryOptions({ include: product?.cross_sell_ids }),
+    enabled: !!product?.cross_sell_ids.length,
+  });
+
+  if (!product?.cross_sell_ids.length) return null;
   return (
-    <Section className="border-b border-main">
-      <Container className="my-section flex flex-col gap-16">
-        <h2 className="text-h2">Дополните свой образ /</h2>
-        <div className="grid grid-cols-4 grid-rows-[624px] gap-x-6">
-          {PRODUCTS.map((product) => (
-            <div key={product.id} className="flex flex-col gap-6">
-              <ProductCard product={product} />
-              <Button variant="secondary" size="medium" className="w-full">
-                Добавить в корзину
-              </Button>
-            </div>
-          ))}
-        </div>
-      </Container>
-    </Section>
+    <ProductsScrollableSection
+      title="Дополните свой образ"
+      data={data?.items}
+      isLoading={isLoading}
+    />
   );
 };
 

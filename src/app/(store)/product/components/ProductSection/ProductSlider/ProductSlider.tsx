@@ -22,15 +22,29 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import "./styles.scss";
+import { cn } from "@/shared/utils";
 
-const ProductSlider = ({ id, images }: { id: number; images: ImageType[] }) => {
+const ProductSlider = ({
+  id,
+  images,
+  className,
+}: {
+  id: number;
+  images: ImageType[];
+  className?: string;
+}) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const { data } = useSuspenseQuery(getProductByIdQueryOptions(id));
 
   const chip = getProductChip(data);
 
   return (
-    <div className="product-slider relative h-[624px] flex gap-6 flex-1 basis-[51%] overflow-hidden">
+    <div
+      className={cn(
+        "product-slider relative h-[624px] flex gap-6 flex-1 basis-[51%] overflow-hidden",
+        className
+      )}
+    >
       {chip && (
         <Chip
           className="absolute right-4 top-4 z-10"

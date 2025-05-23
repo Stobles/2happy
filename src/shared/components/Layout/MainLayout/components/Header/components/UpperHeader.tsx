@@ -57,7 +57,7 @@ const UpperHeader = ({ ref }: { ref: RefObject<HTMLDivElement | null> }) => {
           </DropdownMenuContent>
         </DropdownMenu>
         <Link
-          href={paths.help.getHref({ tab: HELP_TABS.REFUNDS })}
+          href={paths.contacts.getHref()}
           className="text-button-xs link-hover"
         >
           Контакты

@@ -5,7 +5,8 @@ import { useProductsList } from "../hooks/useProductsList";
 
 import { ProductCardLoader } from "./Cards/ProductServerCard";
 import ProductServerCard from "./Cards/ProductServerCard";
-import { RefObject } from "react";
+import { RefObject, useRef } from "react";
+import useObserver from "@/shared/hooks/useObserver";
 
 const ProductsList = ({
   scrollToRef,
@@ -16,12 +17,27 @@ const ProductsList = ({
   category?: number;
   tag?: number;
 }) => {
-  const { data, gridType, isPending, isPlaceholderData } = useProductsList({
+  const {
+    data,
+    gridType,
+    isPending,
+    isPlaceholderData,
+    fetchNextPage,
+    isFetchingNextPage,
+  } = useProductsList({
     category,
     tag,
   });
 
-  if (!isPending && !data?.items.length) {
+  const observerRef = useRef<HTMLDivElement>(null);
+
+  useObserver(observerRef, () => {
+    fetchNextPage();
+  });
+
+  const noResults = !isPending && !data?.items.length;
+
+  if (noResults) {
     return (
       <div className="flex items-center justify-center w-full h-[552px]">
         <h2 className="text-h2">Ничего не найдено</h2>
@@ -45,7 +61,7 @@ const ProductsList = ({
           isPlaceholderData && "blur-sm pointer-events-none"
         )}
       >
-        {isPending && !isPlaceholderData && (
+        {isPending && (
           <>
             <ProductCardLoader />
             <ProductCardLoader />
@@ -58,6 +74,18 @@ const ProductsList = ({
           <ProductServerCard key={product.id} product={product} />
         ))}
       </div>
+
+      {isFetchingNextPage && (
+        <h2 className="text-h2Akira w-full text-center animate-pulse mb-4 mt-10">
+          2HAPPY
+        </h2>
+      )}
+      <div ref={observerRef} className="w-full h-[1px]" />
+      {data?.totalItems && (
+        <div className="flex justify-end mt-8 ">
+          {data?.items.length} из {data?.totalItems}
+        </div>
+      )}
     </div>
   );
 };

@@ -41,16 +41,15 @@ const ProductInfoColors = ({
       )}
       {colorsAreLoaded ? (
         <RadioColorsGroup
-          onValueChange={(item) => handleColorChange(item)}
-          className="flex gap-2"
           value={color}
+          className="flex gap-2"
+          onValueChange={(item) => handleColorChange(item)}
         >
           {colors?.map((item) => (
             <RadioGroupColor
               key={item.name}
               value={item.name}
               color={item.name}
-              disabled={item.disabled}
             />
           ))}
         </RadioColorsGroup>

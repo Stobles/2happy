@@ -1,3 +1,5 @@
+"use client";
+
 import { useParams } from "next/navigation";
 
 export const parseProductId = (input: string): { slug: string; id: number } => {
